@@ -1,0 +1,118 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*LAYOUT*/
+//.wrapper
+	margin: 0 auto
+	//min-height: 100%
+	//height: auto !important
+	//height: 100%
+	min-height: 100vh
+	overflow: hidden
+	position: relative
+
+.main
+	padding: 0
+	position: relative
+	clear: both
+	z-index: 4
+
+.main__holder
+	width: 100%
+	+clear
+
+.content-wrap
+	float: left
+	width: 100%
+
+.content
+	margin: 0 $sidebar-width 0 $header-width
+	min-height: 50px
+
+	background-color: whitesmoke
+
+	+media('<desk-lg')
+		margin-right: 0
+
+	+media('<tab-lg')
+		margin-left: 0
+
+.header
+	position: fixed
+	left: 0
+	top: 0
+	width: $header-width
+	height: 100%
+	z-index: 5
+
+	background-color: lightgreen
+
+//.sidebar
+	display: inline
+	float: right
+	margin: 0 0 0 -320px
+	width: 320px
+
+	background-color: sandybrown
+
+.sidebar
+	position: fixed
+	right: 0
+	top: 0
+	height: 100%
+	width: $sidebar-width
+
+	background-color: sandybrown
+
+.footer
+	margin: 0 auto
+	position: relative
+	clear: both
+	z-index: 5
+
+	background-color: lightgreen
+
+.max-wrap
+	max-width: $page-layout-width
+
+.layout
+	+padding-horizontal($page-layout-space-horizontal)
+	+push-auto
+
+	.main &, .header &
+		padding: 0
+
+	+media('<tab-lg')
+		.main &
+			+padding-horizontal(0)
+
+.max-wrap-text
+	max-width: $text-layout-width
+
+.layout-text
+	max-width: $text-layout-width
+	+padding-horizontal($text-layout-space-horizontal)
+	+push-auto
+
+	+media('<tab-lg')
+		+padding-horizontal($text-layout-space-horizontal-md)
+
+	+media('<tab-sm')
+		+padding-horizontal($text-layout-space-horizontal-sm)
+
+.max-wrap-flood
+	max-width: $flood-layout-width
+
+.layout-flood
+	max-width: $flood-layout-width
+	+padding-horizontal($flood-layout-space-horizontal)
+	+push-auto
+
+	+media('<tab-lg')
+		+padding-horizontal($text-layout-space-horizontal-md)
+
+	+media('<tab-sm')
+		+padding-horizontal($text-layout-space-horizontal-sm)
+
+/*LAYOUT end*/

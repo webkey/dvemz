@@ -1,0 +1,53 @@
+@@include('_layout_head.tpl', {
+	"title": "Главная",
+	"pageClass": "home-page"
+})
+<!--HEADER-->
+@@include('_layout_header.tpl', {
+	"mainNavItemActive": "Главная"
+})
+<!--HEADER end-->
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<div class="main__holder">
+			<!--CONTENT-->
+			<div class="content-wrap">
+				<div class="content user-content">
+					<ul id="menu">
+						<li data-menuanchor="firstPage" class="active"><a href="#firstPage">First section</a></li>
+						<li data-menuanchor="secondPage"><a href="#secondPage">Second section</a></li>
+						<li data-menuanchor="thirdPage"><a href="#thirdPage">Third section</a></li>
+					</ul>
+					<div id="fullpage">
+						<section class="section" id="firstPage">
+							<div class="section__title"><h2>Заголовок секции 1</h2></div>
+							<div class="section__holder">
+								Контент секции
+							</div>
+						</section>
+						<section class="section" id="secondPage">
+							<div class="section__title"><h2>Заголовок секции 2</h2></div>
+							<div class="section__holder">
+								Контент секции
+							</div>
+						</section>
+						<section class="section" id="thirdPage">
+							<div class="section__title"><h2>Заголовок секции 3</h2></div>
+							<div class="section__holder">
+								Контент секции
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+			<!--CONTENT end-->
+
+			<!--SIDEBAR-->
+			@@include('_layout_sidebar.tpl')
+			<!--SIDEBAR-->
+		</div>
+	</div>
+</div>
+<!--MAIN end-->
+@@include('_layout_foot.tpl')
