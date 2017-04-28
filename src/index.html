@@ -268,13 +268,64 @@
 									</div>
 								</div>
 							</section>
-							<section class="main-section" id="secondPage2" data-anchor="secondPage">
+							<section class="main-section main-section--news" id="secondPage2" data-anchor="secondPage">
 								<div class="main-section__align">
 									<div class="main-section__title">
-										<h2>Заголовок секции 2</h2>
+										<h2>Новости</h2>
 									</div>
 									<div class="main-section__holder">
-										Контент секции
+										<div class="news-grid news-grid--home">
+											<div class="news-grid__list">
+												<div class="news-grid__item">
+													<a href="#" class="news-grid__inner">
+														<div class="news-grid__img">
+															<div class="news-grid__figure">
+																<img src="img/img-news-01.jpg" alt="" />
+															</div>
+														</div>
+														<div class="news-grid__content">
+															<div class="news-grid__meta">
+																<time datetime="2017-03-11">11 марта 2017</time>
+															</div>
+															<div class="news-grid__title">Новинка! Инструмент для снятия изоляции и обжима многофункциональный!</div>
+														</div>
+													</a>
+												</div>
+												<div class="news-grid__item">
+													<a href="#" class="news-grid__inner">
+														<div class="news-grid__img">
+															<div class="news-grid__figure">
+																<img src="img/img-news-02.jpg" alt="" />
+															</div>
+														</div>
+														<div class="news-grid__content">
+															<div class="news-grid__meta">
+																<time datetime="2017-03-18">18 марта 2017</time>
+															</div>
+															<div class="news-grid__title">Теперь в наличии в наших магазинах ПВС кабель ГОСТ!</div>
+														</div>
+													</a>
+												</div>
+												<div class="news-grid__item">
+													<a href="#" class="news-grid__inner">
+														<div class="news-grid__img">
+															<div class="news-grid__figure">
+																<img src="img/img-news-03.jpg" alt="" />
+															</div>
+														</div>
+														<div class="news-grid__content">
+															<div class="news-grid__meta">
+																<time datetime="2017-12-12">12 апреля 2017</time>
+															</div>
+															<div class="news-grid__title">Новинка! Инструмент для снятия изоляции и обжима многофункциональный!</div>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+										<div class="main-section__footer">
+											<a href="#" class="btn-more"><span>Все новости</span></a>
+										</div>
 									</div>
 								</div>
 							</section>
@@ -284,9 +335,28 @@
 										<h2>Заголовок секции 3</h2>
 									</div>
 									<div class="main-section__holder">
-										Контент секции
 									</div>
 								</div>
+								<!--main map-->
+								<script>
+									var mainMapObjects = [
+										[{
+												lat: 43.10692,
+												lng: 131.95718
+											}, //coordinates of marker
+											'img/map-pin.png', //image pin
+											{
+												title: 'ДВЭМЗ',
+												address: '<b>Адрес</b> <div>г. Владивосток, ул. Молодежная, строение 1, корп. 3</div>',
+												phone: '<b>Тел.</b> <div><a href="tel:+7 423 588-59-74">+7 423 588-59-74</a></div>',
+												fax: '<b>Факс</b> <div>(423) 254 48 86</div>',
+												mail: '<b>Эл. почта</b> <div><a href="mailto:dvemz@gmail.com">dvemz@gmail.com</a></div>'
+											}
+										]
+									];
+								</script>
+								<div class="main-map" id="main-map" data-center-lat="43.1130142" data-center-lng="131.93352699" data-zoom="14"></div>
+								<!--main map end-->
 							</section>
 						</div>
 					</div>
@@ -354,6 +424,8 @@
 		</div>
 	</footer>
 	<!--footer end-->
+	<!--Map-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnFqiG7GVEuZZeE5XCILGj1Tqz1KOMye8&sensor=false&extension=.js&language=ru"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/libs.min.js"></script>
 	<script src="js/common.js"></script>

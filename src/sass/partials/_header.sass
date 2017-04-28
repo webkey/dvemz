@@ -67,8 +67,6 @@
 .logo
 	display: block
 	width: 100%
-	background: #666 url(../../img/logo-short.png) no-repeat center center
-	background-size: auto 34px
 	text-indent: -9999px
 	overflow: hidden
 	z-index: 50
@@ -76,7 +74,14 @@
 	a
 		display: block
 		height: 0
-		+ratio()
+		background: #666 url(../../img/logo-short.png) no-repeat center center
+		background-size: auto 34px
+		+ratio(1, 1)
+		transition-property: background-color
+		transition-duration: $animation-speed
+
+		.no-touchevents &:hover
+			background-color: shade(#666, 85%)
 
 /*logo end*/
 /*HEADER end*/

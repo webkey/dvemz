@@ -1,0 +1,112 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*news grid
+.news-grid
+	overflow: hidden
+	margin-bottom: $bottom-space
+
+	&.news-grid--home
+		margin-bottom: 60px
+
+	&:last-child
+		margin-bottom: 0
+
+.news-grid__list
+	float: left
+	width: 100%
+	position: relative
+	+grid-parent($grid-space)
+	+clear-spacing
+	margin-bottom: -#{$grid-space}
+
+.news-grid__item
+	position: relative
+	letter-spacing: normal
+
+	.news-grid &
+		+grid-item(3, $grid-space)
+		+font($font-size, $line-height)
+		letter-spacing: normal
+
+		+media('<mob-lg')
+			+grid-item(1, $grid-space)
+
+.news-grid__inner
+	display: block
+	position: relative
+	text-decoration: none
+	color: $text-color
+	background-color: white
+	height: 100% // inner по высоте равен item
+
+	&::before
+		+pseudo($pos: relative)
+		width: 100%
+		+ratio(10, 6)
+		background: white url(../../img/no-img.png) no-repeat center
+		box-shadow: 0 8px 0 $base-color
+		background-size: 100px
+
+		+media('<mob-lg')
+			content: none
+
+.news-grid__img
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	overflow: hidden
+
+.news-grid__figure
+	position: relative
+	+ratio(10, 6)
+	transition-property: transform
+	transition-duration: $animation-speed
+
+	.no-touchevents .news-grid__inner:hover &
+		transform: scale(1.1)
+
+	img
+		position: absolute
+		left: 50%
+		top: 50%
+		max-width: 100%
+		max-height: none
+		min-width: 0
+		min-height: 0
+		width: calc(100% + 4px)
+		height: calc(100% + 4px)
+		transform: translate(-50%, -50%)
+		text-align: left
+		object-fit: cover
+		backface-visibility: hidden
+
+		.no-objectfit &
+			width: auto
+			height: 100%
+
+.news-grid__content
+	padding: #{$grid-inside-vertical-space+8} $grid-inside-horizontal-space $grid-inside-vertical-space
+
+.news-grid__meta
+	margin-bottom: 1.5em
+	+font(1.4rem, 1.5)
+
+	&:last-child
+		margin-bottom: 0
+
+	time
+		display: block
+		+font-normal
+		color: $text-color-light
+
+.news-grid__title
+	+font-normal
+	+font(2.2rem, 1.227)
+	color: $text-color
+	margin-bottom: 1.5em
+
+	&:last-child
+		margin-bottom: 0

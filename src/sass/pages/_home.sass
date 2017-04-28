@@ -6,12 +6,33 @@
 .main-section
 	display: table
 	width: 100%
+	background-color: #f3f3f3
+	min-height: 100vh
 
 .main-section__align
 	display: table-cell
 	vertical-align: middle
-	padding: $top-panel-height+$page-layout-space-horizontal $page-layout-space-horizontal 0
+	padding: $top-panel-height+$page-layout-space-horizontal $page-layout-space-horizontal $page-layout-space-horizontal
 
+.main-section__title
+	+font-bold
+	+font(48px, 1.2)
+	color: $text-color
+	margin-bottom: 1em
+
+	h2, h3
+		margin: 0
+		font-family: inherit
+		+font(inherit, inherit)
+		font-weight: inherit
+		color: inherit
+
+.main-section__footer
+	text-align: center
+
+/*scroll sections end
+
+/*main section entry
 .main-section--entry
 	color: white
 	background: #51504f url(../../img/bg-entry.jpg) no-repeat center
@@ -25,13 +46,6 @@
 		+font(72px, 1.194)
 		color: white
 
-		h2, h3
-			margin: 0
-			font-family: inherit
-			+font(inherit, inherit)
-			font-weight: inherit
-			color: inherit
-
 		&::before
 			+pseudo()
 			left: 0
@@ -40,8 +54,9 @@
 			height: 4px
 			background-color: $base-color
 
-/*scroll sections end
+/*main section entry end
 
+/*total date
 .total-data
 	+margin-horizontal(-15px)
 	margin-bottom: $bottom-space
@@ -73,4 +88,12 @@
 .total-data__text
 	+font(1.4rem, 1.286)
 	text-transform: uppercase
+
+/*total date end
+
+/*main map
+.main-map
+	+cover()
+
+/*main map end
 

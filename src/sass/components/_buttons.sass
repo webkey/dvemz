@@ -54,4 +54,35 @@
 		color: $btn-text-color
 
 /*btn-default-alt end*/
+
+/*btn more
+.btn-more
+	position: relative
+	min-width: 240px
+	+font(1.8rem, 1.333)
+	padding: 13px 65px 13px 30px
+	color: white
+	background-color: black
+	transition-property: background-color, color
+	transition-duration: $animation-speed
+	+antialiased
+
+	.no-touchevents &:hover
+		background-color: tint(black, 75%)
+
+	&:active
+		transform: translate(0, 2px) scale(0.95)
+
+	&::before, &::after
+		+pseudo()
+		top: 50%
+		right: 40px
+		width: 14px
+		height: 2px
+		background-color: $base-color
+
+	&::before
+		transform: rotate(0.25turn)
+
+/*btn more end
 /*btn end*/

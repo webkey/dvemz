@@ -99,6 +99,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/device.js/lib/device.min.js',
 		'src/libs/jquery-smartresize/jquery.debouncedresize.js',
 		'src/libs/jquery-placeholder/jquery.placeholder.min.js',
+		'src/libs/matchHeight/dist/jquery.matchHeight-min.js', // подключаем скрипт для выравнивания элементов по максимальному
 		'src/libs/slick-carousel/slick/slick.min.js', // подключаем slick slider
 		'src/libs/fullpage.js/dist/jquery.fullpage.min.js' // подключаем slick slider
 	])

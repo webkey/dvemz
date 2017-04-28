@@ -102,6 +102,241 @@ function slidersInit() {
 /*sliders end*/
 
 /**
+ * !full page scroll
+ * */
+function fullPageInitial() {
+	$('.main-sections-js').fullpage({
+		verticalCentered: false,
+		// anchors: ['firstPage', 'secondPage', 'thirdPage'],
+		// navigation: true,
+		menu: '.scroll-nav-js',
+		sectionSelector: '.main-section'
+	});
+}
+/*full page scroll*/
+
+/**
+ * !equal height
+ * */
+function equalHeightInit() {
+	var $newsGridList = $('.news-grid__list');
+
+	if ($newsGridList.length) {
+		$newsGridList.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+}
+/*equal height end*/
+
+/**
+ * !map init
+ * */
+var styleMap = [{
+	"featureType": "water",
+	"elementType": "geometry.fill",
+	"stylers": [{"color": "#d3d3d3"}]
+}, {"featureType": "transit", "stylers": [{"color": "#808080"}, {"visibility": "off"}]}, {
+	"featureType": "road.highway",
+	"elementType": "geometry.stroke",
+	"stylers": [{"visibility": "on"}, {"color": "#b3b3b3"}]
+}, {
+	"featureType": "road.highway",
+	"elementType": "geometry.fill",
+	"stylers": [{"color": "#ffffff"}]
+}, {
+	"featureType": "road.local",
+	"elementType": "geometry.fill",
+	"stylers": [{"visibility": "on"}, {"color": "#ffffff"}, {"weight": 1.8}]
+}, {
+	"featureType": "road.local",
+	"elementType": "geometry.stroke",
+	"stylers": [{"color": "#d7d7d7"}]
+}, {
+	"featureType": "poi",
+	"elementType": "geometry.fill",
+	"stylers": [{"visibility": "on"}, {"color": "#ebebeb"}]
+}, {
+	"featureType": "administrative",
+	"elementType": "geometry",
+	"stylers": [{"color": "#a7a7a7"}]
+}, {
+	"featureType": "road.arterial",
+	"elementType": "geometry.fill",
+	"stylers": [{"color": "#ffffff"}]
+}, {
+	"featureType": "road.arterial",
+	"elementType": "geometry.fill",
+	"stylers": [{"color": "#ffffff"}]
+}, {
+	"featureType": "landscape",
+	"elementType": "geometry.fill",
+	"stylers": [{"visibility": "on"}, {"color": "#efefef"}]
+}, {
+	"featureType": "road",
+	"elementType": "labels.text.fill",
+	"stylers": [{"color": "#696969"}]
+}, {
+	"featureType": "administrative",
+	"elementType": "labels.text.fill",
+	"stylers": [{"visibility": "on"}, {"color": "#737373"}]
+}, {"featureType": "poi", "elementType": "labels.icon", "stylers": [{"visibility": "on"}]}, {
+	"featureType": "poi",
+	"elementType": "labels",
+	"stylers": [{"visibility": "on"}]
+}, {
+	"featureType": "road.arterial",
+	"elementType": "geometry.stroke",
+	"stylers": [{"color": "#d6d6d6"}]
+}, {"featureType": "road", "elementType": "labels.icon", "stylers": [{"visibility": "off"}]}, {}, {
+	"featureType": "poi",
+	"elementType": "geometry.fill",
+	"stylers": [{"color": "#dadada"}]
+}];
+
+function mainMapInit() {
+	var mainMap = 'main-map';
+	var $mainMap = $('#' + mainMap);
+
+	if (!$mainMap.length) {
+		return;
+	}
+
+	function mapCenter() {
+		return {
+			lat: $mainMap.data('center-lat'),
+			lng: $mainMap.data('center-lng')
+		};
+	}
+
+	var mapOptions = {
+		zoom: $mainMap.data('zoom'),
+		center: mapCenter(),
+		styles: styleMap,
+		mapTypeControl: false,
+		scaleControl: false,
+		scrollwheel: false
+	};
+
+	var markers = [],
+		elementById = [
+			document.getElementById(mainMap)
+		];
+
+	if ($(elementById[0]).length) {
+		var map = new google.maps.Map(elementById[0], mapOptions);
+
+		for (var i = 0; i < mainMapObjects.length; i++) {
+			addMarker(i, map);
+		}
+
+		/*aligned after resize*/
+		// var resizeTimer1;
+		// $(window).on('resize', function () {
+		// 	clearTimeout(resizeTimer1);
+		// 	resizeTimer1 = setTimeout(function () {
+		// 		moveToLocation(0, map);
+		// 	}, 500);
+		// });
+	}
+
+	/*change location*/
+	$('.shops-info__item-js').on('click', function (e) {
+		e.preventDefault();
+
+		var index = $(this).data('location');
+
+		deleteMarkers();
+		if (index === undefined) {
+			for (var i = 0; i < mainMapObjects.length; i++) {
+				addMarker(i, map);
+			}
+			showAllMarkers();
+			return;
+		}
+
+		moveToLocation(index, map);
+		addMarker(index, map);
+	});
+
+	/*move to location*/
+	function moveToLocation(index, map) {
+		var object = mainMapObjects[index];
+		var center = new google.maps.LatLng({
+			// lat: object[0].lat + 0.0050, // not center of map
+			// lng: object[0].lng -0.08 // not center of map
+			lat: object[0].lat,
+			lng: object[0].lng
+		});
+		map.panTo(center);
+		map.setZoom(12);
+	}
+
+	/*show all markers*/
+	function showAllMarkers() {
+		var center = new google.maps.LatLng(mapCenter());
+		map.panTo(center);
+		map.setZoom($mainMap.data('zoom'));
+	}
+
+	var infoWindow = new google.maps.InfoWindow({
+		maxWidth: 300
+	});
+
+	function addMarker(index, map) {
+		var object = mainMapObjects[index];
+
+		var marker = new google.maps.Marker({
+			position: object[0],
+			//animation: google.maps.Animation.DROP,
+			map: map,
+			icon: object[1],
+			title: object[2].title
+		});
+
+		markers.push(marker);
+
+		function onMarkerClick() {
+			var marker = this;
+
+			infoWindow.setContent(
+				'<div class="map-popup">' +
+				'<h4>' + object[2].title + '</h4>' +
+				'<div class="map-popup__list">' +
+				'<div class="map-popup__row">' + object[2].address + '</div>' +
+				'<div class="map-popup__row">' + object[2].phone + '</div>' +
+				'<div class="map-popup__row">' + object[2].fax + '</div>' +
+				'<div class="map-popup__row">' + object[2].mail + '</div>' +
+				'</div>' +
+				'</div>'
+			);
+
+			infoWindow.close();
+
+			// infoWindow.open(map, marker);
+		}
+
+		map.addListener('click', function () {
+			infoWindow.close();
+		});
+
+		marker.addListener('click', onMarkerClick);
+	}
+
+	function setMapOnAll(map) {
+		for (var i = 0; i < markers.length; i++) {
+			markers[i].setMap(map);
+		}
+	}
+
+	function deleteMarkers() {
+		setMapOnAll(null);
+		//markers = [];
+	}
+}
+
+
+/**
  * !footer at bottom
  * */
 function footerBottom() {
@@ -194,15 +429,10 @@ $(document).ready(function () {
 	placeholderInit();
 	printShow();
 	slidersInit();
+	equalHeightInit();
+	fullPageInitial();
+	mainMapInit();
 
 	footerBottom();
 	formSuccessExample();
-
-	$('.main-sections-js').fullpage({
-		verticalCentered: false,
-		// anchors: ['firstPage', 'secondPage', 'thirdPage'],
-		// navigation: true,
-		menu: '.scroll-nav-js',
-		sectionSelector: '.main-section'
-	});
 });
