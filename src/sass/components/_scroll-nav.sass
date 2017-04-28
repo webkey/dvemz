@@ -1,0 +1,43 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*scroll menu
+.scroll-nav
+	position: fixed
+	top: $page-layout-space-horizontal
+	right: $sidebar-width + $page-layout-space-horizontal
+	z-index: 50
+
+	&, .#{$user-content} &
+		margin: 0
+
+		li
+			margin: 0 0 10px
+			padding: 0
+
+			&:before
+				content: none
+	&
+		a
+			display: block
+			position: relative
+			width: 40px
+			height: 40px
+			text-indent: -9999px
+			overflow: hidden
+			background-color: black
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+			svg
+				+centering()
+				+size(20px)
+
+			path
+				fill: white
+
+		li.active a
+			background-color: $base-color
+
+/*scroll menu end

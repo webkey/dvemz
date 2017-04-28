@@ -1,0 +1,28 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*top panel
+.top-panel
+	position: fixed
+	left: $header-width
+	width: calc(100% - #{$sidebar-width + $header-width})
+	max-width: calc(#{$page-layout-width - $sidebar-width - $header-width})
+	padding: 0 $page-layout-space-horizontal
+	height: $top-panel-height
+	+linear-gradient(to bottom, rgba(0, 0, 0, 0.31) 0, rgba(0, 0, 0, 0) 100%)
+	z-index: 40
+
+.top-panel__widget
+	float: left
+	color: white
+	padding: 20px 60px 20px 0
+
+	a
+		text-decoration: none
+		color: white
+
+		.no-touchevents &:hover
+			text-decoration: underline
+
+/*top panel end

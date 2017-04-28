@@ -3,4 +3,68 @@
 @import ../../libs/include-media/dist/include-media
 
 /*SIDEBAR*/
+.sidebar__holder
+	display: table
+	min-height: 100vh
+	width: 100%
+	table-layout: fixed
+
+.sidebar__row
+	display: table-row
+
+	&:last-child
+		.sidebar__cell
+			background-color: white
+			border-top-color: transparent
+
+.sidebar__cell
+	display: table-cell
+	vertical-align: middle
+	padding: 5% 15%
+	text-align: center
+	color: $text-color
+	text-decoration: none
+	border-top: 1px solid #999
+	background-color: $base-color
+
+	svg
+		display: block
+		+size(80px)
+		+push-auto
+		margin-bottom: $bottom-space-sm
+
+	path
+		fill: white
+
+	& > strong
+		display: block
+		+font(1.8rem, 1.167)
+		font-weight: 300
+		text-transform: uppercase
+
+.download
+	text-align: left
+
+	.download__icon
+		float: left
+		+size(60px)
+		border: 1px solid $text-color
+		margin-right: 20px
+		margin-top: 0.3em
+		+font(16px, 58px)
+		text-align: center
+
+	.download__title
+		display: block
+		overflow: hidden
+		+font(2.0rem, 1.2)
+		font-weight: 600
+
+		span
+			display: block
+			+font(1.4rem, 1.5)
+			font-weight: 300
+			color: $text-color-light
+			margin-top: 0.5em
+
 /*SIDEBAR end*/

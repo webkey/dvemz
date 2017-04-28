@@ -198,8 +198,11 @@ $(document).ready(function () {
 	footerBottom();
 	formSuccessExample();
 
-	$('#fullpage').fullpage({
-		verticalCentered: false
-		// navigation: true
+	$('.main-sections-js').fullpage({
+		verticalCentered: false,
+		// anchors: ['firstPage', 'secondPage', 'thirdPage'],
+		// navigation: true,
+		menu: '.scroll-nav-js',
+		sectionSelector: '.main-section'
 	});
 });

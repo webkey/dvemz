@@ -162,6 +162,9 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', 'src/js/*.js']) // Переносим скрипты в продакшен
 		.pipe(gulp.dest('dist/js'));
 
+	gulp.src('src/files/**/*') // Переносим дополнительные файлы в продакшен
+		.pipe(gulp.dest('dist/files'));
+
 	gulp.src(['!src/__*.html', 'src/*.html']) // Переносим HTML в продакшен
 		.pipe(gulp.dest('dist'));
 

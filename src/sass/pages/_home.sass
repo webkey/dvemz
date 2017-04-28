@@ -1,0 +1,76 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*scroll sections
+.main-section
+	display: table
+	width: 100%
+
+.main-section__align
+	display: table-cell
+	vertical-align: middle
+	padding: $top-panel-height+$page-layout-space-horizontal $page-layout-space-horizontal 0
+
+.main-section--entry
+	color: white
+	background: #51504f url(../../img/bg-entry.jpg) no-repeat center
+	background-size: cover
+
+	.main-section__title
+		position: relative
+		padding-bottom: 0.5em
+		margin-bottom: 10%
+		+font-normal
+		+font(72px, 1.194)
+		color: white
+
+		h2, h3
+			margin: 0
+			font-family: inherit
+			+font(inherit, inherit)
+			font-weight: inherit
+			color: inherit
+
+		&::before
+			+pseudo()
+			left: 0
+			bottom: 0
+			width: 130px
+			height: 4px
+			background-color: $base-color
+
+/*scroll sections end
+
+.total-data
+	+margin-horizontal(-15px)
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.total-data__item
+	float: left
+	width: 33.3%
+	padding: 30px 15px 10px 15px
+
+	&:first-child
+		background: url(../../img/bg-triangle.png) no-repeat 20px 0
+
+.total-data__title
+	margin-bottom: 0.2em
+	+font(110px, 1)
+	text-align: center
+	white-space: nowrap
+
+	.unit
+		display: inline-block
+		vertical-align: top
+		position: relative
+		margin-top: 10px
+		+font(2.4rem, 1.3)
+
+.total-data__text
+	+font(1.4rem, 1.286)
+	text-transform: uppercase
+
