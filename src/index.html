@@ -245,7 +245,7 @@
 				<div class="content-wrap">
 					<div class="content user-content">
 						<div class="main-sections main-sections-js">
-							<section class="main-section main-section--entry active" id="firstPage1" data-anchor="firstPage">
+							<section class="main-section main-section--entry active" data-anchor="firstPage">
 								<div class="main-section__align">
 									<div class="main-section__title">
 										<h2>Электромонтажное оборудование</h2>
@@ -268,7 +268,7 @@
 									</div>
 								</div>
 							</section>
-							<section class="main-section main-section--news" id="secondPage2" data-anchor="secondPage">
+							<section class="main-section main-section--news" data-anchor="secondPage">
 								<div class="main-section__align">
 									<div class="main-section__title">
 										<h2>Новости</h2>
@@ -324,39 +324,60 @@
 											</div>
 										</div>
 										<div class="main-section__footer">
-											<a href="#" class="btn-more"><span>Все новости</span></a>
+											<a href="#" class="btn-main--more"><span>Все новости</span></a>
 										</div>
 									</div>
 								</div>
 							</section>
-							<section class="main-section" id="thirdPage2" data-anchor="thirdPage">
+							<section class="main-section main-section--map" data-anchor="thirdPage">
 								<div class="main-section__align">
-									<div class="main-section__title">
-										<h2>Заголовок секции 3</h2>
+									<div class="main-section__pos">
+										<div class="main-section__title">
+											<h2>Контакты</h2>
+										</div>
+										<div class="main-section__holder">
+											<div class="phone">+7 423 588-59-74</div>
+											<div class="info">
+												<ul class="contacts">
+													<li>Факс: (423) 254 48 86</li>
+													<li>Эл. почта: <a href="mailto:dvemz@gmail.com">dvemz@gmail.com</a></li>
+												</ul>
+												<div class="adr">г. Владивосток, ул. Молодежная, строение 1, корп. 3</div>
+											</div>
+											<a href="#" class="btn-main">
+												<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100"><path d="M5,5v90h90V5H5z M12.079,17.114l32.914,33.011L12.079,82.942V17.114z M17.057,12.08h66.095L50.006,45.127  L17.057,12.08z M49.991,55.139L82.677,87.92H17.113L49.991,55.139z M55.004,50.14L87.92,17.322v65.83L55.004,50.14z"></path></svg>
+												<span>Обратная связь</span>
+											</a>
+										</div>
 									</div>
-									<div class="main-section__holder">
-									</div>
-								</div>
-								<!--main map-->
-								<script>
-									var mainMapObjects = [
-										[{
-												lat: 43.10692,
-												lng: 131.95718
-											}, //coordinates of marker
-											'img/map-pin.png', //image pin
-											{
-												title: 'ДВЭМЗ',
-												address: '<b>Адрес</b> <div>г. Владивосток, ул. Молодежная, строение 1, корп. 3</div>',
-												phone: '<b>Тел.</b> <div><a href="tel:+7 423 588-59-74">+7 423 588-59-74</a></div>',
-												fax: '<b>Факс</b> <div>(423) 254 48 86</div>',
-												mail: '<b>Эл. почта</b> <div><a href="mailto:dvemz@gmail.com">dvemz@gmail.com</a></div>'
+									<!--main map-->
+									<script>
+										var mainMapPosition = {
+											'desktop': {
+												'lat': 43.11329616,
+												'lng': 131.92525506,
+												'zoom': 14
 											}
-										]
-									];
-								</script>
-								<div class="main-map" id="main-map" data-center-lat="43.1130142" data-center-lng="131.93352699" data-zoom="14"></div>
-								<!--main map end-->
+										};
+										var mainMapObjects = [
+											[{
+													lat: 43.10692,
+													lng: 131.95718
+												}, //coordinates of marker
+												'img/map-pin.png', //image pin
+												{
+													title: 'ДВЭМЗ',
+													address: '<b>Адрес</b> <div>г. Владивосток, ул. Молодежная, строение 1, корп. 3</div>',
+													phone: '<b>Тел.</b> <div><a href="tel:+7 423 588-59-74">+7 423 588-59-74</a></div>',
+													fax: '<b>Факс</b> <div>(423) 254 48 86</div>',
+													mail: '<b>Эл. почта</b> <div><a href="mailto:dvemz@gmail.com">dvemz@gmail.com</a></div>'
+												}
+											]
+										];
+									</script>
+									<div class="main-map" id="main-map"></div>
+									<!--main map end-->
+								</div>
 							</section>
 						</div>
 					</div>

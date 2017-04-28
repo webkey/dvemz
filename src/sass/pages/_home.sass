@@ -4,6 +4,7 @@
 
 /*scroll sections
 .main-section
+	position: relative
 	display: table
 	width: 100%
 	background-color: #f3f3f3
@@ -91,9 +92,70 @@
 
 /*total date end
 
+/*main section map
+.main-section--map
+	font-weight: 400
+	+font(1.8rem, 1.222)
+	color: #092140
+	cursor: default
+
+	.main-section__pos
+		position: absolute
+		left: $page-layout-space-horizontal
+		top: 50%
+		padding: $top-panel-height 0 0
+		transform: translate(0, -50%)
+		z-index: 40
+		+antialiased
+
+	.phone
+		margin-bottom: 0.5em
+		+font-bold
+		+font(72px, 1.194)
+		color: $text-color
+
+		&:last-child
+			margin-bottom: 0
+
+	.info
+		margin-bottom: 3em
+
+		&:last-child
+			margin-bottom: 0
+
+	.contacts
+		margin-bottom: 1.5em
+
+		&:last-child
+			margin-bottom: 0
+
+		li
+			padding-left: 0
+
+			&::before
+				content: none
+
+		a
+			color: inherit
+			text-decoration: none
+			transition-property: color
+			transition-duration: $animation-speed
+
+			.no-touchevents &:hover
+				color: $base-color
+
+	.adr
+		margin-bottom: 1.5em
+
+		&:last-child
+			margin-bottom: 0
+
+/*main section map end
+
 /*main map
 .main-map
 	+cover()
+	background-color: #d3d3d3
 
 /*main map end
 
