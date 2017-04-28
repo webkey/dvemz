@@ -40,7 +40,7 @@
 		transition-property: background-color
 		transition-duration: $animation-speed
 
-		.no-touchevents &:hover
+		.no-touchevents &:hover, &.active
 			background-color: $bg-color-light
 
 .user-option__icon
@@ -63,25 +63,245 @@
 		background-color: $base-color
 		border-radius: 50%
 
+/*menu button
+.menu-btn
+	//<a href="#" class="btn-map-site"><i></i><span>Текс кнопки</span></a>
+	$btn-menu-bg: white
+	$btn-menu-color: white
+	$btn-menu-space: 12px
+	$btn-menu-lines-width: 28px
+	$btn-menu-lines-height: 2px
+	$btn-menu-lines-space: 5px
+	$btn-menu-lines-color: $text-color
+
+	=line-style()
+		+size($btn-menu-lines-width, $btn-menu-lines-height)
+		background: $btn-menu-lines-color
+
+	=transition()
+		transition-property: transform, box-shadow, background-color
+		transition-duration: $animation-speed
+
+	&
+		position: relative
+		text-decoration: none
+		color: $text-color
+		+clear-spacing
+		white-space: nowrap
+
+		&::before, &::after
+			+pseudo()
+			+line-style
+			left: 50%
+			top: 50%
+			+margin($top: -#{round($btn-menu-lines-height*0.5)}, $left: -#{$btn-menu-lines-width*0.5})
+			opacity: 0
+			transition-property: transform, opacity
+			transition-duration: $animation-speed
+
+		&.active
+			&::before
+				transform: rotate(45deg)
+				opacity: 1
+
+			&::after
+				transform: rotate(-45deg)
+				opacity: 1
+
+		> i
+			position: absolute
+			left: 50%
+			top: 50%
+			backface-visibility: hidden
+			+margin($top: -#{round($btn-menu-lines-height/2)}, $left: -#{round($btn-menu-lines-width/2)})
+			+line-style
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+			&::before, &::after
+				+pseudo()
+				left: 0
+				+line-style
+				backface-visibility: hidden
+				transition-property: transform, opacity
+				transition-duration: $animation-speed
+
+			//first line menu
+			&::before
+				top: -#{$btn-menu-lines-height + $btn-menu-lines-space}
+
+			//third line menu
+			&::after
+				top: #{$btn-menu-lines-height + $btn-menu-lines-space}
+
+		&.active > i
+			background-color: transparent
+
+			&::before
+				transform: translate(0, #{$btn-menu-lines-space+$btn-menu-lines-height})
+				opacity: 0
+
+			&::after
+				transform: translate(0, -#{$btn-menu-lines-space+$btn-menu-lines-height})
+				opacity: 0
+
+/*menu button end*/
+
 /*logo*/
 .logo
 	display: block
-	width: 100%
-	text-indent: -9999px
-	overflow: hidden
+	width: $header-width
 	z-index: 50
 
 	a
 		display: block
+		position: relative
 		height: 0
-		background: #666 url(../../img/logo-short.png) no-repeat center center
-		background-size: auto 34px
 		+ratio(1, 1)
+		background-color: $logo-bg-color
 		transition-property: background-color
 		transition-duration: $animation-speed
+		z-index: 5
+
+		&::before
+			+pseudo()
+			left: 0
+			top: 0
+			+size($header-width+$nav-width, 100%)
+			//background-color: $logo-bg-color
+			opacity: 0
+			visibility: hidden
+			transition-property: transform, opacity, visibility, background-color
+			transition-duration: $animation-speed
+			z-index: -1
+
+		.logo-img
+			display: block
+			position: absolute
+			left: 0
+			top: 0
+			text-indent: -9999px
+			overflow: hidden
+			+size($header-width)
+			background: url(../../img/logo-short.png) no-repeat center center
+			background-size: auto 47px
+			transform:  scale(0.75)
+			transition-property: transform, background-color
+			transition-duration: $animation-speed
+			backface-visibility: hidden
+
+		.logo-title
+			position: absolute
+			left: $header-width
+			top: 0
+			bottom: 0
+			text-indent: -9999px
+			overflow: hidden
+			+size(120px, auto)
+			opacity: 0
+			visibility: hidden
+			transform: translate(-50%, 0)
+			transition-property: transform, opacity, visibility
+			transition-duration: $animation-speed
+			background: url(../../img/logo-title.png) no-repeat center center
+			background-size: auto 45px
+
+		.logo-text
+			position: absolute
+			width: 230px
+			top: 50%
+			left: 220px
+			+font(12px, 1.167)
+			color: white
+			text-transform: uppercase
+			text-align: left
+			opacity: 0
+			visibility: hidden
+			transform: translate(-50%, -50%)
+			transition-property: transform, opacity, visibility
+			transition-duration: $animation-speed
 
 		.no-touchevents &:hover
-			background-color: shade(#666, 85%)
+			&::before, &
+				background-color: lighten($logo-bg-color, 10%)
+
+		.nav-popup-before-open &
+			&::before
+				opacity: 1
+				visibility: visible
+
+			.logo-img
+				transform: translate(20px, 0) scale(1)
+
+			.logo-title
+				opacity: 1
+				visibility: visible
+				transform: translate(0, 0)
+
+			.logo-text
+				opacity: 1
+				visibility: visible
+				transform: translate(0, -50%)
 
 /*logo end*/
+
+.down-arrows
+	display: block
+	position: relative
+	cursor: pointer
+	text-decoration: none
+	+size($header-width)
+	transition-property: background-color
+	transition-duration: $animation-speed
+
+	.no-touchevents &:hover
+		background-color: $bg-color-light
+
+.down-arrow__align
+	+centering()
+
+	span
+		display: block
+		position: relative
+		+size(22px, 12px)
+		margin-bottom: 10px
+		opacity: 0
+		animation: fadeInArrows 1.5s infinite
+
+		&:last-child
+			margin-bottom: 0
+
+		&::before, &::after
+			+pseudo()
+			bottom: 0
+			height: 2px
+			width: 16px
+			background: $text-color
+
+		&::before
+			left: 50%
+			transform: rotate(-45deg)
+			transform-origin: left bottom
+
+		&::after
+			right: 50%
+			transform: rotate(45deg)
+			transform-origin: right bottom
+
+		&:nth-child(1)
+			animation-delay: 0.25s
+
+		&:nth-child(2)
+			animation-delay: 0.5s
+
+@keyframes fadeInArrows
+	0%
+		opacity: 0
+
+	50%
+		opacity: 1
+
+	100%
+		opacity: 0
+
 /*HEADER end*/

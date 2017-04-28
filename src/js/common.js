@@ -1,4 +1,46 @@
 /**
+ * !js scroll page lock
+ * */
+var docElem = window.document.documentElement,
+	didScroll,
+	scrollPosition;
+
+function noScrollFn() {
+	window.scrollTo( scrollPosition ? scrollPosition.x : 0, scrollPosition ? scrollPosition.y : 0 );
+}
+
+function noScroll() {
+	$.fn.fullpage.setAllowScrolling(false); // if has fullpage js
+	window.removeEventListener( 'scroll', scrollHandler );
+	window.addEventListener( 'scroll', noScrollFn );
+}
+
+function scrollFn() {
+	window.addEventListener( 'scroll', scrollHandler );
+}
+
+function canScroll() {
+	$.fn.fullpage.setAllowScrolling(true); // if has fullpage js
+	window.removeEventListener( 'scroll', noScrollFn );
+	scrollFn();
+}
+
+function scrollHandler() {
+	if( !didScroll ) {
+		didScroll = true;
+		setTimeout( function() { scrollPage(); }, 60 );
+	}
+}
+
+function scrollPage() {
+	scrollPosition = { x : window.pageXOffset || docElem.scrollLeft, y : window.pageYOffset || docElem.scrollTop };
+	didScroll = false;
+}
+
+scrollFn();
+/*js scroll page lock end*/
+
+/**
  * !resize only width
  * */
 var resizeByWidth = true;
@@ -112,6 +154,12 @@ function fullPageInitial() {
 		menu: '.scroll-nav-js',
 		sectionSelector: '.main-section'
 	});
+
+	$('.move-next-section-js').on('click', function (e) {
+		e.preventDefault();
+
+		$.fn.fullpage.moveSectionDown();
+	})
 }
 /*full page scroll*/
 
@@ -452,6 +500,507 @@ function mainMapInit() {
 /*map init*/
 
 /**
+ * !extra popup jQuery plugin
+ * */
+(function ($) {
+	// external js:
+	// 1) TweetMax VERSION: 1.19.0 (libs);
+	// 2) device.js (libs);
+	// 3) resizeByWidth (resize only width);
+
+	// add css style
+	// .before-extra-popup-open{
+	// 	width: 100%!important;
+	// 	height: 100%!important;
+	// 	max-width: 100%!important;
+	// 	max-height: 100%!important;
+	// 	margin: 0!important;
+	// 	padding: 0!important;
+	// 	overflow: hidden!important;
+	// }
+
+	// .before-extra-popup-open .wrapper{ z-index: 99; } // z-index of header must be greater than footer
+	//
+	// if nav need to hide
+	// @media only screen and (min-width: [example: 1280px]){
+	// .nav{
+	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 	}
+	// .nav-list > li{
+	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		opacity: 1 !important;
+	// 		visibility: visible !important;
+	// 	}
+	// }
+	var ExtraPopup = function (settings) {
+		var options = $.extend({
+			mainContainer: 'html', // container wrapping all elements
+			navContainer: null, // main navigation container
+			navMenu: null, // menu
+			btnMenu: null, // element which opens or switches menu
+			btnMenuClose: null, // element which closes a menu
+			navMenuItem: null,
+			navMenuAnchor: 'a',
+			staggerItems: null,
+			overlay: '.nav-overlay', // overlay's class
+			overlayAppendTo: 'body', // where to place overlay
+			overlayAlpha: 0.8,
+			overlayIndex: 997,
+			classReturn: null,
+			overlayBoolean: true,
+			animationType: 'ltr', // rtl or ltr
+			animationScale: 0.85, // default scale for animation
+			animationSpeed: 300,
+			animationSpeedOverlay: null,
+			minWidthItem: 100,
+			mediaWidth: null,
+			closeOnResize: true,
+			cssScrollBlocked: false, // add class to body for blocked scroll
+			closeEsc: true, // close popup on click Esc,
+			activeClass: 'active',
+			openedClass: 'extra-popup-opened',
+			beforeOpenClass: 'extra-popup-before-open'
+		}, settings || {});
+
+		var container = $(options.navContainer),
+			_animateSpeed = options.animationSpeed;
+
+		var self = this;
+		self.options = options;
+		self.$mainContainer = $(options.mainContainer);            // . по умолчанию <html></html>
+		self.$navMenu = $(options.navMenu);
+		self.$btnMenu = $(options.btnMenu);
+		self.$btnMenuClose = $(options.btnMenuClose);
+		self.$navContainer = container;
+		self.$navMenuItem = $(options.navMenuItem, container);     // Пункты навигации;
+		self.$navMenuAnchor = $(options.navMenuAnchor, container); // Элемент, по которому производится событие (клик);
+		self.$staggerItems = options.staggerItems || self.$navMenuItem;  //Элементы в стеке, к которым применяется анимация. По умолчанию navMenuItem;
+
+		self._animationType = options.animationType;
+		self._animationScale = options.animationScale;
+		self._animateSpeed = _animateSpeed;
+
+		// overlay
+		self.overlayBoolean = options.overlayBoolean;
+		self.overlayAppendTo = options.overlayAppendTo;
+		self.$overlay = $('<div class="' + options.overlay.substring(1) + '"></div>'); // Темплейт оверлея;
+		self._overlayAlpha = options.overlayAlpha;
+		self._overlayIndex = options.overlayIndex;
+		self._animateSpeedOverlay = options.animationSpeedOverlay || _animateSpeed;
+		self._minWidthItem = options.minWidthItem;
+		self._mediaWidth = options.mediaWidth;
+		self.closeOnResize = options.closeOnResize;
+		self.cssScrollBlocked = options.cssScrollBlocked;
+		self.closeEsc = options.closeEsc;
+
+		self.desktop = device.desktop();
+
+		self.modifiers = {
+			active: options.activeClass,
+			opened: options.openedClass,
+			beforeOpen: options.beforeOpenClass
+		};
+
+		self.outsideClick();
+		if ( self._mediaWidth === null || window.innerWidth < self._mediaWidth ) {
+			self.preparationAnimation();
+		}
+		self.toggleMenu();
+		self.eventsBtnMenuClose();
+		self.clearStyles();
+		self.closeNavOnEsc();
+	};
+
+	ExtraPopup.prototype.navIsOpened = false;
+
+	// overlay append to "overlayAppendTo"
+	ExtraPopup.prototype.createOverlay = function () {
+		var self = this,
+			$overlay = self.$overlay;
+
+		$overlay.appendTo(self.overlayAppendTo);
+
+		TweenMax.set($overlay, {
+			autoAlpha: 0,
+			position: 'fixed',
+			width: '100%',
+			height: '100%',
+			left: 0,
+			top: 0,
+			background: '#000',
+			'z-index': self._overlayIndex,
+			onComplete: function () {
+				TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {autoAlpha: self._overlayAlpha});
+			}
+		});
+	};
+
+	// toggle overlay
+	ExtraPopup.prototype.toggleOverlay = function (close) {
+		var self = this,
+			$overlay = self.$overlay;
+
+		if (close === false) {
+			TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {
+				autoAlpha: 0,
+				onComplete: function () {
+					$overlay.remove();
+				}
+			});
+			return false;
+		}
+
+		self.createOverlay();
+	};
+
+	// toggle menu
+	ExtraPopup.prototype.toggleMenu = function () {
+		var self = this,
+			$buttonMenu = self.$btnMenu;
+
+		// $buttonMenu.on('mousedown touchstart vmousedown', function (e) {
+		$buttonMenu.on('click', function (e) {
+			e.preventDefault();
+
+			if (self.navIsOpened) {
+				self.closeNav();
+			} else {
+				self.openNav();
+			}
+
+			e.stopPropagation();
+		});
+	};
+
+	// events btn close menu
+	ExtraPopup.prototype.eventsBtnMenuClose = function () {
+
+		var self = this;
+
+		self.$btnMenuClose.on('click', function (e) {
+			e.preventDefault();
+
+			if ( self.navIsOpened ) {
+				self.closeNav();
+			}
+
+			e.stopPropagation();
+		});
+	};
+
+	// click outside menu
+	ExtraPopup.prototype.outsideClick = function () {
+		var self = this;
+
+		$(document).on('click', function () {
+			if ( self.navIsOpened ) {
+				self.closeNav();
+			}
+		});
+
+		self.$navContainer.on('click', function (e) {
+			if ( self.navIsOpened ) {
+				e.stopPropagation();
+			}
+		})
+	};
+
+	// close popup on click to "Esc" key
+	ExtraPopup.prototype.closeNavOnEsc = function () {
+		var self = this;
+
+		$(document).keyup(function(e) {
+			if (self.navIsOpened && self.closeEsc && e.keyCode === 27) {
+				self.closeNav();
+			}
+		});
+	};
+
+	// open nav
+	ExtraPopup.prototype.openNav = function() {
+		// console.log("openNav");
+
+		var self = this,
+			$html = self.$mainContainer,
+			$navContainer = self.$navContainer,
+			$buttonMenu = self.$btnMenu,
+			$buttonClose = self.$btnMenuClose,
+			_animationSpeed = self._animateSpeedOverlay,
+			$staggerItems = self.$staggerItems;
+
+		var modifiers = self.modifiers;
+		var classBeforeOpen = modifiers.beforeOpen;
+		var classAfterOpen = modifiers.opened;
+
+		$html.addClass(classBeforeOpen);
+		$buttonMenu.addClass(modifiers.active);
+		$buttonClose.addClass(classBeforeOpen);
+
+		if(self.cssScrollBlocked){
+			self.cssScrollFixed();
+		}
+
+		$navContainer.css({
+			'-webkit-transition-duration': '0s',
+			'transition-duration': '0s'
+		});
+
+		$navContainer.trigger('extraPopupBeforeOpen');
+		$('.js-choice-wrap').trigger('closeDrop');
+
+		TweenMax.to($navContainer, _animationSpeed / 1000, {
+			xPercent: 0,
+			scale: 1,
+			autoAlpha: 1,
+			ease: Cubic.easeOut,
+			onComplete: function () {
+				$html.addClass(classAfterOpen);
+				$buttonClose.addClass(classAfterOpen);
+
+				noScroll();
+			}
+		});
+
+		// TweenMax.staggerTo($staggerItems, 0.85, {
+		// 	autoAlpha:1,
+		// 	scale:1,
+		// 	y: 0,
+		// 	ease:Cubic.easeOut
+		// }, 0.1);
+
+
+		if (self.overlayBoolean) {
+			self.toggleOverlay();
+		}
+
+		self.navIsOpened = true;
+	};
+
+	// close nav
+	ExtraPopup.prototype.closeNav = function() {
+		// console.log("closeNav");
+
+		var self = this,
+			$html = self.$mainContainer,
+			$navContainer = self.$navContainer,
+			$buttonMenu = self.$btnMenu,
+			$buttonClose = self.$btnMenuClose,
+			_animationSpeed = self._animateSpeedOverlay,
+			_mediaWidth = self._mediaWidth,
+			_animationType = self._animationType;
+
+		var modifiers = self.modifiers;
+		var classAfterOpen = modifiers.opened;
+		var classBeforeOpen = modifiers.beforeOpen;
+
+		$html.removeClass(classAfterOpen);
+		$html.removeClass(classBeforeOpen);
+		$buttonMenu.removeClass(modifiers.active);
+		$buttonClose.removeClass(classAfterOpen);
+		$buttonClose.removeClass(classBeforeOpen);
+
+		if (self.overlayBoolean) {
+			self.toggleOverlay(false);
+		}
+
+		var duration = _animationSpeed / 1000;
+
+		if (_animationType === 'ltr') {
+			TweenMax.to($navContainer, duration, {
+				xPercent: -100,
+				ease: Cubic.easeOut,
+				onComplete: function () {
+					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+						self.preparationAnimation();
+					}
+
+					TweenMax.set($navContainer, {
+						autoAlpha: 0
+					});
+
+					canScroll();
+
+					if(self.cssScrollBlocked){
+						self.cssScrollUnfixed();
+					}
+				}
+			});
+
+		} else if (_animationType === 'rtl') {
+			TweenMax.to($navContainer, duration, {
+				xPercent: 100,
+				ease: Cubic.easeOut,
+				onComplete: function () {
+					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+						self.preparationAnimation();
+					}
+
+					TweenMax.set($navContainer, {
+						autoAlpha: 0
+					});
+
+					canScroll();
+
+					if(self.cssScrollBlocked){
+						self.cssScrollUnfixed();
+					}
+				}
+			});
+
+		} else if (_animationType === 'surface') {
+			TweenMax.to($navContainer, duration, {
+				scale: self._animationScale,
+				autoAlpha: 0,
+				ease: Cubic.easeOut,
+				onComplete: function () {
+					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+						self.preparationAnimation();
+					}
+
+					canScroll();
+
+					if(self.cssScrollBlocked){
+						self.cssScrollUnfixed();
+					}
+				}
+			});
+
+		} else {
+			console.error('Type animation "' + _animationType + '" is wrong!')
+		}
+
+		self.navIsOpened = false;
+	};
+
+	// preparation element before animation
+	ExtraPopup.prototype.preparationAnimation = function() {
+		var self = this;
+
+		var $navContainer = self.$navContainer,
+			$staggerItems = self.$staggerItems,
+			_animationType = self._animationType;
+
+		// console.log('preparationAnimation: ', $navContainer);
+
+		if (_animationType === 'ltr') {
+			TweenMax.set($navContainer, {
+				xPercent: -100,
+				autoAlpha: 0,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+			// TweenMax.set($staggerItems, {
+			// 	autoAlpha: 0,
+			// 	scale: 0.6,
+			// 	y: 50
+			// });
+
+		} else if (_animationType === 'rtl') {
+			TweenMax.set($navContainer, {
+				xPercent: 100,
+				autoAlpha: 0,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+			// TweenMax.set($staggerItems, {
+			// 	autoAlpha: 0,
+			// 	scale: 0.6,
+			// 	y: 50
+			// });
+
+		} else if (_animationType === 'surface') {
+			TweenMax.set($navContainer, {
+				scale: self._animationScale,
+				autoAlpha: 0,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+			// TweenMax.set($staggerItems, {
+			// 	autoAlpha: 0,
+			// 	scale: 0.6,
+			// 	y: 50
+			// });
+
+		} else {
+			console.error('Type animation "' + _animationType + '" is wrong!')
+		}
+	};
+
+	ExtraPopup.prototype.cssScrollFixed = function() {
+		$('html').addClass('css-scroll-fixed');
+	};
+
+	ExtraPopup.prototype.cssScrollUnfixed = function() {
+		$('html').removeClass('css-scroll-fixed');
+	};
+
+	// clearing inline styles
+	ExtraPopup.prototype.clearStyles = function() {
+		var self = this,
+			$btnMenu = self.$btnMenu,
+			$navContainer = self.$navContainer,
+			$staggerItems = self.$staggerItems;
+
+		//clear on horizontal resize
+		if (self.closeOnResize === true) {
+
+			$(window).on('resizeByWidth', function () {
+				if (self.navIsOpened) {
+					if (!$btnMenu.is(':visible')) {
+						$navContainer.attr('style', '');
+						$staggerItems.attr('style', '');
+						self.closeNav();
+					} else {
+						self.closeNav();
+					}
+				}
+			});
+
+		}
+	};
+
+	window.ExtraPopup = ExtraPopup;
+
+}(jQuery));
+
+/**
+ * !extra popup initial
+ * */
+function popupsInit(){
+
+	/*navigation*/
+	var siteMapPopupClass = '.nav-popup-js';
+
+	if($(siteMapPopupClass).length){
+
+		new ExtraPopup({
+			navContainer: siteMapPopupClass,
+			navMenu: '.nav__list',
+			btnMenu: '.btn-menu-js',
+			btnMenuClose: '.btn-menu-close-js',
+			navMenuItem: '.nav__list > li',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			// mediaWidth: 1280,
+			animationSpeed: 300,
+			overlayAlpha: 0.35,
+			cssScrollBlocked: true,
+			openedClass: 'nav-popup-opened',
+			beforeOpenClass: 'nav-popup-before-open'
+		});
+
+	}
+}
+/*extra popup initial end*/
+
+/**
  * !footer at bottom
  * */
 function footerBottom() {
@@ -547,6 +1096,7 @@ $(document).ready(function () {
 	equalHeightInit();
 	fullPageInitial();
 	mainMapInit();
+	popupsInit();
 
 	footerBottom();
 	formSuccessExample();

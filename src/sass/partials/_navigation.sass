@@ -3,68 +3,91 @@
 @import ../../libs/include-media/dist/include-media
 
 /*navigation*/
+html.nav-popup-before-open
+
+	&.touchevents
+		+scroll-blocked() // блокировка скролла во время открытия попапа (на тачскринах)
+
+.nav-wrap
+	position: fixed
+	left: $header-width
+	top: 0
+	width: 100%
+	height: 100%
+	max-width: $nav-width
+	padding: $header-width 0 120px
+	background: $bg-color-light
+	opacity: 0
+	visibility: hidden
+	z-index: 998
+	
+	&::before
+		+pseudo()
+		top: 0
+		left: 0
+		+size(100%, $header-width)
+		background-color: $logo-bg-color
+
 .nav
 	position: relative
-	display: none
+	padding: $page-layout-space-horizontal
+	top: 50%
+	transform: translate(0, -50%)
+	+antialiased
 
 .nav__list
-	+clear
+	+font(2.4rem, 1.333)
+	font-weight: 400
+	color: $text-color
 
 	li
 		position: relative
+		margin: 1em 0
 
-		&.has-drop
-			padding-right: 2rem
-
-			.nav__angle
-				position: absolute
-				right: 0
-				top: 50%
-				transform: translate(0, -50%)
-				line-height: 0
-				pointer-events: none
+		&.current a
+			color: $base-color
 
 	a
 		display: block
+		color: inherit
+		text-decoration: none
+		transition-property: color
+		transition-duration: $animation-speed
 
-	& > li
-		float: left
-		margin-right: 2rem
-
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(bottom, tomato, 5px, 2)
-
-.nav__drop
-	position: absolute
-	left: 0
-	top: 100%
-	background-color: white
-	border: 1px solid $border-color
-	padding: 2rem
-	width: 320px
-	opacity: 0
-	visibility: hidden
-	z-index: 10
-
-	li:hover > &
-		opacity: 1
-		visibility: visible
-
-	li
-		margin-bottom: 1rem
-		font-size: 1.4rem
-		line-height: 1.5
-
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(right, tomato, 5px, 2)
-
-
-	.nav__drop
-		top: 0
-		left: 100%
+		.no-touchevents &:hover
+			color: $base-color
 
 /*navigation end*/
+
+.nav-footer
+	position: absolute
+	left: 0
+	bottom: 0
+	width: 100%
+	padding: $page-layout-space-horizontal
+	+font(1.2rem, 1.6)
+	color: $text-color
+
+	.copyright
+		margin-bottom: 1em
+		padding-bottom: 1em
+		text-transform: uppercase
+		+font-bold
+		border-bottom: 1px solid $border-color
+
+		&:last-child
+			margin-bottom: 0
+			padding-bottom: 0
+			border: none
+
+	.map-site
+		color: $text-color-light
+
+		a
+			color: inherit
+			text-decoration: none
+			transition-property: color
+			transition-duration: $animation-speed
+
+			.no-touchevents &:hover
+				color: $base-color

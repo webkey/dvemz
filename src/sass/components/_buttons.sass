@@ -92,8 +92,14 @@
 		width: 14px
 		height: 2px
 		background-color: $base-color
+		transition-property: background-color
+		transition-duration: $animation-speed
 
 	&::before
 		transform: rotate(0.25turn)
+
+	.no-touchevents &:hover
+		&::before, &::after
+			background-color: white
 
 /*buttons end
