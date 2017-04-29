@@ -586,6 +586,7 @@ function mainMapInit() {
 		animationScale: 0.85, // default scale for animation
 		animationSpeed: 300, // animation speed of the main element
 		animationSpeedOverlay: null, // animation speed of the overlay
+		alpha: 1,
 		ease: Cubic.easeOut, // animation (gsap) https://greensock.com/customease
 		minWidthItem: 100,
 		mediaWidth: null,
@@ -618,6 +619,7 @@ function mainMapInit() {
 		self._animationScale = options.animationScale;
 		self._animateSpeed = _animateSpeed;
 		self.ease = options.ease;
+		self.alpha = options.alpha;
 
 		// overlay
 		self.overlayBoolean = options.overlayBoolean;
@@ -793,8 +795,8 @@ function mainMapInit() {
 		// animation of stagger
 		if($staggerElement) {
 			TweenMax.staggerTo($staggerElement, 0.85, {
-				autoAlpha:1,
-				scale:1,
+				autoAlpha: 1,
+				scale: 1,
 				y: 0,
 				yPercent: 0,
 				xPercent: 0,
@@ -835,7 +837,8 @@ function mainMapInit() {
 			_animationSpeed = self._animateSpeedOverlay,
 			_mediaWidth = self._mediaWidth,
 			_animationType = self._animationType,
-			ease = self.ease;
+			ease = self.ease,
+			alpha = self.alpha;
 
 		var modifiers = self.modifiers;
 		var classAfterOpen = modifiers.opened;
@@ -856,7 +859,7 @@ function mainMapInit() {
 		// animation of stagger
 		if($staggerElement) {
 			TweenMax.staggerTo($staggerElement, 0.85, {
-				autoAlpha: 0,
+				autoAlpha: alpha,
 				xPercent: -100
 			}, 0.1);
 		}
@@ -871,7 +874,7 @@ function mainMapInit() {
 					}
 
 					TweenMax.set($navContainer, {
-						autoAlpha: 0
+						autoAlpha: alpha
 					});
 
 					canScroll();
@@ -892,7 +895,7 @@ function mainMapInit() {
 					}
 
 					TweenMax.set($navContainer, {
-						autoAlpha: 0
+						autoAlpha: alpha
 					});
 
 					canScroll();
@@ -906,7 +909,7 @@ function mainMapInit() {
 		} else if (_animationType === 'surface') {
 			TweenMax.to($navContainer, duration, {
 				scale: self._animationScale,
-				autoAlpha: 0,
+				autoAlpha: alpha,
 				ease: ease,
 				onComplete: function () {
 					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
@@ -935,14 +938,15 @@ function mainMapInit() {
 
 		var $navContainer = self.$navContainer,
 			$staggerElement = self.$staggerElement,
-			_animationType = self._animationType;
+			_animationType = self._animationType,
+			alpha = self.alpha;
 
 		// console.log('preparationAnimation: ', $navContainer);
 
 		// animation of stagger
 		if($staggerElement) {
 			TweenMax.set($staggerElement, {
-				autoAlpha: 0,
+				autoAlpha: alpha,
 				xPercent: -100
 			});
 		}
@@ -950,7 +954,7 @@ function mainMapInit() {
 		if (_animationType === 'ltr') {
 			TweenMax.set($navContainer, {
 				xPercent: -100,
-				autoAlpha: 0,
+				autoAlpha: alpha,
 				onComplete: function () {
 					$navContainer.show(0);
 				}
@@ -959,7 +963,7 @@ function mainMapInit() {
 		} else if (_animationType === 'rtl') {
 			TweenMax.set($navContainer, {
 				xPercent: 100,
-				autoAlpha: 0,
+				autoAlpha: alpha,
 				onComplete: function () {
 					$navContainer.show(0);
 				}
@@ -968,7 +972,7 @@ function mainMapInit() {
 		} else if (_animationType === 'surface') {
 			TweenMax.set($navContainer, {
 				scale: self._animationScale,
-				autoAlpha: 0,
+				autoAlpha: alpha,
 				onComplete: function () {
 					$navContainer.show(0);
 				}
@@ -1037,10 +1041,11 @@ function popupsInit(){
 			// mediaWidth: 1280,
 			animationSpeed: 300,
 			overlayAlpha: 0.35,
+			// alpha: 0,
 			cssScrollBlocked: true,
 			openedClass: 'nav-popup-opened',
 			beforeOpenClass: 'nav-popup-before-open',
-			ease: 'Power4.easeInOut'
+			ease: 'Power1.easeInOut'
 		});
 
 	}
