@@ -251,7 +251,8 @@ $btn-menu-lines-color: $text-color !default
 			width: 230px
 			top: 50%
 			left: 220px
-			+font(12px, 1.167)
+			+font(11px, 1.4)
+			letter-spacing: 0.15em
 			color: white
 			text-transform: uppercase
 			text-align: left
@@ -309,7 +310,7 @@ $btn-menu-lines-color: $text-color !default
 		display: block
 		position: relative
 		+size(22px, 12px)
-		margin-bottom: 10px
+		margin-bottom: 1px
 		opacity: 0
 		animation: fadeInArrows 1.5s infinite
 
@@ -319,7 +320,7 @@ $btn-menu-lines-color: $text-color !default
 		&::before, &::after
 			+pseudo()
 			bottom: 0
-			height: 2px
+			height: 1px
 			width: 16px
 			background: $text-color
 
@@ -338,6 +339,9 @@ $btn-menu-lines-color: $text-color !default
 
 		&:nth-child(2)
 			animation-delay: 0.5s
+
+		&:nth-child(3)
+			animation-delay: 0.75s
 
 @keyframes fadeInArrows
 	0%

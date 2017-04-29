@@ -42,20 +42,22 @@
 					<div class="main-sections main-sections-js">
 						<section class="main-section main-section--entry active" data-anchor="firstPage">
 							<div class="main-section__align">
-								<div class="main-section__title"><h2>Электромонтажное оборудование</h2></div>
-								<div class="main-section__holder">
-									<div class="total-data">
-										<div class="total-data__item">
-											<div class="total-data__title">118 <span class="unit">тыс.</span></div>
-											<div class="total-data__text">номенклатурных позиций электрощитового оборудования</div>
-										</div>
-										<div class="total-data__item">
-											<div class="total-data__title">10</div>
-											<div class="total-data__text">Регионов поставки на территории России</div>
-										</div>
-										<div class="total-data__item">
-											<div class="total-data__title">1000</div>
-											<div class="total-data__text">Высококвалифицированных специалистов</div>
+								<div class="main-section__layout">
+									<div class="main-section__title"><h2>Дальневосточный электромонтажный завод</h2></div>
+									<div class="main-section__holder">
+										<div class="total-data">
+											<div class="total-data__item">
+												<div class="total-data__title"><span class="prefix">от</span>3-х<span class="unit">дней</span></div>
+												<div class="total-data__text">Срок изготовления оборудования по Вашему заказа</div>
+											</div>
+											<div class="total-data__item">
+												<div class="total-data__title"><span class="prefix">до</span>7000</div>
+												<div class="total-data__text">Вариантов исполнения электрощитового оборудования</div>
+											</div>
+											<div class="total-data__item">
+												<div class="total-data__title"><span class="prefix">от</span>180<span class="unit">минут</span></div>
+												<div class="total-data__text">Срок отработки вашего заказа</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -63,39 +65,42 @@
 						</section>
 						<section class="main-section main-section--news" data-anchor="secondPage">
 							<div class="main-section__align">
-								<div class="main-section__title"><h2>Новости</h2></div>
-								<div class="main-section__holder">
-									<div class="news-grid news-grid--home">
-										<div class="news-grid__list">
-											@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
+								<div class="main-section__layout">
+									<div class="main-section__title"><h2>Новости</h2></div>
+									<div class="main-section__holder">
+										<div class="news-grid news-grid--home">
+											<div class="news-grid__list">
+												@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
+											</div>
 										</div>
-									</div>
-									<div class="main-section__footer">
-										<a href="#" class="btn-main--more"><span>Все новости</span></a>
+										<div class="main-section__footer">
+											<a href="#" class="btn-main--more"><span>Все новости</span></a>
+										</div>
 									</div>
 								</div>
 							</div>
 						</section>
 						<section class="main-section main-section--map" data-anchor="thirdPage">
 							<div class="main-section__align">
-								<div class="main-section__pos">
-									<div class="main-section__title"><h2>Контакты</h2></div>
-									<div class="main-section__holder">
-										<div class="phone">+7 423 588-59-74</div>
-										<div class="info">
-											<ul class="contacts">
-												<li>Факс: (423) 254 48 86</li>
-												<li>Эл. почта: <a href="mailto:dvemz@gmail.com">dvemz@gmail.com</a></li>
-											</ul>
-											<div class="adr">г. Владивосток, ул. Молодежная, строение 1, корп. 3</div>
+								<div class="main-section__layout">
+									<div class="main-section__pos">
+										<div class="main-section__title"><h2>Контакты</h2></div>
+										<div class="main-section__holder">
+											<div class="phone">+7 423 588-59-74</div>
+											<div class="info">
+												<ul class="contacts">
+													<li>Факс: (423) 254 48 86</li>
+													<li>Эл. почта: <a href="mailto:dvemz@gmail.com">dvemz@gmail.com</a></li>
+												</ul>
+												<div class="adr">г. Владивосток, ул. Молодежная, строение 1, корп. 3</div>
+											</div>
+											<a href="#" class="btn-main">
+												<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100"><path d="M5,5v90h90V5H5z M12.079,17.114l32.914,33.011L12.079,82.942V17.114z M17.057,12.08h66.095L50.006,45.127  L17.057,12.08z M49.991,55.139L82.677,87.92H17.113L49.991,55.139z M55.004,50.14L87.92,17.322v65.83L55.004,50.14z"></path></svg>
+												<span>Обратная связь</span>
+											</a>
 										</div>
-										<a href="#" class="btn-main">
-											<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100"><path d="M5,5v90h90V5H5z M12.079,17.114l32.914,33.011L12.079,82.942V17.114z M17.057,12.08h66.095L50.006,45.127  L17.057,12.08z M49.991,55.139L82.677,87.92H17.113L49.991,55.139z M55.004,50.14L87.92,17.322v65.83L55.004,50.14z"></path></svg>
-											<span>Обратная связь</span>
-										</a>
 									</div>
 								</div>
-
 								<!--main map-->
 								<script>
 									var mainMapPosition = {

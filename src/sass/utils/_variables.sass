@@ -88,8 +88,16 @@ $animation-speed: 0.2s !default
 $animation-speed-mouseleave: 0.35s !default
 
 // fonts style
-$font-norm: 'Roboto', sans-serif !default
-$font-alt: 'Roboto Slab', serif !default
+$font-norm: 'magistralc-regular', sans-serif !default
+$font-bold: 'magistralc-bold', sans-serif !default
+$font-italic: 'magistralc-regular', sans-serif !default // италика нет
+$font-bold-italic: 'magistralc-regular', sans-serif !default // италика нет
+$font-black: 'magistralc-black', sans-serif !default
+// fonts alternative
+$font-alt: 'magistralc-regular', sans-serif !default
+$font-alt-bold: 'magistralc-bold', sans-serif !default
+$font-alt-italic: 'magistralc-regular', sans-serif !default // италика нет
+$font-alt-bold-italic: 'magistralc-regular', sans-serif !default // италика нет
 
 // grids
 $grid-space: 40px !default // отступы между элементами сетки, например, новостей
@@ -122,46 +130,53 @@ $top-panel-height: 100px !default
 =font-normal()
 	font:
 		family: $font-norm
-		weight: 300
+	+font-reset
 
 =font-bold()
 	font:
-		family: $font-norm
-		weight: 700
+		family: $font-bold
+		//weight: 700
+	+font-reset
 
 =font-italic()
 	font:
-		family: $font-norm
-		weight: 300
-		style: italic
+		family: $font-italic
+		//weight: 300
+		//style: italic
+	+font-reset
 
 =font-bold-italic()
 	font:
-		family: $font-norm
-		weight: 700
-		style: italic
+		family: $font-bold-italic
+		//weight: 700
+		//style: italic
+	+font-reset
 
 // ========== дополнительный шрифт ============
 =font-alt()
 	font:
 		family: $font-alt
-		style: normal
-		weight: 700
+		//style: normal
+		//weight: 700
+	+font-reset
 
 =font-alt-bold()
 	font:
-		family: $font-alt
-		style: normal
-		weight: 700
+		family: $font-alt-bold
+		//style: normal
+		//weight: 700
+	+font-reset
 
 =font-alt-italic()
 	font:
-		family: $font-alt
-		style: italic
-		weight: normal
+		family: $font-alt-italic
+		//style: italic
+		//weight: normal
+	+font-reset
 
 =font-alt-bold-italic()
 	font:
-		family: $font-alt
-		style: italic
-		weight: 700
+		family: $font-alt-bold-italic
+		//style: italic
+		//weight: 700
+	+font-reset

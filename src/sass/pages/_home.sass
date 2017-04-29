@@ -3,6 +3,8 @@
 @import ../../libs/include-media/dist/include-media
 
 /*scroll sections
+$main-section-max-width: 960px !default
+
 .main-section
 	position: relative
 	display: table
@@ -14,6 +16,11 @@
 	display: table-cell
 	vertical-align: middle
 	padding: $top-panel-height+$page-layout-space-horizontal $page-layout-space-horizontal $page-layout-space-horizontal
+
+.main-section__layout
+	position: relative
+	+push-auto
+	max-width: $main-section-max-width
 
 .main-section__title
 	+font-bold
@@ -28,6 +35,9 @@
 		font-weight: inherit
 		color: inherit
 
+.main-section__holder
+	+clear
+
 .main-section__footer
 	text-align: center
 
@@ -41,25 +51,28 @@
 
 	.main-section__title
 		position: relative
-		padding-bottom: 0.5em
+		padding-bottom: 1em
 		margin-bottom: 10%
 		+font-normal
-		+font(72px, 1.194)
+		+font(48px, 1.2)
 		color: white
 
 		&::before
 			+pseudo()
 			left: 0
 			bottom: 0
-			width: 130px
-			height: 4px
-			background-color: $base-color
+			+size(85px, 3px)
+			background-color: white
+
+		h1, h2, h3
+			width: 640px
+			max-width: 100%
 
 /*main section entry end
 
 /*total date
 .total-data
-	+margin-horizontal(-15px)
+	+margin-horizontal(-20px)
 	margin-bottom: $bottom-space
 
 	&:last-child
@@ -68,42 +81,50 @@
 .total-data__item
 	float: left
 	width: 33.3%
-	padding: 30px 15px 10px 15px
-
-	&:first-child
-		background: url(../../img/bg-triangle.png) no-repeat 20px 0
+	padding: 30px 20px 10px 20px
 
 .total-data__title
 	margin-bottom: 0.2em
-	+font(110px, 1)
-	text-align: center
+	+font(90px, 1)
+	color: $base-color
 	white-space: nowrap
 
-	.unit
+	.prefix
+		position: relative
 		display: inline-block
 		vertical-align: top
-		position: relative
-		margin-top: 10px
+		+margin($top: 0.1em, $right: 1em)
 		+font(2.4rem, 1.3)
+		color: white
+
+	.unit
+		position: relative
+		display: inline-block
+		vertical-align: bottom
+		+margin($top: 0.1em, $left: 1em)
+		+font(3.4rem, 1.3)
+		color: white
 
 .total-data__text
-	+font(1.4rem, 1.286)
-	text-transform: uppercase
+	+font(1.4rem, 1.3)
 
 /*total date end
 
 /*main section map
 .main-section--map
-	font-weight: 400
+	+font-normal
 	+font(1.8rem, 1.222)
 	color: #092140
 	cursor: default
 
+	.main-section__layout
+		height: 0
+
 	.main-section__pos
 		position: absolute
-		left: $page-layout-space-horizontal
-		top: 50%
-		padding: $top-panel-height 0 0
+		left: 0
+		top: 0
+		max-width: 100%
 		transform: translate(0, -50%)
 		z-index: 40
 		+antialiased
