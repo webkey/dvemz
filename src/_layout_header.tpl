@@ -16,8 +16,10 @@
 			<div class="header__cell">
 				<div class="user-options">
 					<a href="#" class="user-option__item btn-menu-js menu-btn" title="Открыть главное меню">
-						<span>Меню</span>
-						<i>&nbsp;</i>
+						<div class="menu-btn__inner">
+							<span>Меню</span>
+							<i>&nbsp;</i>
+						</div>
 					</a>
 					<a href="#" class="user-option__item">
 						<div class="user-option__icon">

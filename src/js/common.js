@@ -152,7 +152,37 @@ function fullPageInitial() {
 		// anchors: ['firstPage', 'secondPage', 'thirdPage'],
 		// navigation: true,
 		menu: '.scroll-nav-js',
-		sectionSelector: '.main-section'
+		sectionSelector: '.main-section',
+		// onLeave: function (index, nextIndex, direction, blah) {
+		// 	console.log("index: ", index);
+		// 	console.log("nextIndex: ", nextIndex);
+		// 	console.log("direction: ", direction);
+		// 	console.log("blah: ", $(this).parent());
+		//
+		// 	if (index === 2 && direction === 'down') {
+		//
+		// 	}
+		// },
+		afterLoad: function (anchorLink, index) {
+			var $html = $('html');
+			var lengthPages = this.parent().children().length;
+			var topClass = 'fp-is-top';
+			var bottomClass = 'fp-is-bottom';
+
+			// console.log("this.parent(): ", lengthPages);
+			// console.log("anchorLink: ", anchorLink);
+			// console.log("index: ", index);
+
+			$html.removeClass(topClass);
+			$html.removeClass(bottomClass);
+
+			if(index === 1) {
+				$html.addClass(topClass);
+			}
+			if(index === lengthPages) {
+				$html.addClass(bottomClass);
+			}
+		}
 	});
 
 	$('.move-next-section-js').on('click', function (e) {
@@ -536,35 +566,39 @@ function mainMapInit() {
 	// 		visibility: visible !important;
 	// 	}
 	// }
+	
+	var defaults = {
+		mainContainer: 'html', // container wrapping all elements
+		navContainer: null, // main navigation container
+		navMenu: null, // menu
+		btnMenu: null, // element which opens or switches menu
+		btnMenuClose: null, // element which closes a menu
+		navMenuItem: null,
+		navMenuAnchor: 'a',
+		staggerElement: null,
+		overlay: '.nav-overlay', // overlay's class
+		overlayAppendTo: 'body', // where to place overlay
+		overlayAlpha: 0.8,
+		overlayIndex: 997,
+		classReturn: null,
+		overlayBoolean: true,
+		animationType: 'ltr', // rtl or ltr
+		animationScale: 0.85, // default scale for animation
+		animationSpeed: 300, // animation speed of the main element
+		animationSpeedOverlay: null, // animation speed of the overlay
+		ease: Cubic.easeOut, // animation (gsap) https://greensock.com/customease
+		minWidthItem: 100,
+		mediaWidth: null,
+		closeOnResize: true,
+		cssScrollBlocked: false, // add class to body for blocked scroll
+		closeEsc: true, // close popup on click Esc,
+		activeClass: 'active',
+		openedClass: 'extra-popup-opened',
+		beforeOpenClass: 'extra-popup-before-open'
+	};
+	
 	var ExtraPopup = function (settings) {
-		var options = $.extend({
-			mainContainer: 'html', // container wrapping all elements
-			navContainer: null, // main navigation container
-			navMenu: null, // menu
-			btnMenu: null, // element which opens or switches menu
-			btnMenuClose: null, // element which closes a menu
-			navMenuItem: null,
-			navMenuAnchor: 'a',
-			staggerItems: null,
-			overlay: '.nav-overlay', // overlay's class
-			overlayAppendTo: 'body', // where to place overlay
-			overlayAlpha: 0.8,
-			overlayIndex: 997,
-			classReturn: null,
-			overlayBoolean: true,
-			animationType: 'ltr', // rtl or ltr
-			animationScale: 0.85, // default scale for animation
-			animationSpeed: 300,
-			animationSpeedOverlay: null,
-			minWidthItem: 100,
-			mediaWidth: null,
-			closeOnResize: true,
-			cssScrollBlocked: false, // add class to body for blocked scroll
-			closeEsc: true, // close popup on click Esc,
-			activeClass: 'active',
-			openedClass: 'extra-popup-opened',
-			beforeOpenClass: 'extra-popup-before-open'
-		}, settings || {});
+		var options = $.extend(defaults, settings || {});
 
 		var container = $(options.navContainer),
 			_animateSpeed = options.animationSpeed;
@@ -578,11 +612,12 @@ function mainMapInit() {
 		self.$navContainer = container;
 		self.$navMenuItem = $(options.navMenuItem, container);     // Пункты навигации;
 		self.$navMenuAnchor = $(options.navMenuAnchor, container); // Элемент, по которому производится событие (клик);
-		self.$staggerItems = options.staggerItems || self.$navMenuItem;  //Элементы в стеке, к которым применяется анимация. По умолчанию navMenuItem;
+		self.$staggerElement = options.staggerElement;  //Элементы в стеке, к которым применяется анимация. По умолчанию null;
 
 		self._animationType = options.animationType;
 		self._animationScale = options.animationScale;
 		self._animateSpeed = _animateSpeed;
+		self.ease = options.ease;
 
 		// overlay
 		self.overlayBoolean = options.overlayBoolean;
@@ -642,11 +677,13 @@ function mainMapInit() {
 	// toggle overlay
 	ExtraPopup.prototype.toggleOverlay = function (close) {
 		var self = this,
-			$overlay = self.$overlay;
+			$overlay = self.$overlay,
+			ease = self.ease;
 
 		if (close === false) {
 			TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {
 				autoAlpha: 0,
+				ease: ease,
 				onComplete: function () {
 					$overlay.remove();
 				}
@@ -730,7 +767,8 @@ function mainMapInit() {
 			$buttonMenu = self.$btnMenu,
 			$buttonClose = self.$btnMenuClose,
 			_animationSpeed = self._animateSpeedOverlay,
-			$staggerItems = self.$staggerItems;
+			$staggerElement = self.$staggerElement,
+			ease = self.ease;
 
 		var modifiers = self.modifiers;
 		var classBeforeOpen = modifiers.beforeOpen;
@@ -752,11 +790,23 @@ function mainMapInit() {
 		$navContainer.trigger('extraPopupBeforeOpen');
 		$('.js-choice-wrap').trigger('closeDrop');
 
+		// animation of stagger
+		if($staggerElement) {
+			TweenMax.staggerTo($staggerElement, 0.85, {
+				autoAlpha:1,
+				scale:1,
+				y: 0,
+				yPercent: 0,
+				xPercent: 0,
+				ease: ease
+			}, 0.1);
+		}
+
 		TweenMax.to($navContainer, _animationSpeed / 1000, {
 			xPercent: 0,
 			scale: 1,
 			autoAlpha: 1,
-			ease: Cubic.easeOut,
+			ease: ease,
 			onComplete: function () {
 				$html.addClass(classAfterOpen);
 				$buttonClose.addClass(classAfterOpen);
@@ -764,14 +814,6 @@ function mainMapInit() {
 				noScroll();
 			}
 		});
-
-		// TweenMax.staggerTo($staggerItems, 0.85, {
-		// 	autoAlpha:1,
-		// 	scale:1,
-		// 	y: 0,
-		// 	ease:Cubic.easeOut
-		// }, 0.1);
-
 
 		if (self.overlayBoolean) {
 			self.toggleOverlay();
@@ -789,9 +831,11 @@ function mainMapInit() {
 			$navContainer = self.$navContainer,
 			$buttonMenu = self.$btnMenu,
 			$buttonClose = self.$btnMenuClose,
+			$staggerElement = self.$staggerElement,
 			_animationSpeed = self._animateSpeedOverlay,
 			_mediaWidth = self._mediaWidth,
-			_animationType = self._animationType;
+			_animationType = self._animationType,
+			ease = self.ease;
 
 		var modifiers = self.modifiers;
 		var classAfterOpen = modifiers.opened;
@@ -809,10 +853,18 @@ function mainMapInit() {
 
 		var duration = _animationSpeed / 1000;
 
+		// animation of stagger
+		if($staggerElement) {
+			TweenMax.staggerTo($staggerElement, 0.85, {
+				autoAlpha: 0,
+				xPercent: -100
+			}, 0.1);
+		}
+
 		if (_animationType === 'ltr') {
 			TweenMax.to($navContainer, duration, {
 				xPercent: -100,
-				ease: Cubic.easeOut,
+				ease: ease,
 				onComplete: function () {
 					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
 						self.preparationAnimation();
@@ -833,7 +885,7 @@ function mainMapInit() {
 		} else if (_animationType === 'rtl') {
 			TweenMax.to($navContainer, duration, {
 				xPercent: 100,
-				ease: Cubic.easeOut,
+				ease: ease,
 				onComplete: function () {
 					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
 						self.preparationAnimation();
@@ -855,7 +907,7 @@ function mainMapInit() {
 			TweenMax.to($navContainer, duration, {
 				scale: self._animationScale,
 				autoAlpha: 0,
-				ease: Cubic.easeOut,
+				ease: ease,
 				onComplete: function () {
 					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
 						self.preparationAnimation();
@@ -870,7 +922,8 @@ function mainMapInit() {
 			});
 
 		} else {
-			console.error('Type animation "' + _animationType + '" is wrong!')
+			console.error('Type animation "' + _animationType + '" is wrong!');
+			return;
 		}
 
 		self.navIsOpened = false;
@@ -881,10 +934,18 @@ function mainMapInit() {
 		var self = this;
 
 		var $navContainer = self.$navContainer,
-			$staggerItems = self.$staggerItems,
+			$staggerElement = self.$staggerElement,
 			_animationType = self._animationType;
 
 		// console.log('preparationAnimation: ', $navContainer);
+
+		// animation of stagger
+		if($staggerElement) {
+			TweenMax.set($staggerElement, {
+				autoAlpha: 0,
+				xPercent: -100
+			});
+		}
 
 		if (_animationType === 'ltr') {
 			TweenMax.set($navContainer, {
@@ -894,11 +955,6 @@ function mainMapInit() {
 					$navContainer.show(0);
 				}
 			});
-			// TweenMax.set($staggerItems, {
-			// 	autoAlpha: 0,
-			// 	scale: 0.6,
-			// 	y: 50
-			// });
 
 		} else if (_animationType === 'rtl') {
 			TweenMax.set($navContainer, {
@@ -908,11 +964,6 @@ function mainMapInit() {
 					$navContainer.show(0);
 				}
 			});
-			// TweenMax.set($staggerItems, {
-			// 	autoAlpha: 0,
-			// 	scale: 0.6,
-			// 	y: 50
-			// });
 
 		} else if (_animationType === 'surface') {
 			TweenMax.set($navContainer, {
@@ -922,14 +973,9 @@ function mainMapInit() {
 					$navContainer.show(0);
 				}
 			});
-			// TweenMax.set($staggerItems, {
-			// 	autoAlpha: 0,
-			// 	scale: 0.6,
-			// 	y: 50
-			// });
 
 		} else {
-			console.error('Type animation "' + _animationType + '" is wrong!')
+			console.error('Type animation "' + _animationType + '" is wrong!');
 		}
 	};
 
@@ -946,7 +992,7 @@ function mainMapInit() {
 		var self = this,
 			$btnMenu = self.$btnMenu,
 			$navContainer = self.$navContainer,
-			$staggerItems = self.$staggerItems;
+			$staggerElement = self.$staggerElement;
 
 		//clear on horizontal resize
 		if (self.closeOnResize === true) {
@@ -955,7 +1001,7 @@ function mainMapInit() {
 				if (self.navIsOpened) {
 					if (!$btnMenu.is(':visible')) {
 						$navContainer.attr('style', '');
-						$staggerItems.attr('style', '');
+						$staggerElement.attr('style', '');
 						self.closeNav();
 					} else {
 						self.closeNav();
@@ -985,7 +1031,7 @@ function popupsInit(){
 			navMenu: '.nav__list',
 			btnMenu: '.btn-menu-js',
 			btnMenuClose: '.btn-menu-close-js',
-			navMenuItem: '.nav__list > li',
+			// staggerElement: '.nav__list > li',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
 			// mediaWidth: 1280,
@@ -993,7 +1039,8 @@ function popupsInit(){
 			overlayAlpha: 0.35,
 			cssScrollBlocked: true,
 			openedClass: 'nav-popup-opened',
-			beforeOpenClass: 'nav-popup-before-open'
+			beforeOpenClass: 'nav-popup-before-open',
+			ease: 'Power4.easeInOut'
 		});
 
 	}
