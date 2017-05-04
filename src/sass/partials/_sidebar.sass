@@ -2,45 +2,93 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-/*SIDEBAR*/
-.sidebar__holder
+/*SIDE MENU*/
+$sidemenu-bg-color-hover: #999
+
+.side-menu__holder
 	display: table
 	min-height: 100vh
 	width: 100%
 	table-layout: fixed
 
-.sidebar__row
+.side-menu__row
 	display: table-row
 
 	&:last-child
-		.sidebar__cell
+		.side-menu__cell
 			background-color: white
 			border-top-color: transparent
 
-.sidebar__cell
+.side-menu__cell
 	display: table-cell
 	vertical-align: middle
-	padding: 5% 15%
+	position: relative
+	padding: 5% 13%
 	text-align: center
 	color: $text-color
 	text-decoration: none
-	border-top: 1px solid #999
+	border-top: 1px solid $sidemenu-bg-color-hover
 	background-color: $base-color
+	transition-property: background-color
+	transition-duration: $animation-speed
 
-	svg
-		display: block
-		+size(80px)
-		+push-auto
-		margin-bottom: $bottom-space-sm
+	.no-touchevents &:hover
+		background-color: $sidemenu-bg-color-hover
 
-	path
-		fill: white
+	&::before
+		+pseudo()
+		bottom: 30px
+		left: 50%
+		+size(42px, 10px)
+		background: url(../../img/arrow-right.svg) no-repeat center
+		background-size: cover
+		opacity: 0
+		visibility: hidden
+		transform: translate(-200%, 0)
+		transition-property: transform, opacity, visibility, height
+		transition-duration: $animation-speed
+		z-index: 5
 
-	& > strong
-		display: block
-		+font(1.8rem, 1.167)
-		+font-normal
-		text-transform: uppercase
+	.no-touchevents &:hover::before
+		opacity: 1
+		visibility: visible
+		transform: translate(-50%, 0)
+
+.side-menu__figure
+	position: relative
+	max-width: 120px
+	+push-auto
+	margin-bottom: 20px
+	z-index: 5
+
+	&::before
+		+pseudo($pos: relative)
+		+ratio(1, 1)
+
+	img
+		position: absolute
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+		max-width: 120px
+		max-height: 120px
+		transition-property: opacity
+		transition-duration: $animation-speed
+
+		.no-touchevents .side-menu__cell:hover &
+			opacity: 0.3
+
+.side-menu__title
+	display: block
+	position: relative
+	+font(1.8rem, 1.167)
+	+font-normal
+	transition-property: color, transform
+	transition-duration: $animation-speed
+	z-index: 5
+
+	.no-touchevents .side-menu__cell:hover &
+		color: white
 
 .download
 	text-align: left
@@ -51,6 +99,7 @@
 		border: 1px solid $text-color
 		margin-right: 20px
 		margin-top: 0.3em
+		+font-bold
 		+font(16px, 58px)
 		text-align: center
 
@@ -58,7 +107,7 @@
 		display: block
 		overflow: hidden
 		+font-bold
-		+font(2.0rem, 1.2)
+		+font(1.6rem, 1.3)
 
 		span
 			display: block
@@ -67,4 +116,4 @@
 			color: $text-color-light
 			margin-top: 0.5em
 
-/*SIDEBAR end*/
+/*SIDE MENU end*/

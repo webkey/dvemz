@@ -3,24 +3,39 @@
 @import ../../libs/include-media/dist/include-media
 
 /*scroll sections
-$main-section-max-width: 960px !default
+$main-section-max-width: 1150px !default
+$main-section-max-width-lg: 960px !default
 
 .main-section
 	position: relative
+	background-color: #f3f3f3
+	min-height: 100vh
+
+.main-section__container
+	position: relative
 	display: table
 	width: 100%
-	background-color: #f3f3f3
+	height: 100%
 	min-height: 100vh
 
 .main-section__align
 	display: table-cell
 	vertical-align: middle
+	text-align: center
 	padding: $top-panel-height+$page-layout-space-horizontal $page-layout-space-horizontal $page-layout-space-horizontal
 
 .main-section__layout
 	position: relative
 	+push-auto
 	max-width: $main-section-max-width
+	text-align: left
+
+	.main-section__align &
+		display: inline-block
+		width: 100%
+
+	+media('<desk-lg')
+		max-width: $main-section-max-width-lg
 
 .main-section__title
 	+font-bold
@@ -52,7 +67,7 @@ $main-section-max-width: 960px !default
 	.main-section__title
 		position: relative
 		padding-bottom: 1em
-		margin-bottom: 10%
+		margin-bottom: 2em
 		+font-normal
 		+font(48px, 1.2)
 		color: white
@@ -72,11 +87,19 @@ $main-section-max-width: 960px !default
 
 /*total date
 .total-data
-	+margin-horizontal(-20px)
-	margin-bottom: $bottom-space
+	position: absolute
+	left: 0
+	bottom: 0
+	width: 100%
+	padding: 0 $page-layout-space-horizontal $page-layout-space-horizontal
+	z-index: 50
 
 	&:last-child
 		margin-bottom: 0
+
+.total-data__list
+	+margin-horizontal(-20px)
+	+clear
 
 .total-data__item
 	float: left

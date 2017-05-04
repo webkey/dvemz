@@ -8,13 +8,14 @@ html.css-scroll-fixed
 	&.touchevents
 		+scroll-blocked() // блокировка скролла во время открытия попапа (на тачскринах)
 
-.content-wrap, .scroll-nav, .sidebar, .top-panel
+.content-wrap, .scroll-nav, .side-menu, .top-panel
 	transition-property: transform
-	transition-duration: 0.3s
+	transition-duration: 0.2s
 	transition-timing-function: ease-out
 
 	.nav-popup-before-open &
 		transform: translate($nav-width - 100, 0)
+		transition-delay: 0.1s
 
 .nav-wrap
 	position: fixed

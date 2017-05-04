@@ -1045,12 +1045,118 @@ function popupsInit(){
 			cssScrollBlocked: true,
 			openedClass: 'nav-popup-opened',
 			beforeOpenClass: 'nav-popup-before-open',
-			ease: 'Power1.easeInOut'
+			ease: 'Power2.easeInOut'
 		});
 
 	}
 }
 /*extra popup initial end*/
+
+/**
+ * !event side menu
+ * */
+function eventSideMenu() {
+	var $sideItem = $('.side-menu__cell');
+	var $sideItemTitle = $('.side-menu__title');
+
+	$sideItem.on('mouseenter', function () {
+		var $thisItem = $(this);
+
+		var $thisItemHeight = $thisItem.outerHeight();
+		var $thisItemTitle = $thisItem.find($sideItemTitle);
+		var $thisItemTitleHeight = $thisItemTitle.outerHeight();
+		var $thisItemPosition = $thisItem.offset().top;
+		var $thisItemTitlePosition = $thisItemTitle.offset().top;
+		var $newPositionTitle = Math.round($thisItemTitlePosition - ($thisItemPosition + ($thisItemHeight - $thisItemTitleHeight)/2));
+		console.log("$newPositionTitle: ", $newPositionTitle);
+		$thisItemTitle.css({
+			// "-webkit-transform": "translate(0, "+ $newPositionTitle +")",
+			// "-ms-transform": "translate(0, "+ $newPositionTitle +")",
+			// "transform": "translate(0, "+ $newPositionTitle +")"
+			'transform': 'matrix(1, 0, 0, 1, 0, '+ -$newPositionTitle +')'
+			// "top": -$newPositionTitle
+		})
+
+	}).on('mouseleave', function () {
+		// $sideItemTitle.css({
+		// 	'top': 0
+		// })
+		$sideItemTitle.css({
+			'transform': 'matrix(1, 0, 0, 1, 0, 0'
+		})
+	})
+}
+/**event side menu end*/
+
+/**
+ * !toggle drop years
+ * */
+function toggleDrop() {
+
+	var $choiceContainer = $('.js-choice-wrap');
+	var openClass = 'choice-opened';
+
+	if ($choiceContainer.length) {
+
+		$.each($choiceContainer, function () {
+			var $thisContainer = $(this);
+
+			if ($thisContainer.attr('data-parent-position') !== undefined) {
+				$thisContainer.parent().css({
+					'position': 'relative',
+					'padding-right': Math.round($thisContainer.outerWidth() + 10),
+					'overflow': 'visible'
+				});
+			}
+		});
+
+		$('.js-choice-open').on('click', function (e) {
+			e.preventDefault();
+			var $currentContainer = $(this).closest('.js-choice-wrap');
+
+			e.stopPropagation();
+
+			if($currentContainer.hasClass(openClass)) {
+				$currentContainer.removeClass(openClass);
+				return;
+			}
+
+			$choiceContainer.removeClass(openClass);
+			$currentContainer.addClass(openClass);
+		});
+
+		$(document).on('click', function () {
+			closeDrop();
+		});
+
+		$choiceContainer.on('closeDrop', function () {
+			closeDrop();
+		});
+
+		function closeDrop() {
+			$choiceContainer.removeClass(openClass);
+		}
+
+		$('.js-choice-drop').on('click', 'a', function (e) {
+			var $this = $(this);
+
+			// if data-select is false, do not replace text
+			if ($this.closest($choiceContainer).attr('data-select') === 'false') {
+				return false;
+			}
+
+			$('a', '.js-choice-drop').removeClass('active');
+
+			$this
+				.addClass('active')
+				.closest('.js-choice-wrap')
+				.find('.js-choice-open span')
+				.text($this.find('span').text());
+		});
+	}
+
+}
+/*toggle drop years end*/
 
 /**
  * !footer at bottom
@@ -1149,6 +1255,8 @@ $(document).ready(function () {
 	fullPageInitial();
 	mainMapInit();
 	popupsInit();
+	eventSideMenu();
+	toggleDrop();
 
 	footerBottom();
 	formSuccessExample();
