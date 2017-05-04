@@ -1,21 +1,18 @@
 <aside class="top-panel">
 	<div class="top-panel__widget">
-		<a href="tel:+7 (423) 230-20-13">+7 (423) 230-20-13</a>
-		<!--years-->
-		<div class="years js-choice-wrap" data-parent-position="true">
-			<a href="#" class="js-choice-open">
-				<span>2017</span>
-			</a>
-			<ul class="years-drop js-choice-drop">
-				<li><a class="active" href="#"><span>2017</span></a></li>
-				<li><a href="#"><span>2016</span></a></li>
-				<li><a href="#"><span>2015</span></a></li>
-				<li><a href="#"><span>2014</span></a></li>
-				<li><a href="#"><span>2013</span></a></li>
-				<li><a href="#"><span>2012</span></a></li>
+		<!--contact phones-->
+		<div class="contact-phones js-choice-wrap" data-select="false">
+			<a class="contact-phones__handler js-choice-open" href="#"><span>+7 (423) 230-20-13</span></a>
+			<ul class="contact-phones__drop js-choice-drop">
+				<li><a href="tel:+7 (423) 230-20-13"><span>+7 (423) 230-20-13</span></a></li>
+				<li><a href="tel:+7 (423) 275-27-17"><span>+7 (423) 275-27-17</span></a></li>
+				<li><a href="tel:+7 (423) 578-80-18"><span>+7 (423) 578-80-18</span></a></li>
+				<li><a href="tel:+7 (423) 230-20-13"><span>+7 (423) 230-20-13</span></a></li>
+				<li><a href="tel:+7 (423) 275-27-17"><span>+7 (423) 275-27-17</span></a></li>
+				<li><a href="tel:+7 (423) 578-80-18"><span>+7 (423) 578-80-18</span></a></li>
 			</ul>
 		</div>
-		<!--years end-->
+		<!--contact phones end-->
 	</div>
 	<div class="top-panel__widget">
 		<a href="mailto:dvemz@gmail.com">dvemz@gmail.com</a>

@@ -41,6 +41,7 @@
 				<div class="content user-content">
 					<div class="main-sections main-sections-js">
 						<section class="main-section main-section--entry active" data-anchor="mainSectionEntry">
+							<div class="fp-bg"></div>
 							<div class="main-section__container">
 								<div class="main-section__align">
 									<div class="main-section__layout">
@@ -70,6 +71,7 @@
 							</div>
 						</section>
 						<section class="main-section main-section--news" data-anchor="mainSectionNews">
+							<div class="fp-bg"></div>
 							<div class="main-section__container">
 								<div class="main-section__align">
 									<div class="main-section__layout">
@@ -77,7 +79,7 @@
 										<div class="main-section__holder">
 											<div class="news-grid news-grid--home">
 												<div class="news-grid__list">
-													@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
+													@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items.json')
 												</div>
 											</div>
 											<div class="main-section__footer">
@@ -104,39 +106,39 @@
 													<div class="adr">г. Владивосток, ул. Молодежная, строение 1, корп. 3</div>
 												</div>
 												<a href="#" class="btn-main">
-													<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100"><path d="M5,5v90h90V5H5z M12.079,17.114l32.914,33.011L12.079,82.942V17.114z M17.057,12.08h66.095L50.006,45.127  L17.057,12.08z M49.991,55.139L82.677,87.92H17.113L49.991,55.139z M55.004,50.14L87.92,17.322v65.83L55.004,50.14z"></path></svg>
+													<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="377.6 153.6 524.8 332.8" enable-background="new 377.6 153.6 524.8 332.8"> <path d="M377.6,153.6V179L640,368.2L902.4,179v-25.4H377.6z M377.6,210.6v275.8h524.8V210.6L640,399.8L377.6,210.6z"/> </svg>
 													<span>Обратная связь</span>
 												</a>
 											</div>
 										</div>
 									</div>
-									<!--main map-->
-									<script>
-										var mainMapPosition = {
-											'desktop': {
-												'lat': 43.11329616,
-												'lng': 131.92525506,
-												'zoom': 14
-											}
-										};
-										var mainMapObjects = [
-											[
-												{lat: 43.10692, lng: 131.95718}, //coordinates of marker
-												'img/map-pin.png', //image pin
-												{
-													title: 'ДВЭМЗ',
-													address: '<b>Адрес</b> <div>г. Владивосток, ул. Молодежная, строение 1, корп. 3</div>',
-													phone: '<b>Тел.</b> <div><a href="tel:+7 423 588-59-74">+7 423 588-59-74</a></div>',
-													fax: '<b>Факс</b> <div>(423) 254 48 86</div>',
-													mail: '<b>Эл. почта</b> <div><a href="mailto:dvemz@gmail.com">dvemz@gmail.com</a></div>'
-												}
-											]
-										];
-									</script>
-									<div class="main-map" id="main-map"></div>
-									<!--main map end-->
 								</div>
 							</div>
+							<!--main map-->
+							<script>
+								var mainMapPosition = {
+									'desktop': {
+										'lat': 43.11329616,
+										'lng': 131.92525506,
+										'zoom': 14
+									}
+								};
+								var mainMapObjects = [
+									[
+										{lat: 43.10692, lng: 131.95718}, //coordinates of marker
+										'img/map-pin.png', //image pin
+										{
+											title: 'ДВЭМЗ',
+											address: '<b>Адрес</b> <div>г. Владивосток, ул. Молодежная, строение 1, корп. 3</div>',
+											phone: '<b>Тел.</b> <div><a href="tel:+7 423 588-59-74">+7 423 588-59-74</a></div>',
+											fax: '<b>Факс</b> <div>(423) 254 48 86</div>',
+											mail: '<b>Эл. почта</b> <div><a href="mailto:dvemz@gmail.com">dvemz@gmail.com</a></div>'
+										}
+									]
+								];
+							</script>
+							<div class="main-map fp-bg" id="main-map"></div>
+							<!--main map end-->
 						</section>
 					</div>
 				</div>

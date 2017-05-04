@@ -8,8 +8,36 @@ $main-section-max-width-lg: 960px !default
 
 .main-section
 	position: relative
-	background-color: #f3f3f3
+	//background-color: #f3f3f3
 	min-height: 100vh
+	overflow: hidden
+
+	.fp-bg
+		background: #f3f3f3 no-repeat center
+		background-size: cover
+		position: absolute
+		left: -5px
+		top: -5px
+		+size(calc(100% + 10px))
+		z-index: -1
+		backface-visibility: hidden
+		transition-property: transform
+		transform: translate(0, -33%)
+
+	&.active, &.fp-completely
+		.fp-bg
+			transition-duration: $animation-speed-section
+
+	&.active
+		.fp-bg
+			transform: translate(0, 0)
+
+	&.fp-prev-before .fp-bg
+		transform: translate(0, 0)
+
+	&.fp-prev .fp-bg
+		transform: translate(0, 0)
+		transition-duration: 0s
 
 .main-section__container
 	position: relative
@@ -40,8 +68,19 @@ $main-section-max-width-lg: 960px !default
 .main-section__title
 	+font-bold
 	+font(48px, 1.2)
-	color: $text-color
+	color: white
 	margin-bottom: 1em
+	opacity: 0
+	visibility: hidden
+	transform: translate(0, 40px)
+	transition-property: transform, opacity, visibility
+	transition-duration: $animation-speed-element
+
+	.main-section.active &
+		opacity: 1
+		visibility: visible
+		transform: translate(0, 0)
+		transition-delay: $animation-speed-element-delay
 
 	h2, h3
 		margin: 0
@@ -61,15 +100,18 @@ $main-section-max-width-lg: 960px !default
 /*main section entry
 .main-section--entry
 	color: white
-	background: #51504f url(../../img/bg-entry.jpg) no-repeat center
-	background-size: cover
+	//background: #51504f url(../../img/bg-entry.jpg) no-repeat center
+	//background-size: cover
+
+	.fp-bg
+		background-image: url(../../img/bg-entry.jpg)
 
 	.main-section__title
 		position: relative
-		padding-bottom: 1em
+		padding-bottom: 0.8em
 		margin-bottom: 2em
-		+font-normal
-		+font(48px, 1.2)
+		+font-bold
+		+font(62px, 1.2)
 		color: white
 
 		&::before
@@ -80,7 +122,7 @@ $main-section-max-width-lg: 960px !default
 			background-color: white
 
 		h1, h2, h3
-			width: 640px
+			width: 800px
 			max-width: 100%
 
 /*main section entry end
@@ -98,19 +140,58 @@ $main-section-max-width-lg: 960px !default
 		margin-bottom: 0
 
 .total-data__list
+	position: relative
 	+margin-horizontal(-20px)
 	+clear
+
+	&::before
+		+pseudo()
+		left: 0
+		top: 0
+		width: 108px
+		height: 114px
+		background: url(../../img/bg-triangle.png) no-repeat
+		background-size: cover
+		z-index: -1
+		opacity: 0
+		visibility: hidden
+		transform: translate(-30px, -20px)
+		transition-property: transform, opacity, visibility
+		transition-duration: $animation-speed-element
+
+		.main-section.active &
+			opacity: 1
+			visibility: visible
+			transition-delay: ($animation-speed-element-delay*3)
 
 .total-data__item
 	float: left
 	width: 33.3%
 	padding: 30px 20px 10px 20px
+	opacity: 0
+	visibility: hidden
+	transform: translate(0, 20px)
+	transition-property: transform, opacity, visibility
+	transition-duration: $animation-speed-element
+
+	.main-section.active &
+		opacity: 1
+		visibility: visible
+		transform: translate(0, 0)
+
+		@for $child from 0 through 4
+			&:nth-child(#{$child})
+				transition-delay: (#{$animation-speed-element-delay + $child*0.3})
 
 .total-data__title
-	margin-bottom: 0.2em
+	margin-bottom: 0.05em
+	+font-light
 	+font(90px, 1)
 	color: $base-color
 	white-space: nowrap
+
+	.prefix, .unit
+		+font-normal
 
 	.prefix
 		position: relative
@@ -124,14 +205,24 @@ $main-section-max-width-lg: 960px !default
 		position: relative
 		display: inline-block
 		vertical-align: bottom
-		+margin($top: 0.1em, $left: 1em)
+		+margin($bottom: 0.1em, $left: 1em)
 		+font(3.4rem, 1.3)
 		color: white
 
 .total-data__text
-	+font(1.4rem, 1.3)
+	+font(1.6rem, 1.2)
 
 /*total date end
+
+/*main section news
+.main-section--news
+	background-size: cover
+
+	.fp-bg
+		background-color: #fff
+		background-image: url('../../img/bg-news.jpg')
+
+/*main section news end
 
 /*main section map
 .main-section--map
@@ -139,6 +230,9 @@ $main-section-max-width-lg: 960px !default
 	+font(1.8rem, 1.222)
 	color: #092140
 	cursor: default
+
+	.main-section__title
+		color: $text-color
 
 	.main-section__layout
 		height: 0
@@ -193,6 +287,22 @@ $main-section-max-width-lg: 960px !default
 
 		&:last-child
 			margin-bottom: 0
+
+	.main-section__holder > *
+		opacity: 0
+		visibility: hidden
+		transform: translate(0, 20px)
+		transition-property: transform, opacity, visibility, background-color, color, border-color
+		transition-duration: $animation-speed-element
+
+.main-section--map.active .main-section__holder > *
+	opacity: 1
+	visibility: visible
+	transform: translate(0, 0)
+
+	@for $child from 0 through 4
+		&:nth-child(#{$child})
+			transition-delay: (#{$animation-speed-element-delay + $child*0.3}, #{$animation-speed-element-delay + $child*0.3}, #{$animation-speed-element-delay + $child*0.3}, 0s, 0s, 0s)
 
 /*main section map end
 

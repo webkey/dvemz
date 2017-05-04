@@ -4,22 +4,18 @@
 
 /*news grid
 .news-grid
-	overflow: hidden
 	margin-bottom: $bottom-space
 
 	&.news-grid--home
-		margin-bottom: 60px
+		margin-bottom: 0
 
 	&:last-child
 		margin-bottom: 0
 
 .news-grid__list
-	float: left
-	width: 100%
 	position: relative
 	+grid-parent($grid-space)
 	+clear-spacing
-	margin-bottom: -#{$grid-space}
 
 .news-grid__item
 	position: relative
@@ -29,6 +25,20 @@
 		+grid-item(3, $grid-space)
 		+font($font-size, $line-height)
 		letter-spacing: normal
+		opacity: 0
+		visibility: hidden
+		transform: translate(0, 20px)
+		transition-property: transform, opacity, visibility
+		transition-duration: $animation-speed-element
+
+		.main-section.active &
+			opacity: 1
+			visibility: visible
+			transform: translate(0, 0)
+
+			@for $child from 0 through 4
+				&:nth-child(#{$child})
+					transition-delay: (#{$animation-speed-element-delay + $child*0.3})
 
 		+media('<mob-lg')
 			+grid-item(1, $grid-space)
@@ -38,10 +48,10 @@
 	position: relative
 	text-decoration: none
 	color: $text-color
-	background-color: white
+	background-color: #ddd
 	height: 100% // inner по высоте равен item
 
-	&::before
+	//&::before
 		+pseudo($pos: relative)
 		width: 100%
 		+ratio(10, 6)
@@ -52,14 +62,14 @@
 		+media('<mob-lg')
 			content: none
 
-.news-grid__img
+//.news-grid__img
 	position: absolute
 	left: 0
 	top: 0
 	width: 100%
 	overflow: hidden
 
-.news-grid__figure
+//.news-grid__figure
 	position: relative
 	+ratio(10, 6)
 	transition-property: transform
@@ -91,16 +101,18 @@
 	padding: #{$grid-inside-vertical-space+8} $grid-inside-horizontal-space $grid-inside-vertical-space
 
 .news-grid__meta
-	margin-bottom: 1.5em
-	+font(1.4rem, 1.5)
+	margin-bottom: 0.8em
+	padding-bottom: 0.8em
+	+font(1.8rem, 1.3)
+	border-bottom: 1px solid $border-color
 
 	&:last-child
 		margin-bottom: 0
 
 	time
 		display: block
-		+font-normal
-		color: $text-color-light
+		+font-bold
+		color: $text-color
 
 .news-grid__title
 	+font-normal

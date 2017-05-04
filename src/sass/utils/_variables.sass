@@ -86,18 +86,21 @@ $table-bg-alt-color: tomato !default
 // animation
 $animation-speed: 0.2s !default
 $animation-speed-mouseleave: 0.35s !default
+$animation-speed-section: 1s !default
+$animation-speed-element: 0.5s !default
+$animation-speed-element-delay: 0.8s !default
 
 // fonts style
-$font-norm: 'magistralc-regular', sans-serif !default
-$font-bold: 'magistralc-bold', sans-serif !default
-$font-italic: 'magistralc-regular', sans-serif !default // италика нет
-$font-bold-italic: 'magistralc-regular', sans-serif !default // италика нет
-$font-black: 'magistralc-black', sans-serif !default
+$font-norm: 'proximanova-regular', sans-serif !default
+$font-bold: 'proximanova-bold', sans-serif !default
+$font-italic: 'proximanova-italic', sans-serif !default
+$font-bold-italic: 'proximanova-bold-italic', sans-serif !default
+$font-light: 'proximanova-light', sans-serif !default
 // fonts alternative
-$font-alt: 'magistralc-regular', sans-serif !default
-$font-alt-bold: 'magistralc-bold', sans-serif !default
-$font-alt-italic: 'magistralc-regular', sans-serif !default // италика нет
-$font-alt-bold-italic: 'magistralc-regular', sans-serif !default // италика нет
+$font-alt: 'proximanova-regular', sans-serif !default
+$font-alt-bold: 'proximanova-bold', sans-serif !default
+$font-alt-italic: 'proximanova-regular', sans-serif !default
+$font-alt-bold-italic: 'proximanova-regular', sans-serif !default
 
 // grids
 $grid-space: 40px !default // отступы между элементами сетки, например, новостей
@@ -108,7 +111,7 @@ $grid-inside-vertical-space: round($grid-inside-horizontal-space*0.875) !default
 $header-width: 80px !default
 
 // logo
-$logo-bg-color: #666 !default
+$logo-bg-color: #333 !default
 
 // navigation
 $nav-width: 380px !default
@@ -117,7 +120,8 @@ $nav-width: 380px !default
 $sidebar-width: 320px !default
 
 // top panel
-$top-panel-height: 100px !default
+$top-panel-height: 80px !default
+$top-panel-space: 20px !default
 
 // ============= обнуление жирности и наклонности шрифта ==============
 // ============= использовать, если подключается font-face ==============
@@ -148,6 +152,13 @@ $top-panel-height: 100px !default
 =font-bold-italic()
 	font:
 		family: $font-bold-italic
+		//weight: 700
+		//style: italic
+	+font-reset
+
+=font-light()
+	font:
+		family: $font-light
 		//weight: 700
 		//style: italic
 	+font-reset

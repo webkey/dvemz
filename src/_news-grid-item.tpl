@@ -1,11 +1,11 @@
 <div class="news-grid__item">
 	<a href="#" class="news-grid__inner">
 		@@if (context.src) {
-		<div class="news-grid__img">
+		<!--<div class="news-grid__img">
 			<div class="news-grid__figure">
 				<img src="@@src" alt="@@text" />
 			</div>
-		</div>
+		</div>-->
 		}
 		<div class="news-grid__content">
 			<div class="news-grid__meta">
