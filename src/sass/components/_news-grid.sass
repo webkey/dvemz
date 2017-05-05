@@ -25,18 +25,19 @@
 		+grid-item(3, $grid-space)
 		+font($font-size, $line-height)
 		letter-spacing: normal
-		opacity: 0
-		visibility: hidden
-		transform: translate(0, 20px)
-		transition-property: transform, opacity, visibility
-		transition-duration: $animation-speed-element
+		//opacity: 0
+		//visibility: hidden
+		//transform: translate(0, 60px)
+		//transition-property: transform, opacity, visibility
+		//transition-duration: $animation-speed-element
 
-		.main-section.active &
+		//.main-section.active &
 			opacity: 1
 			visibility: visible
 			transform: translate(0, 0)
+			transition-delay: $animation-speed-element-delay*1.2
 
-			@for $child from 0 through 4
+			//@for $child from 0 through 4
 				&:nth-child(#{$child})
 					transition-delay: (#{$animation-speed-element-delay + $child*0.3})
 

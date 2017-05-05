@@ -60,7 +60,8 @@
 	color: $text-color
 	background-color: transparent
 	border: 1px solid $text-color
-	+antialiased
+	transition-property: background-color, color, border-color
+	transition-duration: $animation-speed
 
 	.no-touchevents &:hover
 		background-color: $base-color
@@ -91,43 +92,27 @@
 	color: white
 	background-color: transparent
 	+antialiased
-	opacity: 0
-	visibility: hidden
-	transition-property: background-color, transform, opacity, visibility
-	transition-duration: $animation-speed-element
-
-	.no-touchevents &:hover
-		background-color: $base-color
-
-	.main-section.active &
-		opacity: 1
-		visibility: visible
-		transition-delay: 0s, $animation-speed-element-delay*3, $animation-speed-element-delay*3, $animation-speed-element-delay*3
+	transition-property: background-color, color
+	transition-duration: $animation-speed
 
 	&::before, &::after
 		+pseudo()
 		+cover($position: null)
 		z-index: -1
 		border: solid $base-color
-		transition-property: transform
-		transition-duration: $animation-speed-element
-
-		.main-section.active &
-			transform: translate(0, 0)
-			transition-delay: $animation-speed-element-delay*3
 
 	&::before
 		border-width: 0 0 1px 1px
-		transform: translate(-10px, 10px)
 
 	&::after
 		border-width: 1px 1px 0 0
-		transform: translate(10px, -10px)
 
 	& > span
 		position: relative
 		padding-right: 35px
 		filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.35))
+		transition-property: filter
+		transition-duration: $animation-speed
 
 		&::before, &::after
 			+pseudo()
@@ -136,10 +121,21 @@
 			width: 10px
 			height: 2px
 			background-color: white
+			backface-visibility: hidden
 			transition-property: background-color
 			transition-duration: $animation-speed
 
 		&::before
 			transform: rotate(0.25turn)
+
+	.no-touchevents &:hover
+		background-color: $base-color
+		color: $text-color
+
+		& > span
+			filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.0))
+
+			&::before, &::after
+				background-color: $text-color
 
 /*buttons end

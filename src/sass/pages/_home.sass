@@ -19,7 +19,7 @@ $main-section-max-width-lg: 960px !default
 		left: -5px
 		top: -5px
 		+size(calc(100% + 10px))
-		z-index: -1
+		//z-index: -1
 		backface-visibility: hidden
 		transition-property: transform
 		transform: translate(0, -33%)
@@ -70,17 +70,6 @@ $main-section-max-width-lg: 960px !default
 	+font(48px, 1.2)
 	color: white
 	margin-bottom: 1em
-	opacity: 0
-	visibility: hidden
-	transform: translate(0, 40px)
-	transition-property: transform, opacity, visibility
-	transition-duration: $animation-speed-element
-
-	.main-section.active &
-		opacity: 1
-		visibility: visible
-		transform: translate(0, 0)
-		transition-delay: $animation-speed-element-delay
 
 	h2, h3
 		margin: 0
@@ -91,17 +80,16 @@ $main-section-max-width-lg: 960px !default
 
 .main-section__holder
 	+clear
+	margin-bottom: $bottom-space-md
 
-.main-section__footer
-	text-align: center
+	&:last-child
+		margin-bottom: 0
 
 /*scroll sections end
 
 /*main section entry
 .main-section--entry
 	color: white
-	//background: #51504f url(../../img/bg-entry.jpg) no-repeat center
-	//background-size: cover
 
 	.fp-bg
 		background-image: url(../../img/bg-entry.jpg)
@@ -125,6 +113,10 @@ $main-section-max-width-lg: 960px !default
 			width: 800px
 			max-width: 100%
 
+	.main-section__footer
+		text-align: center
+
+/*animation show on scroll end
 /*main section entry end
 
 /*total date
@@ -153,13 +145,13 @@ $main-section-max-width-lg: 960px !default
 		background: url(../../img/bg-triangle.png) no-repeat
 		background-size: cover
 		z-index: -1
-		opacity: 0
-		visibility: hidden
 		transform: translate(-30px, -20px)
-		transition-property: transform, opacity, visibility
-		transition-duration: $animation-speed-element
+		//opacity: 0
+		//visibility: hidden
+		//transition-property: transform, opacity, visibility
+		//transition-duration: $animation-speed-element
 
-		.main-section.active &
+		//.main-section.active &
 			opacity: 1
 			visibility: visible
 			transition-delay: ($animation-speed-element-delay*3)
@@ -168,13 +160,8 @@ $main-section-max-width-lg: 960px !default
 	float: left
 	width: 33.3%
 	padding: 30px 20px 10px 20px
-	opacity: 0
-	visibility: hidden
-	transform: translate(0, 20px)
-	transition-property: transform, opacity, visibility
-	transition-duration: $animation-speed-element
 
-	.main-section.active &
+	//.main-section.active &
 		opacity: 1
 		visibility: visible
 		transform: translate(0, 0)
@@ -214,6 +201,10 @@ $main-section-max-width-lg: 960px !default
 
 /*total date end
 
+.fp-enabled
+	.main-section--entry
+		+animation-on-scroll(main-section__title total-data)
+
 /*main section news
 .main-section--news
 	background-size: cover
@@ -224,6 +215,10 @@ $main-section-max-width-lg: 960px !default
 
 /*main section news end
 
+.fp-enabled
+	.main-section--news
+		+animation-on-scroll(main-section__title news-grid main-section__footer)
+
 /*main section map
 .main-section--map
 	+font-normal
@@ -232,7 +227,17 @@ $main-section-max-width-lg: 960px !default
 	cursor: default
 
 	.main-section__title
+		position: relative
 		color: $text-color
+		margin-bottom: 0.5em
+		padding-bottom: 0.5em
+
+		&::before
+			+pseudo()
+			bottom: 0
+			left: 0
+			+size(64px, 3px)
+			background-color: $text-color
 
 	.main-section__layout
 		height: 0
@@ -263,12 +268,15 @@ $main-section-max-width-lg: 960px !default
 
 	.contacts
 		margin-bottom: 1.5em
+		max-width: 300px
+		+font(1.6rem, (round-float(24/16, 2)))
 
 		&:last-child
 			margin-bottom: 0
 
 		li
 			padding-left: 0
+			margin: 0
 
 			&::before
 				content: none
@@ -282,20 +290,14 @@ $main-section-max-width-lg: 960px !default
 			.no-touchevents &:hover
 				color: $base-color
 
-	.adr
-		margin-bottom: 1.5em
-
-		&:last-child
-			margin-bottom: 0
-
-	.main-section__holder > *
+	//.main-section__holder > *
 		opacity: 0
 		visibility: hidden
 		transform: translate(0, 20px)
 		transition-property: transform, opacity, visibility, background-color, color, border-color
 		transition-duration: $animation-speed-element
 
-.main-section--map.active .main-section__holder > *
+//.main-section--map.active .main-section__holder > *
 	opacity: 1
 	visibility: visible
 	transform: translate(0, 0)
@@ -313,3 +315,6 @@ $main-section-max-width-lg: 960px !default
 
 /*main map end
 
+.fp-enabled
+	.main-section--map
+		+animation-on-scroll(main-section__title phone info main-section__footer)
