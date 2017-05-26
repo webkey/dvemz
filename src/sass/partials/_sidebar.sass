@@ -14,7 +14,7 @@ $sidemenu-bg-color-hover: #999
 .side-menu__row
 	display: table-row
 
-	&:last-child
+	//&:last-child
 		.side-menu__cell
 			background-color: white
 			border-top-color: transparent
@@ -79,7 +79,7 @@ $sidemenu-bg-color-hover: #999
 			opacity: 0.3
 
 	path
-		fill: white
+		fill: #333
 
 	//img
 		position: absolute
@@ -97,8 +97,8 @@ $sidemenu-bg-color-hover: #999
 .side-menu__title
 	display: block
 	position: relative
-	+font-normal
-	+font(1.8rem, 1.167)
+	+font-bold
+	+font(1.6rem, 1.167)
 	text-transform: uppercase
 	transition-property: color, transform
 	transition-duration: $animation-speed

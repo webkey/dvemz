@@ -23,23 +23,8 @@
 
 	.news-grid &
 		+grid-item(3, $grid-space)
-		+font($font-size, $line-height)
+		+font($news-grid-font-size, $news-grid-line-height)
 		letter-spacing: normal
-		//opacity: 0
-		//visibility: hidden
-		//transform: translate(0, 60px)
-		//transition-property: transform, opacity, visibility
-		//transition-duration: $animation-speed-element
-
-		//.main-section.active &
-			opacity: 1
-			visibility: visible
-			transform: translate(0, 0)
-			transition-delay: $animation-speed-element-delay*1.2
-
-			//@for $child from 0 through 4
-				&:nth-child(#{$child})
-					transition-delay: (#{$animation-speed-element-delay + $child*0.3})
 
 		+media('<mob-lg')
 			+grid-item(1, $grid-space)
@@ -51,52 +36,6 @@
 	color: $text-color
 	background-color: #ddd
 	height: 100% // inner по высоте равен item
-
-	//&::before
-		+pseudo($pos: relative)
-		width: 100%
-		+ratio(10, 6)
-		background: white url(../../img/no-img.png) no-repeat center
-		box-shadow: 0 8px 0 $base-color
-		background-size: 100px
-
-		+media('<mob-lg')
-			content: none
-
-//.news-grid__img
-	position: absolute
-	left: 0
-	top: 0
-	width: 100%
-	overflow: hidden
-
-//.news-grid__figure
-	position: relative
-	+ratio(10, 6)
-	transition-property: transform
-	transition-duration: $animation-speed
-
-	.no-touchevents .news-grid__inner:hover &
-		transform: scale(1.1)
-
-	img
-		position: absolute
-		left: 50%
-		top: 50%
-		max-width: 100%
-		max-height: none
-		min-width: 0
-		min-height: 0
-		width: calc(100% + 4px)
-		height: calc(100% + 4px)
-		transform: translate(-50%, -50%)
-		text-align: left
-		object-fit: cover
-		backface-visibility: hidden
-
-		.no-objectfit &
-			width: auto
-			height: 100%
 
 .news-grid__content
 	padding: #{$grid-inside-vertical-space+8} $grid-inside-horizontal-space $grid-inside-vertical-space
@@ -120,6 +59,23 @@
 	+font(2.2rem, 1.227)
 	color: $text-color
 	margin-bottom: 1.5em
+
+	&:last-child
+		margin-bottom: 0
+
+.news-grid__text
+	margin-bottom: $bottom-space
+	overflow: hidden
+	max-height: calc(#{$news-grid-font-size * $news-grid-line-height} * 13)
+
+	@media (max-height: 949px)
+		max-height: calc(#{$news-grid-font-size * $news-grid-line-height} * 8)
+
+	@media (max-height: 769px)
+		max-height: calc(#{$news-grid-font-size * $news-grid-line-height} * 6)
+
+	@media (max-height: 637px)
+		max-height: calc(#{$news-grid-font-size * $news-grid-line-height} * 4)
 
 	&:last-child
 		margin-bottom: 0

@@ -11,7 +11,7 @@ body
 	color: $text-color
 	height: 100%
 	background-color: $bg-color
-	min-width: 320px
+	min-width: 1600px
 	overflow-x: hidden
 
 h1, h2, h3, h4, h5, h6
@@ -250,17 +250,17 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 			height: 1%
 			overflow: hidden
 
-		& > li::before
-			position: relative
-			display: inline-block
-			text-align: left
-			+font-alt-bold
-			color: $text-color-alt
-			content: counter(section)
-			padding: 0 4px 0 0
-			min-width: 30px
-			margin-left: -30px
-			box-sizing: border-box
+			&::before
+				position: relative
+				display: inline-block
+				text-align: left
+				+font-alt-bold
+				color: $text-color-alt
+				content: counter(section)
+				padding: 0 4px 0 0
+				min-width: 30px
+				margin-left: -30px
+				box-sizing: border-box
 
 	ul ul, ul ol, ol ul
 		margin: round($bottom-space*0.5) 0

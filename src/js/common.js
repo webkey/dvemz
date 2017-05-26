@@ -220,6 +220,10 @@ function equalHeightInit() {
 			byRow: true, property: 'height', target: null, remove: false
 		});
 	}
+
+	// $(window).on('resize', function () {
+	// 	$.fn.matchHeight._update();
+	// })
 }
 /*equal height end*/
 

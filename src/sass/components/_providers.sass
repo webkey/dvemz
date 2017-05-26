@@ -1,0 +1,144 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*agency
+.agency
+	counter-reset: section
+	text-align: center
+	margin-bottom: 30px
+
+	&:last-child
+		margin-bottom: 0
+
+.agency__holder
+	+display-inline-block-top
+	+clear-spacing
+
+.agency__item
+	position: relative
+	+display-inline-block-middle
+	width: 33.3%
+	padding: 50px
+	counter-increment: section
+	+font($font-size, $line-height)
+	letter-spacing: normal
+
+	&::before
+		+pseudo($content: counter(section))
+		+centering($pos: null)
+		+font-black
+		+font(224px, 1)
+		color: rgba(243, 243, 243, 0.35)
+
+	&::after
+		+pseudo()
+		left: 0
+		top: 50%
+		width: 50px
+		height: 2px
+		margin-top: -1px
+		margin-left: -25px
+		+linear-gradient(linear-gradient(to right, #999 0, #999 33%, transparent 33%, transparent 100%))
+		background-size: 6px 6px
+
+	&:first-child::after
+		content: none
+
+.agency__text
+	+font-bold
+	+font(1.8rem, round-float(22/18, 1))
+	color: white
+	text-transform: uppercase
+
+
+/*agency end
+
+/*providers
+.providers
+	margin-bottom: 30px
+	+clear
+
+	&:last-child
+		margin-bottom: 0
+
+.providers__item
+	float: left
+	width: 50%
+	padding: 0 3.7%
+
+	&:first-child
+		padding-left: 0
+
+	&:last-child
+		padding-right: 0
+
+.providers__text
+	background: black
+	padding: 27px 30px
+	+font(1.5rem, round-float(24/14, 1))
+	color: white
+
+	& > p, & > ul, & > ol
+		&:last-child
+			margin-bottom: 0
+
+.providers__title
+	+font-bold
+	+font(2.0rem, round-float(24/20, 1))
+	color: white
+	margin-bottom: 1em
+
+	&:last-child
+		margin-bottom: 0
+
+.providers__list
+
+	&, .#{$user-content} &
+		margin: 0
+
+		li
+			padding-left: 48px
+
+			&::before
+				+pseudo()
+				left: 0
+				top: 10px
+				border: none
+				+size(30px, 3px)
+				background-color: $base-color
+
+	&
+		+font(1.6rem, round-float(24/16, 1))
+		text-transform: uppercase
+		color: white
+
+		a
+			color: $base-color
+
+/*providers end
+
+/*plea
+.plea
+	width: 560px
+	max-width: 100%
+	+push-auto
+	text-align: center
+	+font(2.4rem, round-float(36/24, 1))
+	color: white
+
+	a
+		text-decoration: none
+		color: $base-color
+
+		span
+			border-bottom: 1px solid transparent
+			transition: border-color $animation-speed
+
+		.no-touchevents &
+			text-decoration: none
+
+			span
+				border-bottom-color: $base-color
+
+/*plea end

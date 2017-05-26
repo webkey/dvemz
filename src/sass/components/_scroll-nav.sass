@@ -7,7 +7,7 @@
 	$scroll-nav-space: 40px
 
 	position: fixed
-	top: $scroll-nav-space
+	top: $scroll-nav-space + $top-panel-height
 	right: $sidebar-width + $scroll-nav-space
 	z-index: 50
 
@@ -32,6 +32,17 @@
 			transition-property: background-color
 			transition-duration: $animation-speed
 
+			&::before
+				+pseudo()
+				left: 0
+				bottom: 0
+				height: 100%
+				width: 100%
+				background-color: $base-color
+				transition-property: transform
+				transition-duration: 0.3s
+				transform: translate(0, 100%)
+
 			svg
 				+centering()
 				+size(22px)
@@ -39,7 +50,16 @@
 			path
 				fill: white
 
+			.no-touchevents &:hover
+				&::before
+					transform: translate(0, calc(100% - 2px))
+
 		li.active a
-			background-color: $base-color
+			&, .no-touchevents &
+				//background-color: $base-color
+				cursor: default
+
+				&::before
+					transform: translate(0, 0)
 
 /*scroll menu end

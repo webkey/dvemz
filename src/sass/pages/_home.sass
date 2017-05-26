@@ -3,7 +3,7 @@
 @import ../../libs/include-media/dist/include-media
 
 /*scroll sections
-$main-section-max-width: 1150px !default
+$main-section-max-width: 960px !default
 $main-section-max-width-lg: 960px !default
 
 .main-section
@@ -70,6 +70,8 @@ $main-section-max-width-lg: 960px !default
 	+font(48px, 1.2)
 	color: white
 	margin-bottom: 1em
+	display: flex
+	justify-content: space-between
 
 	h2, h3
 		margin: 0
@@ -77,6 +79,13 @@ $main-section-max-width-lg: 960px !default
 		+font(inherit, inherit)
 		font-weight: inherit
 		color: inherit
+		flex: 1 1 12rem
+
+	.subtitle
+		+font-normal
+		+font(2.4rem, 1.2)
+		flex: 1 1 12em
+		padding: 0.5em
 
 .main-section__holder
 	+clear
@@ -99,7 +108,9 @@ $main-section-max-width-lg: 960px !default
 		padding-bottom: 0.8em
 		margin-bottom: 2em
 		+font-bold
-		+font(62px, 1.2)
+		//+font(62px, 1.2)
+		+font(52px, 1.2)
+		text-transform: uppercase
 		color: white
 
 		&::before
@@ -218,6 +229,20 @@ $main-section-max-width-lg: 960px !default
 .fp-enabled
 	.main-section--news
 		+animation-on-scroll(main-section__title news-grid main-section__footer)
+
+/*main section providers
+.main-section--providers
+	background-size: cover
+
+	.fp-bg
+		background-color: #4f4d47
+		background-image: url('../../img/bg-providers.jpg')
+
+/*main section news end
+
+.fp-enabled
+	.main-section--providers
+		+animation-on-scroll(main-section__title agency providers plea)
 
 /*main section map
 .main-section--map

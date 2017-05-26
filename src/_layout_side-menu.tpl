@@ -27,11 +27,11 @@
 				<strong class="side-menu__title">Высоковольтное оборудование</strong>
 			</a>
 		</div>
-		<div class="side-menu__row">
+		<!--<div class="side-menu__row">
 			<a href="files/pdf-test.pdf" class="side-menu__cell download">
 				<div class="download__icon" data-label="PDF"><span>PDF</span></div>
 				<div class="download__title">Каталог продукции <span>Скачать .pdf</span></div>
 			</a>
-		</div>
+		</div>-->
 	</div>
 </aside>

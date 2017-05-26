@@ -92,6 +92,7 @@ $animation-speed-element-delay: 0.8s !default
 
 // fonts style
 $font-norm: 'proximanova-regular', sans-serif !default
+$font-black: 'proximanova-black', sans-serif !default
 $font-bold: 'proximanova-bold', sans-serif !default
 $font-italic: 'proximanova-italic', sans-serif !default
 $font-bold-italic: 'proximanova-bold-italic', sans-serif !default
@@ -123,6 +124,10 @@ $sidebar-width: 320px !default
 $top-panel-height: 80px !default
 $top-panel-space: 20px !default
 
+// news grid
+$news-grid-font-size: $font-size
+$news-grid-line-height: $line-height
+
 // ============= обнуление жирности и наклонности шрифта ==============
 // ============= использовать, если подключается font-face ==============
 =font-reset()
@@ -133,7 +138,18 @@ $top-panel-space: 20px !default
 // ============= основоной шрифт ==============
 =font-normal()
 	font:
+		family: $font-light
+	+font-reset
+
+=font-regular()
+	font:
 		family: $font-norm
+	+font-reset
+
+=font-black()
+	font:
+		family: $font-black
+		//weight: 700
 	+font-reset
 
 =font-bold()
