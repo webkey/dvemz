@@ -22,20 +22,31 @@ $main-section-max-width-lg: 960px !default
 		//z-index: -1
 		backface-visibility: hidden
 		transition-property: transform
-		transform: translate(0, -33%)
+		//transform: translate(0, -33%)
+		transition-duration: $animation-speed-section
+
+	.fp-no-animate &
+		.fp-bg
+			transition-duration: 0s
 
 	&.active, &.fp-completely
 		.fp-bg
 			transition-duration: $animation-speed-section
 
-	&.active
+	//&.active
 		.fp-bg
 			transform: translate(0, 0)
 
 	&.fp-prev-before .fp-bg
-		transform: translate(0, 0)
+		//transform: translate(0, 0)
+		transform: translate(0, 33%)
+		//transition-duration: $animation-speed-section
 
-	&.fp-prev .fp-bg
+	.fp-up &.fp-prev-before .fp-bg
+		//transform: translate(0, 0)
+		transform: translate(0, -33%)
+
+	//&.fp-prev .fp-bg
 		transform: translate(0, 0)
 		transition-duration: 0s
 

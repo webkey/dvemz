@@ -147,6 +147,14 @@ function slidersInit() {
  * !full page scroll
  * */
 function fullPageInitial() {
+	var $html = $('html');
+	var prevBeforeSectionClass = 'fp-prev-before';
+	var topClass = 'fp-is-top';
+	var bottomClass = 'fp-is-bottom';
+	// var prevSectionClass = 'fp-prev';
+	var noAnimateClass = 'fp-no-animate';
+	var timeout;
+
 	$('.main-sections-js').fullpage({
 		verticalCentered: false,
 		// anchors: ['firstPage', 'secondPage', 'thirdPage'],
@@ -157,30 +165,44 @@ function fullPageInitial() {
 		onLeave: function (index, nextIndex, direction) {
 			var $this = $(this);
 			var $section = $this.parent().children();
-			var lengthPages = $section.length;
-			var prevBeforeSectionClass = 'fp-prev-before';
+			// var lengthPages = $section.length;
+
+			$this.parent().removeClass('fp-down fp-up').addClass('fp-' + direction);
+
+			$section.removeClass(prevBeforeSectionClass);
+			$section.eq($this.index()).addClass(prevBeforeSectionClass);
+			// console.log("currentIndex: ", index);
+			// console.log("beforeIndex: ", $this.index());
+			// console.log("thisIndex: ", $this.index());
 			// console.log("nextIndex: ", nextIndex);
 
-			$section.addClass(prevBeforeSectionClass);
-			for(var i = 0; i < lengthPages; i++) {
-				if (i+1 >= nextIndex) {
-					$section.eq(i).removeClass(prevBeforeSectionClass);
-				}
-			}
+			// $section.addClass(prevBeforeSectionClass);
+			// for(var i = 0; i < lengthPages; i++) {
+			// 	if (i+1 >= nextIndex) {
+			// 		$section.eq(i).removeClass(prevBeforeSectionClass);
+			// 	}
+			// }
 		},
 		afterLoad: function (anchorLink, index) {
-			var $html = $('html');
 			var $this = $(this);
 			var $section = $this.parent().children();
-			var lengthPages = $section.length;
-			var topClass = 'fp-is-top';
-			var bottomClass = 'fp-is-bottom';
-			var prevSectionClass = 'fp-prev';
-
 			// console.log("this.parent(): ", lengthPages);
 			// console.log("this: ", this);
 			// console.log("anchorLink: ", anchorLink);
-			// console.log("index: ", index);
+			// console.log("index(afterLoad): ", index);
+			// console.log("$thisIndex(afterLoad): ", $this.index());
+
+			$this.parent().addClass(noAnimateClass);
+			// console.log('addClass "no-animate"');
+
+			clearTimeout(timeout);
+
+			timeout = setTimeout(function () {
+				$this.parent().removeClass(noAnimateClass);
+				// console.log('removeClass "no-animate"');
+			}, 50);
+
+			$section.removeClass(prevBeforeSectionClass);
 
 			$html.removeClass(topClass);
 			$html.removeClass(bottomClass);
@@ -188,16 +210,16 @@ function fullPageInitial() {
 			if(index === 1) {
 				$html.addClass(topClass);
 			}
-			if(index === lengthPages) {
+			if(index === $section.length) {
 				$html.addClass(bottomClass);
 			}
 
-			$section.addClass(prevSectionClass);
-			for(var i = 0; i < lengthPages; i++) {
-				if (i+1 >= index) {
-					$section.eq(i).removeClass(prevSectionClass);
-				}
-			}
+			// $section.addClass(prevSectionClass);
+			// for(var i = 0; i < lengthPages; i++) {
+			// 	if (i+1 >= index) {
+			// 		$section.eq(i).removeClass(prevSectionClass);
+			// 	}
+			// }
 		}
 	});
 
