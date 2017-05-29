@@ -521,11 +521,21 @@ function mainMapInit() {
 	function addMarker(index, map) {
 		var object = mainMapObjects[index];
 
+		var position = {lat: object[0].lat, lng: object[0].lng};
+
+		var image = {
+			url: object[1],
+			size: new google.maps.Size(108, 116),
+			origin: new google.maps.Point(0, 0),
+			anchor: new google.maps.Point(100, 110)
+			// scaledSize: new google.maps.Size(25, 25)
+		};
+
 		var marker = new google.maps.Marker({
-			position: object[0],
+			position: position,
 			//animation: google.maps.Animation.DROP,
 			map: map,
-			icon: object[1],
+			icon: image,
 			title: object[2].title
 		});
 
