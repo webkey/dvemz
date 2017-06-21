@@ -30,7 +30,7 @@
 	margin: 0 $sidebar-width 0 $header-width
 	min-height: 50px
 
-	background-color: whitesmoke
+	background-color: white
 
 	//+media('<desk-lg')
 		margin-right: 0
@@ -47,6 +47,7 @@
 	z-index: 1000
 
 	background-color: white
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1)
 
 //.sidebar
 	display: inline
@@ -104,10 +105,10 @@
 	+push-auto
 
 	+media('<tab-lg')
-		+padding-horizontal($text-layout-space-horizontal-md)
+		+padding-horizontal($text-layout-space-horizontal--md)
 
 	+media('<tab-sm')
-		+padding-horizontal($text-layout-space-horizontal-sm)
+		+padding-horizontal($text-layout-space-horizontal--sm)
 
 .max-wrap-flood
 	max-width: $flood-layout-width
@@ -118,9 +119,9 @@
 	+push-auto
 
 	+media('<tab-lg')
-		+padding-horizontal($text-layout-space-horizontal-md)
+		+padding-horizontal($text-layout-space-horizontal--md)
 
 	+media('<tab-sm')
-		+padding-horizontal($text-layout-space-horizontal-sm)
+		+padding-horizontal($text-layout-space-horizontal--sm)
 
 /*LAYOUT end*/

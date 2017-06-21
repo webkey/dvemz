@@ -26,7 +26,8 @@
     "matchHeight": "matchheight#^0.7.0",
     "normalize-css": "normalize.css#^5.0.0",
     "include-media": "^1.4.9",
-    "fullpage.js": "^2.9.4"
+    "fullpage.js": "^2.9.4",
+    "select2": "^4.0.3"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

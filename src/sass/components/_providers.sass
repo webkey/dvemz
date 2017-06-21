@@ -26,7 +26,7 @@
 
 	&::before
 		+pseudo($content: counter(section))
-		+centering($pos: null)
+		+centering-transform()
 		+font-black
 		+font(224px, 1)
 		color: rgba(243, 243, 243, 0.35)
@@ -39,7 +39,7 @@
 		height: 2px
 		margin-top: -1px
 		margin-left: -25px
-		+linear-gradient(linear-gradient(to right, #999 0, #999 33%, transparent 33%, transparent 100%))
+		+linear-gradient(to right, #999 0, #999 33%, transparent 33%, transparent 100%)
 		background-size: 6px 6px
 
 	&:first-child::after

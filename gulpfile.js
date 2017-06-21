@@ -77,6 +77,7 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 	return gulp.src([
 		'src/css/temp/*.css' // see gulpfile-special.js
 		,'src/libs/fullpage.js/dist/jquery.fullpage.min.css'
+		, 'src/libs/select2/dist/css/select2.min.css'
 		// ,'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
 		.pipe(concatCss("src/css/libs.css", {
@@ -96,14 +97,16 @@ gulp.task('createCustomModernizr', function (done) { // Таск для форм
 
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск для мераж js библиотек
 	return gulp.src([
-		'src/libs/device.js/lib/device.min.js',
-		'src/libs/jquery-smartresize/jquery.debouncedresize.js',
-		'src/libs/jquery-placeholder/jquery.placeholder.min.js',
-		'src/libs/gsap/src/minified/TweenMax.min.js',
-		'src/libs/gsap/src/minified/plugins/ScrollToPlugin.min.js',
-		'src/libs/matchHeight/dist/jquery.matchHeight-min.js', // подключаем скрипт для выравнивания элементов по максимальному
-		'src/libs/slick-carousel/slick/slick.min.js', // подключаем slick slider
-		'src/libs/fullpage.js/dist/jquery.fullpage.min.js' // подключаем slick slider
+		'src/libs/device.js/lib/device.min.js' // определение устройств
+		, 'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
+		, 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
+		, 'src/libs/gsap/src/minified/TweenMax.min.js' // библиотека для создания анимаций
+		, 'src/libs/gsap/src/minified/plugins/ScrollToPlugin.min.js' // плагин проскролла к заданной позиции
+		, 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
+		, 'src/libs/slick-carousel/slick/slick.min.js' // slick slider
+		, 'src/libs/fullpage.js/dist/jquery.fullpage.min.js' // скрипт для постраничной прокрутки
+		, 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
+		, 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))

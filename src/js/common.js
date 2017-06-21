@@ -87,6 +87,24 @@ function printShow() {
 /*print end*/
 
 /**
+ * !Multiselect init
+ * */
+function customSelect(select) {
+	$.each(select, function () {
+		var $thisSelect = $(this);
+		var placeholder = $thisSelect.attr('data-placeholder') || '';
+		$thisSelect.select2({
+			language: "ru",
+			width: '100%',
+			containerCssClass: 'cselect-head',
+			dropdownCssClass: 'cselect-drop',
+			placeholder: placeholder
+		});
+	})
+}
+/* Multiselect init end */
+
+/**
  * !sliders
  * */
 function slidersInit() {
@@ -1326,6 +1344,10 @@ function formSuccessExample() {
 $(document).ready(function () {
 	placeholderInit();
 	printShow();
+	// if (!Modernizr.touchevents) {
+	// 	customSelect($('select.cselect'));
+	// }
+	customSelect($('select.cselect'));
 	slidersInit();
 	equalHeightInit();
 	fullPageInitial();
