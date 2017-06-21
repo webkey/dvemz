@@ -10,7 +10,9 @@ function noScrollFn() {
 }
 
 function noScroll() {
-	$.fn.fullpage.setAllowScrolling(false); // if has fullpage js
+	if($('.main-sections-js').length) {
+		$.fn.fullpage.setAllowScrolling(false); // if has fullpage js
+	}
 	window.removeEventListener( 'scroll', scrollHandler );
 	window.addEventListener( 'scroll', noScrollFn );
 }
@@ -20,7 +22,9 @@ function scrollFn() {
 }
 
 function canScroll() {
-	$.fn.fullpage.setAllowScrolling(true); // if has fullpage js
+	if($('.main-sections-js').length) {
+		$.fn.fullpage.setAllowScrolling(true); // if has fullpage js
+	}
 	window.removeEventListener( 'scroll', noScrollFn );
 	scrollFn();
 }

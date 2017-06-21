@@ -8,6 +8,7 @@
 	padding: 0 $page-layout-space-horizontal
 	margin: 0 $sidebar-width 0 $header-width
 	height: $top-panel-height
+	background-color: $bg-color
 	z-index: 40
 
 	.top-panel--alt &
@@ -16,20 +17,22 @@
 		margin: 0
 		width: calc(100% - #{$sidebar-width + $header-width})
 		max-width: calc(#{$page-layout-width - $sidebar-width - $header-width})
+		background-color: transparent
+
+		&::before
+			+pseudo()
+			left: 0
+			top: 0
+			width: 100%
+			height: 165px
+			z-index: -1
+			pointer-events: none
+			+linear-gradient(to bottom, rgba(0,0,0,0.94) 0%,rgba(0,0,0,0.84) 14%,rgba(0,0,0,0.7) 28%,rgba(0,0,0,0.35) 59%,rgba(0,0,0,0.18) 75%,rgba(0,0,0,0.06) 89%,rgba(0,0,0,0) 100%)
 
 	.home-page &
 		width: calc(100% - #{$sidebar-width--lg + $header-width})
 		max-width: calc(#{$page-layout-width - $sidebar-width--lg - $header-width})
 
-	&::before
-		+pseudo()
-		left: 0
-		top: 0
-		width: 100%
-		height: 165px
-		z-index: -1
-		pointer-events: none
-		+linear-gradient(to bottom, rgba(0,0,0,0.94) 0%,rgba(0,0,0,0.84) 14%,rgba(0,0,0,0.7) 28%,rgba(0,0,0,0.35) 59%,rgba(0,0,0,0.18) 75%,rgba(0,0,0,0.06) 89%,rgba(0,0,0,0) 100%)
 
 .top-panel-contacts
 	float: right
@@ -37,14 +40,20 @@
 
 .top-panel-contacts__item
 	+display-inline-block-top
+	padding: $top-panel-space 60px $top-panel-space 0
 	+font(24px, 1.3)
 	letter-spacing: normal
-	color: white
-	padding: $top-panel-space 60px $top-panel-space 0
+	color: black
+	border-color: black
+
+	.top-panel--alt &
+		color: white
+		border-color: white
 
 	a
 		text-decoration: none
-		color: white
+		color: inherit
+		border-color: inherit
 
 		span
 			border-bottom: 1px solid transparent
@@ -54,12 +63,11 @@
 			text-decoration: none
 
 			span
-				border-color: white
+				border-color: inherit
 
 			&[href^="tel"]
 				span
 					border-color: transparent
-
 
 /*contact phones
 .contact-phones
@@ -101,10 +109,13 @@
 		top: 50%
 		+size(7px)
 		margin-top: -3px
-		border: solid white
+		border: solid black
 		border-width: 0 1px 1px 0
 		transform: rotate(45deg)
 		transform-origin: right top
+
+		.top-panel--alt &
+			border-color: white
 
 		.choice-opened &
 			border-width: 1px 0 0 1px
@@ -165,9 +176,12 @@
 			text-indent: -9999px
 			overflow: hidden
 			position: relative
-			background-size: contain
-			background-position: center
+			background-size: 100%
+			background-position: 0 0
 			background-repeat: no-repeat
+
+			.home-page &
+				background-position: 0 100%
 
 			&::before
 				+pseudo($pos: relative)
@@ -177,16 +191,16 @@
 
 	.logo-title
 		.fig
-			+size(89px, auto)
+			+size(101px, auto)
 			background-image: url(../../img/logo-title.png)
 
 			&::before
-				+ratio(89, 45)
+				+ratio(101, 53)
 
 	.logo-map
 		.fig
-			background-image: url(../../img/logo-map.png)
 			+size(192px, auto)
+			background-image: url(../../img/logo-map.png)
 
 			&::before
 				+ratio(192, 50)
