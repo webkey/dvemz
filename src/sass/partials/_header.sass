@@ -12,6 +12,16 @@
 .header__row
 	display: table-row
 
+	&:first-child
+		height: 1%
+
+	&:last-child
+		display: none
+
+		.home-page &
+			display: table-row
+			height: 1%
+
 .header__cell
 	display: table-cell
 	vertical-align: middle
@@ -20,7 +30,7 @@
 	.header__row:first-child &
 		vertical-align: top
 
-	.header__row:last-child &
+	.home-page .header__row:last-child &
 		vertical-align: bottom
 
 		svg

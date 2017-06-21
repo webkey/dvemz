@@ -102,11 +102,17 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	font-size: 1.2em
 	margin-bottom: $bottom-space
 
-	&:first-letter
+	//&:first-letter
 		float: left
 		font-size: 4em
 		line-height: 1
 		+margin($top: 0.1em, $right: 0.3em)
+
+	b, strong
+		+font-bold
+
+	i, em
+		+font-bold-italic
 
 .entry-img
 	position: relative
@@ -283,7 +289,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	overflow: auto
 	max-width: 100%
 	-webkit-overflow-scrolling: touch
-	margin: 0 0 $bottom-space
+	margin-bottom: $bottom-space
 
 	table
 		margin-bottom: 0

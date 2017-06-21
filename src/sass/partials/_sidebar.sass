@@ -5,6 +5,18 @@
 /*SIDE MENU*/
 $sidemenu-bg-color-hover: #999
 
+.side-menu
+	position: fixed
+	right: 0
+	top: 0
+	height: 100%
+	overflow-x: hidden
+	overflow-y: auto
+	width: $sidebar-width
+
+	.home-page &
+		width: $sidebar-width--lg
+
 .side-menu__holder
 	display: table
 	min-height: 100vh

@@ -4,13 +4,22 @@
 
 /*top panel
 .top-panel
-	position: fixed
-	left: $header-width
-	width: calc(100% - #{$sidebar-width + $header-width})
-	max-width: calc(#{$page-layout-width - $sidebar-width - $header-width})
+	position: relative
 	padding: 0 $page-layout-space-horizontal
+	margin: 0 $sidebar-width 0 $header-width
 	height: $top-panel-height
 	z-index: 40
+
+	.top-panel--alt &
+		position: fixed
+		left: $header-width
+		margin: 0
+		width: calc(100% - #{$sidebar-width + $header-width})
+		max-width: calc(#{$page-layout-width - $sidebar-width - $header-width})
+
+	.home-page &
+		width: calc(100% - #{$sidebar-width--lg + $header-width})
+		max-width: calc(#{$page-layout-width - $sidebar-width--lg - $header-width})
 
 	&::before
 		+pseudo()

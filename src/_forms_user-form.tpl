@@ -1,4 +1,4 @@
-<div class="user-form">
+<div class="user-form layout-full-width">
 	<div class="layout-text">
 		<div class="form-title">@@title</div>
 		<form action="#" method="get">

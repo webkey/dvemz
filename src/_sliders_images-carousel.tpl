@@ -1,5 +1,5 @@
 <!--images slider-->
-<div class="images-slider">
+<div class="images-slider layout-full-width">
 	<div class="images-slider__list">
 		<div class="images-slider__item">
 			<img data-lazy="../img/__temp-img-content-carousel-01.jpg" src="img/empty.png" alt="image description">

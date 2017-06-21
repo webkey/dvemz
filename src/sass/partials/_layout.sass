@@ -30,10 +30,11 @@
 	margin: 0 $sidebar-width 0 $header-width
 	min-height: 50px
 
-	background-color: white
+	.home-page &
+		margin-right: $sidebar-width--lg
 
-	//+media('<desk-lg')
-		margin-right: 0
+//+media('<desk-lg')
+	margin-right: 0
 
 	//+media('<tab-lg')
 		margin-left: 0
@@ -54,17 +55,6 @@
 	float: right
 	margin: 0 0 0 -320px
 	width: 320px
-
-	background-color: sandybrown
-
-.side-menu
-	position: fixed
-	right: 0
-	top: 0
-	height: 100%
-	overflow-x: hidden
-	overflow-y: auto
-	width: $sidebar-width
 
 	background-color: sandybrown
 
@@ -99,8 +89,10 @@
 .max-wrap-text
 	max-width: $text-layout-width
 
+// выравнивание текстовых элементов на внутренней странице
+// и их максимальная ширина
 .layout-text
-	max-width: $text-layout-width
+	max-width: $text-layout-width + $text-layout-space-horizontal*2
 	+padding-horizontal($text-layout-space-horizontal)
 	+push-auto
 
@@ -113,8 +105,10 @@
 .max-wrap-flood
 	max-width: $flood-layout-width
 
+// выравнивание альтернативных элементов на внутренней странице
+// и их максимальная ширина
 .layout-flood
-	max-width: $flood-layout-width
+	max-width: $flood-layout-width + $text-layout-space-horizontal*2
 	+padding-horizontal($flood-layout-space-horizontal)
 	+push-auto
 
@@ -123,5 +117,31 @@
 
 	+media('<tab-sm')
 		+padding-horizontal($text-layout-space-horizontal--sm)
+
+// выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
+// и их максимальная ширина
+.layout-article
+	padding: round($text-layout-space-horizontal) #{$text-layout-space-horizontal}
+
+	p, ul, ol, h1, h2, h3, h4, h5, h6, hr, .layout-text, .layout-flood
+		max-width: $text-layout-width
+		+padding-horizontal(0)
+		+push-auto
+
+	.layout-flood
+		max-width: $flood-layout-width
+
+		p, ul, ol, h1, h2, h3, h4, h5, h6, hr
+			max-width: none
+
+	// элеметы без отступов по бокам
+	.layout-full-width
+		+margin-horizontal(-#{$text-layout-space-horizontal})
+
+		+media('<tab-lg')
+			+margin-horizontal(-#{$text-layout-space-horizontal--md})
+
+		+media('<tab-sm')
+			+margin-horizontal(-#{$text-layout-space-horizontal--sm})
 
 /*LAYOUT end*/
