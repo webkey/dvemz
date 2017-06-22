@@ -1,0 +1,76 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*social networks
+.social-networks
+	margin-bottom: $bottom-space
+	+clear
+
+	&:last-child
+		margin-bottom: 0
+
+.social-networks__list
+	position: relative
+	float: left
+	width: calc(100% + 5px*2)
+	+clear-spacing
+	margin: 0 -5px -10px
+
+.social-networks__item
+	+display-inline-block-top
+	margin: 0 5px 10px
+	+font(14px, 1.5)
+	letter-spacing: normal
+
+	a
+		display: block
+		position: relative
+		+size(50px)
+		border-radius: 50%
+		border: 1px solid $text-color-light
+		background: white
+		transition-property: transform, border-color, background-color
+		transition-duration: $animation-speed
+
+		span
+			+hide-text
+
+		svg
+			+centering-transform-abs
+			+size(20px)
+
+		path
+			fill: $text-color-light
+			transition: fill $animation-speed
+
+		.no-touchevents &:hover
+			&.fb
+				background-color: $facebook-color
+				border-color: $facebook-color
+
+			&.vk
+				background-color: $vkontakte-color
+				border-color: $vkontakte-color
+
+			&.twitter
+				background-color: $twitter-color
+				border-color: $twitter-color
+
+			&.ok
+				background-color: $odnoklassniki-color
+				border-color: $odnoklassniki-color
+
+			&.youtube
+				background-color: $youtube-color
+				border-color: $youtube-color
+
+			&.instagram
+				//+linear-gradient(to right, #{$instagram-color-start} 0%, #{$instagram-color-end} 100%)
+				background-color: $instagram-color-end
+				border-color: $instagram-color-end
+
+			path
+				fill: white
+
+/*social networks end

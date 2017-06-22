@@ -51,8 +51,7 @@
 		transition-duration: $animation-speed
 
 .user-option__icon
-	position: absolute
-	+centering-transform()
+	+centering-transform-abs()
 
 	& > span
 		+hide-text
@@ -315,8 +314,7 @@ $btn-menu-lines-color: $text-color !default
 		transform: translate(0, 100%)
 
 .down-arrow__align
-	position: absolute
-	+centering-transform()
+	+centering-transform-abs()
 
 	span
 		display: block

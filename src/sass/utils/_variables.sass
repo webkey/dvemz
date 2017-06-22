@@ -8,6 +8,9 @@ $breakpoints: ('desk-hd': 1920px, 'desk-lg': 1600px, 'desk-md': 1366px, 'desk-sm
 // base
 $font-size: 1.8rem !default
 $line-height: round-float(3.2rem/$font-size, 2) !default
+// ===============
+$font-size--sm: 1.6rem !default
+$line-height--sm: round-float(2.4rem/$font-size--sm, 2) !default
 
 // ===============
 $font-size-h1: 4.8rem !default
@@ -44,20 +47,22 @@ $base-color: #fabb00 !default
 // цвет фона страницы
 $bg-color: white !default
 $bg-color-light: #f3f3f3 !default
-// цвет остовного текста
+// цвет основного текста
 $text-color: black !default
 // цвет основных заголовков заголовков
 $title-color: black !default
 // цвет текста светлее основного
-$text-color-light: gray !default
+$text-color-light: #999 !default
 // цвет для выделения текста
-$text-color-alt: tomato !default
+$text-color-alt: #fabb00 !default
 // цвет ссылки
-$link-color: blue !default
+$link-color: #0099ff !default
 // цвет линий и границ
 $border-color: #999 !default
 // цвет специальных элементов
 $mark-color: tomato !default
+// цвет контурных элементов
+$outline-color: #ccc !default
 
 // user content class
 // class на контейнере, в котором будет использоваться стилизация
@@ -91,16 +96,16 @@ $form-success-color: green !default
 $form-bottom-space: 3rem !default
 
 // btn
-$btn-bg-color: tomato !default
-$btn-bg-hover-color: darken($btn-bg-color, 20%) !default
-$btn-text-color: white !default
+$btn-bg-color: #fabb00 !default
+$btn-bg-hover-color: shade($btn-bg-color, 90%) !default
+$btn-text-color: $text-color !default
 
 // table color
 $table-text-color: $text-color !default
-$table-border-color: tomato !default
+$table-border-color: $outline-color !default
 $table-bg-color: white !default
-$table-text-alt-color: white !default
-$table-bg-alt-color: tomato !default
+$table-text-alt-color: $text-color !default
+$table-bg-alt-color: #f3f3f3 !default
 
 // animation
 $animation-speed: 0.2s !default
@@ -147,6 +152,15 @@ $top-panel-space: 20px !default
 // news grid
 $news-grid-font-size: $font-size
 $news-grid-line-height: $line-height
+
+// social color
+$facebook-color: #3a589e
+$vkontakte-color: #4b73a4
+$twitter-color: #1da0f2
+$odnoklassniki-color: #f2822e
+$youtube-color: #e62117
+$instagram-color-start: #de4f5a
+$instagram-color-end: #a43b97
 
 // ============= обнуление жирности и наклонности шрифта ==============
 // ============= использовать, если подключается font-face ==============

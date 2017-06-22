@@ -2,7 +2,12 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-/*files links*/
+/*files links
+.files-list
+	&, .#{$user-content} &
+		li
+			margin: $bottom-space 0
+
 .file
 	$file-icon-size: 32px
 	display: inline-block
@@ -42,4 +47,93 @@
 		font-size: 1.4rem
 		color: $text-color-light
 
-/*files links end*/
+/*files links end
+/*files download
+.file-download
+	display: block
+	border: 1px solid $outline-color
+	background-color: white
+	color: $text-color
+	+clear-spacing
+
+.file-download__title, .file-download__size, .file-download__icon
+	+display-inline-block-middle
+	+font($font-size, $line-height)
+	letter-spacing: normal
+
+.file-download__title
+	padding: 30px
+	width: calc(100% - 100px - 200px)
+
+.file-download__size
+	+font(14px, 2.3)
+	padding: 30px
+	width: 200px
+	color: $text-color-light
+	text-transform: uppercase
+	text-align: right
+
+.file-download__icon
+	position: absolute
+	right: 0
+	top: 0
+	width: 100px
+	height: 100%
+	border-left: 1px solid $outline-color
+	background-color: $base-color
+
+	span
+		+hide-text
+
+	i
+		position: absolute
+		+position(50%, 50%)
+		+size(32px, 11px)
+		border: solid white
+		border-width: 0 2px 2px
+		margin: 5px 0 0 -16px
+		transition-property: transform
+		transition-duration: $animation-speed
+
+		&::before, &::after
+			+pseudo()
+			left: 50%
+			bottom: 6px
+			transition-property: bottom
+			transition-duration: 1s
+
+		&::before
+			position: absolute
+			+size(2px, 20px)
+			margin-left: -1px
+			background-color: $text-color
+			z-index: 5
+
+		&::after
+			+pseudo()
+			+size(12px)
+			margin-left: -6px
+			border: solid $text-color
+			border-width: 0 0 2px 2px
+			transform: rotate(-45deg)
+
+.no-touchevents .file-download:hover .file-download__icon
+	i
+		transform: scale(1.5)
+
+		&::before, &::after
+			animation-name: download
+			animation-duration: 1s
+			animation-iteration-count: infinite
+
+@keyframes download
+	0%
+		bottom: 6px
+
+	50%
+		bottom: 15px
+
+	100%
+		bottom: 6px
+
+/*files download end

@@ -1,0 +1,87 @@
+@import ../utils/_variables
+@import ../utils/_mixins
+@import ../../libs/include-media/dist/_include-media
+
+/*accordion
+.simple-accordion
+	margin-bottom: $bottom-space-md
+	border-bottom: 2px solid $outline-color
+
+	& > a
+		display: block
+		position: relative
+		padding: 18px 0
+		+font-bold
+		color: $text-color
+		text-decoration: none
+		border-top: 2px solid $outline-color
+		transition-property: color
+		transition-duration: $animation-speed
+
+		.no-touchevents &:hover
+			color: $link-color
+
+		& > i
+			$this-icon-lines-width: 12px
+			$this-icon-lines-height: 1px
+			$this-icon-lines-color: $text-color
+
+			position: absolute
+			right: 0
+			top: 50%
+			+size(16px, 10px)
+			margin-top: -5px
+			backface-visibility: hidden
+
+			&::before, &::after
+				+pseudo()
+				bottom: 0
+				backface-visibility: hidden
+				+size($this-icon-lines-width, $this-icon-lines-height)
+				background-color: $this-icon-lines-color
+				transition-property: background-color
+				transition-duration: $animation-speed
+
+			&::before
+				right: 50%
+				transform-origin: bottom right
+				transform: rotate(45deg)
+
+			//&::before
+				top: 0
+				transform: rotate(-45deg)
+
+			&::after
+				left: 50%
+				transform-origin: bottom left
+				transform: rotate(-45deg)
+
+			//&::after
+				top: 0
+				transform: rotate(45deg)
+
+		.no-touchevents &:hover
+			& > i
+				&::before, &::after
+					background-color: $link-color
+
+		&.is-open i
+			transform: rotate(0.5turn)
+
+		& > span
+			display: block
+			overflow: hidden
+			white-space: nowrap
+			-ms-text-overflow: ellipsis
+			text-overflow: ellipsis
+			position: relative
+			margin-right: 25px
+
+		& + div
+			padding: 18px 0
+			display: none
+
+			& > *:last-child
+				margin-bottom: 0
+
+/*accordion end

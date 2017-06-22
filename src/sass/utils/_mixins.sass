@@ -55,6 +55,21 @@
 	left: $l
 
 // =============================================================================
+// position
+// =============================================================================
+/// Примесь создает гурппу свойств для позиционирования
+//=position($pos: absolute, $t: 0, $r: null, $b:null, $l: 0)
+	position: $pos
+	@if $t
+		top: $t
+	@if $r
+		right: $r
+	@if $b
+		bottom: $b
+	@if $l
+		left: $l
+
+// =============================================================================
 // font
 // =============================================================================
 /// Примесь добавляет одновремменно `font-size` и `line-height`
@@ -435,12 +450,20 @@
 /// @example Sass - Использование
 /// @example css - Вывод CSS
 
-/// 1. С помощью transform: translate:
+/// 1.1 С помощью "transform: translate" без позициирования:
 =centering-transform($pos: null)
 	position: $pos
 	left: 50%
 	top: 50%
 	transform: translate(-50%, -50%)
+
+/// 1.2 С помощью "transform: translate" + "position: absolute":
+=centering-transform-abs()
+	+centering-transform($pos: absolute)
+
+/// 1.3 С помощью "transform: translate" + "position: relative":
+=centering-transform-rel()
+	+centering-transform($pos: relative)
 
 /// 2. С помощью margin:
 =centering-margin($width: null, $height: null, $pos: null)
@@ -532,21 +555,6 @@
 	left: 0
 	top: 0
 	+size(100%)
-
-// =============================================================================
-// position
-// =============================================================================
-/// Примесь создает гурппу свойств для позиционирования
-=position($pos: absolute, $t: 0, $r: null, $b:null, $l: 0)
-	position: $pos
-	@if $t
-		top: $t
-	@if $r
-		right: $r
-	@if $b
-		bottom: $b
-	@if $l
-		left: $l
 
 /// Примесь позволяет указывает изображению способ заполнения блока,
 /// в котором находится

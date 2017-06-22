@@ -44,6 +44,8 @@ function scrollPage() {
 scrollFn();
 /*js scroll page lock end*/
 
+var thisIsHomePage = $('.home-page').length;
+
 /**
  * !resize only width
  * */
@@ -1133,28 +1135,30 @@ function eventSideMenu() {
 	var $sideItem = $('.side-menu__hover');
 	var $sideItemTitle = $('.side-menu__title');
 
-	$sideItem.on('mouseenter', function () {
-		var $thisItem = $(this);
-		var $thisItemTitle = $thisItem.find($sideItemTitle);
-		if(!$thisItemTitle.length) {
-			return false;
-		}
+	if (thisIsHomePage) {
+		$sideItem.on('mouseenter', function () {
+			var $thisItem = $(this);
+			var $thisItemTitle = $thisItem.find($sideItemTitle);
+			if (!$thisItemTitle.length) {
+				return false;
+			}
 
-		var $newPositionTitle = Math.round($thisItemTitle.offset().top - ($thisItem.offset().top + ($thisItem.outerHeight() - $thisItemTitle.outerHeight())/2));
+			var $newPositionTitle = Math.round($thisItemTitle.offset().top - ($thisItem.offset().top + ($thisItem.outerHeight() - $thisItemTitle.outerHeight()) / 2));
 
-		$thisItemTitle.css({
-			'transform': 'matrix(1, 0, 0, 1, 0, '+ -$newPositionTitle +')',
-			'webkit-transform': 'matrix(1, 0, 0, 1, 0, '+ -$newPositionTitle +')'
+			$thisItemTitle.css({
+				'transform': 'matrix(1, 0, 0, 1, 0, ' + -$newPositionTitle + ')',
+				'webkit-transform': 'matrix(1, 0, 0, 1, 0, ' + -$newPositionTitle + ')'
+			})
+
+		}).on('mouseleave', function () {
+			// $sideItemTitle.css({
+			// 	'top': 0
+			// })
+			$sideItemTitle.css({
+				'transform': 'matrix(1, 0, 0, 1, 0, 0'
+			})
 		})
-
-	}).on('mouseleave', function () {
-		// $sideItemTitle.css({
-		// 	'top': 0
-		// })
-		$sideItemTitle.css({
-			'transform': 'matrix(1, 0, 0, 1, 0, 0'
-		})
-	})
+	}
 }
 /**event side menu end*/
 
@@ -1255,6 +1259,37 @@ function choicerInit() {
 
 }
 /*choicer end*/
+
+/**
+ * !simple accordion
+ * */
+function simpleAccordInit() {
+	function simpleAccordion($hand, $panel, animateSpeed) {
+		var activeClass = 'is-open';
+
+		if ($panel.hasClass(activeClass)) {
+			$panel.toggle().prev().addClass(activeClass);
+		}
+
+		$hand.on('click', function (e) {
+			e.preventDefault();
+
+			$(this).toggleClass(activeClass);
+			$panel.stop().slideToggle(animateSpeed);
+		})
+	}
+
+	var $simpleAccordionHand = $('.simple-accordion-js').children('a');
+
+	if ($simpleAccordionHand.length) {
+		$simpleAccordionHand.each(function () {
+			var $thisHand = $(this);
+
+			simpleAccordion($thisHand, $thisHand.next(), 200);
+		})
+	}
+}
+/*simple accordion end*/
 
 /**
  * !footer at bottom
@@ -1359,6 +1394,7 @@ $(document).ready(function () {
 	popupsInit();
 	eventSideMenu();
 	choicerInit();
+	simpleAccordInit();
 
 	footerBottom();
 	formSuccessExample();

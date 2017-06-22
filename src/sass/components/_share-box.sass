@@ -1,0 +1,29 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*share box
+.share-box
+	+clear-spacing
+
+	.share-box__label
+		+display-inline-block-middle
+		+font(#{$font-size}, #{$line-height})
+		color: $text-color-light
+		letter-spacing: normal
+		max-width: 100px
+		margin-right: 20px
+
+	.social-networks
+		+display-inline-block-middle
+
+	+media('<mob-lg')
+		.share-box__label
+			float: none
+			margin-bottom: $bottom-space-sm
+			max-width: none
+
+		.social-networks
+			display: block
+
+/*share box end
