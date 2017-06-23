@@ -552,8 +552,7 @@
 =cover($position: absolute)
 	@if $position
 		position: $position
-	left: 0
-	top: 0
+	+position(0, 0)
 	+size(100%)
 
 /// Примесь позволяет указывает изображению способ заполнения блока,
