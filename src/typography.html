@@ -605,14 +605,14 @@
 									</div>
 								</div>
 								<!--style default button end-->
-								<p>У всех шрифтов есть хотя бы одна сладкая точка; комбинация размеров, при котором шрифт лучше всего показывает себя на экране, точка, в которой анти-сглаживание, встроенное в браузеры, искажает дизайн шрифта как можно меньше.</p>
+								<div class="user-spacer">&nbsp;</div>
 								<!--form style-->
 								<h3>
-									<a href="#hashFormElementExample" id="hashFormElementExample" class="hashAnchor"><span class="mark">Элементы форм</span></a>
+									<a href="#hashFormElementExample" id="hashFormElementExample" class="hashAnchor"><span class="mark">Поля форм</span></a>
 								</h3>
 								<div class="layout-text">
 									<form action="#" method="get">
-										<div class="input-wrap">
+										<div class="input-wrap field-effects-js">
 											<div class="label-holder">
 												<label for="expl-label-01">Пример текстового поля с плейсхолдером: <span class="form-mark">*</span></label>
 											</div>
@@ -621,7 +621,7 @@
 												<span class="error-note">Поле обязательное для заполнения</span>
 											</div>
 										</div>
-										<div class="input-wrap">
+										<div class="input-wrap field-effects-js">
 											<div class="label-holder">
 												<label for="expl-label-02">Пример невалидного текстового поля: <span class="form-mark">*</span></label>
 											</div>
@@ -631,38 +631,41 @@
 											</div>
 										</div>
 										<div class="form-row">
-											<div class="input-wrap">
+											<div class="input-wrap field-effects-js">
 												<div class="label-holder">
 													<label for="expl-label-03">Текстовое поле первое: <span class="form-mark">*</span></label>
 												</div>
 												<div class="input-holder">
 													<input type="text" placeholder="Текстовое поле первое" id="expl-label-03" />
+													<span class="error-note">Поле обязательное для заполнения</span>
 												</div>
 											</div>
-											<div class="input-wrap">
+											<div class="input-wrap field-effects-js">
 												<div class="label-holder">
 													<label for="expl-label-04">Текстовое поле второе: <span class="form-mark">*</span></label>
 												</div>
-												<div class="input-holder">
-													<input type="text" placeholder="Текстовое поле второе" id="expl-label-04" />
+												<div class="input-holder error">
+													<input class="error" type="text" placeholder="Текстовое поле второе" id="expl-label-04" />
+													<span class="error-note">Поле обязательное для заполнения</span>
 												</div>
 											</div>
 										</div>
 										<div class="form-row">
-											<div class="input-wrap">
+											<div class="input-wrap field-effects-js">
 												<div class="label-holder">
 													<label for="expl-label-05">Текстовое поле третье: <span class="form-mark">*</span></label>
 												</div>
 												<div class="input-holder">
 													<input type="text" placeholder="Текстовое поле третье" id="expl-label-05" />
+													<span class="error-note">Поле обязательное для заполнения</span>
 												</div>
 											</div>
-											<div class="input-wrap">
+											<div class="input-wrap field-effects-js">
 												<div class="label-holder">
 													<label for="expl-label-06">Пример селекта: <span class="form-mark">*</span></label>
 												</div>
-												<div class="select">
-													<select class="cselect" name="filter-type" id="expl-label-06">
+												<div class="select error">
+													<select class="cselect error" name="filter-type" id="expl-label-06">
 					<option value="1">Размер</option>
 					<option value="2">Вес</option>
 					<option value="3">Цвет</option>
@@ -672,10 +675,11 @@
 					<option value="7">Сочетание</option>
 					<option value="8">Расстояние</option>
 				</select>
+													<span class="error-note">Обязательное поле</span>
 												</div>
 											</div>
 										</div>
-										<div class="input-wrap">
+										<div class="input-wrap field-effects-js">
 											<div class="label-holder">
 												<label for="expl-label-07">Сообщение:</label>
 											</div>
@@ -683,12 +687,17 @@
 												<textarea placeholder="Сообщение" id="expl-label-07"></textarea>
 											</div>
 										</div>
-										<div class="layout-text">
-											<h3>
-												<a href="#hashFormsSelect" id="hashFormsSelect" class="hashAnchor"><span class="mark">Селекты</span></a>
-											</h3>
-										</div>
-										<div class="input-wrap">
+									</form>
+								</div>
+								<!--form style end-->
+								<div class="user-spacer">&nbsp;</div>
+								<!--selects-->
+								<h3>
+									<a href="#hashFormsSelect" id="hashFormsSelect" class="hashAnchor"><span class="mark">Селекты</span></a>
+								</h3>
+								<div class="layout-text">
+									<form action="#" method="get">
+										<div class="input-wrap field-effects-js">
 											<div class="label-holder">
 												<label for="default-select-example">Некастомный селект:</label>
 											</div>
@@ -705,7 +714,7 @@
 			</select>
 											</div>
 										</div>
-										<div class="input-wrap">
+										<div class="input-wrap field-effects-js">
 											<div class="label-holder">
 												<label for="custom-select-example">Кастомный селект:</label>
 											</div>
@@ -722,7 +731,7 @@
 			</select>
 											</div>
 										</div>
-										<div class="input-wrap">
+										<div class="input-wrap field-effects-js">
 											<div class="label-holder">
 												<label for="multiselect-example">Мультиселект:</label>
 											</div>
@@ -739,7 +748,7 @@
 			</select>
 											</div>
 										</div>
-										<div class="input-wrap">
+										<div class="input-wrap field-effects-js">
 											<div class="label-holder">
 												<label for="multiselect-with-placeholder-example">Мультиселект c пелейсхолдером:</label>
 											</div>
@@ -758,7 +767,61 @@
 										</div>
 									</form>
 								</div>
+								<!--selects end-->
+								<div class="user-spacer">&nbsp;</div>
+								<!--form style-->
+								<h3>
+									<a href="#hashFormLight" id="hashFormLight" class="hashAnchor"><span class="mark">Поля форм (альтернативный вид)</span></a>
+								</h3>
+								<div class="layout-text">
+									<div class="callback-form">
+										<div class="text-layout">
+											<h2>Форма обратной связи</h2>
+											<p class="text__description">Задайте интересующий Вас вопрос и наш специалист свяжется с Вами в самое ближайшее время.</p>
+											<form action="#" method="get">
+												<div class="form-row">
+													<div class="input-wrap light-form field-effects-js">
+														<div class="label-holder"><label for="cf-field-01">Имя <span class="form-mark">*</span></label></div>
+														<input type="text" id="cf-field-01" />
+														<span class="error-note">Поле обязательное для заполнения</span>
+													</div>
+													<div class="input-wrap light-form field-effects-js">
+														<div class="label-holder"><label for="cf-field-02">Компания <span class="form-mark">*</span></label></div>
+														<input type="text" id="cf-field-02" />
+														<span class="error-note">Поле обязательное для заполнения</span>
+													</div>
+												</div>
+												<div class="form-row">
+													<div class="input-wrap light-form field-effects-js">
+														<div class="label-holder"><label for="cf-field-03">Телефон <span class="form-mark">*</span></label></div>
+														<input type="text" id="cf-field-03" />
+														<span class="error-note">Поле обязательное для заполнения</span>
+													</div>
+													<div class="input-wrap light-form field-effects-js">
+														<div class="label-holder"><label for="cf-field-04">Электронная почта <span class="form-mark">*</span></label></div>
+														<input type="email" id="cf-field-04" />
+														<span class="error-note">Поле обязательное для заполнения</span>
+													</div>
+												</div>
+												<div class="input-wrap light-form field-effects-js">
+													<div class="label-holder"><label for="cf-field-05">Сообщение: <span class="form-mark">*</span></label></div>
+													<textarea id="cf-field-05"></textarea>
+													<span class="error-note">Поле обязательное для заполнения</span>
+												</div>
+												<div class="form-footer">
+													<div class="form-buttons">
+														<button class="btn-default btn-submit" data-label="Отправить">Отправить</button>
+													</div>
+													<div class="form-note">
+														<div class="form-note__item"><span class="form-mark">*</span> Поля обязательны для заполнения</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
 								<!--form style end-->
+								<div class="user-spacer">&nbsp;</div>
 								<!--checkbox and radio-->
 								<h3>
 									<a href="#hashFormCheckboxExample" id="hashFormCheckboxExample" class="hashAnchor"><span class="mark">Чекбоксы и Радиобаттоны</span></a>

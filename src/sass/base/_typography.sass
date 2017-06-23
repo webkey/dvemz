@@ -10,7 +10,7 @@ body
 	+font($font-size, $line-height)
 	color: $text-color
 	height: 100%
-	background-color: $bg-color
+	background: $bg-color url(../../img/empty.png) no-repeat fixed
 	// min-width: 1600px
 	min-width: 320px
 	overflow-x: hidden
@@ -97,6 +97,12 @@ i, em
 
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+font-bold-italic
+
+// user spacer
+.user-spacer
+	height: $bottom-space-lg
+
+// user spacer end
 
 .entry-text
 	+font-bold
