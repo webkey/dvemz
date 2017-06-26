@@ -9,13 +9,13 @@
 		margin-bottom: 50px
 
 	input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
-		position: relative // важно! поднять выше лейбла
+		// position: relative // важно! поднять выше лейбла
 		box-shadow: none
 		border: none
 		transition: none
 		cursor: pointer
-		background: none // важно! поднять выше лейбла
-		z-index: 998 // важно! поднять выше лейбла
+		// background: none // важно! поднять выше лейбла
+		// z-index: 998 // важно! поднять выше лейбла
 
 	input[type="text"], input[type="password"], input[type="email"], input[type="search"], label
 		+size(100%, 50px)
@@ -28,13 +28,9 @@
 		height: 130px
 		resize: none
 
-	&.input--focus, &.input--has-value
-		input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
-			cursor: text
-
 	//form error
 	input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
-		&.error
+		&.error, .no-touchevents &.error
 			color: $form-error-color
 			box-shadow: none
 
@@ -47,6 +43,8 @@
 		padding: 0
 		margin-bottom: 0
 		+antialiased
+		pointer-events: none // важно! поднять выше лейбла
+		z-index: 5
 
 		&:before, &:after
 			+pseudo()
@@ -77,11 +75,15 @@
 			transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
 
 	&.input--focus, &.input--has-value
+		input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
+			cursor: text
+
 		.label-holder
 			color: $text-color-light
 
 			label
-				transform: translate(0, -#{round($form-input-height*0.5)}) scale(0.78, 0.78)
+				transform: translate(0, -18px) scale(0.78, 0.78)
+				cursor: default
 
 			&:before
 				width: 0
@@ -93,5 +95,28 @@
 		.label-holder
 			&:before, &:after
 				border-color: $form-error-color
+
+	.select
+		select
+			&, &.error
+				&,
+				& ~ .select2-container--default .select2-selection
+					border-color: transparent
+					padding-left: 0
+
+		&::before,
+		&::after,
+		.select2-container--default .select2-selection--single .select2-selection__arrow b::before,
+		.select2-container--default .select2-selection--single .select2-selection__arrow b::after
+			right: 5px
+
+		&::after,
+		.select2-container--default .select2-selection--single .select2-selection__arrow b::after
+			transform: rotate(-45deg)
+			right: 0
+
+		.select2-container--default .select2-selection--single .select2-selection__placeholder
+			color: transparent
+
 
 /*LIGHT FORM end

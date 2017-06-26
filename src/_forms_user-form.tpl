@@ -2,59 +2,72 @@
 	<div class="layout-text">
 		<div class="form-title">@@title</div>
 		<form action="#" method="get">
-			<div class="input-wrap">
-				<div class="label-holder">
-					<label for="user-form-example__name-field">Имя<span class="form-mark">*</span></label>
+			<div class="form-row">
+				<div class="input-wrap light-form field-effects-js">
+					<div class="label-holder"><label for="uf-field-01">Имя <span class="form-mark">*</span></label></div>
+					<input type="text" id="uf-field-01"/>
+					<span class="error-note">Поле обязательное для заполнения</span>
+					<span class="confirm-note">&nbsp;</span>
 				</div>
-				<div class="input-holder">
-					<input type="text" id="user-form-example__name-field">
-					<span class="error-note">Поле обязательно для заполнения</span>
-				</div>
-			</div>
-			<div class="input-wrap">
-				<div class="label-holder">
-					<label for="user-form-example__email-field">E-mail<span class="form-mark">*</span></label>
-				</div>
-				<div class="input-holder">
-					<input type="email" id="user-form-example__email-field">
-					<span class="error-note">Поле обязательно для заполнения</span>
+				<div class="input-wrap light-form field-effects-js">
+					<div class="label-holder"><label for="uf-field-02">Эл. почта <span class="form-mark">*</span></label></div>
+					<input type="text" id="uf-field-02"/>
+					<span class="error-note">Поле обязательное для заполнения</span>
+					<span class="confirm-note">&nbsp;</span>
 				</div>
 			</div>
-			<div class="input-wrap has--value">
+			<div class="input-wrap light-form field-effects-js">
 				<div class="label-holder">
-					<label for="user-form-example__message-field">Сообщение<span class="form-mark">*</span></label>
+					<label for="uf-field-select-01">Выберите тему</label>
 				</div>
-				<div class="input-holder success">
-					<textarea id="user-form-example__message-field" class="success"></textarea>
-					<span class="error-note">Поле обязательно для заполнения</span>
+				<div class="select">
+					<select id="uf-field-select-01">
+						<option value=""></option> <!--Важно! Этот пункт должен быть пустым-->
+						<option value="1">Размер</option>
+						<option value="2">Вес</option>
+						<option value="3">Цвет</option>
+						<option value="4">Позицию (расположение)</option>
+						<option value="5">Опшин очень-очень-очень-очень длинный</option>
+						<option value="6">Контраст</option>
+						<option value="7">Сочетание</option>
+						<option value="8">Расстояние</option>
+					</select>
+					<span class="error-note">Обязательное поле</span>
+					<span class="confirm-note">&nbsp;</span>
 				</div>
 			</div>
-			<div class="input-wrap">
+			<div class="input-wrap light-form field-effects-js">
 				<div class="label-holder">
+					<label for="uf-message">Вопрос</label>
+				</div>
+				<textarea id="uf-message"></textarea>
+			</div>
+			<div class="input-wrap light-form">
+				<!--<div class="label-holder">
 					<span class="label">Прикрепить файл</span>
-				</div>
+				</div>-->
 				<div class="input-holder upload-file__container">
 					<input class="upload-file" name="files[]" type="file" multiple="multiple" data-jfiler-limit="2">
 				</div>
 			</div>
 			<div class="input-wrap has--value">
 				<div class="label-holder">
-					<label for="user-form-example__captcha-field">Защита от спама:<span class="form-mark">*</span></label>
+					<label for="uf-captcha">Защита от спама:<span class="form-mark">*</span></label>
 				</div>
 				<div class="input-holder">
 					<div class="captcha">
 						<img src="img/captcha.jpg" alt="captcha" />
-						<input type="text" id="user-form-example__captcha-field">
+						<input type="text" id="uf-captcha">
 						<span class="error-note">Введите текст на картинке для защиты от спама</span>
 					</div>
 				</div>
 			</div>
 			<div class="form-footer">
 				<div class="form-buttons">
-					<button class="btn-default btn-submit" data-label="Отправить">Отправить</button>
+					<button class="btn-default btn-submit" data-label="Отправить">Обратная связь</button>
 				</div>
 				<div class="form-note">
-					<div class="form-note__item"><span class="form-mark">*</span> Поля обязательны для заполнения</div>
+					<div class="form-note__item"><span class="form-mark">*</span> Поля обязательные для заполнения</div>
 				</div>
 			</div>
 		</form>

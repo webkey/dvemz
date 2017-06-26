@@ -615,15 +615,17 @@
 									<div class="input-holder">
 										<input type="text" placeholder="Текстовое поле" id="expl-label-01" />
 										<span class="error-note">Поле обязательное для заполнения</span>
+										<span class="confirm-note">&nbsp;</span>
 									</div>
 								</div>
 								<div class="input-wrap field-effects-js">
 									<div class="label-holder">
 										<label for="expl-label-02">Пример невалидного текстового поля: <span class="form-mark">*</span></label>
 									</div>
-									<div class="input-holder error">
+									<div class="input-holder">
 										<input class="error" type="text" placeholder="Невалидное поле" id="expl-label-02" />
 										<span class="error-note">Поле обязательное для заполнения</span>
+										<span class="confirm-note">&nbsp;</span>
 									</div>
 								</div>
 								<div class="form-row">
@@ -634,15 +636,17 @@
 										<div class="input-holder">
 											<input type="text" placeholder="Текстовое поле первое" id="expl-label-03" />
 											<span class="error-note">Поле обязательное для заполнения</span>
+											<span class="confirm-note">&nbsp;</span>
 										</div>
 									</div>
 									<div class="input-wrap field-effects-js">
 										<div class="label-holder">
 											<label for="expl-label-04">Текстовое поле второе: <span class="form-mark">*</span></label>
 										</div>
-										<div class="input-holder error">
+										<div class="input-holder">
 											<input class="error" type="text" placeholder="Текстовое поле второе" id="expl-label-04" />
 											<span class="error-note">Поле обязательное для заполнения</span>
+											<span class="confirm-note">&nbsp;</span>
 										</div>
 									</div>
 								</div>
@@ -654,13 +658,14 @@
 										<div class="input-holder">
 											<input type="text" placeholder="Текстовое поле третье" id="expl-label-05" />
 											<span class="error-note">Поле обязательное для заполнения</span>
+											<span class="confirm-note">&nbsp;</span>
 										</div>
 									</div>
 									<div class="input-wrap field-effects-js">
 										<div class="label-holder">
 											<label for="expl-label-06">Пример селекта: <span class="form-mark">*</span></label>
 										</div>
-										<div class="select error">
+										<div class="select">
 											<select class="cselect error" name="filter-type" id="expl-label-06">
 					<option value="1">Размер</option>
 					<option value="2">Вес</option>
@@ -672,6 +677,7 @@
 					<option value="8">Расстояние</option>
 				</select>
 											<span class="error-note">Обязательное поле</span>
+											<span class="confirm-note">&nbsp;</span>
 										</div>
 									</div>
 								</div>
@@ -680,7 +686,9 @@
 										<label for="expl-label-07">Сообщение:</label>
 									</div>
 									<div class="input-holder">
-										<textarea placeholder="Сообщение" id="expl-label-07"></textarea>
+										<textarea placeholder="Сообщение" id="expl-label-07" class="error"></textarea>
+										<span class="error-note">Поле обязательное для заполнения</span>
+										<span class="confirm-note">&nbsp;</span>
 									</div>
 								</div>
 							</form>
@@ -810,59 +818,72 @@
 								<div class="layout-text">
 									<div class="form-title">Заголовок формы</div>
 									<form action="#" method="get">
-										<div class="input-wrap">
-											<div class="label-holder">
-												<label for="user-form-example__name-field">Имя<span class="form-mark">*</span></label>
+										<div class="form-row">
+											<div class="input-wrap light-form field-effects-js">
+												<div class="label-holder"><label for="uf-field-01">Имя <span class="form-mark">*</span></label></div>
+												<input type="text" id="uf-field-01" />
+												<span class="error-note">Поле обязательное для заполнения</span>
+												<span class="confirm-note">&nbsp;</span>
 											</div>
-											<div class="input-holder">
-												<input type="text" id="user-form-example__name-field">
-												<span class="error-note">Поле обязательно для заполнения</span>
-											</div>
-										</div>
-										<div class="input-wrap">
-											<div class="label-holder">
-												<label for="user-form-example__email-field">E-mail<span class="form-mark">*</span></label>
-											</div>
-											<div class="input-holder">
-												<input type="email" id="user-form-example__email-field">
-												<span class="error-note">Поле обязательно для заполнения</span>
+											<div class="input-wrap light-form field-effects-js">
+												<div class="label-holder"><label for="uf-field-02">Эл. почта <span class="form-mark">*</span></label></div>
+												<input type="text" id="uf-field-02" />
+												<span class="error-note">Поле обязательное для заполнения</span>
+												<span class="confirm-note">&nbsp;</span>
 											</div>
 										</div>
-										<div class="input-wrap has--value">
+										<div class="input-wrap light-form field-effects-js">
 											<div class="label-holder">
-												<label for="user-form-example__message-field">Сообщение<span class="form-mark">*</span></label>
+												<label for="uf-field-select-01">Выберите тему</label>
 											</div>
-											<div class="input-holder success">
-												<textarea id="user-form-example__message-field" class="success"></textarea>
-												<span class="error-note">Поле обязательно для заполнения</span>
+											<div class="select">
+												<select id="uf-field-select-01">
+						<option value=""></option> <!--Важно! Этот пункт должен быть пустым-->
+						<option value="1">Размер</option>
+						<option value="2">Вес</option>
+						<option value="3">Цвет</option>
+						<option value="4">Позицию (расположение)</option>
+						<option value="5">Опшин очень-очень-очень-очень длинный</option>
+						<option value="6">Контраст</option>
+						<option value="7">Сочетание</option>
+						<option value="8">Расстояние</option>
+					</select>
+												<span class="error-note">Обязательное поле</span>
+												<span class="confirm-note">&nbsp;</span>
 											</div>
 										</div>
-										<div class="input-wrap">
+										<div class="input-wrap light-form field-effects-js">
 											<div class="label-holder">
-												<span class="label">Прикрепить файл</span>
+												<label for="uf-message">Вопрос</label>
 											</div>
+											<textarea id="uf-message"></textarea>
+										</div>
+										<div class="input-wrap light-form">
+											<!--<div class="label-holder">
+					<span class="label">Прикрепить файл</span>
+				</div>-->
 											<div class="input-holder upload-file__container">
 												<input class="upload-file" name="files[]" type="file" multiple="multiple" data-jfiler-limit="2">
 											</div>
 										</div>
 										<div class="input-wrap has--value">
 											<div class="label-holder">
-												<label for="user-form-example__captcha-field">Защита от спама:<span class="form-mark">*</span></label>
+												<label for="uf-captcha">Защита от спама:<span class="form-mark">*</span></label>
 											</div>
 											<div class="input-holder">
 												<div class="captcha">
 													<img src="img/captcha.jpg" alt="captcha" />
-													<input type="text" id="user-form-example__captcha-field">
+													<input type="text" id="uf-captcha">
 													<span class="error-note">Введите текст на картинке для защиты от спама</span>
 												</div>
 											</div>
 										</div>
 										<div class="form-footer">
 											<div class="form-buttons">
-												<button class="btn-default btn-submit" data-label="Отправить">Отправить</button>
+												<button class="btn-default btn-submit" data-label="Отправить">Обратная связь</button>
 											</div>
 											<div class="form-note">
-												<div class="form-note__item"><span class="form-mark">*</span> Поля обязательны для заполнения</div>
+												<div class="form-note__item"><span class="form-mark">*</span> Поля обязательные для заполнения</div>
 											</div>
 										</div>
 									</form>
@@ -1359,25 +1380,69 @@
 	<footer class="footer">
 		<div class="max-wrap layout">
 			<div class="footer__holder">
-				<!--footer bottom-->
-				<div class="footer-bottom">
-					<div class="footer-bottom__holder">
-						<div class="footer-bottom__col">
-							<span class="copyright">&copy; <a href="index.html">Project</a> 2017</span>
-						</div>
-						<div class="footer-bottom__col">
-							<!--developer-->
-							<div class="developer">
-								<a href="http://astronim.by/">
-									<span class="developer__label">Разработка сайта —</span>
-									<span class="developer__logo">Astronim*Support</span>
-								</a>
+				<!--footer common-->
+				<div class="footer-common">
+					<div class="footer-common-holder">
+						<!--footer nav-->
+						<div class="footer-nav">
+							<div class="footer-nav__col">
+								<strong class="footer-nav__title"><a href="#"><span>Для Вас и Вашей семьи</span></a></strong>
+								<ul class="footer-nav__links">
+									<li><a href="#">Авто</a></li>
+									<li><a href="#">Поездки</a></li>
+									<li><a href="#">Здоровье</a></li>
+									<li><a href="#">Имущество</a></li>
+									<li><a href="#">Ответственность</a></li>
+								</ul>
 							</div>
-							<!--developer end-->
+							<div class="footer-nav__col">
+								<strong class="footer-nav__title"><span>Популярные разделы</span></strong>
+								<ul class="footer-nav__links">
+									<li><a href="#"><span>Цели изадачи МЧС</span></a></li>
+									<li><a href="#"><span>Направления деятельности</span></a></li>
+									<li><a href="#"><span>Руководство</span></a></li>
+									<li><a href="#"><span>Контакты</span></a></li>
+									<li><a href="#"><span>Важнейшие мероприятия</span></a></li>
+									<li><a href="#"><span>Электронные обращения</span></a></li>
+									<li><a href="#"><span>Родителям и педагогам</span></a></li>
+									<li><a href="#"><span>Вопрос-ответ</span></a></li>
+									<li><a href="#"><span>Отзывы о работе</span></a></li>
+									<li><a href="#"><span>Голосование</span></a></li>
+									<li><a href="#"><span>Цели изадачи МЧС</span></a></li>
+									<li><a href="#"><span>Направления деятельности</span></a></li>
+									<li><a href="#"><span>Руководство</span></a></li>
+									<li><a href="#"><span>Контакты</span></a></li>
+									<li><a href="#"><span>Важнейшие мероприятия</span></a></li>
+								</ul>
+							</div>
+						</div>
+						<!--footer nav end-->
+					</div>
+					<div class="footer-common-aside">
+						<div class="footer-common-aside__item">
+							<span class="copyright">&copy; 2017 ОАО ДВЭМЗ»</span>
+						</div>
+						<div class="footer-common-aside__item">
+							<address class="footer-adr">
+							ОАО ДВЭМЗ, г. Владивосток, ул. Молодежная, строение 1, корп. 3
+						</address>
+							<ul class="dl">
+								<li>
+									<div class="dt">Факс:</div>
+									<div class="dd">(423) 254 48 86</div>
+								</li>
+								<li>
+									<div class="dt">Эл. почта:</div>
+									<div class="dd"><a href="mailto:info@dvemz.ru">info@dvemz.ru</a></div>
+								</li>
+							</ul>
+						</div>
+						<div class="footer-common-aside__item">
+							<strong class="developer">Дизайн сайта: Astronim*Support</strong>
 						</div>
 					</div>
 				</div>
-				<!--footer bottom end-->
+				<!--footer common end-->
 			</div>
 		</div>
 	</footer>

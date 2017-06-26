@@ -4,21 +4,116 @@
 
 /*FOOTER*/
 .footer
-	font-size: 1.6rem
-	line-height: 1.875
-	color: $text-color
-	border-top: 1px solid $border-color
 
-.footer__holder
+	.layout
+		position: relative
+
+	.footer__holder
+		position: absolute
+		overflow: hidden
+		cursor: default
+		left: $header-width
+		bottom: 0
+		width: calc(100% - #{$header-width})
+		top: auto
+		right: auto
+
+		+media('<desk-sm')
+			left: 0
+			width: 100%
+
+//.footer__holder
 	overflow: hidden
 	cursor: default
 	padding: 30px 0
 
+/*footer common*/
+.footer-common
+	position: relative
+	overflow: hidden
+	padding: $text-layout-space-horizontal
+	background: $bg-color
+
+	+media('<desk-md')
+		padding: $text-layout-space-horizontal--md
+
+	+media('<mob-lg')
+		padding: $text-layout-space-horizontal--sm
+
+// footer nav
+
+.footer-nav
+	margin-bottom: 0
+
+	p
+		margin-bottom: $bottom-space
+
+.footer-nav__col
+	position: relative
+	+font($font-size--sm, $line-height--sm)
+	color: $text-color-light
+
+	+media('<mob-lg')
+		margin-bottom: 4rem
+
+	& > *:last-child
+		margin-bottom: 0
+
+.footer-nav__title
+	display: block
+	+font-alt-bold
+	+font(1.8rem, round-float(2.1rem/1.8rem, 2))
+	color: black
+	margin-bottom: $bottom-space
+
+	+media('<mob-lg')
+		margin-bottom: $bottom-space-sm
+
+	a
+		color: inherit
+		text-decoration: none
+
+		& > span
+			border-bottom: 1px solid transparent
+			transition-property: border-color
+			transition-duration: $animation-speed
+
+		.no-touchevents &:hover > span
+			border-bottom-color: rgba(255, 255, 255, 0.30)
+
+.footer-nav__links
+	margin: 0 0 30px
+
+	li
+		+display-inline-block-top
+		margin: 0 30px 10px 0
+
+		+media('<tab-lg')
+			display: block
+			margin-right: 0
+
+	a
+		color: inherit
+		font-size: inherit
+		line-height: inherit
+		text-decoration: none
+		list-style: none
+
+		& > span
+			border-bottom: 1px solid transparent
+			transition-property: border-color
+			transition-duration: $animation-speed
+
+		.no-touchevents &:hover > span
+			border-bottom-color: rgba(255, 255, 255, 0.30)
+
+/*footer common end*/
+
 /*footer bottom*/
-.footer-bottom
+//.footer-bottom
 	color: $text-color
 
-.footer-bottom__holder
+//.footer-bottom__holder
 	position: relative
 	text-align: justify
 	overflow: hidden
@@ -35,7 +130,7 @@
 		overflow: hidden
 		display: inline-block
 
-.footer-bottom__col
+//.footer-bottom__col
 	display: inline-block
 	vertical-align: top
 	font-size: 1.6rem
@@ -55,7 +150,7 @@
 /*footer bottom end*/
 
 /*developer*/
-.developer
+//.developer
 	display: inline-block
 	padding-right: 4px
 
@@ -64,7 +159,8 @@
 
 		.no-touchevents &:hover
 			text-decoration: none
-.developer__logo
+
+//.developer__logo
 	display: inline-block
 	vertical-align: top
 	position: relative

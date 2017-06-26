@@ -98,6 +98,7 @@ gulp.task('createCustomModernizr', function (done) { // Таск для форм
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск для мераж js библиотек
 	return gulp.src([
 		'src/libs/device.js/lib/device.min.js' // определение устройств
+		, 'src/js/temp/filer.min.js' // инпут файл
 		, 'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
 		, 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
 		, 'src/libs/gsap/src/minified/TweenMax.min.js' // библиотека для создания анимаций
