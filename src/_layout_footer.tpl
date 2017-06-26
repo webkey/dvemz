@@ -39,31 +39,36 @@
 								<li><a href="#"><span>Контакты</span></a></li>
 							</ul>
 						</div>
+						<div class="footer-nav__col footer-add-info">
+							<div class="footer-nav__item">
+								<span class="copyright">&copy; 2017 ОАО ДВЭМЗ»</span>
+							</div>
+							<div class="footer-nav__item">
+								<ul class="dl">
+									<li>
+										<div class="dt hide">Адрес:</div>
+										<div class="dd">ОАО ДВЭМЗ, г. Владивосток, ул. Молодежная, строение 1, корп. 3</div>
+									</li>
+									<li>
+										<div class="dt">Тел:</div>
+										<div class="dd"><a href="tel:+7 (423) 230-21-37">+7 (423) 230-21-37</a></div>
+									</li>
+									<li>
+										<div class="dt">Факс:</div>
+										<div class="dd">(423) 254 48 86</div>
+									</li>
+									<li>
+										<div class="dt">Эл. почта:</div>
+										<div class="dd"><a href="mailto:info@dvemz.ru">info@dvemz.ru</a></div>
+									</li>
+								</ul>
+							</div>
+							<div class="footer-nav__item">
+								<strong class="dev">Дизайн сайта: <a href="http://astronim.by/">Astronim*Support</a></strong>
+							</div>
+						</div>
 					</div>
 					<!--footer nav end-->
-				</div>
-				<div class="footer-common-aside">
-					<div class="footer-common-aside__item">
-						<span class="copyright">&copy; 2017 ОАО ДВЭМЗ»</span>
-					</div>
-					<div class="footer-common-aside__item">
-						<address class="footer-adr">
-							ОАО ДВЭМЗ, г. Владивосток, ул. Молодежная, строение 1, корп. 3
-						</address>
-						<ul class="dl">
-							<li>
-								<div class="dt">Факс:</div>
-								<div class="dd">(423) 254 48 86</div>
-							</li>
-							<li>
-								<div class="dt">Эл. почта:</div>
-								<div class="dd"><a href="mailto:info@dvemz.ru">info@dvemz.ru</a></div>
-							</li>
-						</ul>
-					</div>
-					<div class="footer-common-aside__item">
-						<strong class="developer">Дизайн сайта: Astronim*Support</strong>
-					</div>
 				</div>
 			</div>
 			<!--footer common end-->

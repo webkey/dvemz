@@ -147,11 +147,16 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
 .entry-img__title
 	+centering-transform-abs()
-	z-index: 10
+	margin: 0
 	font-size: $font-size-h1
+	+font($font-size-h1, $line-height-h1)
 	color: white
 	text-shadow: 0 5px 20px rgba(0, 0, 0, 0.2)
 	text-align: center
+	z-index: 10
+
+	+media('<desk-sm')
+		+font($font-size-h1--sm, $line-height-h1--sm)
 
 .mark
 	color: $mark-color
@@ -222,6 +227,19 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .columnize--4
 	column-count: 4
 	//font-size: 0.8em
+
+	+media('<desk-sm')
+		column-count: 3
+
+.columnize--3, .columnize--4
+
+	+media('<tab-lg')
+		column-count: 2
+
+.columnize, .columnize--3, .columnize--4
+
+	+media('<tab-sm')
+		column-count: 1
 
 /*columnize end*/
 

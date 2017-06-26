@@ -12,6 +12,7 @@ $sidemenu-bg-color-hover: #999
 	height: 100%
 	width: $sidebar-width
 	background-color: $base-color
+	z-index: 998
 
 	.side-menu--alt &
 		width: $sidebar-width--lg
@@ -135,8 +136,17 @@ $sidemenu-bg-color-hover: #999
 		transition-property: opacity, transform
 		transition-duration: $animation-speed
 
+		&:first-child
+			display: none
+
 		.side-menu--alt &
 			+size(100px)
+
+			&:first-child
+				display: block
+
+			&:first-child + svg
+				display: none
 
 		.no-touchevents .side-menu--alt .side-menu__cell:hover &
 			//transform: translate(-50%, -70%) scale(0.95)
@@ -162,7 +172,7 @@ $sidemenu-bg-color-hover: #999
 	+display-inline-block-middle
 	position: relative
 	max-height: 100%
-	padding: 0 20px 0 0
+	padding-right: 20px
 	+font-bold
 	+font(1.6rem, 1.167)
 	letter-spacing: normal
@@ -172,15 +182,17 @@ $sidemenu-bg-color-hover: #999
 	transition-duration: $animation-speed
 	z-index: 5
 
-	.side-menu--alt
+	.side-menu--alt &
 		display: block
 		opacity: 1
+		padding: 0
 
 	.no-touchevents .side-menu__cell:hover &
 		transition-delay: #{$animation-speed*0.5}
 		opacity: 1
 
 	.no-touchevents .side-menu--alt .side-menu__cell:hover &
+		transition-delay: 0s
 		color: white
 
 .download

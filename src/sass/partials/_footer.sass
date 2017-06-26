@@ -3,22 +3,25 @@
 @import ../../libs/include-media/dist/include-media
 
 /*FOOTER*/
+$footer-nav-horizontal-space: 40px
+
 .footer
 
 	.layout
 		position: relative
 
 	.footer__holder
-		position: absolute
 		overflow: hidden
-		cursor: default
-		left: $header-width
-		bottom: 0
-		width: calc(100% - #{$header-width})
+		position: absolute
 		top: auto
 		right: auto
+		bottom: 0
+		left: $header-width
+		cursor: default
+		width: calc(100% - #{$header-width} - #{$sidebar-width})
+		border-top: 1px solid $outline-color
 
-		+media('<desk-sm')
+		//+media('<desk-sm')
 			left: 0
 			width: 100%
 
@@ -31,40 +34,97 @@
 .footer-common
 	position: relative
 	overflow: hidden
-	padding: $text-layout-space-horizontal
+	padding: round($text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5 - $footer-nav-horizontal-space)
 	background: $bg-color
+	color: black
 
 	+media('<desk-md')
-		padding: $text-layout-space-horizontal--md
+		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} round($text-layout-space-horizontal--md*1.5 - $footer-nav-horizontal-space)
 
 	+media('<mob-lg')
-		padding: $text-layout-space-horizontal--sm
+		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*1.5 - $footer-nav-horizontal-space)
+
+	a:not([href^="tel"])
+		+font(inherit, inherit)
+		color: inherit
+		text-decoration: none
+		transition-property: color
+		transition-duration: $animation-speed
+
+		.no-touchevents &:hover
+			color: $link-color
+
+	.copyright
+		font-size: 13px
+		text-transform: uppercase
+
+	.dl
+		list-style: none
+
+		li
+			margin-bottom: 0
+
+		.dt, .dd
+			+display-inline-block-top
+
+		.hide
+			display: none
+
+	.dev
+		+font-normal
+		font-size: 14px
+		color: $text-color-light
+
+.footer-common-holder
+	float: left
+	width: 100%
 
 // footer nav
-
 .footer-nav
-	margin-bottom: 0
-
-	p
-		margin-bottom: $bottom-space
+	margin: 0 round(-$footer-nav-horizontal-space*0.5)
+	+clear-spacing
 
 .footer-nav__col
 	position: relative
-	+font($font-size--sm, $line-height--sm)
-	color: $text-color-light
+	+display-inline-block-top
+	width: round-float(100%/5, 2)
+	padding: 0 $footer-nav-horizontal-space*0.5
+	margin-bottom: $footer-nav-horizontal-space
+	+font(16px, 24px)
+	letter-spacing: normal
+
+	+media('<desk-sm')
+		width: round-float(100%/4, 2)
+
+		&.footer-add-info
+			width: 100%
+
+	+media('<tab-lg')
+		width: round-float(100%/2, 2)
+
+		&.footer-add-info
+			width: 100%
 
 	+media('<mob-lg')
-		margin-bottom: 4rem
+		width: 100%
 
 	& > *:last-child
 		margin-bottom: 0
 
 .footer-nav__title
+	position: relative
 	display: block
 	+font-alt-bold
-	+font(1.8rem, round-float(2.1rem/1.8rem, 2))
+	font-size: 18px
 	color: black
-	margin-bottom: $bottom-space
+	margin-bottom: 1.5em
+	padding-bottom: 1.5em
+
+	&::after
+		+pseudo()
+		bottom: 0
+		border-top: 2px solid black
+		width: 32px
 
 	+media('<mob-lg')
 		margin-bottom: $bottom-space-sm
@@ -82,30 +142,40 @@
 			border-bottom-color: rgba(255, 255, 255, 0.30)
 
 .footer-nav__links
-	margin: 0 0 30px
+	list-style: none
+	margin: 0 0 1.5em
+	color: $text-color-light
+
+.footer-nav__list
+	list-style: none
+	+font-alt-bold
+	font-size: 18px
+	color: black
+
+.footer-nav__links, .footer-nav__list
 
 	li
-		+display-inline-block-top
-		margin: 0 30px 10px 0
+		margin-bottom: 20px
+		overflow: hidden
 
-		+media('<tab-lg')
-			display: block
-			margin-right: 0
+		&:last-child
+			margin-bottom: 0
 
 	a
+		padding-top: 0.3em
 		color: inherit
-		font-size: inherit
-		line-height: inherit
+		+font(inherit, inherit)
 		text-decoration: none
-		list-style: none
+		transition-property: color
+		transition-duration: $animation-speed
 
-		& > span
-			border-bottom: 1px solid transparent
-			transition-property: border-color
-			transition-duration: $animation-speed
+		.no-touchevents &:hover
+			color: $link-color
 
-		.no-touchevents &:hover > span
-			border-bottom-color: rgba(255, 255, 255, 0.30)
+.footer-nav__item
+	margin-bottom: 20px
+	overflow: hidden
+
 
 /*footer common end*/
 

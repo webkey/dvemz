@@ -14,7 +14,7 @@
 .user-form
 	background: $bg-color-alt
 	padding: $text-layout-space-horizontal
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space-md
 
 	+media('<tab-lg')
 		padding: $text-layout-space-horizontal--md
@@ -35,34 +35,27 @@
 		resize: none
 
 	.captcha
+		+clear-spacing
+
 		+clear
 
 		img
 			$margin-right: 20px
-			display: inline-block
-			vertical-align: middle
-			max-width: calc(50%)
+			+display-inline-block-middle
 			margin-right: $margin-right
 
-			& + input
-				display: inline-block
-				vertical-align: middle
-				width: auto
-				max-width: calc(50% - #{$margin-right} - 10px)
+		.input-holder
+			+display-inline-block-middle
+			width: 200px
 
-		+media('<tab-lg')
+		+media('<mob-lg')
+			text-align: center
+
 			img
 				display: block
-				max-width: none
-				margin-bottom: $bottom-space-sm
+				margin: 0 auto $bottom-space-sm
 
-				& + input
-					display: block
-					max-width: none
-					width: 100%
-
-	.form-footer
-		+clear
+ 		+clear
 
 		+media('<mob-lg')
 			padding-top: $bottom-space-sm

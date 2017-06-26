@@ -60,7 +60,7 @@
 							</h3>
 							<p>Одним из наиболее важных методов для эффективной передачи содержания является использование типографской иерархии.</p>
 							<p>Она представляет собой систему организации данных, которая устанавливает порядок их важности, что позволяет пользователю найти то, что ему нужно.</p>
-							<p>В рекомендациях по сочетанию шрифтов преобладает негласное правило — для заголовков выбирается шрифт без засечек, а основной текст формируется шрифтом с засечками. Однако такой подход не настолько популярен, как может показаться.</p>
+							<p><a href="#">В рекомендациях по сочетанию шрифтов преобладает негласное правило — для заголовков выбирается шрифт без засечек, а основной текст формируется шрифтом с засечками. Однако такой подход не настолько популярен, как может показаться.</a></p>
 							<!--h4-->
 							<h4>
 								Забудьте о Comic Sans Представьте, что вы его вообще никогда не видели
@@ -418,6 +418,8 @@
 							@@include('_typography_columnize.tpl')
 							<!--columnize end-->
 
+							<div class="user-spacer">&nbsp;</div>
+
 							<!--columnize-->
 							<h3>
 								<a href="#hashSimpleAccordion" id="hashSimpleAccordion" class="hashAnchor"><span class="mark">Аккордеон</span></a>
@@ -426,6 +428,8 @@
 								@@include('_tpl-simple-accordion.tpl')
 							</div>
 							<!--columnize end-->
+
+							<div class="user-spacer">&nbsp;</div>
 
 							<!--images align-->
 							<h3><a href="#hashImagesAlign" id="hashImagesAlign" class="hashAnchor"><span class="mark">Выравнивание картинок в контенте</span></a></h3>
@@ -464,6 +468,9 @@
 							<div class="layout-text">
 								@@include("_tpl_feature-list.tpl")
 							</div>
+
+							<div class="user-spacer">&nbsp;</div>
+
 							<div class="layout-text">
 								@@include('_tpl_print.tpl')
 							</div>
@@ -666,12 +673,11 @@
 				</div>
 			</div>
 			<!--CONTENT end-->
-
-			<!--SIDEBAR-->
-			@@include('_layout_side-menu.tpl')
-			<!--SIDEBAR-->
 		</div>
 	</div>
 </div>
 <!--MAIN end-->
+<!--SIDEBAR-->
+@@include('_layout_side-menu.tpl')
+<!--SIDEBAR-->
 @@include('_layout_foot.tpl')

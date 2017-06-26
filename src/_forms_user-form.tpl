@@ -21,7 +21,7 @@
 					<label for="uf-field-select-01">Выберите тему</label>
 				</div>
 				<div class="select">
-					<select id="uf-field-select-01">
+					<select class="cselect" id="uf-field-select-01">
 						<option value=""></option> <!--Важно! Этот пункт должен быть пустым-->
 						<option value="1">Размер</option>
 						<option value="2">Вес</option>
@@ -38,9 +38,11 @@
 			</div>
 			<div class="input-wrap light-form field-effects-js">
 				<div class="label-holder">
-					<label for="uf-message">Вопрос</label>
+					<label for="uf-message">Вопрос <span class="form-mark">*</span></label>
 				</div>
 				<textarea id="uf-message"></textarea>
+				<span class="error-note">Поле обязательное для заполнения</span>
+				<span class="confirm-note">&nbsp;</span>
 			</div>
 			<div class="input-wrap light-form">
 				<!--<div class="label-holder">
@@ -50,15 +52,16 @@
 					<input class="upload-file" name="files[]" type="file" multiple="multiple" data-jfiler-limit="2">
 				</div>
 			</div>
-			<div class="input-wrap has--value">
+			<div class="input-wrap">
 				<div class="label-holder">
 					<label for="uf-captcha">Защита от спама:<span class="form-mark">*</span></label>
 				</div>
-				<div class="input-holder">
-					<div class="captcha">
-						<img src="img/captcha.jpg" alt="captcha" />
+				<div class="captcha">
+					<img src="img/captcha.jpg" alt="captcha" />
+					<div class="input-holder">
 						<input type="text" id="uf-captcha">
 						<span class="error-note">Введите текст на картинке для защиты от спама</span>
+						<span class="confirm-note">&nbsp;</span>
 					</div>
 				</div>
 			</div>

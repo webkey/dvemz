@@ -123,6 +123,12 @@
 .layout-article
 	padding: round($text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal}
 
+	+media('<tab-lg')
+		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md}
+
+	+media('<tab-sm')
+		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm}
+
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr, .layout-text, .layout-flood
 		max-width: $text-layout-width
 		+padding-horizontal(0)
