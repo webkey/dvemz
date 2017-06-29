@@ -1456,11 +1456,21 @@
 										list.appendChild(li);
 									}
 
+									// navigation toggle
+									var cookieNavBTIsHide = "navigationByTypographyIsHide";
+
+									if (get_cookie(cookieNavBTIsHide) === 'true') {
+										list.style.display = "none";
+										nav.setAttribute('data-toggle', 'hide');
+									}
+
 									opener.onclick = function() {
 										list.style.display = (list.style.display !== "none") ? "none" : "block";
 										if (list.style.display === "none") {
+											document.cookie = cookieNavBTIsHide + "=true";
 											nav.setAttribute('data-toggle', 'hide');
 										} else {
+											document.cookie = cookieNavBTIsHide + "=false";
 											nav.setAttribute('data-toggle', 'show')
 										}
 									};
