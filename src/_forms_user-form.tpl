@@ -11,7 +11,7 @@
 				</div>
 				<div class="input-wrap light-form field-effects-js">
 					<div class="label-holder"><label for="uf-field-02">Эл. почта <span class="form-mark">*</span></label></div>
-					<input type="text" id="uf-field-02"/>
+					<input type="email" id="uf-field-02"/>
 					<span class="error-note">Поле обязательное для заполнения</span>
 					<span class="confirm-note">&nbsp;</span>
 				</div>

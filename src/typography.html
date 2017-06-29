@@ -1017,7 +1017,7 @@
 												</div>
 												<div class="input-wrap light-form field-effects-js">
 													<div class="label-holder"><label for="uf-field-02">Эл. почта <span class="form-mark">*</span></label></div>
-													<input type="text" id="uf-field-02" />
+													<input type="email" id="uf-field-02" />
 													<span class="error-note">Поле обязательное для заполнения</span>
 													<span class="confirm-note">&nbsp;</span>
 												</div>
@@ -1212,16 +1212,16 @@
 								<div class="images-slider layout-full-width">
 									<div class="images-slider__list">
 										<div class="images-slider__item">
-											<img data-lazy="../img/__temp-img-content-carousel-01.jpg" src="img/empty.png" alt="image description">
+											<img data-lazy="img/__temp-img-content-carousel-01.jpg" src="img/empty.png" alt="image description">
 										</div>
 										<div class="images-slider__item">
-											<img data-lazy="../img/__temp-img-content-carousel-02.jpg" src="img/empty.png" alt="image description">
+											<img data-lazy="img/__temp-img-content-carousel-02.jpg" src="img/empty.png" alt="image description">
 										</div>
 										<div class="images-slider__item">
-											<img data-lazy="../img/__temp-img-content-carousel-03.jpg" src="img/empty.png" alt="image description">
+											<img data-lazy="img/__temp-img-content-carousel-03.jpg" src="img/empty.png" alt="image description">
 										</div>
 										<div class="images-slider__item">
-											<img data-lazy="../img/__temp-img-content-carousel-04.jpg" src="img/empty.png" alt="image description">
+											<img data-lazy="img/__temp-img-content-carousel-04.jpg" src="img/empty.png" alt="image description">
 										</div>
 									</div>
 									<!--flashes-->
@@ -1415,6 +1415,15 @@
 								<script>
 									'use strict';
 
+									function get_cookie(cookie_name) {
+										var results = document.cookie.match('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
+
+										if (results)
+											return (unescape(results[2]));
+										else
+											return null;
+									}
+
 									var nav = document.createElement('div');
 									var list = document.createElement('ul');
 									nav.className = "navigationByTypographyElements";
@@ -1425,6 +1434,11 @@
 									opener.innerHTML = "Меню";
 									opener.className = "navigationByTypographyOpener";
 									nav.insertBefore(opener, nav.firstChild);
+
+									var toLeftBtn = document.createElement('a');
+									toLeftBtn.innerHTML = "Прикрепить слева";
+									toLeftBtn.className = "navigationByTypographyToLeft";
+									nav.insertBefore(toLeftBtn, nav.firstChild);
 
 									for (var i = 0; i < document.querySelectorAll('.hashAnchor').length; i++) {
 										var elem = document.querySelectorAll('.hashAnchor');
@@ -1449,6 +1463,24 @@
 										} else {
 											nav.setAttribute('data-toggle', 'show')
 										}
+									};
+
+									// navigation move to left/right
+									var toLeftAttr = 'data-to-left';
+									var cookieIsLeftPos = "navigationByTypographyIsLeft";
+
+									if (get_cookie(cookieIsLeftPos) === 'true') {
+										nav.setAttribute(toLeftAttr, 'true');
+									}
+
+									toLeftBtn.onclick = function() {
+										if (!nav.hasAttribute(toLeftAttr)) {
+											document.cookie = cookieIsLeftPos + "=true";
+											nav.setAttribute(toLeftAttr, 'true');
+										} else {
+											document.cookie = cookieIsLeftPos + "=false";
+											nav.removeAttribute(toLeftAttr);
+										}
 									}
 								</script>
 								<style>
@@ -1464,6 +1496,16 @@
 										font-size: 14px;
 										line-height: 1.4;
 										/*counter-reset: items;*/
+										-webkit-transition-property: transform;
+										transition-property: transform;
+										-webkit-transition-duration: 0.2s;
+										transition-duration: 0.2s;
+										-webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+										transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+									}
+
+									.navigationByTypographyElements[data-to-left] {
+										transform: translateX(calc(-100vw + 240px + 60px));
 									}
 
 									.navigationByTypographyElements ul {
@@ -1597,10 +1639,10 @@
 									.navigationByTypographyOpener {
 										position: relative;
 										display: block;
-										padding: 0 40px 0 20px;
+										padding: 0 35px 0 20px;
 										cursor: pointer;
 										font-size: 16px;
-										line-height: 1.3;
+										line-height: 15px;
 										font-weight: bold;
 										margin-bottom: 18px;
 									}
@@ -1611,13 +1653,51 @@
 										position: absolute;
 										right: 20px;
 										top: 50%;
+										width: 16px;
+										height: 16px;
+										background-color: rgba(0, 0, 0, 0.2);
+										text-align: center;
 										-webkit-transform: translate(0, -50%);
 										-ms-transform: translate(0, -50%);
 										transform: translate(0, -50%);
 									}
 
+									.navigationByTypographyOpener:hover::after {
+										background-color: rgba(0, 0, 0, 0.4);
+									}
+
 									[data-toggle*="hide"] .navigationByTypographyOpener::after {
 										content: '+';
+									}
+
+									.navigationByTypographyToLeft {
+										position: absolute;
+										top: 3px;
+										left: 3px;
+										font-size: 0;
+										line-height: 0;
+										letter-spacing: -4px;
+										text-align: center;
+										cursor: pointer;
+										width: 15px;
+										height: 15px;
+										background-color: rgba(0, 0, 0, 0.2);
+									}
+
+									.navigationByTypographyToLeft:hover {
+										background-color: rgba(0, 0, 0, 0.4);
+									}
+
+									.navigationByTypographyToLeft:before {
+										content: '<';
+										display: inline-block;
+										font-size: 18px;
+										line-height: 15px;
+										letter-spacing: normal;
+									}
+
+									[data-to-left] .navigationByTypographyToLeft:before {
+										content: '>';
 									}
 								</style>
 							</div>
