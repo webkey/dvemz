@@ -212,6 +212,9 @@ $btn-menu-lines-color: $text-color !default
 		transition-property: background-color
 		transition-duration: $animation-speed
 		z-index: 5
+		
+		.ea-site &
+			background-color: transparent
 
 		&::before
 			+pseudo()
@@ -225,74 +228,82 @@ $btn-menu-lines-color: $text-color !default
 			transition-duration: $animation-speed
 			z-index: -1
 
-		.logo-img
-			display: block
-			position: absolute
-			left: 0
-			top: 0
-			text-indent: -9999px
-			overflow: hidden
-			+size($header-width)
-			background: url(../../img/logo-short.png) no-repeat center center
-			background-size: auto 47px
-			transform:  scale(0.75)
-			transition-property: transform, background-color
-			transition-duration: $animation-speed
-			backface-visibility: hidden
+		.no-touchevents
+			&:hover
+				&::before, &
+					background-color: lighten($logo-bg-color, 10%)
 
-		.logo-title
-			position: absolute
-			left: $header-width
-			top: 0
-			bottom: 0
-			text-indent: -9999px
-			overflow: hidden
-			+size(120px, auto)
-			opacity: 0
-			visibility: hidden
-			transform: translate(-50%, 0)
-			transition-property: transform, opacity, visibility
-			transition-duration: $animation-speed
-			background: url(../../img/logo-title-white.png) no-repeat center center
-			background-size: auto 45px
+			.ea-site &:hover
+				&::before, &
+					background-color: transparent
 
-		.logo-text
-			position: absolute
-			width: 230px
-			top: 50%
-			left: 220px
-			+font(11px, 1.4)
-			letter-spacing: 0.15em
-			color: white
-			text-transform: uppercase
-			text-align: left
-			opacity: 0
-			visibility: hidden
-			transform: translate(-50%, -50%)
-			transition-property: transform, opacity, visibility
-			transition-duration: $animation-speed
+.logo-img
+	display: block
+	position: absolute
+	left: 0
+	top: 0
+	text-indent: -9999px
+	overflow: hidden
+	+size($header-width)
+	background: url(../../img/logo-short.png) no-repeat center center
+	background-size: auto 47px
+	transform:  scale(0.75)
+	transition-property: transform, background-color
+	transition-duration: $animation-speed
+	backface-visibility: hidden
 
-		.no-touchevents &:hover
-			&::before, &
-				background-color: lighten($logo-bg-color, 10%)
+	.ea-site &
+		background-image: url(../../img/logo-short--ea.png)
 
-		.nav-popup-before-open &
-			&::before
-				opacity: 1
-				visibility: visible
+.logo-title
+	position: absolute
+	left: $header-width
+	top: 0
+	bottom: 0
+	text-indent: -9999px
+	overflow: hidden
+	+size(120px, auto)
+	opacity: 0
+	visibility: hidden
+	transform: translate(-50%, 0)
+	transition-property: transform, opacity, visibility
+	transition-duration: $animation-speed
+	background: url(../../img/logo-title-white.png) no-repeat center center
+	background-size: auto 45px
 
-			.logo-img
-				transform: translate(20px, 0) scale(1)
+.logo-text
+	position: absolute
+	width: 230px
+	top: 50%
+	left: 220px
+	+font(11px, 1.4)
+	letter-spacing: 0.15em
+	color: white
+	text-transform: uppercase
+	text-align: left
+	opacity: 0
+	visibility: hidden
+	transform: translate(-50%, -50%)
+	transition-property: transform, opacity, visibility
+	transition-duration: $animation-speed
 
-			.logo-title
-				opacity: 1
-				visibility: visible
-				transform: translate(0, 0)
+.nav-popup-before-open .logo
+	&::before
+		opacity: 1
+		visibility: visible
 
-			.logo-text
-				opacity: 1
-				visibility: visible
-				transform: translate(0, -50%)
+	.logo-img
+		transform: translate(20px, 0) scale(1)
+
+	.logo-title
+		opacity: 1
+		visibility: visible
+		transform: translate(0, 0)
+
+	.logo-text
+		opacity: 1
+		visibility: visible
+		transform: translate(0, -50%)
 
 /*logo end*/
 

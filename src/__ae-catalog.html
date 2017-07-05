@@ -1,0 +1,47 @@
+@@include('_layout_head.tpl', {
+	"title": "АЭ - Каталог",
+	"pageClass": "ea-site ea-catalog-page"
+})
+
+<!--HEADER-->
+@@include('_layout_header.tpl', {
+	"mainNavItemActive": "Заказ"
+})
+<!--HEADER end-->
+
+<!--TOP PANEL-->
+@@include('_layout_top-panel.tpl')
+<!--TOP PANEL end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<div class="main__holder">
+			<!--CONTENT-->
+			<div class="content-wrap">
+				<div class="content user-content">
+					<div class="sheet">
+						<div class="layout-article">
+							<h1>Кабельно-проводниковая продукция и кабеленесущие системы</h1>
+							<!--products-->
+							<div class="catalog full-width">
+								<div class="catalog__list">
+									@@loop("_catalog-items.tpl", "includes-json/catalog-items.json")
+								</div>
+							</div>
+							<!--products end-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--CONTENT end-->
+		</div>
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--SIDEBAR-->
+@@include('_layout_side-menu.tpl')
+<!--SIDEBAR-->
+
+@@include('_layout_foot.tpl')

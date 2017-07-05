@@ -165,47 +165,55 @@
 		&::after
 			+vertical-align()
 
-	.logo-title, .logo-map
+	.logo-alt-title, .logo-alt-map
 		position: relative
 		+display-inline-block-middle
 		+font($font-size, $line-height)
 		letter-spacing: normal
 		white-space: normal
 
-		.fig
-			text-indent: -9999px
-			overflow: hidden
-			position: relative
-			background-size: 100%
-			background-position: 0 0
-			background-repeat: no-repeat
+	.logo-alt-title__fig, .logo-alt-map__fig
+		text-indent: -9999px
+		overflow: hidden
+		position: relative
+		background-size: 100%
+		background-position: 0 0
+		background-repeat: no-repeat
 
-			.home-page &
-				background-position: 0 100%
+		.home-page &
+			background-position: 0 100%
 
-			&::before
-				+pseudo($pos: relative)
+		&::before
+			+pseudo($pos: relative)
 
-			span
-				+hide-text
+		span
+			+hide-text
 
-	.logo-title
-		.fig
-			+size(101px, auto)
-			background-image: url(../../img/logo-title.png)
+	.logo-alt-title__fig
+		+size(101px, auto)
+		background-image: url(../../img/logo-title.png)
 
-			&::before
-				+ratio(101, 53)
+		&::before
+			+ratio(101, 53)
 
-	.logo-map
-		.fig
-			+size(192px, auto)
-			background-image: url(../../img/logo-map.png)
+		.ea-site &
+			+size(125px, auto)
+			background-image: url(../../img/logo-title--ea.png)
 
 			&::before
-				+ratio(192, 50)
+				+ratio(125, 37)
 
-	.logo-title + .logo-map
+	.logo-alt-map__fig
+		+size(192px, auto)
+		background-image: url(../../img/logo-map.png)
+
+		&::before
+			+ratio(192, 50)
+
+		.ea-site &
+			background-image: url(../../img/logo-map--ea.png)
+
+	.logo-alt-title + .logo-alt-map
 		padding-left: 20px
 		margin-left: 20px
 
