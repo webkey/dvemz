@@ -1,7 +1,7 @@
 <ul class="@@classKey__list @@classKey-js">
 	<!--(1) START @@key FIRST level-->
 	<li class="@@if(mainNavItemActive === "О компании"){current}">
-	@@include('_navigation-LINK.tpl', { "itemText": "О компании", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK.tpl', { "itemText": "О компании", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 	</li>
 	<!--(1) END @@key FIRST level-->
 

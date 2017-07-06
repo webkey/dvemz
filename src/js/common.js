@@ -1465,6 +1465,198 @@ function simpleAccordInit() {
 /*simple accordion end*/
 
 /**
+ * !multi accordion jquery plugin
+ * */
+(function ($) {
+	var MultiAccordion = function (settings) {
+		var options = $.extend({
+			collapsibleAll: false, // если установить значение true, сворачиваются идентичные панели НА СТРАНИЦЕ, кроме текущего
+			resizeCollapsible: false, // если установить значение true, при ресайзе будут соворачиваться все элементы
+			container: null, // общий контейнер
+			item: null, // непосредственный родитель открывающегося элемента
+			handler: null, // открывающий элемента
+			handlerWrap: null, // если открывающий элемент не является непосредственным соседом открывающегося элемента, нужно указать элемент, короный является оберткой открывающего элемета и лежит непосредственно перед открывающимся элементом (условно, является табом)
+			panel: null, // открывающийся элемент
+			openClass: 'active', // класс, который добавляется при открытии
+			currentClass: 'current', // класс текущего элемента
+			animateSpeed: 300, // скорость анимации
+			collapsible: false // сворачивать соседние панели
+		}, settings || {});
+
+		this.options = options;
+		var container = $(options.container);
+		this.$container = container;
+		this.$item = $(options.item, container);
+		this.$handler = $(options.handler, container);
+		this.$handlerWrap = $(options.handlerWrap, container);
+		this._animateSpeed = options.animateSpeed;
+		this.$totalCollapsible = $(options.totalCollapsible);
+		this._resizeCollapsible = options.resizeCollapsible;
+
+		this.modifiers = {
+			active: options.openClass,
+			current: options.currentClass
+		};
+
+		this.bindEvents();
+		this.totalCollapsible();
+		this.totalCollapsibleOnResize();
+
+	};
+
+	MultiAccordion.prototype.totalCollapsible = function () {
+		var self = this;
+		self.$totalCollapsible.on('click', function () {
+			self.$panel.slideUp(self._animateSpeed, function () {
+				self.$container.trigger('accordionChange');
+			});
+			self.$item.removeClass(self.modifiers.active);
+		})
+	};
+
+	MultiAccordion.prototype.totalCollapsibleOnResize = function () {
+		var self = this;
+		$(window).on('resize', function () {
+			if (self._resizeCollapsible) {
+				self.$panel.slideUp(self._animateSpeed, function () {
+					self.$container.trigger('accordionChange');
+				});
+				self.$item.removeClass(self.modifiers.active);
+			}
+		});
+	};
+
+	MultiAccordion.prototype.bindEvents = function () {
+		var self = this;
+		var $container = this.$container;
+		var $item = this.$item;
+		var panel = this.options.panel;
+
+		$container.on('click', self.options.handler, function (e) {
+			var $currentHandler = self.options.handlerWrap ? $(this).closest(self.options.handlerWrap) : $(this);
+			// console.log("!!self.options.handlerWrap: ", self.options.handlerWrap);
+			// console.log("$currentHandler: ", $currentHandler);
+			var $currentItem = $currentHandler.closest($item);
+
+			if ($currentItem.has($(panel)).length) {
+				e.preventDefault();
+
+				if ($currentHandler.next(panel).is(':visible')) {
+					self.closePanel($currentItem);
+
+					return;
+				}
+
+				if (self.options.collapsibleAll) {
+					self.closePanel($($container).not($currentHandler.closest($container)).find($item));
+				}
+
+				if (self.options.collapsible) {
+					self.closePanel($currentItem.siblings());
+				}
+
+				self.openPanel($currentItem, $currentHandler);
+			}
+		})
+	};
+
+	MultiAccordion.prototype.closePanel = function ($currentItem) {
+		var self = this;
+		var panel = self.options.panel;
+		var openClass = self.modifiers.active;
+
+		$currentItem.removeClass(openClass).find(panel).filter(':visible').slideUp(self._animateSpeed, function () {
+			// console.log('mAccordionAfterClose');
+			self.$container.trigger('mAccordionAfterClose').trigger('mAccordionAfterChange');
+		});
+
+		$currentItem
+			.find(self.$item)
+			.removeClass(openClass);
+	};
+
+	MultiAccordion.prototype.openPanel = function ($currentItem, $currentHandler) {
+		var self = this;
+		var panel = self.options.panel;
+
+		$currentItem.addClass(self.modifiers.active);
+
+		$currentHandler.next(panel).slideDown(self._animateSpeed, function () {
+			// console.log('mAccordionAfterOpened');
+			self.$container.trigger('mAccordionAfterOpened').trigger('mAccordionAfterChange');
+		});
+	};
+
+	window.MultiAccordion = MultiAccordion;
+}(jQuery));
+
+/**
+ * !multi accordion initial
+ * */
+function multiAccordionInit() {
+	var catalogMenu = '.catalog-menu-js';
+	// var catalogMenuChangeTimeout;
+
+	if ($(catalogMenu).length) {
+		new MultiAccordion({
+			container: catalogMenu,
+			item: 'li',
+			handler: '.catalog-menu-handler-js',
+			handlerWrap: '.catalog-menu__tab-js',
+			panel: '.catalog-menu-drop-js',
+			openClass: 'is-open',
+			animateSpeed: 200,
+			collapsible: true
+		});
+
+		// $(catalogMenu).on('mAccordionAfterChange', function () {
+		// 	clearTimeout(catalogMenuChangeTimeout);
+		//
+		// 	catalogMenuChangeTimeout = setTimeout(function () {
+		// 		$(document.body).trigger("sticky_kit:recalc");
+		// 	}, 50);
+		// })
+	}
+}
+/*multi accordion initial end*/
+
+/**
+ * !toggle view shops
+ * */
+function toggleView() {
+	var $switcherHand = $('.js-view-switcher a');
+
+	if ( $switcherHand.length ) {
+
+		var $container = $('.catalog');
+		var activeHand = 'active';
+		var activeContainer = 'grid-view-activated';
+
+		$switcherHand.on('click', function (e) {
+			e.preventDefault();
+
+			var $this = $(this);
+
+			if ( $this.hasClass(activeHand) ) return false;
+
+			$switcherHand.removeClass(activeHand);
+			$container.removeClass(activeContainer);
+
+			$this.addClass(activeHand);
+
+			if ($this.index() === 0) {
+				$container.addClass(activeContainer);
+			}
+
+			// setTimeout(function () {
+			// 	$('.news__item').matchHeight._update();
+			// }, 10)
+		});
+	}
+}
+/*toggle view shops end*/
+
+/**
  * !footer at bottom
  * */
 function footerBottom() {
@@ -1571,6 +1763,8 @@ $(document).ready(function () {
 	eventSideMenu();
 	choicerInit();
 	simpleAccordInit();
+	multiAccordionInit();
+	toggleView();
 
 	footerBottom();
 	formSuccessExample();

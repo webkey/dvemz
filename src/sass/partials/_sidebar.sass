@@ -177,12 +177,14 @@ $sidemenu-bg-color-hover: #999
 	+font(1.6rem, 1.167)
 	letter-spacing: normal
 	text-transform: uppercase
+	text-align: left
 	opacity: 0
 	transition-property: color, transform, opacity
-	transition-duration: $animation-speed
+	transition-duration: round-float($animation-speed*1.5, 1)
 	z-index: 5
 
 	.side-menu--alt &
+		text-align: center
 		display: block
 		opacity: 1
 		padding: 0

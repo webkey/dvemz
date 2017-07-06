@@ -1,4 +1,8 @@
 <aside class="side-menu">
+	@@include('_catalog-menu-list.tpl', {
+		"catalogMenuActiveItem": "@@catalogMenuActiveItem",
+		"classKey": "catalog-menu"
+	})
 	<div class="side-menu__holder">
 		<div class="side-menu__row">
 			<a href="#" class="side-menu__cell side-menu__hover">

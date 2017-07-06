@@ -142,6 +142,7 @@
 
 	// элеметы без отступов по бокам
 	.layout-full-width
+
 		+margin-horizontal(-#{$text-layout-space-horizontal})
 
 		+media('<tab-lg')
@@ -149,5 +150,8 @@
 
 		+media('<tab-sm')
 			+margin-horizontal(-#{$text-layout-space-horizontal--sm})
+
+		p, ul, ol, h1, h2, h3, h4, h5, h6, hr
+			max-width: none
 
 /*LAYOUT end*/

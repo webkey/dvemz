@@ -1,1 +1,1 @@
-<a href="@@itemLink"@@if(context.specialValue){ class="@@specialValue"}title="@@key - @@itemText"><span>@@itemText</span></a>
+<a href="@@itemLink"@@if(context.specialValue){ class="@@specialValue"}><span>@@itemText</span></a>
