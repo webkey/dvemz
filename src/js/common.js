@@ -1621,6 +1621,239 @@ function multiAccordionInit() {
 /*multi accordion initial end*/
 
 /**
+ * !tab switcher
+ * */
+function tabSwitcher() {
+	// external js:
+	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
+	// 2) resizeByWidth (resize only width);
+
+	/*
+	 <!--html-->
+	 <div class="some-class tabs-js" data-collapsed="true" data-auto-height="true" data-to-queue="480">
+	 <!--if has data-collapsed="true" one click open tab content, two click close collapse tab content-->
+	 <div class="some-class__nav">
+	 <div class="some-class__tab">
+	 <a href="#" class="tab-anchor-js" data-for="some-id-01">Text tab 01</a>
+	 </div>
+	 <div class="some-class__tab">
+	 <a href="#" class="tab-anchor-js" data-for="some-id-02">Text tab 02</a>
+	 </div>
+	 </div>
+
+	 <div class="some-class__panels tab-container-js">
+	 <div class="some-class__panel tab-content-js" data-id="some-id-01">Text content 01</div>
+	 <div class="some-class__panel tab-content-js" data-id="some-id-02">Text content 02</div>
+	 </div>
+	 </div>
+	 <!--html end-->
+	 */
+
+	var $tabWrapper = $('.js-tabs');
+	var $container = $('.js-tab-container');
+
+	if (!$container.length) return false;
+
+	if ($tabWrapper.length) {
+		var $anchor = $('.js-tab-anchor'),
+			$content = $('.js-tab-content'),
+			activeClass = 'active-tab',
+			collapseAllClass = 'collapsed-all-tab',
+			animationSpeed = 0.2,
+			animationHeightSpeed = 0.08;
+
+		$.each($tabWrapper, function () {
+			var $this = $(this),
+				$thisAnchor = $this.find($anchor),
+				$thisContainer = $this.find($container),
+				$thisContent = $this.find($content);
+			if ($this.find('.' + activeClass).length > 0) {
+				var initialTab = $this.find('.' + activeClass).attr('href').substring(1);
+			}
+			// var toQueue = $this.data('to-queue'); // transform tab for toQueue value layout width
+			// var tabInitedFlag = false;
+			var valDataAutoHeight = $this.data('auto-height');
+			var thisAutoHeight = valDataAutoHeight !== false;
+			var activeTab = false;
+
+			// prepare traffic content
+			function prepareTabsContent() {
+				$thisContainer.css({
+					'display': 'block',
+					'position': 'relative',
+					'overflow': 'hidden'
+				});
+
+				$thisContent.css({
+					// 'display': 'none',
+					'position': 'absolute',
+					'left': 0,
+					'top': 0,
+					'width': '100%',
+					'z-index': -1
+				});
+
+				switchContent();
+			}
+
+			prepareTabsContent();
+
+			// toggle content
+			$thisAnchor.on('click', function (e) {
+				e.preventDefault();
+
+				var $self = $(this),
+					selfTab = $self.attr('href').substring(1);
+
+				if ($this.data('collapsed') === true && activeTab === selfTab) {
+
+					toggleActiveClass();
+					toggleContent(false);
+					changeHeightContainer(false);
+
+					return;
+				}
+
+				if (activeTab === selfTab) return false;
+
+				initialTab = selfTab;
+
+				switchContent();
+			});
+
+			// collapse current tab method
+			$thisAnchor.eq(0).on('tabSwitcherCollapse', function () {
+				var $self = $(this);
+				var selfTab = $self.attr('href').substring(1);
+
+				if (activeTab === selfTab) {
+					toggleActiveClass();
+					toggleContent(false);
+					changeHeightContainer(false);
+				}
+			});
+
+			// switch content
+			function switchContent() {
+				if (initialTab) {
+					toggleContent();
+					changeHeightContainer();
+					toggleActiveClass();
+				}
+			}
+
+			// show active content and hide other
+			function toggleContent() {
+
+				thisAutoHeight && $thisContainer.css('height', $thisContainer.outerHeight());
+
+				$thisContent.css({
+					'position': 'absolute',
+					'left': 0,
+					'top': 0
+				});
+
+				TweenMax.to($thisContent, animationSpeed, {
+					autoAlpha: 0
+					// ,'z-index': -1
+				});
+
+				if (arguments[0] === false) return;
+
+				var $initialContent = $thisContent.filter('[id="' + initialTab + '"]');
+
+				$initialContent.css('z-index', 2);
+
+				TweenMax.to($initialContent, animationSpeed, {
+					autoAlpha: 1
+					// ,'z-index': 2
+				});
+			}
+
+			// change container's height
+			function changeHeightContainer() {
+				var $initialContent = $thisContent.filter('[id="' + initialTab + '"]');
+
+				if (arguments[0] === false) {
+					TweenMax.to($thisContainer, animationHeightSpeed, {
+						'height': 0
+					});
+
+					return;
+				}
+
+				if (thisAutoHeight) {
+					TweenMax.to($thisContainer, animationHeightSpeed, {
+						'height': $initialContent.outerHeight(),
+						onComplete: function () {
+
+							thisAutoHeight && $thisContainer.css('height', 'auto');
+
+							$initialContent.css({
+								'position': 'relative',
+								'left': 'auto',
+								'right': 'auto'
+							});
+						}
+					});
+				}
+
+				$initialContent.css({
+					'position': 'relative',
+					'left': 'auto',
+					'right': 'auto'
+				})
+			}
+
+			// toggle class active
+			function toggleActiveClass() {
+				$thisAnchor.removeClass(activeClass);
+				$thisContent.removeClass(activeClass);
+				$this.removeClass(collapseAllClass);
+
+				if (initialTab !== activeTab) {
+
+					$thisAnchor.filter('[href="#' + initialTab + '"]').addClass(activeClass);
+					$thisContent.filter('[id="' + initialTab + '"]').addClass(activeClass);
+					if($this.data('collapsed') === true){
+						$this.addClass(collapseAllClass);
+					}
+
+					activeTab = initialTab;
+
+					return false;
+				}
+
+				activeTab = false;
+			}
+
+			// to queue
+			// $(window).on('load debouncedresize', function () {
+			// 	console.log("toQueue.length: ", !!toQueue);
+			// 	if (toQueue && window.innerWidth < toQueue){
+			// 		tabInitedFlag = false;
+			// 		$thisContainer.attr('style', "");
+			// 		$thisContent.attr('style', "");
+			//
+			// 		return;
+			// 	}
+			//
+			// 	console.log("tabInitedFlag: ", tabInitedFlag);
+			// 	if(!tabInitedFlag) {
+			// 		prepareTabsContent();
+			// 		tabInitedFlag = true;
+			// 	}
+			// });
+		});
+	}
+
+	$('.popup-label__text').on('click', function () {
+		$('a[href*="#expanded-search"]').trigger('tabSwitcherCollapse');
+	})
+}
+/* tab switcher end */
+
+/**
  * !toggle view shops
  * */
 function toggleView() {
@@ -1764,6 +1997,7 @@ $(document).ready(function () {
 	choicerInit();
 	simpleAccordInit();
 	multiAccordionInit();
+	tabSwitcher();
 	toggleView();
 
 	footerBottom();
