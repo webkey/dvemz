@@ -33,7 +33,7 @@
 .side-menu__row
 	display: block
 	margin-top: -1px
-	border: solid $sidemenu-bg-color-hover
+	border: solid $side-menu-bg-color-hover
 	border-width: 1px 0
 	position: relative
 
@@ -79,7 +79,7 @@
 		+position(auto, auto)
 		+size(auto)
 		padding: 5% 13%
-		border: solid $sidemenu-bg-color-hover
+		border: solid $side-menu-bg-color-hover
 		border-width: 1px 0 0
 		transform: none
 
@@ -91,7 +91,7 @@
 	transition-duration: $animation-speed
 
 	.no-touchevents .side-menu--alt &:hover
-		background-color: $sidemenu-bg-color-hover
+		background-color: $side-menu-bg-color-hover
 
 	.side-menu--alt &::before
 		+pseudo()
@@ -213,14 +213,14 @@
 	transition-duration: $animation-speed
 
 	.no-touchevents .download:hover &
-		border-color: $sidemenu-bg-color-hover
+		border-color: $side-menu-bg-color-hover
 
 	&::before
 		+pseudo(attr(data-label))
 		+position(0, 0)
 		+size(100%)
 		color: white
-		background-color: $sidemenu-bg-color-hover
+		background-color: $side-menu-bg-color-hover
 		transition-property: transform
 		transition-duration: $animation-speed
 		transform: translate(-100%, 0)

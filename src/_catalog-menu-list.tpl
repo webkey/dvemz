@@ -2,7 +2,7 @@
 <!--(1) START @@classKey FIRST level-->
 <ul class="@@classKey__list @@classKey-js js-tab-container">
 	<!--@@classKey item start-->
-	<li id="catalog-menu-item-01" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Кабельно-проводниковая продукция и кабеленесущие системы"){ current is-open}">
+	<li id="catalog-menu-item-01" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Кабельно-проводниковая продукция и кабеленесущие системы"){ current}">
 		@@include('_navigation-LINK--full.tpl', { "itemText": "Кабельно-проводниковая продукция и кабеленесущие системы", "itemLink": "typography.html", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
 	<li class="has-drop">@@include('_navigation-LINK--full.tpl', { "itemText": "Кабель и провод медный", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
@@ -100,7 +100,7 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li id="catalog-menu-item-02" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Светотехнические изделия"){ current is-open}">
+	<li id="catalog-menu-item-02" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Светотехнические изделия"){ current}">
 		@@include('_navigation-LINK--full.tpl', { "itemText": "Светотехнические изделия", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
 
@@ -184,7 +184,7 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li id="catalog-menu-item-03" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Модульное, электрощитовое и коммутационное оборудование"){ current is-open}">
+	<li id="catalog-menu-item-03" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Модульное, электрощитовое и коммутационное оборудование"){ current}">
 		@@include('_navigation-LINK--full.tpl', { "itemText": "Модульное, электрощитовое и коммутационное оборудование ", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
@@ -205,7 +205,7 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li id="catalog-menu-item-04" class="js-tab-content@@if(catalogMenuActiveItem === "Бытовые электроприборы, электроустановочные изделия и инструмент"){ current is-open}">
+	<li id="catalog-menu-item-04" class="js-tab-content@@if(catalogMenuActiveItem === "Бытовые электроприборы, электроустановочные изделия и инструмент"){ current}">
 		@@include('_navigation-LINK--full.tpl', { "itemText": "Бытовые электроприборы, электроустановочные изделия и инструмент", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 	</li>
 	<!--@@classKey item end-->

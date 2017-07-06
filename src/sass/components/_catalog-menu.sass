@@ -65,15 +65,13 @@
 		text-decoration: none
 		transition-property: color, background-color
 		transition-duration: $animation-speed
-		padding: 21px $grid-inside-horizontal-space 22px
-		border-bottom: 1px solid $catalog-menu-border-color
-		font-size: 14px
-		line-height: 1.4
-		letter-spacing: 0.02em
+		padding: #{round($catalog-menu-horizontal-space*0.85)} $catalog-menu-horizontal-space
+		//border-bottom: 1px solid $catalog-menu-border-color
+		+font(16px, 20px)
 
 // стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
 .catalog-menu__list li.has-drop > .catalog-menu__tab > a
-	padding-right: (round($grid-inside-horizontal-space*2.5))
+	padding-right: (round($catalog-menu-arrow-size+10))
 
 // стили для пункта навигации ТЕКУЩЕЙ страницы
 .catalog-menu__list li.current > .catalog-menu__tab
@@ -81,8 +79,12 @@
 	&, .no-touchevents &
 
 		a, a:hover
-			color: white
-			box-shadow: inset 5px 0 0 white
+
+			//+media('<desk-hd')
+			+media('<desk-md')
+				// для экранов меньше 1920
+				color: white
+				box-shadow: inset 5px 0 0 black
 
 		//& a span
 			border-color: $mark-color-alt
@@ -98,18 +100,33 @@
 .catalog-menu__list > li
 
 	& > .catalog-menu__tab a
-		font-family: $font-alt
-		+font(16px, 1.5)
-		background-color: $catalog-menu-bg-color
-		+padding-vertical(18px, 17px)
+		//background-color: $catalog-menu-bg-color
+
+		// для больших экранов
+		+font-normal
+		+font(14px, 17px)
+		color: #ccc
+		text-transform: uppercase
+		letter-spacing: 0.1em
+		background-color: #484848
+		+padding-vertical(10px)
 
 		.no-touchevents &:hover
 			color: white
+
+	// для больших экранов
+	&.has-drop > .catalog-menu__tab
+		a
+			padding-right: $catalog-menu-horizontal-space
+
+		.catalog-menu__angle
+			display: none
 
 	//&.is-open > .catalog-menu__tab a
 		background-color: shade($catalog-menu-bg-color, 90%)
 		border-color: shade($catalog-menu-border-color, 90%)
 
+	// для больших экранов
 	& > .catalog-menu__drop
 		display: block
 
@@ -118,11 +135,11 @@
 	position: absolute
 	right: 0
 	top: 0
-	width: round($grid-inside-horizontal-space*2)
+	width: $catalog-menu-arrow-size
 	height: 100%
 	background-color: $catalog-menu-bg-color
-	border: solid $catalog-menu-border-color
-	border-width: 0 0 1px 1px
+	border: solid #666
+	border-width: 0 0 0 1px
 	transition-property: transform, color, background-color
 	transition-duration: $animation-speed
 	z-index: 2
@@ -134,49 +151,36 @@
 
 	i
 		position: absolute
-		left: 50%
-		top: 50%
-		width: 12px
-		height: 8px
+		+position(50%, 50%)
+		+size(16px)
+		margin: -8px 0 0 -8px
 		pointer-events: none
-		margin: -4px 0 0 -6px
 		transition-property: transform
 		transition-duration: $animation-speed
-		font-size: 0
-		line-height: 0
+		+font(0, 0)
 
 		&::before, &::after
-			content: ''
-			position: absolute
-			bottom: 0
-			height: 10px
-			width: 2px
-			border-radius: 2px
+			+pseudo()
+			+position(50%, 0)
+			height: 2px
+			width: 16px
 			backface-visibility: hidden
 			background-color: $catalog-menu-text-color
-			transform-origin: center center
-			transition-property: background-color
+			transition-property: background-color, transform
 			transition-duration: $animation-speed
 
-		&::before
-			right: 50%
-			transform-origin: right bottom
-			transform: rotate(45deg)
-
 		&::after
-			left: 50%
-			transform-origin: left bottom
-			transform: rotate(-45deg)
+			transform: rotate(0.25turn)
 
 // стили стрелок навигации для разных состояний
 .catalog-menu__angle
 
 	// активное (подменю открыто)
 	li.is-open > .catalog-menu__tab & i
-		transform: rotate(-0.5turn)
+		//transform: rotate(0)
 
-		//&::before, &::after
-			background-color: $subsite-menu-text-color
+		&::before, &::after
+			transform: rotate(0)
 
 	// ховер
 	.no-touchevents li > .catalog-menu__tab &:hover i
@@ -193,15 +197,31 @@
 		.no-touchevents &:hover
 			color: white
 
+	a
+		+font-bold
+		text-transform: uppercase
+
 	.catalog-menu__drop
 		// особые стили для пунктов навигации ТРЕТЬЕГО урованя
 		ul, a, .catalog-menu__angle
 			background-color: $catalog-menu-bg-color-ss
 
+		a
+			+font-normal
+			text-transform: none
+
 		.catalog-menu__drop
 			// особые стили для пунктов навигации ЧЕТВЕРТОГО урованя
 			ul, a, .catalog-menu__angle
 				background-color: $catalog-menu-bg-color-sss
+
+			a
+				+font(15px, 20px)
+				padding-left: #{round($catalog-menu-horizontal-space*2)}
+				+padding-vertical(round($catalog-menu-horizontal-space*0.5))
+				
+				&:hover
+					color: $base-color--ea
 
 			.catalog-menu__drop
 				// особые стили для пунктов навигации ПЯТОГО урованя
@@ -248,63 +268,61 @@
 .catalog-categories__item
 	display: block
 	margin-top: -1px
-	border: solid $sidemenu-bg-color-hover
-	border-width: 1px 0
 	position: relative
 
 .catalog-categories__cell
+	position: relative
 	display: block
-	color: $text-color
+	color: black
+	fill: black
 	+clear-spacing
-	white-space: nowrap
 	text-decoration: none
-	text-align: center
+	border: solid $side-menu-border-color
+	border-width: 1px 0
 	background-color: $base-color--ea
-	transition-property: background-color, transform
+	transition-property: background-color, transform, border-color, color, fill
 	transition-duration: $animation-speed
 
-	//.no-touchevents &:hover
-		background-color: black
+	.no-touchevents &:hover
+		background-color: $side-menu-bg-color-hover
 
-.catalog-categories--hover
-	transition-property: background-color, transform
-	transition-duration: $animation-speed
+	.no-touchevents &.active-tab
+		background-color: $catalog-menu-bg-color-s
+		color: white
+		fill: white
+		border-color: $catalog-menu-bg-color-s
+		z-index: 5
 
 .catalog-categories__figure
 	+display-inline-block-middle
-	+size(#{$sidebar-width}, 100%)
+	+size(#{$sidebar-width}, auto)
 	position: relative
 	z-index: 5
 
 	&::before
-		+pseudo-inline-block-relative()
+		+pseudo-block-relative()
 		+ratio(1, 1)
 
 	svg
 		+centering-transform-abs()
 		+size(50px)
-		transition-property: opacity, transform
-		transition-duration: $animation-speed
-
-		&:first-child
-			display: none
 
 	path
-		fill: black
+		fill: inherit
+		transition-property: inherit
+		transition-duration: inherit
 
 .catalog-categories__title
 	+display-inline-block-middle
+	max-width: calc(100% - #{$sidebar-width} - 5px)
 	position: relative
-	max-height: 100%
-	padding-right: 20px
+	padding: 10px 20px 10px 0
 	+font-bold
-	+font(1.6rem, 1.167)
+	+font(14px, 17px)
+	text-align: left
 	letter-spacing: normal
 	text-transform: uppercase
-	text-align: left
-	opacity: 1
-	transition-property: color, transform, opacity
-	transition-duration: round-float($animation-speed*1.5, 1)
+	white-space: normal
 	z-index: 5
 
 	//.no-touchevents .catalog-categories__cell:hover &
