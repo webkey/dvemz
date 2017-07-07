@@ -11,12 +11,21 @@
 	background-color: $bg-color
 	z-index: 40
 
+	+media('<desk-qhd')
+		+padding-horizontal($text-layout-space-horizontal--lg)
+
+	+media('<tab-lg')
+		+padding-horizontal($text-layout-space-horizontal--md)
+
+	+media('<tab-sm')
+		+padding-horizontal($text-layout-space-horizontal--sm)
+
 	.top-panel--alt &
 		position: fixed
 		left: $header-width
 		margin: 0
 		width: calc(100% - #{$sidebar-width} - #{$header-width})
-		max-width: calc(#{$page-layout-width} - #{$sidebar-width} - #{$header-width})
+		//max-width: calc(#{$page-layout-width} - #{$sidebar-width} - #{$header-width})
 		background-color: transparent
 
 		&::before
@@ -31,11 +40,17 @@
 
 	.home-page &
 		width: calc(100% - #{$sidebar-width--lg} - #{$header-width})
-		max-width: calc(#{$page-layout-width} - #{$sidebar-width--lg} - #{$header-width})
+		//max-width: calc(#{$page-layout-width} - #{$sidebar-width--lg} - #{$header-width})
 
 	.ea-catalog-page &
 		width: calc(100% - #{$catalog-menu-width} - #{$catalog-categories-width--full} - #{$header-width})
-		max-width: calc(#{$page-layout-width} - #{$catalog-menu-width} - #{$catalog-categories-width--full} - #{$header-width})
+		//max-width: calc(#{$page-layout-width} - #{$catalog-menu-width} - #{$catalog-categories-width--full} - #{$header-width})
+
+		+media('<desk-qhd')
+			width: calc(100% - #{$catalog-menu-width} - #{$catalog-categories-width--short} - #{$header-width})
+
+		+media('<desk-lg')
+			width: calc(100% - #{$catalog-menu-width} - #{$header-width})
 
 .top-panel-contacts
 	float: right

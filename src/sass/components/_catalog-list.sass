@@ -6,6 +6,10 @@
 .catalog
 	overflow: hidden
 	padding-right: 1px
+	margin-bottom: $bottom-space-md
+
+	&:last-child
+		margin-bottom: 0
 
 .catalog__list
 	+clear-spacing
@@ -119,8 +123,15 @@
 
 	.catalog__item
 		+display-inline-block-top
-		width: round-float(100%/3, 4)
+		width: round-float(100%/5, 4)
 		border-width: 0 1px 1px 0
+
+		+media('<desk-qhd')
+			width: round-float(100%/4, 4)
+
+		+media('<desk-hd')
+			width: round-float(100%/3, 4)
+
 
 	.catalog__inner
 		+padding-horizontal(30px)

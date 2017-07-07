@@ -36,6 +36,12 @@
 	.ea-catalog-page &
 		margin-right: $catalog-menu-width + $catalog-categories-width--full
 
+		+media('<desk-qhd')
+			margin-right: $catalog-menu-width + $catalog-categories-width--short
+
+		+media('<desk-lg')
+			margin-right: $catalog-menu-width
+
 //+media('<desk-lg')
 	margin-right: 0
 
@@ -105,15 +111,35 @@
 	+media('<tab-sm')
 		+padding-horizontal($text-layout-space-horizontal--sm)
 
+// выравнивание альтернативных элементов на внутренней странице
+// и их максимальная ширина
 .max-wrap-flood
 	max-width: $flood-layout-width
 
-// выравнивание альтернативных элементов на внутренней странице
-// и их максимальная ширина
 .layout-flood
 	max-width: $flood-layout-width + $text-layout-space-horizontal*2
 	+padding-horizontal($flood-layout-space-horizontal)
 	+push-auto
+
+	+media('<tab-lg')
+		+padding-horizontal($text-layout-space-horizontal--md)
+
+	+media('<tab-sm')
+		+padding-horizontal($text-layout-space-horizontal--sm)
+
+// выравнивание элеметов не имеющих ограничения по ширине
+// и их максимальная ширина (если необходима)
+.max-wrap-wide
+	max-width: $wide-layout-width
+
+.layout-wide
+	@if $wide-layout-width
+		max-width: $wide-layout-width + $text-layout-space-horizontal*2
+	+padding-horizontal($flood-layout-space-horizontal)
+	+push-auto
+
+	+media('<desk-qhd')
+		+padding-horizontal($text-layout-space-horizontal--lg)
 
 	+media('<tab-lg')
 		+padding-horizontal($text-layout-space-horizontal--md)
@@ -126,22 +152,33 @@
 .layout-article
 	padding: round($text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal}
 
+	+media('<desk-qhd')
+		padding: round($text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg}
+
 	+media('<tab-lg')
 		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md}
 
 	+media('<tab-sm')
 		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm}
 
-	p, ul, ol, h1, h2, h3, h4, h5, h6, hr, .layout-text, .layout-flood
+	p, ul, ol, h2, h3, h4, h5, h6, hr, .layout-text
 		max-width: $text-layout-width
 		+padding-horizontal(0)
 		+push-auto
 
 	.layout-flood
 		max-width: $flood-layout-width
+		+padding-horizontal(0)
+		+push-auto
 
 		p, ul, ol, h1, h2, h3, h4, h5, h6, hr
 			max-width: none
+
+	// элеметы не имеющие ограничения по ширине
+	.layout-wide
+		max-width: $wide-layout-width
+		+padding-horizontal(0)
+		+push-auto
 
 	// элеметы без отступов по бокам
 	.layout-full-width

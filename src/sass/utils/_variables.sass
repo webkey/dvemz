@@ -3,7 +3,7 @@
 
 // medium query
 //$breakpoints: ('mob-sm': 320px, 'mob-md': 480px, 'mob-lg': 640px, 'tab-sm': 768px, 'tab-lg': 992px, 'desk-sm': 1200px, 'desk-md': 1366px, 'desk-lg': 1600px, 'desk-hd': 1920px)
-$breakpoints: ('desk-hd': 1920px, 'desk-lg': 1600px, 'desk-md': 1366px, 'desk-sm': 1200px, 'tab-lg': 992px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
+$breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-md': 1366px, 'desk-sm': 1200px, 'tab-lg': 992px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
 
 // base
 $font-size: 1.8rem !default
@@ -79,9 +79,12 @@ $user-content: user-content !default
 // отступы слева и справа для всего сайта
 $page-layout-space-horizontal: 50px !default
 // максимальная ширина сайта
-$page-layout-width: 1920px + $page-layout-space-horizontal*2 !default
+//$page-layout-width: 1920px + $page-layout-space-horizontal*2 !default
+//$page-layout-width: 2560px + $page-layout-space-horizontal*2 !default
+$page-layout-width: none !default
 // минимальные отступы слева и справа у текствого блока
-$text-layout-space-horizontal: 40px !default
+$text-layout-space-horizontal: 60px !default
+$text-layout-space-horizontal--lg: 40px !default
 $text-layout-space-horizontal--md: 30px !default
 $text-layout-space-horizontal--sm: 20px !default
 // максимальная ширина текстового блока
@@ -90,6 +93,8 @@ $text-layout-width: 960px !default
 $flood-layout-space-horizontal: $text-layout-space-horizontal !default
 // максимальная ширина текстового блока выходящего за пределы текста
 $flood-layout-width: 1400px !default
+// максимальная ширина для элементов тянушихся максимально
+$wide-layout-width: null !default // переменная создана на случай необходимости ограничить максимальную ширину
 
 // form
 $form-text-color: $text-color !default

@@ -24,6 +24,12 @@ $footer-nav-horizontal-space: 40px
 		.ea-catalog-page &
 			width: calc(100% - #{$header-width} - #{$catalog-menu-width} - #{$catalog-categories-width--full})
 
+			+media('<desk-qhd')
+				width: calc(100% - #{$header-width} - #{$catalog-menu-width} - #{$catalog-categories-width--short})
+
+			+media('<desk-lg')
+				width: calc(100% - #{$header-width} - #{$catalog-menu-width})
+
 		//+media('<desk-sm')
 			left: 0
 			width: 100%

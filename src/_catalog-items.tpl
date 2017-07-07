@@ -1,4 +1,4 @@
-<div class="catalog__item">
+<article class="catalog__item">
 	<div class="catalog__inner">
 		<div class="catalog__figure">
 			<div class="catalog__img">
@@ -10,4 +10,4 @@
 			<div class="catalog__text">@@text</div>
 		</div>
 	</div>
-</div>
+</article>
