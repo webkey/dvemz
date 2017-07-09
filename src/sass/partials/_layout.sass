@@ -33,7 +33,7 @@
 	.home-page &
 		margin-right: $sidebar-width--lg
 
-	.ea-catalog-page &
+	.ea-has-catalog-menu &
 		margin-right: $catalog-menu-width + $catalog-categories-width--full
 
 		+media('<desk-qhd')
@@ -41,6 +41,9 @@
 
 		+media('<desk-lg')
 			margin-right: $catalog-menu-width
+
+		+media('<desk-sm')
+			margin-right: 0
 
 //+media('<desk-lg')
 	margin-right: 0

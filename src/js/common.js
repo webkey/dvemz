@@ -825,7 +825,7 @@ function mainMapInit() {
 		navMenuItem: null,
 		navMenuAnchor: 'a',
 		staggerElement: null,
-		overlay: '.nav-overlay', // overlay's class
+		overlayClass: 'popup-overlay', // overlay's class
 		overlayAppendTo: 'body', // where to place overlay
 		overlayAlpha: 0.8,
 		overlayIndex: 997,
@@ -873,7 +873,7 @@ function mainMapInit() {
 		// overlay
 		self.overlayBoolean = options.overlayBoolean;
 		self.overlayAppendTo = options.overlayAppendTo;
-		self.$overlay = $('<div class="' + options.overlay.substring(1) + '"></div>'); // Темплейт оверлея;
+		self.$overlay = $('<div class="' + options.overlayClass.substring(0) + '"></div>'); // Темплейт оверлея;
 		self._overlayAlpha = options.overlayAlpha;
 		self._overlayIndex = options.overlayIndex;
 		self._animateSpeedOverlay = options.animationSpeedOverlay || _animateSpeed;
@@ -1296,7 +1296,32 @@ function popupsInit(){
 			beforeOpenClass: 'nav-popup-before-open',
 			ease: 'Power2.easeInOut'
 		});
+	}
 
+	/*navigation*/
+	var catalogMenuPopupClass = '.catalog-menu-popup-js';
+
+	if($(catalogMenuPopupClass).length){
+
+		new ExtraPopup({
+			navContainer: catalogMenuPopupClass,
+			// navMenu: '.nav__list',
+			btnMenu: '.btn-catalog-js',
+			btnMenuClose: '.btn-menu-close-js',
+			// staggerElement: '.nav__list > li',
+			overlayClass: 'popup-overlay--catalog-menu',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			// mediaWidth: 1200,
+			animationSpeed: 300,
+			animationType: 'rtl',
+			overlayAlpha: 0.35,
+			// alpha: 0,
+			cssScrollBlocked: true,
+			openedClass: 'catalog-menu-popup-opened',
+			beforeOpenClass: 'catalog-menu-popup-before-open',
+			ease: 'Power2.easeInOut'
+		});
 	}
 }
 /*extra popup initial end*/

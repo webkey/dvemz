@@ -2,7 +2,7 @@
 	<div class="logo-alt">
 		<a href="index.html">
 			<div class="logo-alt-title"><div class="logo-alt-title__fig"><span>Дальневосточный электромонтажный завод</span></div></div>
-			<div class="logo-alt-map"><div class="logo-alt-map__fig"><span>владивосток</span></div></div>
+			<div class="logo-alt-map"><div class="logo-alt-map__fig"><span>Владивосток</span></div></div>
 		</a>
 		<img style="display: none;" src="img/logo.png" alt="ДВЭМЗ">
 	</div>
@@ -24,8 +24,11 @@
 			</div>
 			<!--contact phones end-->
 		</div>
+		<!--
 		<div class="top-panel-contacts__item">
 			<a href="mailto:info@dvemz.ru"><span>info@dvemz.ru</span></a>
 		</div>
+		-->
 	</div>
+	<a href="#" class="btn-siblings"><i>&nbsp;</i><span>Электрощитовое <br> оборудование</span></a>
 </aside>

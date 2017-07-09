@@ -10,6 +10,9 @@
 .breadcrumbs__list, .#{$user-content} .breadcrumbs__list
 	padding: 0
 	margin: 0
+	+font(12px, 15px)
+	text-transform: uppercase
+	letter-spacing: 0.05em
 
 	li
 		padding: 0 17px 0 0
@@ -23,8 +26,7 @@
 	overflow: hidden
 
 	li
-		display: inline-block
-		vertical-align: top
+		+display-inline-block-top
 		position: relative
 
 		&::after
@@ -42,14 +44,12 @@
 			content: none
 
 		span
-			display: inline-block
-			vertical-align: top
+			+display-inline-block-top
 			line-height: 1.2
 			+truncate(260px)
 
 	a
-		display: inline-block
-		vertical-align: top
+		+display-inline-block-top
 		color: $link-color
 		text-decoration: none
 		cursor: pointer

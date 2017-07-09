@@ -246,7 +246,7 @@ $btn-menu-lines-color: $text-color !default
 	text-indent: -9999px
 	overflow: hidden
 	+size($header-width)
-	background: url(../../img/logo-short.png) no-repeat center center
+	background: #{$logo-bg-color} url(../../img/logo-short.png) no-repeat center center
 	background-size: auto 47px
 	transform:  scale(0.75)
 	transition-property: transform, background-color
@@ -255,10 +255,12 @@ $btn-menu-lines-color: $text-color !default
 
 	.ea-site &
 		background-image: url(../../img/logo-short--ea.png)
+		background-color: white
 
 .logo-title
 	position: absolute
-	left: $header-width
+	//left: #{$page-layout-space-horizontal+$header-width}
+	left: #{$header-width}
 	top: 0
 	bottom: 0
 	text-indent: -9999px
@@ -266,11 +268,29 @@ $btn-menu-lines-color: $text-color !default
 	+size(120px, auto)
 	opacity: 0
 	visibility: hidden
-	transform: translate(-50%, 0)
+	//transform: translate(-50%, 0)
 	transition-property: transform, opacity, visibility
 	transition-duration: $animation-speed
-	background: url(../../img/logo-title-white.png) no-repeat center center
-	background-size: auto 45px
+
+	.ea-site &
+		width: $nav-width
+
+	&::before
+		+pseudo()
+		+size(89px, 45px)
+		left: 50%
+		top: 50%
+		margin-top: -22px
+		margin-left: -45px
+		background: url(../../img/logo-title-white.png) no-repeat
+		background-size: contain
+
+		.ea-site &
+			background: url(../../img/logo-title--ea.png) no-repeat
+			+size(125px, 37px)
+			left: 20px
+			margin-top: -18px
+			margin-left: 0
 
 .logo-text
 	position: absolute
@@ -288,23 +308,29 @@ $btn-menu-lines-color: $text-color !default
 	transition-property: transform, opacity, visibility
 	transition-duration: $animation-speed
 
-.nav-popup-before-open .logo
-	&::before
-		opacity: 1
-		visibility: visible
+	.ea-site &
+		display: none
 
-	.logo-img
-		transform: translate(20px, 0) scale(1)
+.nav-popup-before-open
 
-	.logo-title
-		opacity: 1
-		visibility: visible
-		transform: translate(0, 0)
+	.logo
 
-	.logo-text
-		opacity: 1
-		visibility: visible
-		transform: translate(0, -50%)
+		&::before
+			opacity: 1
+			visibility: visible
+
+		.logo-img
+			transform: translate(20px, 0) scale(1)
+
+		.logo-title
+			opacity: 1
+			visibility: visible
+			transform: translate(0, 0)
+
+		.logo-text
+			opacity: 1
+			visibility: visible
+			transform: translate(0, -50%)
 
 /*logo end*/
 

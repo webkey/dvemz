@@ -29,6 +29,9 @@ html.css-scroll-fixed
 	opacity: 0
 	visibility: hidden
 	z-index: 998
+
+	.ea-site &
+		padding-top: 0
 	
 	&::before
 		+pseudo()
@@ -36,22 +39,32 @@ html.css-scroll-fixed
 		left: 0
 		+size(100%, $header-width)
 		background-color: $logo-bg-color
+		z-index: 5
+
+		.ea-site &
+			background-color: white
 
 .nav
 	position: relative
-	padding: $page-layout-space-horizontal
+	padding: #{round($page-layout-space-horizontal*0.5)} #{$page-layout-space-horizontal}
 	top: 50%
 	transform: translate(0, -50%)
 	+antialiased
 
 .nav__list
 	+font-normal
-	+font(2.4rem, 1.333)
+	+font(24px, 32px)
 	color: $text-color
 
 	li
 		position: relative
 		margin: 1em 0
+
+	+media('height<600px')
+		+font(20px, 28px)
+
+		li
+			margin: 0.5em 0
 
 	a
 		display: inline-block
@@ -61,7 +74,7 @@ html.css-scroll-fixed
 		transition-duration: $animation-speed
 
 		& > span
-			display: inline-block
+			+display-inline-block-top
 			position: relative
 			overflow: hidden
 
@@ -98,7 +111,7 @@ html.css-scroll-fixed
 	left: 0
 	bottom: 0
 	width: 100%
-	padding: $page-layout-space-horizontal
+	padding: #{round($page-layout-space-horizontal*0.5)} #{$page-layout-space-horizontal}
 	+font(1.2rem, 1.6)
 	color: $text-color
 

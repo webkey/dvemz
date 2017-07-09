@@ -21,7 +21,7 @@ $footer-nav-horizontal-space: 40px
 		width: calc(100% - #{$header-width} - #{$sidebar-width})
 		border-top: 1px solid $outline-color
 
-		.ea-catalog-page &
+		.ea-has-catalog-menu &
 			width: calc(100% - #{$header-width} - #{$catalog-menu-width} - #{$catalog-categories-width--full})
 
 			+media('<desk-qhd')
@@ -29,6 +29,9 @@ $footer-nav-horizontal-space: 40px
 
 			+media('<desk-lg')
 				width: calc(100% - #{$header-width} - #{$catalog-menu-width})
+
+			+media('<desk-sm')
+				width: calc(100% - #{$header-width})
 
 		//+media('<desk-sm')
 			left: 0

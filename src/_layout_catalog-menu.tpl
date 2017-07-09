@@ -1,4 +1,4 @@
-<aside class="catalog-menu js-tabs">
+<aside class="catalog-menu js-tabs catalog-menu-popup-js">
 	<div class="catalog-categories">
 		<div class="catalog-categories__holder">
 			<div class="catalog-categories__row">
