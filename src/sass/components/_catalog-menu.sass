@@ -38,6 +38,13 @@
 			box-shadow: -5px 0 40px 5px rgba(0, 0, 0, 0.15)
 			transition-delay: 0s
 
+			+media('<tab-lg')
+				box-shadow: none
+
+	+media('<tab-lg')
+		top: #{round($top-panel-height--md*2)}
+		width: 100%
+
 .catalog-menu-layout
 	overflow-x: hidden
 	overflow-y: auto
@@ -45,6 +52,9 @@
 
 	+media('<desk-lg')
 		width: calc(#{$catalog-menu-width} + 100px)
+
+	+media('<tab-lg')
+		width: auto
 
 /* catalog menu list
 // общие стили для главного списка навигации
@@ -56,6 +66,9 @@
 
 	+media('<desk-lg')
 		background-color: $base-color--ea
+
+	+media('<tab-lg')
+		width: auto
 
 // общие стили для подменю навигации
 .catalog-menu__drop
@@ -98,16 +111,26 @@
 	a
 		display: block
 		position: relative
+		//padding: #{round($catalog-menu-horizontal-space*0.7)} $catalog-menu-horizontal-space
+		padding: 0 $catalog-menu-horizontal-space
+		//border-bottom: 1px solid $catalog-menu-border-color
 		color: $catalog-menu-text-color
 		text-decoration: none
 		transition-property: color, background-color
 		transition-duration: $animation-speed
-		padding: #{round($catalog-menu-horizontal-space*0.7)} $catalog-menu-horizontal-space
-		//border-bottom: 1px solid $catalog-menu-border-color
-		+font(16px, 19px)
+		+clear-spacing
+
+		&::before
+			+pseudo-inline-block-relative()
+			vertical-align: middle
+			min-height: 50px
 
 		span
-			+display-inline-block-top
+			+display-inline-block-middle
+			max-width: calc(100% - 5px)
+			+font(16px, 19px)
+			letter-spacing: normal
+			padding: 8px 0
 
 // стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
 .catalog-menu__list li.has-drop > .catalog-menu__tab > a
@@ -171,24 +194,33 @@
 		// background-color: $catalog-menu-bg-color
 		// для больших экранов
 		+font-normal
-		+font(12px, 16px)
 		color: #ccc
 		text-transform: uppercase
-		letter-spacing: 0.1em
 		background-color: #484848
-		+padding-vertical(10px)
+		//+padding-vertical(10px)
+
+		span
+			+font(12px, 16px)
+			letter-spacing: 0.1em
 
 		+media('<desk-lg')
 			+font-bold
-			+font(14px, 17px)
 			color: black
 			text-transform: uppercase
-			letter-spacing: 0.025em
 			background-color: $base-color--ea
 			border-bottom: 1px solid $side-menu-bg-color-hover
 
+			span
+				+font(14px, 17px)
+				letter-spacing: 0.025em
+
 		.no-touchevents &:hover
 			color: white
+
+	// первый пункт первого уровня
+	&:first-child > .catalog-menu__tab a
+		+media('<desk-lg')
+			border-top: 1px solid $side-menu-bg-color-hover
 
 	&.has-drop > .catalog-menu__tab
 
@@ -220,6 +252,11 @@
 
 					&::before, &::after
 							background-color: white
+
+	// первый пункт первого уровня
+	&.has-drop:first-child > .catalog-menu__tab .catalog-menu__angle
+		+media('<desk-lg')
+			border-width: 1px 0 1px 1px
 
 	+media('<desk-lg')
 		&.is-open > .catalog-menu__tab
@@ -310,15 +347,19 @@
 
 	a
 		+font-bold
-		+font(14px, 19px)
 		text-transform: uppercase
+
+		span
+			+font(14px, 19px)
 
 		&:hover
 			color: $base-color--ea
 
 		+media('<desk-lg')
-			+font(16px, 19px)
 			text-transform: none
+
+			span
+				+font(16px, 19px)
 
 	.catalog-menu__drop
 		// особые стили для пунктов навигации ТРЕТЬЕГО урованя
@@ -326,10 +367,14 @@
 			background-color: $catalog-menu-bg-color-ss
 
 		a
-			+padding-vertical(round($catalog-menu-horizontal-space*0.6))
 			+font-normal
-			+font(14px, 17px)
 			text-transform: none
+
+			&::before
+				min-height: 46px
+
+			span
+				+font(14px, 17px)
 
 			&:hover
 				color: $base-color--ea
@@ -341,9 +386,13 @@
 
 			a
 				padding-left: #{round($catalog-menu-horizontal-space*2)}
-				+padding-vertical(round($catalog-menu-horizontal-space*0.5))
-				+font(13px, 17px)
 				color: #999
+
+				&::before
+					min-height: 44px
+
+				span
+					+font(13px, 17px)
 				
 				&:hover
 					color: $base-color--ea

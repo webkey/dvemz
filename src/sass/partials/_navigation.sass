@@ -8,14 +8,18 @@ html.css-scroll-fixed
 	&.touchevents
 		+scroll-blocked() // блокировка скролла во время открытия попапа (на тачскринах)
 
-.content-wrap, .scroll-nav, .side-menu, .top-panel
+.content-wrap, .scroll-nav, .side-menu, .top-panel, .footer__holder
 	transition-property: transform
 	transition-duration: 0.2s
-	transition-timing-function: ease-out
+	//transition-timing-function: ease-out
+	transition-timing-function: linear
 
 	.nav-popup-before-open &
 		transform: translate($nav-width - 100, 0)
-		transition-delay: 0.1s
+		//transition-delay: 0.1s
+
+		+media('<tab-lg')
+			transform: none
 
 .nav-wrap
 	position: fixed
@@ -34,6 +38,8 @@ html.css-scroll-fixed
 		left: 0
 		top: #{$top-panel-height--md}
 		height: calc(100% - #{$top-panel-height--md})
+		max-width: none
+		padding-top: 0
 	
 	&::before
 		+pseudo()
@@ -46,12 +52,22 @@ html.css-scroll-fixed
 		.ea-site &
 			background-color: white
 
+		+media('<tab-lg')
+			content: none
+
+.popup-overlay--nav
+	+media('<tab-lg')
+		top: #{$top-panel-height--md} !important
+
 .nav
 	position: relative
-	padding: #{round($page-layout-space-horizontal*0.5)} #{$page-layout-space-horizontal}
+	padding: 30px #{$page-layout-space-horizontal}
 	top: 50%
 	transform: translate(0, -50%)
 	+antialiased
+
+	+media('<tab-lg')
+		padding: 30px #{$text-layout-space-horizontal--md}
 
 .nav__list
 	+font-normal
@@ -113,9 +129,12 @@ html.css-scroll-fixed
 	left: 0
 	bottom: 0
 	width: 100%
-	padding: #{round($page-layout-space-horizontal*0.5)} #{$page-layout-space-horizontal}
+	padding: 30px #{$page-layout-space-horizontal}
 	+font(1.2rem, 1.6)
 	color: $text-color
+
+	+media('<tab-lg')
+		padding: 30px #{$text-layout-space-horizontal--md}
 
 	.copyright
 		margin-bottom: 1em

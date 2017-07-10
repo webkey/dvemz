@@ -1285,16 +1285,18 @@ function popupsInit(){
 			btnMenu: '.btn-menu-js',
 			btnMenuClose: '.btn-menu-close-js',
 			// staggerElement: '.nav__list > li',
+			overlayClass: 'popup-overlay--nav',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
 			// mediaWidth: 1280,
-			animationSpeed: 300,
+			animationSpeed: 200,
 			overlayAlpha: 0.35,
 			// alpha: 0,
 			cssScrollBlocked: true,
 			openedClass: 'nav-popup-opened',
 			beforeOpenClass: 'nav-popup-before-open',
-			ease: 'Power2.easeInOut'
+			// ease: 'Power2.easeInOut'
+			ease: 'Power0.easeNone'
 		});
 	}
 
@@ -1308,15 +1310,12 @@ function popupsInit(){
 			// navMenu: '.nav__list',
 			btnMenu: '.btn-catalog-js',
 			btnMenuClose: '.btn-menu-close-js',
-			// staggerElement: '.nav__list > li',
 			overlayClass: 'popup-overlay--catalog-menu',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
-			// mediaWidth: 1200,
 			animationSpeed: 300,
 			animationType: 'rtl',
 			overlayAlpha: 0.35,
-			// alpha: 0,
 			cssScrollBlocked: true,
 			openedClass: 'catalog-menu-popup-opened',
 			beforeOpenClass: 'catalog-menu-popup-before-open',
