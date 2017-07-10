@@ -261,7 +261,7 @@ $btn-menu-lines-color: $text-color !default
 			float: left
 			display: block
 			width: $top-panel-height--md
-			background-color: #333
+			background-color: #{$logo-bg-color}
 
 	.menu-btn__inner
 
@@ -276,4 +276,116 @@ $btn-menu-lines-color: $text-color !default
 
 /* button menu in top panel end
 
+/*button popup close*/
+.btn-popup-close
+	//<a href="#" class="btn-popup-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
+	$btn-bg: #{$logo-bg-color}
+	$btn-color: #e6e6e6
+	$btn-size: #{$top-panel-height--md}
+	$btn-space: 12px
+	$btn-lines-width: 22px
+	$btn-lines-height: 2px
+	$btn-lines-space: 5px
+	$btn-lines-color: $btn-color
+
+	=line-style()
+		+size($btn-lines-width, $btn-lines-height)
+
+	display: block
+	+size($btn-size)
+	color: white
+	text-decoration: none
+	+clear-spacing
+	white-space: nowrap
+	background: $btn-bg
+	transition-property: background-color, opacity, visibility
+	transition-duration: $animation-speed
+	z-index: 9999
+
+	+media('<mob-lg')
+		+size(45px)
+
+	&::before
+		content: ''
+		+display-inline-block-middle
+		height: $btn-size
+		min-height: 100%
+
+	& > span
+		+hide-text
+
+	& > i
+		+display-inline-block-middle
+		position: relative
+		backface-visibility: hidden
+		background-color: transparent
+		+line-style
+
+		&::before, &::after
+			+pseudo()
+			left: 0
+			backface-visibility: hidden
+			+line-style
+			background: $btn-lines-color
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		//first line menu
+		&::before
+			top: 0
+			transform: rotate(-45deg)
+
+		//third line menu
+		&::after
+			top: 0
+			transform: rotate(45deg)
+
+	.no-touchevents &:hover
+
+		& > i
+
+			&::before, &::after
+				background-color: #{$base-color--ea}
+
+//& > i::before, & > i::after
+	background-color: white
+
+/*button popup close end*/
+
+/*view print*/
+.view-print
+	+display-inline-block-top
+	padding: 6px 12px
+	margin-bottom: $bottom-space
+	line-height: 1
+	color: black
+	text-decoration: none
+	background: #f9f9f9
+	transition-property: background
+	transition-duration: $animation-speed
+
+	.no-touchevents &:hover
+		background-color: #eaeaea
+
+	svg
+		+display-inline-block-middle
+		+size(20px)
+		margin-right: 5px
+
+	span
+		+display-inline-block-middle
+
+	+media('<tab-lg')
+		font-size: 14px
+
+	+media('<mob-lg')
+		padding: 15px
+
+		& svg
+			margin-right: 0
+
+		& span
+			display: none
+
+/*view print end*/
 /*buttons end

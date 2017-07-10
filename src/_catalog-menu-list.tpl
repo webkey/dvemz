@@ -1,3 +1,7 @@
+<div class="@@classKey-title">
+	<a href="#" class="btn-popup-close btn-@@classKey-close btn-catalog-close-js"><i></i><span>Закрыть</span></a>
+	<span>Каталог</span>
+</div>
 <!--@@classKey-->
 <!--(1) START @@classKey FIRST level-->
 <ul class="@@classKey__list @@classKey-js js-tab-container">

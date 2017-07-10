@@ -7,8 +7,10 @@
 	position: relative
 	//margin: 0 $sidebar-width 0 $header-width
 	margin: 0 0 0 $header-width
-	background-color: $bg-color
 	z-index: 40
+
+	+media('<tab-lg')
+		padding-top: #{$top-panel-height--md}
 
 	.top-panel--alt &
 		position: fixed
@@ -55,8 +57,12 @@
 	position: relative
 	height: $top-panel-height
 	padding: 0 $page-layout-space-horizontal
+	background-color: #{$bg-color}
 	z-index: 5
 	+clear
+
+	.home-page &
+		background-color: transparent
 
 	+media('<desk-qhd')
 		+padding-horizontal($text-layout-space-horizontal--lg)
@@ -68,7 +74,10 @@
 		+padding-horizontal($text-layout-space-horizontal--sm)
 
 	+media('<tab-lg')
+		position: fixed
+		+position(0, 0)
 		height: $top-panel-height--md
+		width: 100%
 		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
 		+padding-horizontal(0)
 
@@ -215,7 +224,7 @@
 	+font(12px, 14px)
 	white-space: nowrap
 	text-decoration: none
-	color: #333
+	color: #{$logo-bg-color}
 	text-transform: uppercase
 	text-align: center
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3)

@@ -42,7 +42,6 @@
 				box-shadow: none
 
 	+media('<tab-lg')
-		top: #{round($top-panel-height--md*2)}
 		width: 100%
 
 .catalog-menu-layout
@@ -55,6 +54,33 @@
 
 	+media('<tab-lg')
 		width: auto
+
+/* catalog menu title
+.catalog-menu-title
+	display: none // скрывать на больших экранах
+	position: relative
+	padding: 13px #{$text-layout-space-horizontal--md}
+	+font-bold
+	+font(18px, 24px)
+	white-space: nowrap
+	text-decoration: none
+	color: black
+	text-transform: uppercase
+	text-align: center
+	background-color: #{$base-color--ea}
+
+	+media('<tab-lg')
+		display: block
+
+/* catalog menu title end
+
+/* button catalog menu close
+.btn-catalog-menu-close
+	position: absolute
+	right: 0
+	top: 0
+
+/* button catalog menu close end
 
 /* catalog menu list
 // общие стили для главного списка навигации
@@ -535,6 +561,9 @@
 .popup-overlay--catalog-menu
 	display: none
 
+	+media('<tab-lg')
+		display: block
+
 /* overlay catalog menu end
 
 /* button catalog menu toggle
@@ -571,7 +600,7 @@
 		background-image: linear-gradient(to right, transparent 0%, transparent 66.6%, #{$base-color--ea} 66.6%, #{$base-color--ea} 100%), linear-gradient(to bottom, black 0%, black 66.6%, #{$base-color--ea} 66.6%, #{$base-color--ea} 100%)
 		background-size: 6px 4px, 4px 6px
 
-	span
+	& > span
 		+display-inline-block-top
 		white-space: normal
 		text-align: left

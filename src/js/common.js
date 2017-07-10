@@ -1309,7 +1309,7 @@ function popupsInit(){
 			navContainer: catalogMenuPopupClass,
 			// navMenu: '.nav__list',
 			btnMenu: '.btn-catalog-js',
-			btnMenuClose: '.btn-menu-close-js',
+			btnMenuClose: '.btn-catalog-close-js',
 			overlayClass: 'popup-overlay--catalog-menu',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
