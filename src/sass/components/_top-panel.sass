@@ -5,19 +5,10 @@
 /*top panel
 .top-panel
 	position: relative
-	padding: 0 $page-layout-space-horizontal
-	margin: 0 $sidebar-width 0 $header-width
+	//margin: 0 $sidebar-width 0 $header-width
+	margin: 0 0 0 $header-width
 	background-color: $bg-color
 	z-index: 40
-
-	+media('<desk-qhd')
-		+padding-horizontal($text-layout-space-horizontal--lg)
-
-	+media('<tab-lg')
-		+padding-horizontal($text-layout-space-horizontal--md)
-
-	+media('<tab-sm')
-		+padding-horizontal($text-layout-space-horizontal--sm)
 
 	.top-panel--alt &
 		position: fixed
@@ -51,12 +42,34 @@
 		+media('<desk-lg')
 			width: calc(100% - #{$catalog-menu-width} - #{$header-width})
 
-		+media('<desk-sm')
+		+media('<desk-md')
 			width: calc(100% - #{$header-width})
 
+	// для всех страниц
+	&, .ea-has-catalog-menu &
+		+media('<tab-lg')
+			width: 100%
+			margin-left: 0
+
 .top-panel-holder
+	position: relative
 	height: $top-panel-height
+	padding: 0 $page-layout-space-horizontal
+	z-index: 5
 	+clear
+
+	+media('<desk-qhd')
+		+padding-horizontal($text-layout-space-horizontal--lg)
+
+	+media('<tab-lg')
+		+padding-horizontal($text-layout-space-horizontal--md)
+
+	+media('<tab-sm')
+		+padding-horizontal($text-layout-space-horizontal--sm)
+
+	+media('<tab-lg')
+		height: $top-panel-height--md
+		+padding-horizontal(0)
 
 .top-panel-contacts
 	+clear-spacing
@@ -67,10 +80,14 @@
 .top-panel-contacts__item
 	+display-inline-block-top
 	padding: #{$top-panel-space} 60px 0 0
-	+font(24px, 1.3)
+	+font(24px, 31px)
 	letter-spacing: normal
 	color: black
 	border-color: black
+
+	+media('<tab-lg')
+		+font(20px, 24px)
+		padding: #{$top-panel-space--md} 20px
 
 	.top-panel--alt &
 		color: white
@@ -118,16 +135,24 @@
 		right: -#{$top-panel-space}
 		bottom: 0
 		height: calc(100% + #{$top-panel-space})
-		background-color: $logo-bg-color
 		opacity: 0
 		visibility: hidden
 		transition-property: opacity, visibility
 		transition-duration: $animation-speed
+		background-color: $bg-color-light
 		z-index: -1
+
+		.top-panel--alt &
+			background-color: $logo-bg-color
 
 		.choice-opened &
 			opacity: 1
 			visibility: visible
+
+		+media('<tab-lg')
+			height: calc(100% + #{$top-panel-space--md})
+			left: -20px
+			right: -20px
 
 	&::after
 		+pseudo()
@@ -152,15 +177,23 @@
 	left: -#{$top-panel-space}
 	top: 100%
 	width: calc(100% + #{$top-panel-space*2})
-	padding: 5px $top-panel-space $top-panel-space
+	padding: 5px #{$top-panel-space} #{$top-panel-space}
 	overflow-x: hidden
 	overflow-y: auto
-	background-color: $logo-bg-color
+	background-color: $bg-color-light
 	opacity: 0
 	visibility: hidden
 	transition-property: opacity, visibility
 	transition-duration: $animation-speed
 	z-index: 50
+
+	.top-panel--alt &
+		background-color: $logo-bg-color
+
+	+media('<tab-lg')
+		left: -20px
+		width: calc(100% + 20px*2)
+		padding: 5px 20px #{$top-panel-space--md}
 
 	.choice-opened &
 		opacity: 1
@@ -174,6 +207,7 @@
 /* button to site
 .btn-siblings
 	+display-inline-block-top
+	position: relative
 	background-color: white
 	padding: 10px 20px
 	+font-bold
@@ -186,10 +220,33 @@
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3)
 	transition-property: box-shadow
 	transition-duration: $animation-speed
+	
+	&::before, &::after
+		content: ""
+		position: absolute
+		top: 50%
+		border-left: 1px dotted black
+		height: 28px
+		margin-top: -14px
+		display: none
+		
+	&::before
+		left: 0
+		
+	&::after
+		right: 0
 
 	.top-panel &
 		float: right
 		margin-top: 16px
+
+		+media('<tab-lg')
+			height: #{$top-panel-height--md}
+			margin-top: 0
+			box-shadow: none
+
+			&::before, &::after
+				display: block
 
 	i
 		+display-inline-block-middle
@@ -205,8 +262,12 @@
 		white-space: normal
 		text-align: left
 
-	&:hover
+	.no-touchevents &:hover
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5)
+
+		+media('<tab-lg')
+			box-shadow: none
+			background: $bg-color-light
 
 /* button to site end
 
@@ -220,6 +281,9 @@
 		height: 100%
 		margin-right: 50px
 
+		+media('<tab-lg')
+			margin-right: 0
+
 	a
 		display: block
 		position: relative
@@ -231,6 +295,9 @@
 		&::after
 			+vertical-align()
 
+		+media('<tab-lg')
+			+padding-horizontal(30px)
+
 .logo-alt-title, .logo-alt-map
 	position: relative
 	+display-inline-block-middle
@@ -240,8 +307,12 @@
 
 .logo-alt-title
 
-	+media('<desk-md')
+	+media('<desk-lg')
 		display: none
+
+	+media('<tab-lg')
+		display: inline-block
+		white-space: nowrap
 
 .logo-alt-title__fig, .logo-alt-map__fig
 	text-indent: -9999px
@@ -274,6 +345,13 @@
 		&::before
 			+ratio(125, 37)
 
+		+media('<tab-lg')
+			background-image: url(../../img/logo--ea.png)
+			width: 144px
+
+			&::before
+				+ratio(144, 34)
+
 .logo-alt-map__fig
 	+size(192px, auto)
 	background-image: url(../../img/logo-map.png)
@@ -288,9 +366,12 @@
 	padding-left: 20px
 	margin-left: 20px
 
-	+media('<desk-md')
+	+media('<desk-lg')
 		padding-left: 0
 		margin-left: 0
+
+	+media('<tab-lg')
+		display: none
 
 	&::before
 		+pseudo()
@@ -301,9 +382,8 @@
 		border-width: 0 0 0 1px
 		transform: translate(0, -50%)
 
-		+media('<desk-md')
+		+media('<desk-lg')
 			content: none
 
 /* logo alt end
-
 /* top panel end

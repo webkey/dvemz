@@ -30,8 +30,10 @@ html.css-scroll-fixed
 	visibility: hidden
 	z-index: 998
 
-	.ea-site &
-		padding-top: 0
+	+media('<tab-lg')
+		left: 0
+		top: #{$top-panel-height--md}
+		height: calc(100% - #{$top-panel-height--md})
 	
 	&::before
 		+pseudo()

@@ -42,8 +42,12 @@
 		+media('<desk-lg')
 			margin-right: $catalog-menu-width
 
-		+media('<desk-sm')
+		+media('<desk-md')
 			margin-right: 0
+
+	+media('<tab-lg')
+		&, .ea-has-catalog-menu &
+			margin-left: 0
 
 //+media('<desk-lg')
 	margin-right: 0
@@ -62,13 +66,8 @@
 	background-color: white
 	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1)
 
-//.sidebar
-	display: inline
-	float: right
-	margin: 0 0 0 -320px
-	width: 320px
-
-	background-color: sandybrown
+	+media('<tab-lg')
+		display: none
 
 .footer
 	margin: 0 auto

@@ -61,7 +61,10 @@ $main-section-max-width-lg: 960px !default
 	display: table-cell
 	vertical-align: middle
 	text-align: center
-	padding: $top-panel-height+$page-layout-space-horizontal $page-layout-space-horizontal $page-layout-space-horizontal
+	padding: #{$top-panel-height+$page-layout-space-horizontal} #{$page-layout-space-horizontal} #{$page-layout-space-horizontal}
+
+	+media('<tab-lg')
+		padding: #{$top-panel-height--md+$page-layout-space-horizontal} #{$page-layout-space-horizontal} #{$page-layout-space-horizontal}
 
 .main-section__layout
 	position: relative
@@ -346,7 +349,7 @@ $main-section-max-width-lg: 960px !default
 
 /*main map
 .main-map
-	+cover()
+	+cover-abs()
 	background-color: #d3d3d3
 
 /*main map end

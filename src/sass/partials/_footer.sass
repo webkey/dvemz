@@ -30,12 +30,13 @@ $footer-nav-horizontal-space: 40px
 			+media('<desk-lg')
 				width: calc(100% - #{$header-width} - #{$catalog-menu-width})
 
-			+media('<desk-sm')
+			+media('<desk-md')
 				width: calc(100% - #{$header-width})
 
-		//+media('<desk-sm')
-			left: 0
-			width: 100%
+		+media('<tab-lg')
+			&, .ea-has-catalog-menu &
+				left: 0
+				width: 100%
 
 //.footer__holder
 	overflow: hidden

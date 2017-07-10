@@ -1,0 +1,85 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* user options
+.user-options
+
+	.top-panel &
+		display: none
+
+		+media('<tab-lg')
+			display: block
+			float: right
+			margin-left: 20px
+
+.user-options__item
+	display: block
+	position: relative
+	color: $text-color
+	text-decoration: none
+	transition-property: background-color
+	transition-duration: $animation-speed
+
+	.top-panel &.menu-btn
+		display: none
+
+	&::after
+		+pseudo-block-relative()
+		+ratio()
+
+	.top-panel &
+		+display-inline-block-top
+		width: #{$top-panel-height}
+
+		+media('<tab-lg')
+			width: #{$top-panel-height--md}
+
+.user-option__icon
+	+centering-transform-abs()
+
+	& > span
+		+hide-text
+
+	svg
+		display: block
+		+size(24px)
+
+	path
+		fill: $text-color
+		transition: fill $animation-speed
+
+	.basket-counter
+		position: absolute
+		left: 100%
+		bottom: 100%
+		+margin($left: -7px, $bottom: -7px)
+		+size(14px)
+		+font(1.0rem, 14px)
+		text-align: center
+		background-color: $base-color
+		border-radius: 50%
+
+// ховер
+.user-options__item
+	overflow: hidden
+
+	&::before
+		+pseudo()
+		top: 0
+		left: 0
+		width: calc(100% + 50px)
+		height: 100%
+		margin-left: -25px
+		background-color: $bg-color-light
+		transform: translate(100%, 0) skew(-30deg)
+		transition-property: transform
+		transition-duration: 0.3s
+
+	&.active::before
+		transform: translate(0, 0) skew(-10deg)
+
+	.no-touchevents &:hover path
+		fill: $base-color
+
+/* user options end

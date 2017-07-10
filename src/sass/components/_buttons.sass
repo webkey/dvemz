@@ -14,7 +14,7 @@
 	& input[type="submit"], & input[type="button"], & input[type="reset"]
 		background: url("../../img/empty.png") repeat
 		display: block
-		+cover()
+		+cover-abs()
 		padding: 0
 		border: none
 		z-index: 99
@@ -136,5 +136,144 @@
 
 			&::before, &::after
 				background-color: $text-color
+
+/* button menu
+$btn-menu-bg: white !default
+$btn-menu-color: white !default
+$btn-menu-space: 12px !default
+$btn-menu-lines-width: 28px !default
+$btn-menu-lines-height: 2px !default
+$btn-menu-lines-space: 5px !default
+$btn-menu-lines-color: $text-color !default
+
+=btn-menu-line-style()
+	+size($btn-menu-lines-width, $btn-menu-lines-height)
+	background: $btn-menu-lines-color
+
+=btn-menu-transition()
+	transition-property: transform, box-shadow, background-color
+	transition-duration: $animation-speed
+
+.menu-btn
+	position: relative
+	text-decoration: none
+	color: $text-color
+	width: 60px
+
+	.header &
+		width: auto
+
+	&::after
+		+pseudo-block-relative()
+		+ratio(1, 1)
+		z-index: -1
+
+.menu-btn__inner
+	+cover-abs()
+	+clear-spacing
+	white-space: nowrap
+
+	& > span
+		+hide-text
+		white-space: normal
+
+	&::before, &::after, & > i
+		+btn-menu-line-style
+		left: 50%
+		top: 50%
+		+margin($top: -#{round($btn-menu-lines-height*0.5)}, $left: -#{round($btn-menu-lines-width*0.5)})
+
+	&::before, &::after
+		+pseudo()
+		opacity: 0
+		transition-property: transform, opacity
+		transition-duration: $animation-speed
+
+	& > i
+		position: absolute
+		backface-visibility: hidden
+		transition-property: background-color
+		transition-duration: $animation-speed
+
+		&::before, &::after
+			+pseudo()
+			left: 0
+			+btn-menu-line-style
+			backface-visibility: hidden
+			transition-property: transform, opacity, background-color
+			transition-duration: $animation-speed
+
+		//first line menu
+		&::before
+			top: -#{$btn-menu-lines-height + $btn-menu-lines-space}
+
+		//third line menu
+		&::after
+			top: #{$btn-menu-lines-height + $btn-menu-lines-space}
+
+	// active
+	.menu-btn.active &
+		&::before
+			transform: rotate(45deg)
+			opacity: 1
+
+		&::after
+			transform: rotate(-45deg)
+			opacity: 1
+
+		& > i
+			background-color: transparent !important
+
+			&::before
+				transform: translate(0, #{$btn-menu-lines-space+$btn-menu-lines-height})
+				opacity: 0
+
+			&::after
+				transform: translate(0, -#{$btn-menu-lines-space+$btn-menu-lines-height})
+				opacity: 0
+
+	// hover
+	.no-touchevents .menu-btn:hover &
+		&::before, &::after
+			background-color: $base-color
+
+		& > i
+			background-color: $base-color
+
+			&::before, &::after
+				background-color: $base-color
+
+/* button menu end
+
+/* button menu in top panel
+.top-panel
+	$btn-menu-lines-width: 22px
+	$btn-menu-lines-color: #e6e6e6
+
+	=btn-menu-line-style()
+		width: $btn-menu-lines-width
+		background: $btn-menu-lines-color
+
+	.menu-btn
+		display: none
+
+		+media('<tab-lg')
+			float: left
+			display: block
+			width: $top-panel-height--md
+			background-color: #333
+
+	.menu-btn__inner
+
+		&::before, &::after, & > i
+			+btn-menu-line-style
+			margin-left: -#{round($btn-menu-lines-width*0.5)}
+
+		& > i
+
+			&::before, &::after
+				+btn-menu-line-style
+
+/* button menu in top panel end
 
 /*buttons end
