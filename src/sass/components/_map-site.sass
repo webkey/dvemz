@@ -1,0 +1,53 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* map site
+.map-site-title
+	display: none
+
+.map-site__list
+	+clear
+
+	.layout-wide &
+		max-width: none
+
+	& > li
+		float: left
+		width: calc(33.3% - 40px)
+		margin-left: 40px
+
+		&:nth-child(3n)
+			clear: right
+
+// особые стили для пунктов навигации ПЕРВОГО урованя
+.map-site__list > li
+	+font-bold
+	font-size: 18px
+	text-transform: uppercase
+		
+// особые стили для пунктов ПОДМЕНЮ
+.map-site__drop
+
+	// особые стили для пунктов навигации ВТОРОГО урованя
+	li
+		+font-bold
+		font-size: 16px
+		text-transform: none
+
+	.map-site__drop
+		// особые стили для пунктов навигации ТРЕТЬЕГО урованя
+		li
+			font-size: 16px
+			+font-normal
+			text-transform: none
+
+		.map-site__drop
+			// особые стили для пунктов навигации ЧЕТВЕРТОГО урованя
+			li
+				font-size: 14px
+
+			a
+				color: #999
+
+/* map site end

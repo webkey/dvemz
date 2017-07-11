@@ -25,23 +25,14 @@
 							<!--breadcrumbs-->
 							@@include('_breadcrumbs.tpl')
 							<!--breadcrumbs end-->
-							<h1>Кабельно-проводниковая продукция и кабеленесущие системы</h1>
-							<!--view switcher-->
-							<!--
-							<div class="view-switcher js-view-switcher">
-								<a href="#" class="grid-view active" data-title="Показать товары плиткой"><span>Плиткой</span></a>
-								<a href="#" class="list-view" data-title="Показать товары списком"><span>Списком</span></a>
-							</div>
-							-->
-							<!--view switcher end-->
+							<h1>Карта сайта</h1>
 							<div class="layout-wide">
-								<!--catalog-->
-								<div class="catalog grid-view-activated">
-									<section class="catalog__list">
-										@@loop("_catalog-items.tpl", "includes-json/catalog-items.json")
-									</section>
-								</div>
-								<!--catalog end-->
+								<!--map site-->
+								@@include('_catalog-menu-list.tpl', {
+									"catalogMenuActiveItem": "",
+									"classKey": "map-site"
+								})
+								<!--map site end-->
 							</div>
 						</div>
 					</div>

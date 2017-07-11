@@ -22,13 +22,13 @@ html.css-scroll-fixed
 			transform: none
 
 .nav-wrap
+	overflow: hidden // необходим для скрытия скролла
 	position: fixed
-	left: $header-width
-	top: 0
-	width: 100%
-	height: 100%
+	+position(0, #{$header-width})
+	+size(100%, 100vh)
+	min-width: 320px
 	max-width: $nav-width
-	padding: $header-width 0 120px
+	//padding: 0 0 120px
 	background: $bg-color-light
 	opacity: 0
 	visibility: hidden
@@ -37,23 +37,149 @@ html.css-scroll-fixed
 	+media('<tab-lg')
 		left: 0
 		top: #{$top-panel-height--md}
-		height: calc(100% - #{$top-panel-height--md})
+		height: calc(100vh - #{$top-panel-height--md})
 		max-width: none
 		padding-top: 0
-	
-	&::before
-		+pseudo()
-		top: 0
-		left: 0
-		+size(100%, $header-width)
-		background-color: $logo-bg-color
-		z-index: 5
+		
+		&::before
+			+pseudo()
+			+position(-40px, 0)
+			+size(100%, 40px)
+			box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
+			z-index: 5
 
-		.ea-site &
-			background-color: white
+//&::before
+	+pseudo()
+	top: 0
+	left: 0
+	+size(100%, $header-width)
+	background-color: $logo-bg-color
+	z-index: 5
+
+	.ea-site &
+		background-color: white
+
+	+media('<tab-lg')
+		content: none
+
+.nav-wrap__align
+	width: calc(100% + 100px)
+	overflow-x: hidden
+	overflow-y: auto
+	height: 100vh
+
+	+media('<tab-lg')
+		width: 100%
+		height: calc(100vh - #{$top-panel-height--md})
+
+.nav-wrap__holder
+	//display: table
+	//min-height: 100vh // не работает в фф
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	min-height: 100vh // ie поддерживает min-height для table
+	width: #{$nav-width}
+
+	+media('<tab-lg')
+		width: 100%
+		min-height: calc(100vh - #{$top-panel-height--md})
+
+	// для браузеров не поддерживающих display: flex
+	.no-flexbox &
+		display: table
+		table-layout: fixed
+
+	// в ие 11 не поддерживается flex-direction: column вместе с min-height
+	// для этого браузера исспользуем хак
+	@media all and (-ms-high-contrast: none)
+		&::-ms-backdrop, &
+			display: table
+			table-layout: fixed
+
+.nav-wrap__row
+
+	// для браузеров не поддерживающих display: flex
+	.no-flexbox &
+		display: table-row
+
+	// в ие 11 не поддерживается flex-direction: column вместе с min-height
+	// для этого браузера исспользуем хак
+	@media all and (-ms-high-contrast: none)
+		&::-ms-backdrop, &
+			display: table-row
+
+.nav-wrap__cell
+	// для браузеров не поддерживающих display: flex
+	.no-flexbox &
+		display: table-cell
+		vertical-align: middle
+
+	// в ие 11 не поддерживается flex-direction: column вместе с min-height
+	// для этого браузера исспользуем хак
+	@media all and (-ms-high-contrast: none)
+		&::-ms-backdrop, &
+			display: table-cell
+			vertical-align: middle
+
+.nav-title
+	position: relative
+
+.logo-nav
+	display: block
+	padding: 15px #{$page-layout-space-horizontal}
+	text-decoration: none
+	color: $text-color
+	border-bottom: 1px solid transparent
+	background-color: #{$bg-color}
+	transition-property: color, background-color
+	transition-duration: $animation-speed
+
+	+media('<tab-lg')
+		text-align: center
+		background-color: transparent
+		border-color: #ccc
+
+	.no-touchevents &:hover
+		background-color: darken($bg-color-light, 10%)
+
+	.home-page &
+		color: white
+		background-color: #{$logo-bg-color}
+
+	.no-touchevents .home-page &:hover
+		background-color: lighten($logo-bg-color, 10%)
+
+.logo-nav__img
+	+display-inline-block-middle
+	+size(152px, auto)
+	background-image: url(../../img/logo.png)
+	background-size: contain
+	background-repeat: no-repeat
+	margin-bottom: 10px
+
+	&::before
+		+pseudo-block-relative()
+		+ratio(152, 42)
+
+	& > span
+		+hide-text
+
+	.ea-site &
+		+size(178px, auto)
+		background-image: url(../../img/logo--ea.png)
+
+		&::before
+			+ratio(178, 42)
 
 		+media('<tab-lg')
-			content: none
+			width: 144px
+
+.logo-nav__title
+	display: block
+	+font(10px, 14px)
+	letter-spacing: 0.05em
+	text-transform: uppercase
 
 .popup-overlay--nav
 	+media('<tab-lg')
@@ -62,9 +188,9 @@ html.css-scroll-fixed
 .nav
 	position: relative
 	padding: 30px #{$page-layout-space-horizontal}
-	top: 50%
-	transform: translate(0, -50%)
-	+antialiased
+	//top: 50%
+	//transform: translate(0, -50%)
+	//+antialiased
 
 	+media('<tab-lg')
 		padding: 30px #{$text-layout-space-horizontal--md}
@@ -74,15 +200,24 @@ html.css-scroll-fixed
 	+font(24px, 32px)
 	color: $text-color
 
+	+media('<tab-lg')
+		text-align: center
+
 	li
 		position: relative
-		margin: 1em 0
+		margin: 1em 0 0
+
+		&:first-child
+			margin-top: 0
 
 	+media('height<600px')
 		+font(20px, 28px)
 
 		li
-			margin: 0.5em 0
+			margin-top: 0.5em
+
+			&:first-child
+				margin-top: 0
 
 	a
 		display: inline-block
@@ -125,16 +260,17 @@ html.css-scroll-fixed
 /*navigation end*/
 
 .nav-footer
-	position: absolute
-	left: 0
-	bottom: 0
-	width: 100%
-	padding: 30px #{$page-layout-space-horizontal}
+	//position: absolute
+	//left: 0
+	//bottom: 0
+	//width: 100%
+	padding: 0 #{$page-layout-space-horizontal} 30px
 	+font(1.2rem, 1.6)
 	color: $text-color
 
 	+media('<tab-lg')
-		padding: 30px #{$text-layout-space-horizontal--md}
+		padding: 0 #{$text-layout-space-horizontal--md} 30px
+		text-align: center
 
 	.copyright
 		margin-bottom: 1em

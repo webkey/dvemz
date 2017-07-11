@@ -57,10 +57,9 @@
 
 .header
 	position: fixed
-	left: 0
-	top: 0
-	width: $header-width
-	height: 100%
+	+position(0, 0)
+	overflow: hidden
+	+size($header-width, 100%)
 	z-index: 1000
 
 	background-color: white

@@ -14,12 +14,18 @@
 			margin-left: 20px
 
 .user-options__item
-	display: block
+	+display-inline-block-top
+	width: 60px
 	position: relative
+	overflow: hidden
 	color: $text-color
 	text-decoration: none
 	transition-property: background-color
 	transition-duration: $animation-speed
+
+	.header &
+		display: block
+		width: auto
 
 	.top-panel &.menu-btn
 		display: none
@@ -62,7 +68,6 @@
 
 // ховер
 .user-options__item
-	overflow: hidden
 
 	&::before
 		+pseudo()

@@ -43,14 +43,17 @@
 
 	+media('<tab-lg')
 		width: 100%
+		min-width: 320px
 
 .catalog-menu-layout
 	overflow-x: hidden
 	overflow-y: auto
 	height: 100vh
+	background-color: $catalog-menu-bg-color
 
 	+media('<desk-lg')
 		width: calc(#{$catalog-menu-width} + 100px)
+		background-color: $base-color--ea
 
 	+media('<tab-lg')
 		width: auto
@@ -87,11 +90,7 @@
 .catalog-menu__list
 	position: relative
 	width: $catalog-menu-width
-	min-height: 100%
-	background-color: $catalog-menu-bg-color
-
-	+media('<desk-lg')
-		background-color: $base-color--ea
+	//min-height: 100%
 
 	+media('<tab-lg')
 		width: auto
@@ -302,10 +301,8 @@
 
 	// для больших экранов
 	& > .catalog-menu__drop
-		display: block
-
-		+media('<desk-lg')
-			display: none
+		+media('>=desk-lg')
+			display: block !important
 
 // СТРЕЛКИ навигации
 .catalog-menu__angle
@@ -580,7 +577,7 @@
 	background-color: $base-color--ea
 
 	+media('<desk-md')
-		+display-inline-block-top
+		display: block
 
 	+media('<tab-lg')
 		display: block

@@ -3,35 +3,93 @@
 @import ../../libs/include-media/dist/include-media
 
 /*HEADER*/
-.header__holder
-	display: table
-	//min-height: 100vh // не работает в фф
+
+.header__align
+	width: calc(100% + 100px)
+	overflow-x: hidden
+	overflow-y: auto
 	height: 100vh
-	width: 100%
-	table-layout: fixed
+
+.header__holder
+	//display: table
+	//min-height: 100vh // не работает в фф
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	min-height: 100vh // ie поддерживает min-height для table
+	width: #{$header-width}
+
+	// для браузеров не поддерживающих display: flex
+	.no-flexbox &
+		display: table
+		table-layout: fixed
+
+	// в ие 11 не поддерживается flex-direction: column вместе с min-height
+	// для этого браузера исспользуем хак
+	@media all and (-ms-high-contrast: none)
+		&::-ms-backdrop, &
+			display: table
+			table-layout: fixed
 
 .header__row
-	display: table-row
 
-	&:first-child
+	// для браузеров не поддерживающих display: flex
+	.no-flexbox &
+		display: table-row
+
+	// в ие 11 не поддерживается flex-direction: column вместе с min-height
+	// для этого браузера исспользуем хак
+	@media all and (-ms-high-contrast: none)
+		&::-ms-backdrop, &
+			display: table-row
+
+.header__row--logo
+	//display: none // для выравнивания по вертикали для flex: box нужно 3 элемента
+	overflow: hidden
+	height: 0
+
+	+media('<desk-lg')
 		height: 1%
 
-	&:last-child
-		display: none
+.header__row--arrow
+	//display: none // для выравнивания по вертикали для flex: box нужно 3 элемента
+	overflow: hidden
+	height: 0
 
-		.home-page &
+	.home-page &
+		height: 1%
+
+		// для браузеров не поддерживающих display: flex
+		.no-flexbox &
 			display: table-row
 			height: 1%
 
+		// в ие 11 не поддерживается flex-direction: column вместе с min-height
+		// для этого браузера исспользуем хак
+		@media all and (-ms-high-contrast: none)
+			&::-ms-backdrop, &
+				display: table-row
+				height: 1%
+
 .header__cell
-	display: table-cell
-	vertical-align: middle
 	text-align: center
 
-	.header__row:first-child &
+	// для браузеров не поддерживающих display: flex
+	.no-flexbox &
+		display: table-cell
+		vertical-align: middle
+
+	// в ие 11 не поддерживается flex-direction: column вместе с min-height
+	// для этого браузера исспользуем хак
+	@media all and (-ms-high-contrast: none)
+		&::-ms-backdrop, &
+			display: table-cell
+			vertical-align: middle
+
+	.header__row--logo &
 		vertical-align: top
 
-	.home-page .header__row:last-child &
+	.header__row--arrow &
 		vertical-align: bottom
 
 		svg
@@ -53,14 +111,19 @@
 		height: 0
 		+ratio(1, 1)
 		background-color: $logo-bg-color
-		transition-property: background-color
+		transition-property: background-color, opacity, transform, visibility
 		transition-duration: $animation-speed
 		z-index: 5
 		
 		.ea-site &
 			background-color: transparent
 
-		&::before
+		.nav-popup-before-open &
+			transform: translate(50%, 0)
+			opacity: 0
+			visibility: hidden
+
+		//&::before
 			+pseudo()
 			left: 0
 			top: 0
@@ -72,24 +135,21 @@
 			transition-duration: $animation-speed
 			z-index: -1
 
-		.no-touchevents
-			&:hover
-				&::before, &
-					background-color: lighten($logo-bg-color, 10%)
+.no-touchevents
+	.logo a:hover
+		background-color: lighten($logo-bg-color, 10%)
 
-			.ea-site &:hover
-				&::before, &
-					background-color: transparent
+	.ea-site .logo a:hover
+		background-color: #{$bg-color-light}
 
 .logo-img
 	display: block
 	position: absolute
-	left: 0
-	top: 0
+	+position(0, 0)
 	text-indent: -9999px
 	overflow: hidden
 	+size($header-width)
-	background: #{$logo-bg-color} url(../../img/logo-short.png) no-repeat center center
+	background: url(../../img/logo-short.png) no-repeat center center
 	background-size: auto 47px
 	transform:  scale(0.75)
 	transition-property: transform, background-color
@@ -98,9 +158,8 @@
 
 	.ea-site &
 		background-image: url(../../img/logo-short--ea.png)
-		background-color: white
 
-.logo-title
+//.logo-title
 	position: absolute
 	//left: #{$page-layout-space-horizontal+$header-width}
 	left: #{$header-width}
@@ -135,7 +194,7 @@
 			margin-top: -18px
 			margin-left: 0
 
-.logo-text
+//.logo-text
 	position: absolute
 	width: 230px
 	top: 50%
@@ -162,15 +221,15 @@
 			opacity: 1
 			visibility: visible
 
-		.logo-img
+		//.logo-img
 			transform: translate(20px, 0) scale(1)
 
-		.logo-title
+		//.logo-title
 			opacity: 1
 			visibility: visible
 			transform: translate(0, 0)
 
-		.logo-text
+		//.logo-text
 			opacity: 1
 			visibility: visible
 			transform: translate(0, -50%)
