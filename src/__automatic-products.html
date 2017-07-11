@@ -25,15 +25,21 @@
 							<!--breadcrumbs-->
 							@@include('_breadcrumbs.tpl')
 							<!--breadcrumbs end-->
-							<h1>Кабельно-проводниковая продукция и кабеленесущие системы</h1>
+							<h1>2Кабель силовой бронированный АВБбШв и ААБл</h1>
+							<!--view switcher-->
+							<div class="view-switcher view-switcher-js">
+								<a href="#" class="grid-view active" data-title="Показать товары плиткой"><span>Плиткой</span></a>
+								<a href="#" class="list-view" data-title="Показать товары списком"><span>Списком</span></a>
+							</div>
+							<!--view switcher end-->
 							<div class="layout-wide">
-								<!--catalog-->
-								<div class="catalog grid-view-activated">
-									<section class="catalog__list">
-										@@loop("_catalog-items.tpl", "includes-json/catalog-items.json")
+								<!--products-->
+								<div class="products view-container-js grid-view-activated">
+									<section class="products__list">
+										@@loop("_products-items.tpl", "includes-json/products-items.json")
 									</section>
 								</div>
-								<!--catalog end-->
+								<!--products end-->
 							</div>
 						</div>
 					</div>

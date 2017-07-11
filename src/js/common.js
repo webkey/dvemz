@@ -1881,11 +1881,11 @@ function tabSwitcher() {
  * !toggle view shops
  * */
 function toggleView() {
-	var $switcherHand = $('.js-view-switcher a');
+	var $switcherHand = $('.view-switcher-js a');
 
 	if ( $switcherHand.length ) {
 
-		var $container = $('.catalog');
+		var $container = $('.view-container-js');
 		var activeHand = 'active';
 		var activeContainer = 'grid-view-activated';
 

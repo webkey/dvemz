@@ -1,0 +1,159 @@
+@import ../utils/_variables
+@import ../utils/_mixins
+@import ../../libs/include-media/dist/_include-media
+
+/* products
+.products
+	overflow: hidden
+	padding-right: 1px
+	margin-bottom: $bottom-space-md
+
+	&:last-child
+		margin-bottom: 0
+
+.products__list
+	+clear-spacing
+	padding-bottom: 1px
+
+.products__item
+	+display-inline-block-top
+	width: 100%
+	position: relative
+	padding: 1px 0 0 1px
+	+font(1.5rem, round-float(18px/15px, 2))
+	letter-spacing: normal
+
+.products__inner
+	display: block
+	position: relative
+	padding: 38px 40px
+	height: 100%
+	text-decoration: none
+	color: inherit
+	box-shadow: 0 0 0 1px $outline-color
+	transition-property: background
+	transition-duration: $animation-speed
+
+	.no-touchevents &
+		&:hover, &:focus
+			background: $bg-color-light
+
+.products__figure
+	float: left
+	position: relative
+	margin: 4px 40px 0 0
+	width: 102px
+
+	&:before
+		+pseudo-block-relative()
+		+ratio(1, 1)
+
+.products__img
+	+cover-abs()
+	font-size: $font-size
+	letter-spacing: normal
+	backface-visibility: hidden
+
+	img
+		display: block
+		max-height: 100%
+		max-width: 100%
+		+centering-transform-rel()
+
+.products__content
+	overflow: hidden
+
+	& > *:last-child
+		margin-bottom: 0
+
+	ul
+
+		li, ul, ol
+			margin: 0.7em 0
+
+		li
+			padding-left: 0
+
+			&::before
+				content: none
+
+		a
+			padding-top: 0.2em
+			color: inherit
+			text-decoration: none
+			transition-property: color
+			transition-duration: $animation-speed
+
+			.no-touchevents &:hover
+				color: $link-color
+
+		ul, ol
+			padding-left: 30px
+
+			li
+				&::before
+					content: '–'
+					display: inline-block
+					position: relative
+					margin-right: 5px
+					+position(auto, auto)
+					width: auto
+					height: auto
+					border: none
+
+.products__title
+	+font-alt-bold
+	+font(18px, 22px)
+	text-transform: uppercase
+	margin-bottom: $bottom-space
+
+.products__text
+	position: relative
+
+	& > *:last-child
+		margin-bottom: 0
+
+/* grid view
+.grid-view-activated
+	.products__list
+		display: flex
+		flex: 0 1 auto
+		//justify-content: stretch
+		flex-flow: row wrap
+
+	.products__item
+		+display-inline-block-top
+		width: round-float(100%/5, 4)
+		border-width: 0 1px 1px 0
+
+		+media('<desk-qhd')
+			width: round-float(100%/4, 4)
+
+		+media('<desk-hd')
+			width: round-float(100%/3, 4)
+
+		+media('<desk-lg')
+			width: round-float(100%/2, 4)
+
+		//+media('<desk-md')
+			width: round-float(100%/3, 4)
+
+		//+media('<tab-lg')
+			width: round-float(100%/2, 4)
+
+		+media('<mob-lg')
+			width: round-float(100%/1, 4)
+
+
+	.products__inner
+		+padding-horizontal(30px)
+	
+	.products__figure
+		float: none
+		margin: 0 auto $bottom-space
+
+	.products__title
+		text-align: center
+
+/* grid view end
+/* products end
