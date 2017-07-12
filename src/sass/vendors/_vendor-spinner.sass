@@ -1,0 +1,151 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+
+.spinner
+	position: relative
+	+display-inline-block-top
+	padding-right: 30px
+	text-align: left
+	border: 3px solid #{$outline-color}
+	background-color: white
+
+.remove-from-cart
+	position: absolute
+	right: 0
+	top: 0
+	+size(30px, 100%)
+	cursor: pointer
+	transition-property: background-color
+	transition-duration: $animation-speed
+
+	& > i
+		$this-icon-lines-width: 10px
+		$this-icon-lines-height: 2px
+		$this-icon-lines-color: $text-color
+
+		position: absolute
+		left: 50%
+		top: 50%
+		+size($this-icon-lines-width, $this-icon-lines-height)
+		margin-top: -#{round($this-icon-lines-height*0.5)}
+		margin-left: -#{round($this-icon-lines-width*0.5)}
+		backface-visibility: hidden
+
+		&::before, &::after
+			+pseudo()
+			left: 0
+			backface-visibility: hidden
+			+size($this-icon-lines-width, $this-icon-lines-height)
+			background-color: $this-icon-lines-color
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		&::before
+			top: 0
+			transform: rotate(-45deg)
+
+		&::after
+			top: 0
+			transform: rotate(45deg)
+
+	.no-touchevents &:hover
+		background-color: $bg-color-light
+		//& > i
+			&::before, &::after
+				background-color: $link-color
+
+	& > span
+		+hide-text
+
+.ui-widget.ui-widget-content
+	border: none
+
+.ui-spinner
+	padding-right: 30px
+
+.ui-spinner-input, .ui-spinner-input[type="text"]
+	width: 68px
+	border: none
+	background: none
+	color: inherit
+	padding: 13px 14px
+	height: 44px
+	vertical-align: top
+	margin: 0
+	+font(14px, 18px)
+	+font-bold
+
+	&:focus, &:hover
+		box-shadow: none
+
+.ui-spinner-button
+	width: 30px
+	height: 50%
+	padding: 0
+	margin: 0
+	right: 0
+	cursor: pointer
+	transition-property: background-color
+	transition-duration: $animation-speed
+
+	.no-touchevents &:hover
+		background-color: #{$bg-color-light}
+
+.ui-spinner a.ui-spinner-button
+	border: solid #{$outline-color}
+
+.ui-spinner a.ui-spinner-up
+	border-width: 0 2px 1px
+
+.ui-spinner a.ui-spinner-down
+	border-width: 1px 2px 0
+
+.ui-spinner .ui-button-icon
+	$this-icon-lines-width: 8px
+	$this-icon-lines-height: 2px
+	$this-icon-lines-color: $text-color
+
+	width: 12px
+	height: 8px
+	position: absolute
+	left: 50%
+	top: 50%
+	margin-top: -4px
+	margin-left: -6px
+	backface-visibility: hidden
+
+	&::before, &::after
+		+pseudo()
+		backface-visibility: hidden
+		+size($this-icon-lines-width, $this-icon-lines-height)
+		background-color: $this-icon-lines-color
+		transition-property: background-color
+		transition-duration: $animation-speed
+
+.ui-spinner .ui-spinner-up .ui-button-icon
+	&::before
+		top: 0
+		right: 50%
+		transform-origin: top right
+		transform: rotate(-45deg)
+
+	&::after
+		top: 0
+		left: 50%
+		transform-origin: top left
+		transform: rotate(45deg)
+
+.ui-spinner .ui-spinner-down .ui-button-icon
+	&::before
+		bottom: 0
+		right: 50%
+		transform-origin: bottom right
+		transform: rotate(45deg)
+
+	&::after
+		bottom: 0
+		left: 50%
+		transform-origin: bottom left
+		transform: rotate(-45deg)

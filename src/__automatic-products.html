@@ -1,5 +1,5 @@
 @@include('_layout_head.tpl', {
-	"title": "ЭA - Каталог",
+	"title": "ЭA - Продукты",
 	"pageClass": "ea-site ea-catalog-page ea-has-catalog-menu"
 })
 
@@ -28,13 +28,13 @@
 							<h1>2Кабель силовой бронированный АВБбШв и ААБл</h1>
 							<!--view switcher-->
 							<div class="view-switcher view-switcher-js">
-								<a href="#" class="grid-view active" data-title="Показать товары плиткой"><span>Плиткой</span></a>
-								<a href="#" class="list-view" data-title="Показать товары списком"><span>Списком</span></a>
+								<a href="#" class="grid-view" data-title="Показать товары плиткой"><span>Плиткой</span></a>
+								<a href="#" class="list-view active" data-title="Показать товары списком"><span>Списком</span></a>
 							</div>
 							<!--view switcher end-->
 							<div class="layout-wide">
 								<!--products-->
-								<div class="products view-container-js grid-view-activated">
+								<div class="products view-container-js">
 									<section class="products__list">
 										@@loop("_products-items.tpl", "includes-json/products-items.json")
 									</section>

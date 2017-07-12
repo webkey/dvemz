@@ -1913,6 +1913,14 @@ function toggleView() {
 }
 /*toggle view shops end*/
 
+/**spinner initial*/
+function spinnerInit() {
+	$( ".spinner-js" ).spinner({
+		min: 1
+	});
+}
+/**spinner initial end*/
+
 /**
  * !footer at bottom
  * */
@@ -2023,6 +2031,7 @@ $(document).ready(function () {
 	multiAccordionInit();
 	tabSwitcher();
 	toggleView();
+	spinnerInit();
 
 	footerBottom();
 	formSuccessExample();

@@ -78,6 +78,12 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 		'src/css/temp/*.css' // see gulpfile-special.js
 		,'src/libs/fullpage.js/dist/jquery.fullpage.min.css'
 		, 'src/libs/select2/dist/css/select2.min.css'
+		// jquery ui
+		, 'src/libs/jquery-ui/themes/base/base.css'
+		// , 'src/libs/jquery-ui/themes/base/button.css'
+		// , 'src/libs/jquery-ui/themes/base/checkboxradio.css'
+		, 'src/libs/jquery-ui/themes/base/spinner.css'
+		// , 'src/libs/jquery-ui/themes/base/theme.css'
 		// ,'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
 		.pipe(concatCss("src/css/libs.css", {
@@ -108,6 +114,33 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/fullpage.js/dist/jquery.fullpage.min.js' // скрипт для постраничной прокрутки
 		, 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
 		, 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
+		// jquery ui
+		, 'src/libs/jquery-ui/jquery-ui.min.js'
+		// , 'src/libs/jquery-ui/ui/widget.js'
+		// , 'src/libs/jquery-ui/ui/position.js'
+		// , 'src/libs/jquery-ui/ui/data.js'
+		// , 'src/libs/jquery-ui/ui/disable-selection.js'
+		// , 'src/libs/jquery-ui/ui/effect.js'
+		// , 'src/libs/jquery-ui/ui/focusable.js'
+		// , 'src/libs/jquery-ui/ui/form-reset-mixin.js'
+		// , 'src/libs/jquery-ui/ui/jquery-1-7.js'
+		// , 'src/libs/jquery-ui/ui/keycode.js'
+		// , 'src/libs/jquery-ui/ui/labels.js'
+		// , 'src/libs/jquery-ui/ui/scroll-parent.js'
+		// , 'src/libs/jquery-ui/ui/tabbable.js'
+		// , 'src/libs/jquery-ui/ui/unique-id.js'
+
+		// , 'src/libs/jquery-ui/ui/form.js'
+		// , 'src/libs/jquery-ui/ui/ie.js'
+		// , 'src/libs/jquery-ui/ui/plugin.js'
+		// , 'src/libs/jquery-ui/ui/safe-active-element.js'
+		// , 'src/libs/jquery-ui/ui/safe-blur.js'
+		// , 'src/libs/jquery-ui/ui/version.js'
+		// , 'src/libs/jquery-ui/ui/widgets/button.js'
+		// , 'src/libs/jquery-ui/ui/widgets/checkboxradio.js'
+		// , 'src/libs/jquery-ui/ui/widgets/controlgroup.js'
+		// , 'src/libs/jquery-ui/ui/widgets/spinner.js' // спиннер
+		// jquery ui end
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))
