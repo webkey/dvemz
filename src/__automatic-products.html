@@ -5,7 +5,7 @@
 
 <!--HEADER-->
 @@include('_layout_header--ea.tpl', {
-	"mainNavItemActive": "Заказ"
+	"mainNavItemActive": "Монтажные работы"
 })
 <!--HEADER end-->
 
@@ -26,12 +26,8 @@
 							@@include('_breadcrumbs.tpl')
 							<!--breadcrumbs end-->
 							<h1>2Кабель силовой бронированный АВБбШв и ААБл</h1>
-							<!--view switcher-->
-							<div class="view-switcher view-switcher-js">
-								<a href="#" class="grid-view" data-title="Показать товары плиткой"><span>Плиткой</span></a>
-								<a href="#" class="list-view active" data-title="Показать товары списком"><span>Списком</span></a>
-							</div>
-							<!--view switcher end-->
+							@@include('_tpl_p-filters.xhtml')
+							@@include('_tpl_p-options.xhtml')
 							<div class="layout-wide">
 								<!--products-->
 								<div class="products view-container-js">

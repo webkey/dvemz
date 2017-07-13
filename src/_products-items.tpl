@@ -38,7 +38,7 @@
 					<span>В корзину</span>
 				</div>
 				<div class="spinner">
-					<input class="spinner-js" type="text" name="value" value="1" pattern="\d">
+					<input class="spinner-js" type="text" name="value" value="1" data-only-number>
 					<div class="remove-from-cart"><i>&nbsp;</i><span>Удалить с корзины</span></div>
 				</div>
 			</div>

@@ -247,6 +247,10 @@ input[type="checkbox"] + label > span, input[type="radio"] + label > span, input
 	padding: 2px 0 2px 34px
 	z-index: 2
 
+input[type="checkbox"], input[type="radio"]
+	& + span > i
+		+font(0, 0)
+
 //checkbox
 input[type="checkbox"]
 	+size(16px)

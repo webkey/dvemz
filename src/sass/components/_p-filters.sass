@@ -1,0 +1,194 @@
+@import ../utils/_variables
+@import ../utils/_mixins
+@import ../../libs/include-media/dist/_include-media
+
+/* products filters
+.p-filters
+	position: relative
+	padding-right: 1px
+	margin-bottom: $bottom-space
+	z-index: 15
+
+	&:last-child
+		margin-bottom: 0
+
+.p-filters__list
+	+clear-spacing
+	padding-bottom: 1px
+
+.p-filters__item
+	position: relative
+	+display-inline-block-top
+	height: 58px
+	width: round-float(100%/5, 4)
+	padding: 1px 0 0 1px
+	+font(1.5rem, round-float(18px/15px, 2))
+	letter-spacing: normal
+	+display-inline-block-top
+	border-width: 0 1px 1px 0
+
+	&.is-open, &:hover, &:focus
+		z-index: 5
+
+	+media('<desk-qhd')
+		width: round-float(100%/4, 4)
+
+	+media('<desk-hd')
+		width: round-float(100%/3, 4)
+
+	+media('<desk-lg')
+		width: round-float(100%/2, 4)
+
+	+media('<mob-lg')
+		width: round-float(100%/1, 4)
+
+.p-filters__inner
+	display: block
+	position: relative
+	height: 100%
+	+font(11px, 13px)
+	text-decoration: none
+	color: inherit
+	box-shadow: 0 0 0 1px $outline-color
+
+.p-filters-select
+	position: relative
+	height: 100%
+
+.p-filters-select-head
+	padding: 12px 30px 0 10px
+	cursor: pointer
+	height: 100%
+	transition-property: background-color
+	transition-duration: $animation-speed
+
+	.is-open &, .p-filters-select:hover &, .p-filters-select:focus &
+		background-color: #{$bg-color-light}
+
+.p-filters-angle
+	position: absolute
+	top: 0
+	right: 0
+	+size(30px, 100%)
+	cursor: pointer
+
+	& > i
+		$this-icon-lines-width: 8px
+		$this-icon-lines-height: 2px
+		$this-icon-lines-color: $text-color
+
+		width: 12px
+		height: 8px
+		position: absolute
+		left: 50%
+		top: 50%
+		margin-top: -4px
+		margin-left: -6px
+		backface-visibility: hidden
+		cursor: inherit
+
+		&::before, &::after
+			+pseudo()
+			backface-visibility: hidden
+			+size($this-icon-lines-width, $this-icon-lines-height)
+			background-color: $this-icon-lines-color
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		&::before
+			bottom: 0
+			right: 50%
+			transform-origin: bottom right
+			transform: rotate(45deg)
+
+		&::after
+			bottom: 0
+			left: 50%
+			transform-origin: bottom left
+			transform: rotate(-45deg)
+
+.p-filters__group
+	+font-normal
+	+font(11px, 13px)
+	color: #{$text-color-light}
+	margin-bottom: 0.5em
+	+truncate(none)
+
+.p-filters__placeholder
+	+font-bold
+	+font(10px, 13px)
+	color: #{$text-color}
+	text-transform: uppercase
+	letter-spacing: 0.05em
+	+truncate(none)
+
+.btn-clear
+	display: block
+	height: 100%
+	+clear-spacing
+	white-space: nowrap
+	text-decoration: none
+	color: #{$text-color}
+	cursor: pointer
+
+	&::before, & > i, & > span
+		+display-inline-block-middle
+
+	&::before
+		content: ""
+		height: 100%
+
+	& > i
+		margin-right: 10px
+
+		svg
+			+display-inline-block-top
+			+size(18px)
+
+		path
+			fill: #{$base-color--ea}
+
+	& > span
+		+font(10px, 14px)
+		letter-spacing: 0.05em
+		text-transform: uppercase
+		white-space: normal
+
+	.no-touchevents &:hover
+		background-color: #{$bg-color-light}
+
+.p-filters-select-menu
+	position: absolute
+	width: calc(100% + 2px)
+	+position(100%, -1px)
+	background-color: #{$bg-color-light}
+	border: 1px solid #{$outline-color}
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+
+	.is-open &, .p-filters-select:hover &, .p-filters-select:focus &
+		opacity: 1
+		visibility: visible
+
+.p-filters-select-menu__list
+
+	&, .#{$user-content} &
+		margin: 0
+		padding: 16px 20px
+
+		li
+			padding-left: 0
+			margin: 0 0 10px
+
+			&::before
+				content: none
+
+			&:last-child
+				margin-bottom: 0
+
+	label
+		+font(13px, 18px)
+
+/* products filters end

@@ -63,9 +63,6 @@
 		border-width: 0 1px 0 0
 		display: none
 
-		.grid-view-activated &
-			display: block
-
 .products__list
 	&::after
 		top: 0
@@ -81,9 +78,6 @@
 		border-width: 0 0 0 1px
 		display: none
 
-		.grid-view-activated &
-			display: block
-
 .products__inner
 	&::after
 		top: -1px
@@ -98,11 +92,17 @@
 	+display-inline-block-middle
 
 .products__body
-	width: 65%
+	width: 60%
+
+	+media('<desk-lg')
+		width: 55%
 
 .products__footer
-	width: 35%
+	width: 39.98%
 	padding-left: 1.5%
+
+	+media('<desk-lg')
+		width: 44.98%
 
 .products__figure, .products__content, .products__title, .products__stock
 	+display-inline-block-middle
@@ -172,6 +172,7 @@ $product-figure-right-space: 20px
 .products__title
 	width: 70%
 	+font-alt-bold
+	padding-right: 20px
 	+font(16px, 19px)
 	letter-spacing: normal
 	transition-property: color
@@ -204,7 +205,7 @@ $product-figure-right-space: 20px
 .products__price
 	width: calc(100% - 170px)
 	text-align: right
-	padding-right: 20%
+	padding-right: 15%
 
 	.cur, .no, .old
 		margin-bottom: 2px
@@ -238,8 +239,8 @@ $product-figure-right-space: 20px
 			display: inline-block
 
 /* grid view
-.grid-view-activated
-	&.products
+.products.grid-view-activated
+	&
 		padding-right: 1px
 
 	.products__list
@@ -262,12 +263,6 @@ $product-figure-right-space: 20px
 		+media('<desk-lg')
 			width: round-float(100%/2, 4)
 
-		//+media('<desk-md')
-			width: round-float(100%/3, 4)
-
-		//+media('<tab-lg')
-			width: round-float(100%/2, 4)
-
 		+media('<mob-lg')
 			width: round-float(100%/1, 4)
 
@@ -276,6 +271,14 @@ $product-figure-right-space: 20px
 		display: flex
 		flex-direction: column
 		justify-content: space-between
+
+	.products__list, .products__item
+		&::before
+			display: block
+
+	.products__item
+		&::after
+			display: block
 
 	.products__body, .products__footer
 		display: block
@@ -293,19 +296,90 @@ $product-figure-right-space: 20px
 
 	.products__title
 		margin-bottom: 0.5em
+		padding: 0
 
 	.products__stock
 		margin-bottom: 1em
 
 	.products__price
-		margin-bottom: 1.5em
 		text-align: center
 		padding: 0
+		margin-bottom: 20px
 
 		.cur, .no, .old
 			+display-inline-block-top
 			+margin-horizontal(0.2em)
 			margin-bottom: 0
+
+// для маленьких мониторов
++media('<tab-lg')
+	.products
+		padding-right: 1px
+
+	.products__list
+		display: flex
+		flex: 0 1 auto
+		flex-flow: row wrap
+
+	.products__item
+		+display-inline-block-top
+		padding-left: 1px
+		width: round-float(100%/2, 4)
+
+	.products__inner
+		padding: 30px
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+
+	.products__list, .products__item
+		&::before
+			display: block
+
+	.products__item
+		&::after
+			display: block
+
+	.products__body, .products__footer
+		display: block
+		width: auto
+		+padding-horizontal(0)
+
+	.products__figure, .products__content, .products__title, .products__stock, .products__price, .products__options
+		display: block
+		width: auto
+
+	.products__figure
+		margin: 0 auto $bottom-space
+		width: 100%
+		max-width: 260px
+
+	.products__title
+		margin-bottom: 0.5em
+		padding: 0
+
+		// только для маленьких мониторов
+		text-align: center
+
+	.products__stock
+		margin-bottom: 1em
+
+		// только для маленьких мониторов
+		text-align: center
+
+	.products__price
+		text-align: center
+		padding: 0
+		margin-bottom: 20px
+
+		.cur, .no, .old
+			display: block
+			+margin-horizontal(0.2em)
+			margin-bottom: 0
+
+.products__item
+	+media('<mob-lg')
+		width: round-float(100%/1, 4)
 
 /* grid view end
 /* products end

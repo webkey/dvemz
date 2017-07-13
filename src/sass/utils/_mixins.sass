@@ -50,7 +50,7 @@
 /// @example Sass - Использование
 /// @example css - Вывод CSS
 
-=position($t: 0, $l: 0)
+=position($t: 0, $l: $t)
 	top: $t
 	left: $l
 
@@ -88,7 +88,7 @@
 ///   line-height: 1.5;
 /// }
 
-=font($font-size: $font-size, $line-height: $line-height)
+=font($font-size: inherit, $line-height: inherit)
 	font-size: $font-size
 	line-height: $line-height
 

@@ -3,12 +3,13 @@
 @import ../../libs/include-media/dist/include-media
 
 /* view switcher
+$view-switcher-size: 34px
+$view-switcher-icon-size: 16px
+
 .view-switcher
 	position: relative
-	width: 79px
-	height: 40px
 	overflow: hidden
-	border: 1px solid #d9d9d9
+	+size(#{$view-switcher-size*2}, #{$view-switcher-size})
 	margin-bottom: $bottom-space--md
 
 	&:last-child
@@ -17,74 +18,64 @@
 	a
 		float: left
 		position: relative
-		width: 50%
-		height: 100%
-		min-height: 38px
-		border-left: 1px solid #d9d9d9
+		+size(#{$view-switcher-size})
 		background: white
 		transition-property: background
 		transition-duration: $animation-speed
 		z-index: 9
 
-		&:first-child
-			border-left: 0
-
 		span
 			position: absolute
-			height: 4px
-			left: 50%
-			top: 50%
-			font-size: 0
-			line-height: 0
-			color: transparent
-			background-color: $base-color
-			border: 4px solid $base-color
+			+size(#{$view-switcher-icon-size})
+			+position(50%)
+			+font(0, 0)
 			transform: translate(-50%, -50%)
-			transition-property: border, background, transform
+			transition-property: border
 			transition-duration: $animation-speed
 
-			.ea-site &
-				background-color: $base-color--ea
-				border: 4px solid $base-color--ea
+			&::before, &::after
+				+pseudo()
 
 		&.list-view
 			span
-				&, &::before, &::after
-					width: 20px
-					border: none
 
-				&::before, &::after
-					left: 0
-					background: inherit
-
-		&.grid-view
-			span
 				&, &::before, &::after
-					width: 14px
-					background: none
-					border-width: 0 4px
+					+size(#{$view-switcher-icon-size}, #{round(($view-switcher-icon-size - 4px)/3)})
+					border: solid #{$outline-color}
+					border-width: 0 10px 0 4px
+					transition: inherit
 
 				&::before, &::after
 					left: -4px
-					border: inherit
-
-		&.list-view, &.grid-view
-			span
-				&::before, &::after
-					content: ''
-					position: absolute
-					height: inherit
-					width: inherit
 
 				&::before
-					top: -9px
+					top: -6px
 
 				&::after
-					top: 9px
+					top: 6px
+
+		&.grid-view
+			span
+				&::before, &::after
+					left: 0
+					+size(100%, #{round($view-switcher-icon-size*0.5) - 1px})
+					background: none
+					border: solid #{$outline-color}
+					border-width: 0 #{round($view-switcher-icon-size*0.5) - 1px}
+
+				&::before
+					top: 0
+
+				&::after
+					bottom: 0
 
 		&.active
-			background-color: $bg-color-light
+			background-color: #{$outline-color}
 			cursor: default
+
+			span
+				&, &::before, &::after
+					border-color: #{$text-color}
 
 			&.list-view span
 				background-color: $outline-color
