@@ -1,9 +1,13 @@
-/*fotorama*/
-.csstransforms .fotorama__arr
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* fotorama 
+.fotorama__arr
 	background: rgba(255, 255, 255, 0.2)
 
-.csstransforms .fotorama__arr:before,
-.csstransforms .fotorama__arr:after
+.fotorama__arr:before,
+.fotorama__arr:after
 	content: ''
 	position: absolute
 	left: 6px
@@ -13,33 +17,33 @@
 	border-radius: 5px
 	background: #00abc7
 
-.csstransforms .fotorama__arr:before
+.fotorama__arr:before
 	margin: -8px 0 0
 
-.csstransforms .fotorama__arr:after
+.fotorama__arr:after
 	margin: 2px 0 0
 
-.csstransforms .fotorama__arr--prev:before
+.fotorama__arr--prev:before
 	-webkit-transform: rotate(-45deg)
 	-ms-transform: rotate(-45deg)
 	transform: rotate(-45deg)
 
-.csstransforms .fotorama__arr--prev:after
+.fotorama__arr--prev:after
 	-webkit-transform: rotate(45deg)
 	-ms-transform: rotate(45deg)
 	transform: rotate(45deg)
 
-.csstransforms .fotorama__arr--next:before
+.fotorama__arr--next:before
 	-webkit-transform: rotate(45deg)
 	-ms-transform: rotate(45deg)
 	transform: rotate(45deg)
 
-.csstransforms .fotorama__arr--next:after
+.fotorama__arr--next:after
 	-webkit-transform: rotate(-45deg)
 	-ms-transform: rotate(-45deg)
 	transform: rotate(-45deg)
 
-.csstransforms .fotorama__fullscreen-icon
+.fotorama__fullscreen-icon
 	width: 22px
 	height: 22px
 	top: 10px
@@ -48,7 +52,7 @@
 	background: rgba(255, 255, 255, 0.2)
 	border-radius: 2px
 
-.csstransforms .fotorama__fullscreen-icon:before
+.fotorama__fullscreen-icon:before
 	content: ''
 	position: absolute
 	left: -8px
@@ -62,7 +66,7 @@
 	-ms-transform: rotate(45deg)
 	transform: rotate(45deg)
 
-.csstransforms .fotorama__fullscreen-icon:after
+.fotorama__fullscreen-icon:after
 	content: ''
 	position: absolute
 	left: 0
@@ -76,7 +80,7 @@
 	-ms-transform: rotate(-45deg)
 	transform: rotate(-45deg)
 
-.csstransforms .fotorama--fullscreen .fotorama__fullscreen-icon:before
+.fotorama--fullscreen .fotorama__fullscreen-icon:before
 	left: 50%
 	top: 50%
 	right: auto
@@ -88,7 +92,7 @@
 	border: 8px solid
 	border-color: #00abc7 transparent
 
-.csstransforms .fotorama--fullscreen .fotorama__fullscreen-icon:after
+.fotorama--fullscreen .fotorama__fullscreen-icon:after
 	content: none
 
 .fullscreen .fotorama__fullscreen-icon
@@ -97,4 +101,30 @@
 	top: 40px
 	right: 40px
 
-/*fotorama end*/
+.fotorama__nav
+	text-align: left
+
+	.fotorama--fullscreen &
+		text-align: center
+
+.fotorama__stage,
+.fotorama__thumb
+	border: 1px solid #{$outline-color}
+
+.fotorama__thumb
+	background-color: white
+	border-radius: 0
+
+.fotorama__thumb-border
+	border-color: #{$base-color--ea}
+	border-radius: 0
+
+.fotorama--fullscreen,
+.fotorama--fullscreen .fotorama__nav,
+.fotorama--fullscreen .fotorama__stage
+	background: white
+
+.p-card__gallery.fotorama--fullscreen .fotorama__thumb-border
+	border-radius: 0
+
+/* fotorama end

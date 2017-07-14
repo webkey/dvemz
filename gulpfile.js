@@ -73,7 +73,7 @@ gulp.task('sassCompilation', ['compressNormalizeCss'], function () { // Созд
 		})); // Обновляем CSS на странице при изменении
 });
 
-gulp.task('mergeCssLibs', function () { // Таск для мержа css библиотек
+gulp.task('mergeCssLibs', ['addFotoramaCss'], function () { // Таск для мержа css библиотек
 	return gulp.src([
 		'src/css/temp/*.css' // see gulpfile-special.js
 		,'src/libs/fullpage.js/dist/jquery.fullpage.min.css'
@@ -84,7 +84,7 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 		// , 'src/libs/jquery-ui/themes/base/checkboxradio.css'
 		, 'src/libs/jquery-ui/themes/base/spinner.css'
 		// , 'src/libs/jquery-ui/themes/base/theme.css'
-		// ,'src/lib/plugin/file.css'
+		// , 'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
 		.pipe(concatCss("src/css/libs.css", {
 			rebaseUrls: false
@@ -141,6 +141,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		// , 'src/libs/jquery-ui/ui/widgets/controlgroup.js'
 		// , 'src/libs/jquery-ui/ui/widgets/spinner.js' // спиннер
 		// jquery ui end
+		, 'src/libs/fotorama/fotorama.js'
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))
@@ -166,6 +167,24 @@ gulp.task('browserSync', function (done) { // Таск browserSync
 	browserSync.watch(['src/*.html', 'src/js/**/*.js', 'src/includes-json/**/*.json']).on("change", browserSync.reload);
 	done();
 });
+
+// ============= ТОЛЬКО ДЛЯ ТЕКУЩЕГО ПРОЕКТА ===========//
+// необходимо запустить перед mergeCssLibs
+gulp.task('addFotoramaCss', ['copyFotoramaImg'], function () { // Таск для добавления стилей библиотеки fotorama.js
+	return gulp.src([
+		'src/libs/fotorama/fotorama.css'
+	])
+		.pipe(replace(/url\(/g, 'url(../img/')) // необходимо заменить пути к картинкам для fotorama.js
+		.pipe(gulp.dest('src/css/temp')); // Выгружаем в папку src/css/temp
+});
+gulp.task('copyFotoramaImg', function () {
+	return gulp.src([
+		'src/libs/fotorama/fotorama.png'
+		, 'src/libs/fotorama/fotorama@2x.png'
+	])
+		.pipe(gulp.dest('src/img')); // Выгружаем в папку src
+});
+// ============= ТОЛЬКО ДЛЯ ТЕКУЩЕГО ПРОЕКТА (КОНЕЦ) ===========//
 
 gulp.task('watch', ['createCustomModernizr', 'browserSync', 'htmlCompilation', 'sassCompilation', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
 	gulp.watch(['src/*.tpl', 'src/*.xhtml', 'src/__*.html', 'src/includes-json/**/*.json'], ['htmlCompilation']); // Наблюдение за темплейтами и файлами в папке include-json

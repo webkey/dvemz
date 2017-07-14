@@ -1,0 +1,137 @@
+@import ../utils/_variables
+@import ../utils/_mixins
+@import ../../libs/include-media/dist/_include-media
+
+/*product card*/
+.p-card
+	+clear
+
+.p-card__title
+	margin-bottom: $bottom-space--md
+
+	h1, h2, h3
+		+font-alt-bold
+		+font(#{$font-size-h2}, #{$line-height-h2})
+
+		&:last-child
+			margin-bottom: 0
+
+.p-card__visual, .p-card__content, .p-card__title
+	padding: 0 30px
+
+.p-card__visual
+	float: left
+	width: 40%
+	padding-top: 5px
+	padding-left: 0
+	margin-bottom: $bottom-space--md
+
+	+media('<desk-lg')
+		width: 50%
+
+.p-card__gallery
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+.p-card__content, .p-card__title
+	width: 60%
+	float: right
+	padding-right: 0
+	clear: right
+
+	+media('<desk-lg')
+		width: 50%
+
+.p-card-price
+	small
+		display: block
+		+font(14px, 17px)
+		color: $text-color-light
+
+	.val
+		+font(30px, 42px)
+		+font-bold
+		display: block
+
+		& > span
+			font-size: 20px
+
+.p-card__widget
+	margin-bottom: $bottom-space
+
+	.spinner, .p-card-price, .btn-outline
+		+display-inline-block-top
+		margin-right: 20px
+
+	.btn-outline
+		min-width: 190px
+
+.p-card__subtitle
+	display: block
+	+font-alt-bold
+	+font(#{$font-size-h3}, #{$line-height-h3})
+	margin-bottom: $bottom-space
+
+/*product card end*/
+
+/*card bar*/
+.p-card-overview
+	position: relative
+
+.p-card-overview__nav
+	margin: 0
+	display: flex
+	justify-content: space-between
+	flex-wrap: nowrap
+	align-items: stretch
+
+.p-card-overview__tab
+	flex: 1 1 100px
+	+font(1.6rem, round-float(19/16, 2))
+	text-decoration: none
+	color: $text-color
+	text-align: center
+	border: solid #d9d9d9
+	border-width: 1px 1px 1px 0
+	transition-property: color, background
+	transition-duration: $animation-speed
+
+	&:first-child
+		border-left-width: 1px
+
+	span
+		+display-inline-block-middle
+		position: relative
+		top: 50%
+		transform: translate(0, -50%)
+		width: calc(100% - 4px)
+		padding: 10px 20px
+		+antialiased
+
+	.no-touchevents &:hover
+		background-color: $bg-color-light
+
+
+	&.active-tab
+		border-bottom-color: transparent
+		border-top-color: $base-color--ea
+		box-shadow: 0 -4px 0 #{$base-color--ea}
+
+.p-card-overview__panel
+	border-bottom: 1px solid #{$outline-color}
+	padding: 40px 0
+
+	& > p, & > ul, & > ol, .table-auto
+		&:last-child
+			margin-bottom: 0
+
+.p-card-overview__panel h4
+	font-family: 'lato-black', sans-serif
+	font-size: 16px
+	line-height: 30px
+	color: #262626
+	text-transform: none
+
+/*card bar end*/

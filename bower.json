@@ -28,7 +28,8 @@
     "include-media": "^1.4.9",
     "fullpage.js": "^2.9.4",
     "select2": "^4.0.3",
-    "jquery-ui": "^1.12.1"
+    "jquery-ui": "^1.12.1",
+    "fotorama": "^4.6.4"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

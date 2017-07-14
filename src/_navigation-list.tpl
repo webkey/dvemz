@@ -21,7 +21,7 @@
 
 	<!--@@classKey item start-->
 	<li class="@@if(mainNavItemActive === "Сотрудничество"){current}">
-		@@include('_navigation-LINK.tpl', { "itemText": "Сотрудничество", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK.tpl', { "itemText": "Сотрудничество", "itemLink": "automatic-card.html", "key": "@@classKey", "specialValue": "" })
 	</li>
 	<!--@@classKey item end-->
 

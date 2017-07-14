@@ -1,6 +1,6 @@
 @@include('_layout_head.tpl', {
 	"title": "ЭA - Продукты",
-	"pageClass": "ea-site ea-catalog-page ea-has-catalog-menu"
+	"pageClass": "ea-site ea-has-catalog-menu"
 })
 
 <!--HEADER-->
@@ -26,8 +26,12 @@
 							@@include('_breadcrumbs.tpl')
 							<!--breadcrumbs end-->
 							<h1>2Кабель силовой бронированный АВБбШв и ААБл</h1>
-							@@include('_tpl_p-filters.xhtml')
-							@@include('_tpl_p-options.xhtml')
+							<!--filters-->
+							@@include('_tpl_products-filters.xhtml')
+							<!--filters end-->
+							<!--options panel-->
+							@@include('_tpl_products-options.xhtml')
+							<!--options panel end-->
 							<div class="layout-wide">
 								<!--products-->
 								<div class="products view-container-js">

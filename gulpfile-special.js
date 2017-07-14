@@ -22,7 +22,7 @@ gulp.task('changePath', function () {
 		'$slick-loader-path': '../img/'
 	}))
 	.pipe(sass())
-	.pipe(gulp.dest('src/css/temp')); // Выгружаем в папку src/css
+	.pipe(gulp.dest('src/css/temp')); // Выгружаем в папку src/css/temp
 });
 
 gulp.task('copyFilesFromLibs', function () {

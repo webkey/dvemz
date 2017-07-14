@@ -440,6 +440,14 @@ function equalHeightInit() {
 		});
 	}
 
+	// var $cardOverviewNav = $('.p-card-overview__nav');
+	//
+	// if ($cardOverviewNav.length) {
+	// 	$cardOverviewNav.children().matchHeight({
+	// 		byRow: true, property: 'height', target: null, remove: false
+	// 	});
+	// }
+
 	// $(window).on('resize', function () {
 	// 	$.fn.matchHeight._update();
 	// })
@@ -1973,6 +1981,40 @@ function sortingOrder() {
 /** sorting end */
 
 /**
+ * fotorama init
+ * */
+function fotoramaInit() {
+	var $gallery = $('.gallery-js');
+
+	$.each($gallery, function () {
+		var $this = $(this);
+
+		var $galleryFotorama = $this.fotorama({
+			click: false,
+			nav: 'thumbs',
+			allowfullscreen: true,
+			// arrows: 'always',
+			thumbmargin: 20,
+			thumbwidth: 100,
+			thumbheight: 100,
+			thumbfit: 'contain',
+			thumbborderwidth: 3,
+			ratio: 1/1
+		});
+
+		// Get the API object.
+		// var fotorama = $galleryFotorama.data('fotorama');
+
+		// Inspect it in console.
+		// $this.on('click', '.fotorama__grab', function (e) {
+		// 	e.preventDefault();
+		// 	fotorama.requestFullScreen();
+		// })
+	})
+}
+/** fotorama init end */
+
+/**
  * !footer at bottom
  * */
 function footerBottom() {
@@ -2085,6 +2127,7 @@ $(document).ready(function () {
 	spinnerInit();
 	onlyNumberInput();
 	sortingOrder();
+	fotoramaInit();
 
 	footerBottom();
 	formSuccessExample();

@@ -6,10 +6,12 @@ $remove-from-cart-width: 40px
 .spinner
 	position: relative
 	+display-inline-block-top
-	padding-right: #{$remove-from-cart-width}
 	text-align: left
 	border: 3px solid #{$outline-color}
 	background-color: transparent
+
+	&.has-remove
+		padding-right: #{$remove-from-cart-width}
 
 .remove-from-cart
 	position: absolute
@@ -85,10 +87,13 @@ $remove-from-cart-width: 40px
 	height: 50%
 	padding: 0
 	margin: 0
-	right: 0
+	right: -2px
 	cursor: pointer
 	transition-property: background-color
 	transition-duration: $animation-speed
+
+	.has-remove &
+		right: 0
 
 	.no-touchevents &:hover
 		background-color: #{$bg-color-light}
