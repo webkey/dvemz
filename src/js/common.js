@@ -63,6 +63,22 @@ $(window).resize(function () {
 /*resize only width end*/
 
 /**
+ * !debouncedresize only width
+ * */
+var debouncedresizeByWidth = true;
+
+var debouncedPrevWidth = -1;
+$(window).on('debouncedresize', function () {
+	var currentWidth = $('body').outerWidth();
+	debouncedresizeByWidth = debouncedPrevWidth !== currentWidth;
+	if (resizeByWidth) {
+		$(window).trigger('debouncedresizeByWidth');
+		debouncedPrevWidth = currentWidth;
+	}
+});
+/*resize only width end*/
+
+/**
  * !device detected
  * */
 var DESKTOP = device.desktop();
@@ -1877,11 +1893,42 @@ function tabSwitcher() {
 			// 	}
 			// });
 		});
-	}
 
-	$('.popup-label__text').on('click', function () {
-		$('a[href*="#expanded-search"]').trigger('tabSwitcherCollapse');
-	})
+		// if transform tabs to accordion
+		var $simpleAccordionHand = $('.js-tab-link');
+
+		if ($simpleAccordionHand.length) {
+			$simpleAccordionHand.each(function () {
+				var $thisHand = $(this);
+
+				tabAccordion($thisHand, $thisHand.next().children(), animationSpeed*1000);
+			})
+		}
+
+		$(window).on('debouncedresizeByWidth', function () {
+			$simpleAccordionHand.each(function () {
+				var $thisHand = $(this);
+
+				if ($thisHand.hasClass(activeClass)) {
+					$thisHand.next().children().show();
+					console.log(1);
+				}
+			});
+		});
+
+		function tabAccordion($hand, $panel, animateSpeed) {
+			if ($hand.hasClass(activeClass)) {
+				$panel.show();
+			}
+
+			$hand.on('click', function (e) {
+				e.preventDefault();
+
+				$(this).toggleClass(activeClass);
+				$panel.stop().slideToggle(animateSpeed);
+			})
+		}
+	}
 }
 /* tab switcher end */
 

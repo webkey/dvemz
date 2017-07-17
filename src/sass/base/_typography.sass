@@ -324,8 +324,12 @@ table
 	border-spacing: 0
 	width: auto
 
+	tr
+		+clear-spacing
+
 	td, th
 		+font($font-size--sm, $line-height--sm)
+		letter-spacing: normal
 		color: $table-text-color
 		padding: 8px 14px
 		border-color: $table-border-color
@@ -334,30 +338,97 @@ table
 	table
 		margin-bottom: $bottom-space--md
 
-	.table-auto table
-		margin-bottom: 0
+.table-auto table
+	margin-bottom: 0
 
-	.tbl
-		border: none
+.tbl
+	border: none
+
+	td, th
+		color: $table-text-color
+		background-color: $table-bg-color
+		border-style: solid
+		border-width: 0 0 1px
+		transition-property: background-color
+		transition-duration: $animation-speed
+
+	tr
+		.no-touchevents &:hover td
+			background-color: $bg-color-light
+
+	th, thead td
+		+font-bold
+		text-align: left
+		border-width: 1px 0
+
+	th, thead td, tfoot td
+		background: $table-bg-alt-color
+		color: $table-text-alt-color
+		//border-top-width: 0
+
+// адаптирующиеся таблицы
+
+.tbl-resp
+	$tbl-resp-border-color: #ddd
+
+	+media('<tab-sm')
+		border: 1px solid $tbl-resp-border-color
+
+		[class*="tbl-resp--grid-col-"]
+			+display-inline-block-middle
+			position: relative
+			min-height: 1px
+
+		@for $grid from 1 through 12
+			.tbl-resp--grid-col-#{$grid}
+				width: (100%/(12)*$grid)
+
+		&, thead, tbody, tfoot, tr, td, th
+			display: block
+
+		[class*="tbl-resp--grid-col-"]
+			+display-inline-block-middle
+
+		.tbl-resp--title, thead tr, .tbl-resp--head
+			background-color: #333
+			color: white
+
+		.tbl-resp--title, .tbl-resp--subtitle
+			+font-bold
+			+font(1rem, 1.6)
+			text-align: center
+			letter-spacing: 0.05em
+			text-transform: uppercase
+
+		.tbl-resp--subtitle, tr
+			border-width: 0 0 1px
+
+		.tbl-resp--hide
+			display: none
+
+		td, th, tr
+			border: 0 solid $tbl-resp-border-color
+
+		tr
+			border-width: 0 0 1px
+
+			&:last-child
+				border-bottom: none
 
 		td, th
-			color: $table-text-color
-			background-color: $table-bg-color
-			border-style: solid
-			border-width: 1px 0 0
+			border-width: 0 0 0 1px
+			text-align: center
+			min-width: 0
 
-		tr:last-child
-			td
-				border-width: 1px 0
+			&:first-child
+				border-left: none
 
-		th, thead td
-			+font-bold
-			text-align: left
+		.tbl-resp--hide, .tbl-resp--subtitle
+			& + td, & + th
+				border-left: none
 
-		th, thead td, tfoot td
-			background: $table-bg-alt-color
-			color: $table-text-alt-color
-			//border-top-width: 0
+		tr:last-child td:not(.tbl-resp--subtitle)
+			border-bottom: none
 
 /*table end*/
 

@@ -6,13 +6,13 @@
 }
 	<div class="products__inner">
 		<div class="products__body">
-			<a href="products-card.html" class="products__figure">
+			<a href="automatic-card.html" class="products__figure">
 				<div class="products__img">
 					<img src="img/@@src" alt="@@title" />
 				</div>
 			</a>
 			<div class="products__content">
-				<div class="products__title"><a href="products-card.html">@@title</a></div>
+				<div class="products__title"><a href="automatic-card.html">@@title</a></div>
 				<div class="products__stock">@@stock</div>
 			</div>
 		</div>

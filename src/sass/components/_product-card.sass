@@ -7,7 +7,6 @@
 	+clear
 
 .p-card__title
-	margin-bottom: $bottom-space--md
 
 	h1, h2, h3
 		+font-alt-bold
@@ -18,16 +17,29 @@
 
 .p-card__visual, .p-card__content, .p-card__title
 	padding: 0 30px
+	margin-bottom: $bottom-space--md
+
+	+media('<tab-lg')
+		padding: 0 20px
 
 .p-card__visual
 	float: left
-	width: 40%
+	width: 36%
 	padding-top: 5px
 	padding-left: 0
-	margin-bottom: $bottom-space--md
+
+	+media('<desk-hd')
+		width: 40%
 
 	+media('<desk-lg')
 		width: 50%
+
+	+media('<tab-sm')
+		max-width: 480px
+		float: none
+		width: auto
+		+padding-horizontal(0)
+		margin: 0 auto $bottom-space
 
 .p-card__gallery
 	margin-bottom: $bottom-space--md
@@ -36,13 +48,22 @@
 		margin-bottom: 0
 
 .p-card__content, .p-card__title
-	width: 60%
+	width: 64%
 	float: right
 	padding-right: 0
 	clear: right
 
+	+media('<desk-hd')
+		width: 60%
+
 	+media('<desk-lg')
 		width: 50%
+
+	+media('<tab-sm')
+		float: none
+		width: auto
+		+padding-horizontal(0)
+		margin-bottom: 3rem
 
 .p-card-price
 	small
@@ -64,6 +85,7 @@
 	.spinner, .p-card-price, .btn-outline
 		+display-inline-block-top
 		margin-right: 20px
+		margin-bottom: $bottom-space--sm
 
 	.btn-outline
 		min-width: 190px
@@ -79,15 +101,23 @@
 /*card bar*/
 .p-card-overview
 	position: relative
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
 
 .p-card-overview__nav
 	margin: 0
 	display: flex
 	justify-content: space-between
-	flex-wrap: nowrap
+	flex-wrap: wrap
 	align-items: stretch
 
+	+media('<tab-sm')
+		display: none
+
 .p-card-overview__tab
+	display: block
 	flex: 1 1 100px
 	+font(1.6rem, round-float(19/16, 2))
 	text-decoration: none
@@ -113,25 +143,122 @@
 	.no-touchevents &:hover
 		background-color: $bg-color-light
 
-
 	&.active-tab
 		border-bottom-color: transparent
 		border-top-color: $base-color--ea
 		box-shadow: 0 -4px 0 #{$base-color--ea}
 
 .p-card-overview__panel
-	border-bottom: 1px solid #{$outline-color}
-	padding: 40px 0
+	padding: 40px 0 0
+	transition-property: background-color
+	transition-duration: $animation-speed
 
-	& > p, & > ul, & > ol, .table-auto
-		&:last-child
-			margin-bottom: 0
+	h3
+		+font($font-size-h4, $line-height-h4)
 
-.p-card-overview__panel h4
-	font-family: 'lato-black', sans-serif
-	font-size: 16px
-	line-height: 30px
-	color: #262626
-	text-transform: none
+	.p-card-overview__frame
+
+		& > p, & > ul, & > ol, .table-auto
+			&:last-child
+				margin-bottom: 0
+
+.p-card-overview__frame
+	+media('>=tab-sm')
+		display: block !important
+		padding: 0
+		border: none
+
+.p-card-overview__panels
+
+	.p-card-overview__tab
+		display: none
+
+	+media('<tab-sm')
+		$space-horizontal: 20px
+
+		height: auto !important
+		border-bottom: 1px solid $outline-color
+
+		.p-card-overview__tab
+			display: block
+			position: relative
+			text-align: left
+			border-width: 1px 1px 0
+			padding-right: 20px
+			+font-bold
+			+font(1.2rem, 1.6)
+			text-transform: uppercase
+			letter-spacing: 0.05em
+
+			span
+				top: auto
+				transform: translate(0, 0)
+				padding: 15px $space-horizontal
+
+			& > i
+				$this-icon-lines-width: 12px
+				$this-icon-lines-height: 1px
+				$this-icon-lines-color: $text-color
+
+				position: absolute
+				right: 20px
+				top: 50%
+				+size(16px, 10px)
+				margin-top: -5px
+				backface-visibility: hidden
+
+				&::before, &::after
+					+pseudo()
+					bottom: 0
+					backface-visibility: hidden
+					+size($this-icon-lines-width, $this-icon-lines-height)
+					background-color: $this-icon-lines-color
+					transition-property: background-color
+					transition-duration: $animation-speed
+
+				&::before
+					right: 50%
+					transform-origin: bottom right
+					transform: rotate(45deg)
+
+				&::after
+					left: 50%
+					transform-origin: bottom left
+					transform: rotate(-45deg)
+
+			&.active-tab
+				border-top-color: $outline-color
+				box-shadow: none
+				background-color: $bg-color-light
+
+				i
+					transform: rotate(0.5turn)
+
+				& + .p-card-overview__panel
+					background-color: $bg-color-light
+
+		.p-card-overview__panel
+			position: relative !important
+			left: auto !important
+			top: auto !important
+			padding: 0
+			border: none
+			opacity: 1 !important
+			visibility: visible !important
+
+		.p-card-overview__frame
+			display: none
+			padding: $space-horizontal
+			border: solid $outline-color
+			border-width: 1px 1px 0
+
+.p-card-overview-tbl
+	td, th
+		&:last-child, &:nth-last-child(2)
+			+media('>=tab-sm')
+				min-width: 150px
+
+			+media('>=tab-lg')
+				min-width: 180px
 
 /*card bar end*/

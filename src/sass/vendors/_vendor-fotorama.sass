@@ -2,104 +2,122 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-/* fotorama 
+/* fotorama
 .fotorama__arr
-	background: rgba(255, 255, 255, 0.2)
+	background: none
+	+size(43px, 100%)
+	top: 0
+	margin: 0
 
-.fotorama__arr:before,
-.fotorama__arr:after
-	content: ''
-	position: absolute
-	left: 6px
-	top: 50%
-	height: 6px
-	width: 20px
-	border-radius: 5px
-	background: #00abc7
+	&::before, &::after
+		+pseudo()
+		+size(20px, 2px)
+		top: 50%
+		border-radius: 0
+		background-color: black
 
-.fotorama__arr:before
-	margin: -8px 0 0
+.fotorama__arr--prev
+	left: 0
 
-.fotorama__arr:after
-	margin: 2px 0 0
+	.no-touchevents &:hover
+		+linear-gradient(to right, $bg-color-light 0%, transparentize($bg-color-light, 0.9) 100%)
 
-.fotorama__arr--prev:before
-	-webkit-transform: rotate(-45deg)
-	-ms-transform: rotate(-45deg)
-	transform: rotate(-45deg)
+	&::before, &::after
+		left: 13px
 
-.fotorama__arr--prev:after
-	-webkit-transform: rotate(45deg)
-	-ms-transform: rotate(45deg)
-	transform: rotate(45deg)
+	&::before
+		transform-origin: left bottom
+		transform: rotate(-45deg)
 
-.fotorama__arr--next:before
-	-webkit-transform: rotate(45deg)
-	-ms-transform: rotate(45deg)
-	transform: rotate(45deg)
+	&::after
+		transform-origin: left top
+		transform: rotate(45deg)
 
-.fotorama__arr--next:after
-	-webkit-transform: rotate(-45deg)
-	-ms-transform: rotate(-45deg)
-	transform: rotate(-45deg)
+.fotorama__arr--next
+	right: 0
+
+	.no-touchevents &:hover
+		+linear-gradient(to left, $bg-color-light 0%, transparentize($bg-color-light, 0.9) 100%)
+
+	&::before, &::after
+		right: 13px
+
+	&::before
+		transform-origin: right bottom
+		transform: rotate(45deg)
+
+	&::after
+		transform-origin: right top
+		transform: rotate(-45deg)
+
+.fotorama__arr--disabled
+	pointer-events: auto
 
 .fotorama__fullscreen-icon
-	width: 22px
-	height: 22px
-	top: 10px
-	right: 10px
+	+size(44px)
+	top: auto
+	bottom: -1px
+	right: -1px
 	overflow: hidden
-	background: rgba(255, 255, 255, 0.2)
-	border-radius: 2px
-
-.fotorama__fullscreen-icon:before
-	content: ''
-	position: absolute
-	left: -8px
-	top: -8px
-	right: -8px
-	bottom: -8px
+	background: white url(../../img/zoom.svg) no-repeat center
+	background-size: 19px 19px
 	border-radius: 0
-	border: solid #00abc7
-	border-width: 12px 0
-	-webkit-transform: rotate(45deg)
-	-ms-transform: rotate(45deg)
-	transform: rotate(45deg)
+	border: 1px solid $outline-color
+	transition-property: background-color
+	transition-duration: $animation-speed
 
-.fotorama__fullscreen-icon:after
-	content: ''
-	position: absolute
-	left: 0
-	top: 50%
-	height: 4px
-	width: 20px
-	margin: -3px 0 0 2px
-	border-radius: 0
-	background: #00abc7
-	-webkit-transform: rotate(-45deg)
-	-ms-transform: rotate(-45deg)
-	transform: rotate(-45deg)
+	.no-touchevents &:hover
+		background-color: $bg-color-light
 
-.fotorama--fullscreen .fotorama__fullscreen-icon:before
-	left: 50%
-	top: 50%
-	right: auto
-	bottom: auto
-	width: 0
-	height: 0
-	margin: -8px 0 0 -8px
-	border-radius: 0
-	border: 8px solid
-	border-color: #00abc7 transparent
+	.fullscreen &
+		$btn-space: 12px
+		$btn-lines-width: 22px
+		$btn-lines-height: 2px
+		$btn-lines-color: black
 
-.fotorama--fullscreen .fotorama__fullscreen-icon:after
-	content: none
+		=line-style()
+			+size($btn-lines-width, $btn-lines-height)
 
-.fullscreen .fotorama__fullscreen-icon
-	border: 2px solid #55c7da
-	padding: 20px
-	top: 40px
-	right: 40px
+		padding: 0
+		top: 20px
+		right: 50%
+		margin-right: -22px
+		background: rgba(255, 255, 255, 0.2)
+		border: 2px solid black
+		transition-property: background-color, opacity, visibility
+		transition-duration: $animation-speed
+		z-index: 9999
+
+		&::before, &::after
+			+pseudo()
+			left: 50%
+			top: 50%
+			margin: -#{round($btn-lines-height*0.5)} 0 0 -#{round($btn-lines-width*0.5)}
+			backface-visibility: hidden
+			+line-style
+			background: $btn-lines-color
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		//first line menu
+		&::before
+			transform: rotate(-45deg)
+
+		//third line menu
+		&::after
+			transform: rotate(45deg)
+
+.fotorama__wrap--css3.fotorama__wrap--no-controls.fotorama__wrap--slide.fotorama__wrap--toggle-arrows .fotorama__fullscreen-icon:not(:focus)
+	transform: none
+	opacity: 1
+
+.fotorama__wrap--css3
+	.fotorama__arr:not(:focus),
+	.fotorama__fullscreen-icon:not(:focus),
+	.fotorama__video-close:not(:focus),
+	.fotorama__video-play:not(:focus)
+		transition-property: transform ,opacity, background-color
+		transition-duration: $animation-speed
 
 .fotorama__nav
 	text-align: left
@@ -107,22 +125,20 @@
 	.fotorama--fullscreen &
 		text-align: center
 
-.fotorama__stage,
-.fotorama__thumb
-	border: 1px solid #{$outline-color}
+.fotorama__stage, .fotorama__thumb
+	border: 1px solid $outline-color
 
 .fotorama__thumb
 	background-color: white
 	border-radius: 0
 
 .fotorama__thumb-border
-	border-color: #{$base-color--ea}
+	border-color: $base-color--ea
 	border-radius: 0
 
-.fotorama--fullscreen,
-.fotorama--fullscreen .fotorama__nav,
-.fotorama--fullscreen .fotorama__stage
-	background: white
+.fotorama--fullscreen
+	&, & .fotorama__nav, & .fotorama__stage
+		background: white
 
 .p-card__gallery.fotorama--fullscreen .fotorama__thumb-border
 	border-radius: 0
