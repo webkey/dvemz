@@ -1,11 +1,11 @@
 @@include('_layout_head.tpl', {
-	"title": "ЭA - Продукты",
+	"title": "ЭA - Новости",
 	"pageClass": "ea-site ea-has-catalog-menu"
 })
 
 <!--HEADER-->
 @@include('_layout_header--ea.tpl', {
-	"mainNavItemActive": "Монтажные работы"
+	"mainNavItemActive": "Заказ"
 })
 <!--HEADER end-->
 
@@ -25,12 +25,23 @@
 							<!--breadcrumbs-->
 							@@include('_breadcrumbs.tpl')
 							<!--breadcrumbs end-->
-							<h1>2Кабель силовой бронированный АВБбШв и ААБл</h1>
+							<div class="heading">
+								<h1>Новости</h1>
+								<!--years-->
+								<div class="years">
+									<a href="#">Все</a>
+									<a href="#" class="active">2017</a>
+									<a href="#">2016</a>
+									<a href="#">2015</a>
+									<a href="#">2014</a>
+								</div>
+								<!--years end-->
+							</div>
 							<div class="layout-wide">
 								<!--news-->
-								<div class="products view-container-js">
-									<section class="products__list">
-										@@loop("_products-items.tpl", "includes-json/products-items.json")
+								<div class="news">
+									<section class="news__list">
+										@@loop("_tpl_news-items.xhtml", "includes-json/_tpl_news-items.json")
 									</section>
 								</div>
 								<!--news end-->

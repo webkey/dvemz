@@ -1,0 +1,39 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* years
+$year-item-height: 40px
+$year-item-width: 90px
+
+.years
+	+clear-spacing
+	margin-bottom: $bottom-space
+
+	.heading &
+		+display-inline-block-middle
+
+	a
+		+display-inline-block-top
+		height: $year-item-height
+		min-width: $year-item-width
+		margin-left: -1px
+		+font(14px, #{$year-item-height - 2})
+		color: $text-color
+		letter-spacing: normal
+		text-align: center
+		text-decoration: none
+		text-transform: uppercase
+		border: 1px solid $border-color
+		-webkit-transition-property: border-color, background-color
+		transition-property: border-color, background-color
+
+		&.active
+			background-color: $base-color--ea
+			border-top-color: $base-color--ea
+			border-bottom-color: $base-color--ea
+
+		.no-touchevents &:hover
+			background-color: $bg-color-light
+
+/* years end

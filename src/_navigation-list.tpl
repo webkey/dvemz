@@ -27,7 +27,7 @@
 
 	<!--@@classKey item start-->
 	<li class="@@if(mainNavItemActive === "Заказ"){current}">
-		@@include('_navigation-LINK.tpl', { "itemText": "Заказ", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK.tpl', { "itemText": "Заказ", "itemLink": "automatic-news.html", "key": "@@classKey", "specialValue": "" })
 	</li>
 	<!--@@classKey item end-->
 

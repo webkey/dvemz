@@ -456,13 +456,13 @@ function equalHeightInit() {
 		});
 	}
 
-	// var $cardOverviewNav = $('.p-card-overview__nav');
-	//
-	// if ($cardOverviewNav.length) {
-	// 	$cardOverviewNav.children().matchHeight({
-	// 		byRow: true, property: 'height', target: null, remove: false
-	// 	});
-	// }
+	var $newsList = $('.news__list');
+
+	if ($newsList.length) {
+		$newsList.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
 
 	// $(window).on('resize', function () {
 	// 	$.fn.matchHeight._update();
