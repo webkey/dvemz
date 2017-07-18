@@ -1,0 +1,150 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+//pagination
+$pagination-hspace: null
+$pagination-vspace: null
+$pagination-height: 40px
+$pagination-width: 44px
+$pagination-border-width: 1px
+$pagination-font-size: 16px
+
+/*pagination
+.paging
+	+font-normal
+	// обнуление отступов между словами
+	+clear-spacing
+	color: $text-color
+	fill: $text-color
+	text-align: center
+	cursor: default
+	@if $pagination-hspace
+		+margin-horizontal(-#{$pagination-hspace})
+
+.paging-layout
+	+display-inline-block-top
+	+clear
+
+// шрифт для элементов пагинации
+.paging-start, .paging-prev, .paging-next, .paging-end, .paging-list li
+	+font($pagination-font-size, #{$pagination-height - $pagination-border-width*2})
+	letter-spacing: normal
+
+.paging-before
+	float: left
+
+.paging-after
+	float: right
+
+.paging-before, .paging-after
+	+media('<tab-sm')
+		float: none
+		+display-inline-block-top
+		//margin-top: -#{$pagination-border-width}
+		margin-top: 20px
+
+.paging-start, .paging-prev, .paging-next, .paging-end
+	+display-inline-block-middle
+
+	@if($pagination-hspace)
+		+margin-horizontal($pagination-hspace)
+	@if($pagination-vspace)
+		+margin-vertical($pagination-vspace)
+	@else
+		margin: 0 0 0 -#{$pagination-border-width}
+
+	a
+		+display-inline-block-top
+		height: $pagination-height
+		min-width: $pagination-width
+		color: inherit
+		text-decoration: none
+		transition-property: color, background-color, fill
+		transition-duration: $animation-speed
+		border: 1px solid $border-color
+
+		//+media('<tab-sm')
+			line-height: #{round($pagination-height*1.5) - $pagination-border-width*2}
+			height: round($pagination-height*1.5)
+			min-width: round($pagination-width*1.5)
+
+	a > span
+		transition: inherit
+		//+display-inline-block-middle
+		+hide-text
+
+	svg
+		+display-inline-block-middle
+		+size(12px)
+		fill: inherit
+
+	path
+		fill: inherit
+		transition: inherit
+
+	.no-touchevents &:hover
+		//color: $text-color-alt
+		//fill: $text-color-alt
+		background-color: $bg-color-light
+
+	//svg
+		.paging-start &, .paging-prev &
+			margin-right: 6px
+
+		.paging-next &, .paging-end &
+			margin-left: 6px
+
+.paging-list
+	+display-inline-block-middle
+
+	+media('<tab-sm')
+		display: block
+
+	&, .#{$user-content} &
+		@if($pagination-hspace)
+			+margin-horizontal($pagination-hspace)
+		@if($pagination-vspace)
+			+margin-vertical(-#{$pagination-vspace})
+		@else
+			margin: 0
+
+		li
+			@if($pagination-vspace)
+				margin: #{$pagination-vspace} 0
+			@else
+				margin: 0 0 0 -#{$pagination-border-width}
+			padding: 0
+
+			&:before
+				content: none
+
+	li
+		+display-inline-block-top
+		text-align: center
+
+	a, li > span
+		+display-inline-block-top
+		padding: 0 3px
+		min-width: $pagination-width
+		color: inherit
+		background: transparent
+		border: 1px solid $border-color
+		transition-property: background-color, color
+		transition-duration: $animation-speed
+
+	a
+		text-decoration: none
+		cursor: pointer
+
+		.no-touchevents &:hover
+			background-color: $bg-color-light
+
+	.paging-current > span
+		cursor: default
+		color: white
+		background-color: $base-color--ea
+		border-top-color: $base-color--ea
+		border-bottom-color: $base-color--ea
+
+/*pagination end

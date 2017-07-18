@@ -107,18 +107,23 @@
 		margin-bottom: 0
 
 .p-card-overview__nav
+	display: table
+	width: 100%
+	table-layout: fixed
 	margin: 0
-	display: flex
-	justify-content: space-between
-	flex-wrap: wrap
+	//display: flex
+	//justify-content: space-between
+	//flex-wrap: wrap
 	align-items: stretch
 
 	+media('<tab-sm')
 		display: none
 
 .p-card-overview__tab
-	display: block
-	flex: 1 1 100px
+	display: table-cell
+	vertical-align: middle
+	//display: block
+	//flex: 1 1 100px
 	+font(1.6rem, round-float(19/16, 2))
 	text-decoration: none
 	color: $text-color
@@ -134,9 +139,6 @@
 	span
 		+display-inline-block-middle
 		position: relative
-		top: 50%
-		transform: translate(0, -50%)
-		width: calc(100% - 4px)
 		padding: 10px 20px
 		+antialiased
 

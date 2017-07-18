@@ -4,10 +4,8 @@
 
 /* fotorama
 .fotorama__arr
-	background: none
-	+size(43px, 100%)
-	top: 0
-	margin: 0
+	background: transparentize($bg-color-light, 0.2)
+	+size(43px, 44px)
 
 	&::before, &::after
 		+pseudo()
@@ -16,11 +14,11 @@
 		border-radius: 0
 		background-color: black
 
+	.no-touchevents &:hover
+		background-color: $bg-color-light
+
 .fotorama__arr--prev
 	left: 0
-
-	.no-touchevents &:hover
-		+linear-gradient(to right, $bg-color-light 0%, transparentize($bg-color-light, 0.9) 100%)
 
 	&::before, &::after
 		left: 13px
@@ -35,9 +33,6 @@
 
 .fotorama__arr--next
 	right: 0
-
-	.no-touchevents &:hover
-		+linear-gradient(to left, $bg-color-light 0%, transparentize($bg-color-light, 0.9) 100%)
 
 	&::before, &::after
 		right: 13px

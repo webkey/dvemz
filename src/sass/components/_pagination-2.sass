@@ -1,0 +1,105 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+// pagination
+$pagination-hspace: null
+$pagination-vspace: null
+$pagination-height: 40px
+$pagination-width: 44px
+$pagination-border-width: 1px
+$pagination-font-size: 16px
+
+/* pagination
+.pagination
+	+font-normal
+	+clear-spacing
+	color: $text-color
+	fill: $text-color
+	text-align: center
+	cursor: default
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+	.prev, .next
+		+display-inline-block-middle
+		margin: 0 0 0 -#{$pagination-border-width}
+		color: inherit
+		text-decoration: none
+		transition-property: color, background-color, fill
+		transition-duration: $animation-speed
+
+		i
+			display: block
+			height: 100%
+
+		svg
+			+display-inline-block-middle
+			+size(10px)
+			fill: inherit
+
+		path
+			fill: inherit
+			transition: inherit
+
+		.no-touchevents &:hover
+			background-color: $bg-color-light
+
+	ul
+		+display-inline-block-middle
+
+		&, .#{$user-content} &
+			margin: 0
+
+			li
+				margin: 0 0 0 -#{$pagination-border-width}
+				padding: 0
+
+				&:before
+					content: none
+
+		li
+			+display-inline-block-top
+			text-align: center
+
+			a, & > span
+				+display-inline-block-top
+				padding: 0 3px
+				color: inherit
+				background: transparent
+				transition-property: background-color, color
+				transition-duration: $animation-speed
+
+			a
+				text-decoration: none
+				cursor: pointer
+
+				.no-touchevents &:hover
+					background-color: $bg-color-light
+
+			&.active a, .no-touchevents &.active a:hover
+				color: white
+				background-color: $base-color--ea
+				border-top-color: $base-color--ea
+				border-bottom-color: $base-color--ea
+
+			& > .dots
+				+font-bold
+
+	// шрифт для элементов пагинации
+	.prev, .next, ul a, ul li > span
+		height: $pagination-height
+		min-width: $pagination-width
+		+font($pagination-font-size, #{$pagination-height - $pagination-border-width*2})
+		letter-spacing: normal
+		border: 1px solid $border-color
+
+		+media('<mob-lg')
+			min-width: round($pagination-width*0.8)
+
+		+media('<mob-md')
+			min-width: round($pagination-width*0.68)
+
+/* pagination end
