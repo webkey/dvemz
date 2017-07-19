@@ -82,29 +82,44 @@
 	path
 		fill: $text-color
 
+/* btn-more
+.btn-more
+	display: block
+	position: relative
+	min-width: 240px
+	padding: 12px 29px 13px
+	+font(16px, 24px)
+	text-align: center
+	text-decoration: none
+	white-space: nowrap
+	color: $btn-text-color
+	border: 1px solid $base-color
+	background-color: transparent
+	transition-property: background-color, color, border-color
+	transition-duration: $animation-speed
+	margin: 0
+
+	.ea-site &
+		border-color: $base-color--ea
+
+	.no-touchevents &:hover
+		background-color: $base-color
+
+	.no-touchevents .ea-site &:hover
+		background-color: $base-color--ea
+
 .btn-main--more
 	display: block
 	position: relative
 	min-width: 240px
-	padding: 13px 30px 14px
+	padding: 12px 29px 13px
 	+font(14px, 1.5)
 	color: white
 	background-color: transparent
+	border: 1px solid $base-color
 	+antialiased
 	transition-property: background-color, color
 	transition-duration: $animation-speed
-
-	&::before, &::after
-		+pseudo()
-		+cover($position: null)
-		z-index: -1
-		border: solid $base-color
-
-	&::before
-		border-width: 0 0 1px 1px
-
-	&::after
-		border-width: 1px 1px 0 0
 
 	& > span
 		position: relative
@@ -157,9 +172,6 @@
 
 	.no-touchevents &:hover
 		background-color: $base-color--ea
-
-	&:active
-		transform: scale(0.95)
 
 // btn-with-icon
 .btn-with-icon

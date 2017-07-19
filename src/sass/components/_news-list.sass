@@ -4,6 +4,7 @@
 
 /* news
 $news-list-inner-space: 30px
+$news-list-inner-space--sm: 20px
 
 .news
 	overflow: hidden
@@ -42,12 +43,15 @@ $news-list-inner-space: 30px
 .news__inner
 	display: block
 	height: 100%
-	padding: #{round($news-list-inner-space*0.8)} #{$news-list-inner-space} #{$news-list-inner-space*2}
+	padding: #{round($news-list-inner-space)} #{$news-list-inner-space} #{$news-list-inner-space*2}
 	text-decoration: none
 	color: inherit
 	+clear-spacing
 	transition-property: background
 	transition-duration: $animation-speed
+
+	+media('<tab-sm')
+		padding: #{round($news-list-inner-space--sm)} #{$news-list-inner-space--sm} #{$news-list-inner-space--sm*3}
 
 	.no-touchevents &
 		&:hover
@@ -118,9 +122,12 @@ $news-list-inner-space: 30px
 
 	img
 		display: block
+		position: absolute
 		max-height: 100%
 		max-width: 100%
-		+centering-transform-rel()
+		top: 50%
+		left: 0
+		transform: translate(0, -50%)
 
 .news__content
 	position: relative
@@ -145,6 +152,9 @@ $news-list-inner-space: 30px
 	left: 0
 	width: 100%
 	padding: #{round($news-list-inner-space*0.8)} #{$news-list-inner-space}
+
+	+media('<tab-sm')
+		padding: #{round($news-list-inner-space--sm*0.8)} #{$news-list-inner-space--sm}
 
 .news__date
 	display: block

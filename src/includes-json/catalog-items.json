@@ -2,46 +2,46 @@
 	{
 		"src": "img-catalog-01.jpg",
 		"title": "Кабель и провод медный",
-		"text": "<ul> <li><a href=\"#\"><span>Кабель силовой ВВГ, ВВГнг, ВВГнгLS, ВВГнгFRLS</span></a> <ul> <li><a href=\"#\"><span>Кабель силовой ВВГ</span></a></li> <li><a href=\"#\"><span>Кабель силовой ВВГнг</span></a></li> <li><a href=\"#\"><span>Кабель силовой ВВГнгLS</span></a></li> <li><a href=\"#\"><span>Кабель силовой ВВгнгFRLS</span></a></li> </ul> </li> <li><a href=\"#\"><span>Кабель силовой ВБбШв;</span></a></li> <li><a href=\"#\"><span>Кабель силовой КГ</span></a></li> <li><a href=\"#\"><span>Кабель судовой КНР</span></a></li> <li><a href=\"#\"><span>Провод силовой ПВС</span></a></li> <li><a href=\"#\"><span>Провод бытовой ШВВП, ПУГНП</span></a></li> <li><a href=\"#\"><span>Провод установочный ПВ-1, ПВ-3</span></a></li> <li><a href=\"#\"><span>Провод термостойкий РКГМ</span></a></li> <li><a href=\"#\"><span>Провод без изоляции МГ</span></a></li> </ul>"
+		"text": "<li><a href=\"#\"><span>Кабель силовой ВВГ, ВВГнг, ВВГнгLS, ВВГнгFRLS</span></a> <ul> <li><a href=\"#\"><span>Кабель силовой ВВГ</span></a></li> <li><a href=\"#\"><span>Кабель силовой ВВГнг</span></a></li> <li><a href=\"#\"><span>Кабель силовой ВВГнгLS</span></a></li> <li><a href=\"#\"><span>Кабель силовой ВВгнгFRLS</span></a></li> </ul> </li> <li><a href=\"#\"><span>Кабель силовой ВБбШв;</span></a></li> <li><a href=\"#\"><span>Кабель силовой КГ</span></a></li> <li><a href=\"#\"><span>Кабель судовой КНР</span></a></li> <li><a href=\"#\"><span>Провод силовой ПВС</span></a></li> <li><a href=\"#\"><span>Провод бытовой ШВВП, ПУГНП</span></a></li> <li><a href=\"#\"><span>Провод установочный ПВ-1, ПВ-3</span></a></li> <li><a href=\"#\"><span>Провод термостойкий РКГМ</span></a></li> <li><a href=\"#\" class=\"hidden-item\" style=\"display: none\"><span>Провод без изоляции МГ</span></a></li>"
 	},
 	{
 		"src": "img-catalog-02.jpg",
 		"title": "Кабель, провод алюминмиевый и СИП-арматура",
-		"text": "<ul> <li><a href=\"#\"><span>Кабель силовой АВВГ</span></a></li> <li><a href=\"#\"><span>2Кабель силовой бронированный АВБбШв и ААБл</span></a></li> <li><a href=\"#\"><span>Провод установочный АПВ, АППВ</span></a></li> <li><a href=\"#\"><span>Провод самонесущий СИП</span></a></li> <li> <a href=\"#\"><span>СИП-арматура</span></a> <ul> <li><a href=\"#\"><span>Зажимы анкерные</span></a></li> <li><a href=\"#\"><span>Зажимы поддерживающие и промежуточные</span></a> </li> <li><a href=\"#\"><span>Зажимы клиновые для ответвлений</span></a></li> <li><a href=\"#\"><span>Зажимы прокалывающие ответвительные</span></a></li> <li><a href=\"#\"><span>Кронштейны анкерные и крюки монтажные</span></a> </li> <li><a href=\"#\"><span>Лента монтажная, скрепа (бугели)</span></a></li> <li> <a href=\"#\"><span>Фасадные крепления, колпачки защитные, гильзы, наконечники</span></a> </li> </ul> </li> </ul>"
+		"text": "<li><a href=\"#\"><span>Кабель силовой АВВГ</span></a></li> <li><a href=\"#\"><span>2Кабель силовой бронированный АВБбШв и ААБл</span></a></li> <li><a href=\"#\"><span>Провод установочный АПВ, АППВ</span></a></li> <li><a href=\"#\"><span>Провод самонесущий СИП</span></a></li> <li> <a href=\"#\"><span>СИП-арматура</span></a> <ul> <li><a href=\"#\"><span>Зажимы анкерные</span></a></li> <li><a href=\"#\"><span>Зажимы поддерживающие и промежуточные</span></a> </li> <li><a href=\"#\"><span>Зажимы клиновые для ответвлений</span></a></li> <li><a href=\"#\"><span>Зажимы прокалывающие ответвительные</span></a></li> <li><a href=\"#\"><span>Кронштейны анкерные и крюки монтажные</span></a> </li> <li><a href=\"#\"><span>Лента монтажная, скрепа (бугели)</span></a></li> <li> <a href=\"#\"><span>Фасадные крепления, колпачки защитные, гильзы, наконечники</span></a> </li> </ul> </li>"
 	},
 	{
 		"src": "__temp-img-content-carousel-01.jpg",
 		"title": "Кабель, провод терморегулирующий и комплектующие",
-		"text": "<ul> <li><a href=\"#\"><span>Кабель телефонный и комплектующие</span></a></li> <li><a href=\"#\"><span>Кабель телевизионный и комплектующие</span></a></li> <li><a href=\"#\"><span>Кабель связи и комплектующие</span></a></li> </ul>"
+		"text": "<li><a href=\"#\"><span>Кабель телефонный и комплектующие</span></a></li> <li><a href=\"#\"><span>Кабель телевизионный и комплектующие</span></a></li> <li><a href=\"#\"><span>Кабель связи и комплектующие</span></a></li> </ul>"
 	},
 	{
 		"src": "__temp-img-content-carousel-02.jpg",
 		"title": "Кабель связи и комплектующие",
-		"text": "<ul> <li><a href=\"#\"><span>Кабель самогреющий и комплектующие</span></a></li> <li><a href=\"#\"><span>Провод ПНСВ</span></a></li> </ul>"
+		"text": "<li><a href=\"#\"><span>Кабель самогреющий и комплектующие</span></a></li> <li><a href=\"#\"><span>Провод ПНСВ</span></a></li>"
 	},
 	{
 		"src": "img-catalog-03.jpg",
 		"title": "Кабель контрольный и монтажный экранированный",
-		"text": "<ul> <li><a href=\"#\"><span>Кабель контрольный КВВГ, КВВГнг, КВВГнгLS</span></a></li> <li><a href=\"#\"><span>Кабель монтажный экранированный МКЭШ</span></a></li> </ul>"
+		"text": "<li><a href=\"#\"><span>Кабель контрольный КВВГ, КВВГнг, КВВГнгLS</span></a></li> <li><a href=\"#\"><span>Кабель монтажный экранированный МКЭШ</span></a></li>"
 	},
 	{
 		"src": "img-catalog-03.jpg",
 		"title": "Кабель-канал и  аксессуары",
-		"text": "<ul> <li><a href=\"#\"><span>Кабель-канал (Россия)</span></a></li> <li><a href=\"#\"><span>Кабель-канал Legrand</span></a></li> <li><a href=\"#\"><span>Аксессуары к кабель-каналу (Россия)</span></a></li> <li><a href=\"#\"><span>Аксессуары к кабель-каналу Legrand</span></a></li> </ul>"
+		"text": "<li><a href=\"#\"><span>Кабель-канал (Россия)</span></a></li> <li><a href=\"#\"><span>Кабель-канал Legrand</span></a></li> <li><a href=\"#\"><span>Аксессуары к кабель-каналу (Россия)</span></a></li> <li><a href=\"#\"><span>Аксессуары к кабель-каналу Legrand</span></a></li>"
 	},
 	{
 		"src": "img-catalog-01.jpg",
 		"title": "Трубы ПВХ, ПНД, металлорукав",
-		"text": "<ul> <li><a href=\"#\"><span>Трубы гладкие жесткие ПВХ</span></a></li> <li><a href=\"#\"><span>Трубы гофрированные ПВХ</span></a></li> <li><a href=\"#\"><span>Трубы двустенные гофрированные ПНД</span></a></li> <li><a href=\"#\"><span>Трубы гофрированные ПНД</span></a></li> <li><a href=\"#\"><span>Металлорукав</span></a></li> <li><a href=\"#\"><span>Металлорукав в ПВХ-изоляции НГ</span></a></li> <li><a href=\"#\"><span>Аксессуары для труб и металлорукава</span></a></li> </ul>"
+		"text": "<li><a href=\"#\"><span>Трубы гладкие жесткие ПВХ</span></a></li> <li><a href=\"#\"><span>Трубы гофрированные ПВХ</span></a></li> <li><a href=\"#\"><span>Трубы двустенные гофрированные ПНД</span></a></li> <li><a href=\"#\"><span>Трубы гофрированные ПНД</span></a></li> <li><a href=\"#\"><span>Металлорукав</span></a></li> <li><a href=\"#\"><span>Металлорукав в ПВХ-изоляции НГ</span></a></li> <li><a href=\"#\"><span>Аксессуары для труб и металлорукава</span></a></li>"
 	},
 	{
 		"src": "img-catalog-02.jpg",
 		"title": "Лоток металлический",
-		"text": "<ul> <li><a href=\"#\"><span>Лоток металлический</span></a></li> <li><a href=\"#\"><span>Комплектующие к лотку металлическому</span></a></li> </ul>"
+		"text": "<li><a href=\"#\"><span>Лоток металлический</span></a></li> <li><a href=\"#\"><span>Комплектующие к лотку металлическому</span></a></li>"
 	},
 	{
 		"src": "img-catalog-02.jpg",
 		"title": "Муфты термоусаживаемые кабельные",
-		"text": "<ul> <li><a href=\"#\"><span>Концевые</span></a></li> <li><a href=\"#\"><span>Соединительные</span></a></li> </ul>"
+		"text": "<li><a href=\"#\"><span>Концевые</span></a></li> <li><a href=\"#\"><span>Соединительные</span></a></li>"
 	}
 ]

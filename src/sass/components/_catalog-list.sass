@@ -110,23 +110,23 @@
 
 .catalog__content
 	overflow: hidden
+	margin-bottom: $bottom-space
 
 	& > *:last-child
 		margin-bottom: 0
 
 	ul
 
-		li, ul, ol
-			margin: 0.7em 0
-
 		li
 			padding-left: 0
+			margin: 0
 
 			&::before
 				content: none
 
 		a
-			padding-top: 0.2em
+			display: block
+			padding: 0 0 0.7em
 			color: inherit
 			text-decoration: none
 			transition-property: color
@@ -137,8 +137,9 @@
 
 		ul, ol
 			padding-left: 30px
+			margin: 0
 
-			li
+			a
 				&::before
 					content: '–'
 					display: inline-block
@@ -204,4 +205,50 @@
 		text-align: center
 
 /* grid view end
+
+/* button show
+.catalog__btn-show
+	position: relative
+	+display-inline-block-top
+	padding-right: 17px
+	+font(15px, 19px)
+	color: $link-color
+	text-decoration: none
+	transition-property: color, border-color
+	transition-duration: $animation-speed
+
+	& > span
+		border-bottom: 1px dashed $link-color
+		transition: inherit
+
+	i
+		position: relative
+		+display-inline-block-top
+		top: -2px
+		+font-bold
+		+font(13px, 19px)
+
+	&::after
+		+pseudo()
+		right: 0
+		top: 50%
+		width: 7px
+		height: 7px
+		margin-top: -2px
+		border: solid $link-color
+		border-width: 0 1px 1px 0
+		transform: rotate(45deg)
+		transform-origin: right top
+
+	&.active
+		&::after
+			border-width: 1px 0 0 1px
+			margin-top: 3px
+
+	.no-touchevents &:hover
+
+		& > span
+			border-color: transparent
+
+/* button show end
 /* catalog end

@@ -1,12 +1,34 @@
-<div class="p-filters">
+<div class="p-filters p-filters-js">
 	<div class="p-filters__list">
 		<div class="p-filters__item">
 			<div class="p-filters__inner">
 				<div class="p-filters-select">
-					<div class="p-filters-select-head">
-						<div class="p-filters__group">Производитель</div>
-						<div class="p-filters__placeholder">Выбрать производителя</div>
-					</div>
+					@@include('_tpl_products-filters--head.xhtml', {
+						"title": "Производитель",
+						"placeholder": "Выбрать производителя",
+						"value": "патроны, светильники, лампочки, горелки, лампы дневного света, светодиоды"
+					})
+					<div class="p-filters-angle"><i>&nbsp;</i></div>
+					@@include('_tpl_products-filters--drop.xhtml', {
+						"list": [
+							{
+								"text": "blah"
+							},{
+								"text": "woo"
+							}
+						]
+					})
+				</div>
+			</div>
+		</div>
+		<div class="p-filters__item">
+			<div class="p-filters__inner">
+				<div class="p-filters-select p-filters-group-js">
+					@@include('_tpl_products-filters--head.xhtml', {
+						"title": "Стоимотсь",
+						"placeholder": "Выбрать стоимотсь",
+						"value": "80 р. — 150 р."
+					})
 					<div class="p-filters-angle"><i>&nbsp;</i></div>
 					<div class="p-filters-select-menu">
 						<ul class="p-filters-select-menu__list">
@@ -42,10 +64,11 @@
 		<div class="p-filters__item">
 			<div class="p-filters__inner">
 				<div class="p-filters-select">
-					<div class="p-filters-select-head">
-						<div class="p-filters__group">Стоимотсь</div>
-						<div class="p-filters__placeholder">80 р. — 150 р.</div>
-					</div>
+					@@include('_tpl_products-filters--head.xhtml', {
+						"title": "Производитель",
+						"placeholder": "Выбрать производителя",
+						"value": "патроны, светильники, лампочки, горелки, лампы дневного света, светодиоды"
+					})
 					<div class="p-filters-angle"><i>&nbsp;</i></div>
 					<div class="p-filters-select-menu">
 						<ul class="p-filters-select-menu__list">
@@ -81,49 +104,11 @@
 		<div class="p-filters__item">
 			<div class="p-filters__inner">
 				<div class="p-filters-select">
-					<div class="p-filters-select-head">
-						<div class="p-filters__group">Производитель</div>
-						<div class="p-filters__placeholder">Выбрать производителя</div>
-					</div>
-					<div class="p-filters-angle"><i>&nbsp;</i></div>
-					<div class="p-filters-select-menu">
-						<ul class="p-filters-select-menu__list">
-							<li>
-								<label class="check-label">
-									<input type="checkbox" name="checkbox-normal" />
-									<span><i>&nbsp;</i>Отличный способ для выделения самого важного в тексте – использование контрастных шрифтов</span>
-								</label>
-							</li>
-							<li>
-								<label class="check-label">
-									<input type="checkbox" name="checkbox-checked" checked />
-									<span><i>&nbsp;</i>Checked</span>
-								</label>
-							</li>
-							<li>
-								<label class="check-label">
-									<input type="checkbox" name="checkbox-disabled" disabled />
-									<span><i>&nbsp;</i>Disabled</span>
-								</label>
-							</li>
-							<li>
-								<label class="check-label">
-									<input type="checkbox" name="checkbox-checked-disabled" checked disabled />
-									<span><i>&nbsp;</i>Checked & Disabled</span>
-								</label>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="p-filters__item">
-			<div class="p-filters__inner">
-				<div class="p-filters-select">
-					<div class="p-filters-select-head">
-						<div class="p-filters__group">Тип</div>
-						<div class="p-filters__placeholder">патроны. светильники, лампочки, горелки, лампы дневного света, светодиоды</div>
-					</div>
+					@@include('_tpl_products-filters--head.xhtml', {
+						"title": "Тип",
+						"placeholder": "Выбрать тип",
+						"value": "патроны, светильники, лампочки, горелки, лампы дневного света, светодиоды"
+					})
 					<div class="p-filters-angle"><i>&nbsp;</i></div>
 					<div class="p-filters-select-menu">
 						<ul class="p-filters-select-menu__list">

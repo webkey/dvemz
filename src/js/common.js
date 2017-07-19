@@ -1999,6 +1999,59 @@ function onlyNumberInput() {
 /**only number input end*/
 
 /**
+ * !multi filters jquery plugin
+ * */
+(function ($) {
+	var MultiFilters = function (settings) {
+		var options = $.extend({
+			container: null,
+			checkbox: null
+		}, settings || {});
+
+		this.options = options;
+		var container = $(options.container);
+
+		this.$container = container;
+		this.$checkbox = $(options.checkbox, container);
+
+		this.modifiers = {
+			active: options.openClass
+		};
+
+		this.bindEvents();
+
+	};
+
+	MultiFilters.prototype.bindEvents = function () {
+		var self = this;
+		var $container = self.$container;
+		var $checkbox = self.$checkbox;
+
+		console.log("$container: ", $container);
+		console.log("$checkbox: ", $checkbox);
+	};
+
+	window.MultiFilters = MultiFilters;
+}(jQuery));
+
+/**
+ * !multi filters initial
+ * */
+function multiFiltersInit() {
+	var productFilters = '.p-filters-js';
+	// var catalogMenuChangeTimeout;
+
+	if ($(productFilters).length) {
+		new MultiFilters({
+			container: productFilters,
+			filtersGroup: '.p-filters-group-js',
+			checkbox: '.p-filters-select-menu__list input[type="checkbox"]'
+		});
+	}
+}
+/*multi filters initial end*/
+
+/**
  * !sorting
  * */
 function sortingOrder() {
@@ -2060,6 +2113,78 @@ function fotoramaInit() {
 	})
 }
 /** fotorama init end */
+
+/**
+ * !loadList
+ * */
+function loadList(){
+	
+	var $container = $('.show-container-js');
+	var $list = $('.show-list-js');
+	var $btnShow = $('.btn-show-js');
+	var hideClass = 'hidden-item';
+	var activeClass = 'active';
+
+	$.each($list, function () {
+		var $currentList = $(this);
+		var minHideLength = $currentList.data('min-hide-item') || 1;
+		var $hiddenItems = $currentList.find('a:gt(' + (+$currentList.data('show-item') - 1) + ')');
+
+		var hiddenItemLength = $hiddenItems.length || $currentList.find('.' + hideClass).length || 0;
+
+		var actualHideItemLength = hiddenItemLength < minHideLength ? 0 : hiddenItemLength;
+
+		if (actualHideItemLength > 0 && $currentList.attr('data-show-item')) {
+			$hiddenItems
+				.hide(0)
+				.addClass(hideClass);
+		}
+
+		// var tpl;
+		// switch (actualHideItemLength) {
+		// 	case 1:
+		// 		tpl = 'категория';
+		// 		break;
+		// 	case 2:
+		// 	case 3:
+		// 	case 4:
+		// 		tpl = 'категории';
+		// 		break;
+		// 	default:
+		// 		tpl = 'категорий';
+		// }
+
+		var $currentBtn = $currentList.closest($container).find($btnShow);
+		var $currentBtnContent = '<span>' + $currentBtn.data('text') + '</span> <i>' + actualHideItemLength + '</i>';
+		$currentBtn
+			.html($currentBtnContent)
+			.attr('data-content', $currentBtnContent)
+			.toggle(!!actualHideItemLength);
+	});
+
+	$btnShow.on('click', function (e) {
+		var $currentBtn = $(this);
+		var $currentContainer = $currentBtn.closest($container);
+		var $currentList = $currentContainer.find($list);
+		var $currentHiddenItems = $currentList.find('.' + hideClass);
+
+		$currentHiddenItems.stop()
+			.slideToggle();
+
+		$currentBtn.stop()
+			.toggleClass(activeClass);
+
+		if ( $currentBtn.hasClass(activeClass) ) {
+			$currentBtn.html('<span>' + $currentBtn.attr('data-hide') + '</span>');
+		} else {
+			$currentBtn.html($currentBtn.attr('data-content'));
+		}
+
+		e.preventDefault();
+	})
+}
+
+/* loadList */
 
 /**
  * !footer at bottom
@@ -2173,8 +2298,10 @@ $(document).ready(function () {
 	toggleView();
 	spinnerInit();
 	onlyNumberInput();
+	multiFiltersInit();
 	sortingOrder();
 	fotoramaInit();
+	loadList();
 
 	footerBottom();
 	formSuccessExample();

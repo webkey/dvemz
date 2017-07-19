@@ -107,20 +107,24 @@
 			transform-origin: bottom left
 			transform: rotate(-45deg)
 
-.p-filters__group
+.p-filters__title
 	+font-normal
 	+font(11px, 13px)
 	color: #{$text-color-light}
 	margin-bottom: 0.5em
 	+truncate(none)
 
-.p-filters__placeholder
+.p-filters__placeholder,
+.p-filters__value
 	+font-bold
 	+font(10px, 13px)
 	color: #{$text-color}
 	text-transform: uppercase
 	letter-spacing: 0.05em
 	+truncate(none)
+
+.p-filters__value
+	display: none
 
 .btn-clear
 	display: block
@@ -157,7 +161,7 @@
 	.no-touchevents &:hover
 		background-color: #{$bg-color-light}
 
-.p-filters-select-menu
+.p-filters-select-drop
 	position: absolute
 	width: calc(100% + 2px)
 	+position(100%, -1px)
@@ -172,7 +176,7 @@
 		opacity: 1
 		visibility: visible
 
-.p-filters-select-menu__list
+.p-filters-select-list
 
 	&, .#{$user-content} &
 		margin: 0
