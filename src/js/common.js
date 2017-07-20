@@ -2005,30 +2005,251 @@ function onlyNumberInput() {
 	var MultiFilters = function (settings) {
 		var options = $.extend({
 			container: null,
-			checkbox: null
+			item: null,
+			group: null,
+			handler: null,
+			drop: null,
+			checkbox: null,
+			btnReset: null,
+			btnResetAll: null,
+
+			dropOpenClass: 'is-open',
+			filtersOnClass: 'filters-on'
 		}, settings || {});
 
+		var self = this;
 		this.options = options;
 		var container = $(options.container);
 
 		this.$container = container;
+		this.$item = $(options.item, container);
+		this.$handler = $(options.handler, container);
+		this.$drop = $(options.drop, container);
+		this.$group = $(options.group, container);
 		this.$checkbox = $(options.checkbox, container);
+		this.$btnReset = $(options.btnReset, container);
+		this.$btnResetAll = $(options.btnResetAll, container);
 
 		this.modifiers = {
-			active: options.openClass
+			dropIsOpened: options.dropOpenClass,
+			filtersOn: options.filtersOnClass
 		};
 
 		this.bindEvents();
+		this.toggleDrop();
+		this.resetCheckboxesInGroup();
+		this.resetAllCheckboxes();
+		// this.addClassCustom();
 
 	};
+
+	MultiFilters.prototype.dropIsOpened = false;
 
 	MultiFilters.prototype.bindEvents = function () {
 		var self = this;
 		var $container = self.$container;
+		var $item = self.$item;
+		var $group = self.$group;
 		var $checkbox = self.$checkbox;
+		var $btnReset = self.$btnReset;
+		var filtersOnClass = self.modifiers.filtersOn;
 
-		console.log("$container: ", $container);
-		console.log("$checkbox: ", $checkbox);
+		$checkbox.on('change', function () {
+			var $currentCheckbox = $(this);
+			console.info('checkbox is change');
+			var $currentContainer = $currentCheckbox.closest($container);
+			var $currentItem = $currentCheckbox.closest($item);
+			var $currentGroup = $currentCheckbox.closest($group);
+
+			var $currentBtnReset = $currentItem.find($btnReset);
+
+			var $currentBtnResetAll = $currentContainer.find(self.$btnResetAll);
+			// var $btnSubmit = $('input[type=submit]', $currentItem);
+
+			self.disabledButton($currentBtnReset);
+			self.removeClassCustom($currentItem, filtersOnClass);
+
+			// отключить кнопку очистки ВСЕХ чекбоксов
+			self.disabledButton($currentBtnResetAll);
+			// удалить класс наличия отмеченных чекбоксов со ВСЕХ фильтров
+			// self.removeClassCustom($item, filtersOnClass);
+
+			if (self.checkProp($currentGroup)) {
+				self.enabledButton($currentBtnReset);
+				self.addClassCustom($currentItem, filtersOnClass);
+			}
+
+			// включить кнопку очистки ВСЕХ чекбоксов
+			if (self.checkProp($group)) {
+				self.enabledButton($currentBtnResetAll);
+			}
+
+			// проверка омечены все чекбоксы, или не все
+			// var $toggle = $currentGroup.find('.toggle-all-filters-js');
+			// if (self.checkProp($currentGroup, true)) {
+			// 	$toggle.prop('checked', true);
+			// 	self.checkedToggleBtn($toggle, activeClass);
+			// } else {
+			// 	$toggle.prop('checked', false);
+			// 	self.uncheckedToggleBtn($toggle, activeClass);
+			// }
+
+			// setTotalCheckedInputs($currentGroup);
+		});
+	};
+
+	MultiFilters.prototype.checkProp = function ($group, cond) {
+		// если cond === true, происходит сравнение количества все фильтров к отмеченым
+
+		var self = this;
+		var $checkboxes = $group.find(':checkbox');
+		var hasChecked = false;
+		var countChecked = 0;
+
+		$.each($checkboxes, function () {
+
+			if ($(this).prop('checked')) {
+				hasChecked = true;
+
+				if (cond !== true) {
+					return false;
+				}
+
+				countChecked++;
+			}
+		});
+
+		return hasChecked;
+
+		// if (cond === true) {
+		// 	// если количества все фильтров равно количесту отмеченных, то возвращает true, иначе false
+		// 	return $checkboxes.length === self.getTotalCheckedInputs($group);
+		// } else {
+		// 	return hasChecked;
+		// }
+	};
+
+	// MultiFilters.prototype.getTotalCheckedInputs = function ($group) {
+	// 	var $checkboxes = $group.find(':checkbox');
+	//
+	// 	var totalCheckedInput = 0;
+	//
+	// 	$.each($checkboxes, function () {
+	//
+	// 		if ($(this).prop('checked')) {
+	//
+	// 			totalCheckedInput++;
+	// 		}
+	// 	});
+	//
+	// 	return totalCheckedInput;
+	// };
+
+	MultiFilters.prototype.resetCheckboxesInGroup = function () {
+		var self = this;
+
+		self.$btnReset.on('click', function (e) {
+			e.preventDefault();
+
+			var $currentBtn = $(this);
+
+			self.resetCheckboxes($currentBtn.closest(self.$item));
+		});
+	};
+
+	MultiFilters.prototype.resetAllCheckboxes = function () {
+		var self = this;
+
+		self.$btnResetAll.on('click', function (e) {
+			e.preventDefault();
+
+			var $currentBtn = $(this);
+
+			self.resetCheckboxes($currentBtn.closest(self.$container).find(self.$group));
+		});
+	};
+
+	MultiFilters.prototype.resetCheckboxes = function ($container) {
+		$container.find(':checked').prop('checked', false).trigger('change');
+	};
+
+	MultiFilters.prototype.enabledButton = function ($button) {
+		$button.prop('disabled', false);
+	};
+
+	MultiFilters.prototype.disabledButton = function ($button) {
+		$button.prop('disabled', true);
+	};
+
+	MultiFilters.prototype.toggleDrop = function () {
+		var self = this;
+		var $container = self.$container;
+		var $item = self.$item;
+		var $handler = self.$handler;
+		var $drop = self.$drop;
+		var dropIsOpenedClass = self.modifiers.dropIsOpened;
+		// window.preventAction = true;
+
+		$handler.on('click', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			var $currentHandler = $(this);
+			var $currentItem = $currentHandler.closest($item);
+
+			if($currentItem.hasClass(dropIsOpenedClass)) {
+				removeClassCloseDrop();
+				return;
+			}
+
+			removeClassCloseDrop();
+			self.addClassCustom($currentItem, dropIsOpenedClass);
+		});
+
+		$(document).on('click', function () {
+			removeClassCloseDrop();
+		});
+
+		$(document).keyup(function(e) {
+			console.log(1);
+			if (self.dropIsOpened && e.keyCode === 27) {
+				console.log(2);
+				removeClassCloseDrop();
+			}
+		});
+
+		$container.on('closeDrop', function () {
+			removeClassCloseDrop();
+		});
+
+		$($drop).on('click', function (e) {
+			e.stopPropagation();
+		});
+
+		function removeClassCloseDrop() {
+			self.removeClassCustom($item, dropIsOpenedClass)
+		}
+
+	};
+
+	MultiFilters.prototype.addClassCustom = function (elements, modifiersClass) {
+		var self = this;
+
+		$.each(elements, function () {
+			$(this).addClass(modifiersClass);
+		});
+
+		self.dropIsOpened = true;
+	};
+
+	MultiFilters.prototype.removeClassCustom = function (elements, modifiersClass) {
+		var self = this;
+
+		$.each(elements, function () {
+			$(this).removeClass(modifiersClass);
+		});
+
+		self.dropIsOpened = false;
 	};
 
 	window.MultiFilters = MultiFilters;
@@ -2044,9 +2265,18 @@ function multiFiltersInit() {
 	if ($(productFilters).length) {
 		new MultiFilters({
 			container: productFilters,
-			filtersGroup: '.p-filters-group-js',
-			checkbox: '.p-filters-select-menu__list input[type="checkbox"]'
-		});
+			item: '.p-filters-item-js',
+			group: '.p-filters-group-js',
+			handler: '.p-filters-select-js',
+			drop: '.p-filters-drop-js',
+			checkbox: '.p-filters-drop-list input[type="checkbox"]',
+			btnReset: '.btn-reset-js',
+			btnResetAll: '.btn-clear-filters-js',
+
+
+			dropOpenClass: 'p-filters-is-open',
+			filtersOnClass: 'p-filters-on'
+		})
 	}
 }
 /*multi filters initial end*/

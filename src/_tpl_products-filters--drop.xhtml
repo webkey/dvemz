@@ -1,28 +1,15 @@
-<div class="p-filters-select-drop">
-	<ul class="p-filters-select-list">
-		<li>
-			<label class="check-label">
-				<input type="checkbox" name="checkbox-normal" />
-				<span><i>&nbsp;</i>Отличный способ для выделения самого важного в тексте – использование контрастных шрифтов</span>
-			</label>
-		</li>
-		<li>
-			<label class="check-label">
-				<input type="checkbox" name="checkbox-checked" checked />
-				<span><i>&nbsp;</i>@@list[text]</span>
-			</label>
-		</li>
-		<li>
-			<label class="check-label">
-				<input type="checkbox" name="checkbox-disabled" disabled />
-				<span><i>&nbsp;</i>Disabled</span>
-			</label>
-		</li>
-		<li>
-			<label class="check-label">
-				<input type="checkbox" name="checkbox-checked-disabled" checked disabled />
-				<span><i>&nbsp;</i>Checked & Disabled</span>
-			</label>
-		</li>
+<div class="p-filters-drop p-filters-drop-js">
+	<ul class="p-filters-drop-list p-filters-group-js" data-reset-group="@@group">
+		@@for (var key in checkboxes) {
+			<li>
+				<label class="check-label">
+					<input type="checkbox" name="`+key+`" />
+					<span><i>&nbsp;</i>`+checkboxes[key]+`</span>
+				</label>
+			</li>
+		}
 	</ul>
+	<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" data-reset-group="@@group" disabled><span>Очистить фильтр</span></button>
+	</div>
 </div>
