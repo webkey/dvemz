@@ -274,34 +274,44 @@
 												<div class="p-filters-select p-filters-select-js">
 													<div class="p-filters-select-head">
 														<div class="p-filters__title">Производитель</div>
-														<div class="p-filters__placeholder">Выбрать производителя</div>
-														<div class="p-filters__value">патроны, светильники, лампочки, горелки, лампы дневного света, светодиоды</div>
+														<div class="p-filters__placeholder p-filters-placeholder-js">Выбрать производителя</div>
+														<div class="p-filters__value p-filters-selected-js" data-value-prefix="Выбрано"></div>
 													</div>
 													<div class="p-filters-angle"><i>&nbsp;</i></div>
 												</div>
 												<div class="p-filters-drop p-filters-drop-js">
-													<ul class="p-filters-drop-list p-filters-group-js" data-reset-group="manufacturer">
+													<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="manufacturer">
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="ru" />
-					<span><i>&nbsp;</i>Россия</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="ru" data-filter-tag="Россия">
+						<input type="checkbox" name="ru" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Российская Федерация</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="ch" />
-					<span><i>&nbsp;</i>Китай</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="ch" data-filter-tag="КНР">
+						<input type="checkbox" name="ch" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Китайская Народная Республика</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="fr" />
-					<span><i>&nbsp;</i>Франция</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="en" data-filter-tag="Великобритания">
+						<input type="checkbox" name="en" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Соединенное Королевство Великобритании и Северной Ирландии</span>
+					</label>
+														</li>
+														<li>
+															<label class="check-label p-filters-label-js" data-filter-name="fr" data-filter-tag="Франция">
+						<input type="checkbox" name="fr" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Французская Республика</span>
+					</label>
 														</li>
 													</ul>
 													<div class="p-filters-drop-footer">
-														<button class="btn-reset btn-reset-js" data-reset-group="manufacturer" disabled><span>Очистить фильтр</span></button>
+														<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
 													</div>
 												</div>
 											</div>
@@ -311,58 +321,65 @@
 												<div class="p-filters-select p-filters-select-js">
 													<div class="p-filters-select-head">
 														<div class="p-filters__title">Стоимость</div>
-														<div class="p-filters__placeholder">Выбрать стоимость</div>
-														<div class="p-filters__value">80 р. — 150 р.</div>
+														<div class="p-filters__placeholder p-filters-placeholder-js">Выбрать стоимость</div>
+														<div class="p-filters__value p-filters-selected-js" data-value-prefix="Выбрано"></div>
 													</div>
 													<div class="p-filters-angle"><i>&nbsp;</i></div>
 												</div>
 												<div class="p-filters-drop p-filters-drop-js">
-													<ul class="p-filters-drop-list p-filters-group-js" data-reset-group="price">
+													<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="price">
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="-81" />
-					<span><i>&nbsp;</i>до 81 р.</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="-81">
+						<input type="checkbox" name="-81" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">до 81 р.</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="81-150" />
-					<span><i>&nbsp;</i>81 р. — 150 р.</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="81-150">
+						<input type="checkbox" name="81-150" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">81 р. — 150 р.</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="151-300" />
-					<span><i>&nbsp;</i>151 р. — 300 р.</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="151-300">
+						<input type="checkbox" name="151-300" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">151 р. — 300 р.</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="301-600" />
-					<span><i>&nbsp;</i>301 р. — 600 р.</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="301-600">
+						<input type="checkbox" name="301-600" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">301 р. — 600 р.</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="601-1000" />
-					<span><i>&nbsp;</i>601 р. — 1000 р.</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="601-1000">
+						<input type="checkbox" name="601-1000" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">601 р. — 1000 р.</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="1001-2000" />
-					<span><i>&nbsp;</i>1001 р. — 2000 р.</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="1001-2000">
+						<input type="checkbox" name="1001-2000" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">1001 р. — 2000 р.</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="2001-5000" />
-					<span><i>&nbsp;</i>2001 р. — 5000 р.</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="2001-5000">
+						<input type="checkbox" name="2001-5000" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">2001 р. — 5000 р.</span>
+					</label>
 														</li>
 													</ul>
 													<div class="p-filters-drop-footer">
-														<button class="btn-reset btn-reset-js" data-reset-group="price" disabled><span>Очистить фильтр</span></button>
+														<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
 													</div>
 												</div>
 											</div>
@@ -372,58 +389,72 @@
 												<div class="p-filters-select p-filters-select-js">
 													<div class="p-filters-select-head">
 														<div class="p-filters__title">Цвет</div>
-														<div class="p-filters__placeholder">Выбрать цвет</div>
-														<div class="p-filters__value">красны, черный, белый, зеленый, синий, серый, желный</div>
+														<div class="p-filters__placeholder p-filters-placeholder-js">Выбрать цвет</div>
+														<div class="p-filters__value p-filters-selected-js" data-value-prefix="Выбрано"></div>
 													</div>
 													<div class="p-filters-angle"><i>&nbsp;</i></div>
 												</div>
 												<div class="p-filters-drop p-filters-drop-js">
-													<ul class="p-filters-drop-list p-filters-group-js" data-reset-group="color">
+													<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="color">
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="red" />
-					<span><i>&nbsp;</i>Красны</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="red">
+						<input type="checkbox" name="red" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Красны</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="black" />
-					<span><i>&nbsp;</i>Черный</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="black">
+						<input type="checkbox" name="black" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Черный</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="white" />
-					<span><i>&nbsp;</i>Белый</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="white">
+						<input type="checkbox" name="white" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Белый</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="green" />
-					<span><i>&nbsp;</i>Зеленый</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="green">
+						<input type="checkbox" name="green" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Зеленый</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="blue" />
-					<span><i>&nbsp;</i>Синий</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="blue">
+						<input type="checkbox" name="blue" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Синий</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="gray" />
-					<span><i>&nbsp;</i>Серый</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="gray">
+						<input type="checkbox" name="gray" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Серый</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="yellow" />
-					<span><i>&nbsp;</i>Желный</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="alizarin">
+						<input type="checkbox" name="alizarin" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Ализариновый красный с легким оттенком берюзы</span>
+					</label>
+														</li>
+														<li>
+															<label class="check-label p-filters-label-js" data-filter-name="yellow">
+						<input type="checkbox" name="yellow" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Желный</span>
+					</label>
 														</li>
 													</ul>
 													<div class="p-filters-drop-footer">
-														<button class="btn-reset btn-reset-js" data-reset-group="color" disabled><span>Очистить фильтр</span></button>
+														<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
 													</div>
 												</div>
 											</div>
@@ -433,70 +464,86 @@
 												<div class="p-filters-select p-filters-select-js">
 													<div class="p-filters-select-head">
 														<div class="p-filters__title">Тип</div>
-														<div class="p-filters__placeholder">Выбрать тип</div>
-														<div class="p-filters__value">патроны, светильники, лампочки, горелки, лампы дневного света, светодиоды</div>
+														<div class="p-filters__placeholder p-filters-placeholder-js">Выбрать тип</div>
+														<div class="p-filters__value p-filters-selected-js" data-value-prefix="Выбрано"></div>
 													</div>
 													<div class="p-filters-angle"><i>&nbsp;</i></div>
 												</div>
 												<div class="p-filters-drop p-filters-drop-js">
-													<ul class="p-filters-drop-list p-filters-group-js" data-reset-group="type">
+													<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="type">
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="tall" />
-					<span><i>&nbsp;</i>Высокий</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="tall">
+						<input type="checkbox" name="tall" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Высокий</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="low" />
-					<span><i>&nbsp;</i>Низкий</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="low">
+						<input type="checkbox" name="low" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Низкий</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="lean" />
-					<span><i>&nbsp;</i>Худой</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="lean">
+						<input type="checkbox" name="lean" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Худой</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="fat" />
-					<span><i>&nbsp;</i>Толстый</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="fat">
+						<input type="checkbox" name="fat" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Толстый</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="skinny" />
-					<span><i>&nbsp;</i>Тощий</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="skinny">
+						<input type="checkbox" name="skinny" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Тощий</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="sad" />
-					<span><i>&nbsp;</i>Печальный</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="sad">
+						<input type="checkbox" name="sad" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Печальный</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="cheerful" />
-					<span><i>&nbsp;</i>Веселый</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="cheerful">
+						<input type="checkbox" name="cheerful" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Веселый</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="kind" />
-					<span><i>&nbsp;</i>Добрый</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="middle">
+						<input type="checkbox" name="middle" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Среднестатистичеки нормальный</span>
+					</label>
 														</li>
 														<li>
-															<label class="check-label">
-					<input type="checkbox" name="evil" />
-					<span><i>&nbsp;</i>Злой</span>
-				</label>
+															<label class="check-label p-filters-label-js" data-filter-name="kind">
+						<input type="checkbox" name="kind" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Добрый</span>
+					</label>
+														</li>
+														<li>
+															<label class="check-label p-filters-label-js" data-filter-name="evil">
+						<input type="checkbox" name="evil" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">Злой</span>
+					</label>
 														</li>
 													</ul>
 													<div class="p-filters-drop-footer">
-														<button class="btn-reset btn-reset-js" data-reset-group="type" disabled><span>Очистить фильтр</span></button>
+														<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
 													</div>
 												</div>
 											</div>
@@ -514,10 +561,9 @@
 										</div>
 									</div>
 									<div class="p-filters-tags">
-										<div class="p-filters-tags__item"><i>Удалить</i><span>Россия</span></div>
-										<div class="p-filters-tags__item"><i>Удалить</i><span>301 р. — 600 р.</span></div>
-										<div class="p-filters-tags__item"><i>Удалить</i><span>Белый</span></div>
-										<div class="p-filters-tags__item"><i>Удалить</i><span>Печальный</span></div>
+										<div class="p-filters-tags__holder p-filters-tags-js">
+											<!--filters tags-->
+										</div>
 									</div>
 								</div>
 								<!--filters end-->
@@ -547,7 +593,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="p-options__item">
+										<div class="p-options__item view-switcher-wrap">
 											<div class="p-options__inner">
 												<!--view switcher-->
 												<div class="view-switcher view-switcher-js">

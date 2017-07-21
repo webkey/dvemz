@@ -20,9 +20,14 @@ $view-switcher-icon-size: 16px
 		position: relative
 		+size(#{$view-switcher-size})
 		background: white
-		transition-property: background
-		transition-duration: $animation-speed
+		border: 1px solid #{$outline-color}
+		margin-left: -1px
 		z-index: 9
+		transition-property: border-color, background-color
+		transition-duration: $animation-speed
+
+		&:first-child
+			margin-left: 0
 
 		span
 			position: absolute
@@ -30,20 +35,19 @@ $view-switcher-icon-size: 16px
 			+position(50%)
 			+font(0, 0)
 			transform: translate(-50%, -50%)
-			transition-property: border
-			transition-duration: $animation-speed
+			transition: inherit
 
 			&::before, &::after
 				+pseudo()
+				transition: inherit
 
 		&.list-view
 			span
 
 				&, &::before, &::after
 					+size(#{$view-switcher-icon-size}, #{round(($view-switcher-icon-size - 4px)/3)})
-					border: solid #{$outline-color}
+					border: solid #{$text-color}
 					border-width: 0 10px 0 4px
-					transition: inherit
 
 				&::before, &::after
 					left: -4px
@@ -60,7 +64,7 @@ $view-switcher-icon-size: 16px
 					left: 0
 					+size(100%, #{round($view-switcher-icon-size*0.5) - 1px})
 					background: none
-					border: solid #{$outline-color}
+					border: solid #{$text-color}
 					border-width: 0 #{round($view-switcher-icon-size*0.5) - 1px}
 
 				&::before
@@ -69,16 +73,34 @@ $view-switcher-icon-size: 16px
 				&::after
 					bottom: 0
 
-		&.active
-			background-color: #{$outline-color}
+		&:hover
+			span
+				&, &::before, &::after
+					border-color: $base-color
+
+					.ea-site &
+						border-color: $base-color--ea
+
+			&.list-view span
+				background-color: $bg-color-light
+
+			&.grid-view span
+				border-color: $base-color
+
+				.ea-site &
+					border-color: $base-color--ea
+
+		&.active, .ea-site &.active
+			//background-color: #{$bg-color-light}
+			//border-color: #{$bg-color-light}
 			cursor: default
 
 			span
 				&, &::before, &::after
-					border-color: #{$text-color}
+					border-color: $outline-color
 
 			&.list-view span
-				background-color: $outline-color
+				background-color: $bg-color-light
 
 			&.grid-view span
 				border-color: $outline-color

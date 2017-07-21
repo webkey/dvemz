@@ -2008,34 +2008,64 @@ function onlyNumberInput() {
 			item: null,
 			group: null,
 			handler: null,
+			placeholder: null,
+			selected: null,
 			drop: null,
 			checkbox: null,
+			labelText: null,
 			btnReset: null,
 			btnResetAll: null,
+			tagsContainer: null,
+			tagsItem: ".tags-item-js",
+			tagsItemTpl: null,
+			tagTextContainer: ".tag-text-js",
 
 			dropOpenClass: 'is-open',
-			filtersOnClass: 'filters-on'
+			filtersOnClass: 'filters-on',
+
+			dataGroup: 'group',
+			dataTag: 'tag',
+			dataName: 'index',
+			dataPrefix: 'prefix',
+			dataPostfix: 'postfix'
 		}, settings || {});
 
-		var self = this;
 		this.options = options;
 		var container = $(options.container);
 
 		this.$container = container;
 		this.$item = $(options.item, container);
 		this.$handler = $(options.handler, container);
+		this.$placeholder = $(options.placeholder, container);
+		this.$selected = $(options.selected, container);
 		this.$drop = $(options.drop, container);
 		this.$group = $(options.group, container);
 		this.$checkbox = $(options.checkbox, container);
+		this.$labelText = $(options.labelText, container);
 		this.$btnReset = $(options.btnReset, container);
 		this.$btnResetAll = $(options.btnResetAll, container);
+		this.$tagsContainer = $(options.tagsContainer, container);
+		this.tagsItem = options.tagsItem; // не jq-объект, чтобы можна было искать в DOM после добавления
+		this.tagTextContainer = options.tagTextContainer; // не jq-объект, чтобы можна было искать в DOM после добавления
+		this.tagsItemTpl = !options.tagsItemTpl ?
+			'<div class="' + options.tagsItem.substring(1) + '"><i>Удалить</i><span class="' + options.tagTextContainer.substring(1) + '"></span></div>' :
+			options.tagsItemTpl ;
 
 		this.modifiers = {
 			dropIsOpened: options.dropOpenClass,
 			filtersOn: options.filtersOnClass
 		};
 
-		this.bindEvents();
+		this.attributes = {
+			group: options.dataGroup,
+			tag: options.dataTag,
+			name: options.dataName,
+			prefix: options.dataPrefix,
+			postfix: options.dataPostfix
+		};
+
+		this.bindCheckboxEvents();
+		this.bindTagsEvents();
 		this.toggleDrop();
 		this.resetCheckboxesInGroup();
 		this.resetAllCheckboxes();
@@ -2045,7 +2075,7 @@ function onlyNumberInput() {
 
 	MultiFilters.prototype.dropIsOpened = false;
 
-	MultiFilters.prototype.bindEvents = function () {
+	MultiFilters.prototype.bindCheckboxEvents = function () {
 		var self = this;
 		var $container = self.$container;
 		var $item = self.$item;
@@ -2053,21 +2083,41 @@ function onlyNumberInput() {
 		var $checkbox = self.$checkbox;
 		var $btnReset = self.$btnReset;
 		var filtersOnClass = self.modifiers.filtersOn;
+		var attributes = self.attributes;
 
 		$checkbox.on('change', function () {
 			var $currentCheckbox = $(this);
-			console.info('checkbox is change');
+			console.info('Checkbox is change...');
 			var $currentContainer = $currentCheckbox.closest($container);
 			var $currentItem = $currentCheckbox.closest($item);
 			var $currentGroup = $currentCheckbox.closest($group);
+			var $currentLabel = $currentCheckbox.closest('label');
+			var $currentLabelText = $currentLabel.find(self.$labelText);
+			var $currentTagsContainer = $currentContainer.find(self.$tagsContainer);
 
+			// attributes
+			var currentAttrGroup = $currentGroup.data(attributes.group);
+			var currentAttrName = $currentLabel.data(attributes.name);
+			var currentAttrTag = $currentLabel.data(attributes.tag);
+
+			// buttons
 			var $currentBtnReset = $currentItem.find($btnReset);
-
 			var $currentBtnResetAll = $currentContainer.find(self.$btnResetAll);
-			// var $btnSubmit = $('input[type=submit]', $currentItem);
 
+			// отключить кнопку очистки чекбоксов в ГРУППЕ
 			self.disabledButton($currentBtnReset);
+			// удалить класс наличия отмеченных чекбоксов с фильтров в ГРУППЕ
 			self.removeClassCustom($currentItem, filtersOnClass);
+
+			// console.log("currentAttrGroup: ", currentAttrGroup);
+			// console.log("currentAttrName: ", currentAttrName);
+
+			if($currentCheckbox.prop('checked')) {
+				// добавляем тэг фильтра
+				self.addTag($currentTagsContainer, currentAttrGroup, currentAttrName, currentAttrTag || $currentLabelText.text());
+			} else {
+				self.removeTag($currentTagsContainer, currentAttrGroup, currentAttrName);
+			}
 
 			// отключить кнопку очистки ВСЕХ чекбоксов
 			self.disabledButton($currentBtnResetAll);
@@ -2075,12 +2125,14 @@ function onlyNumberInput() {
 			// self.removeClassCustom($item, filtersOnClass);
 
 			if (self.checkProp($currentGroup)) {
+				// включить кнопку очистки чекбоксов в ГРУППЕ
 				self.enabledButton($currentBtnReset);
+				// добавить класс наличия отмеченных чекбоксов с фильтров в ГРУППЕ
 				self.addClassCustom($currentItem, filtersOnClass);
 			}
 
 			// включить кнопку очистки ВСЕХ чекбоксов
-			if (self.checkProp($group)) {
+			if (self.checkProp($currentContainer.find($group))) {
 				self.enabledButton($currentBtnResetAll);
 			}
 
@@ -2094,14 +2146,13 @@ function onlyNumberInput() {
 			// 	self.uncheckedToggleBtn($toggle, activeClass);
 			// }
 
-			// setTotalCheckedInputs($currentGroup);
+			self.setLengthCheckedCheckboxes($currentGroup);
 		});
 	};
 
 	MultiFilters.prototype.checkProp = function ($group, cond) {
 		// если cond === true, происходит сравнение количества все фильтров к отмеченым
 
-		var self = this;
 		var $checkboxes = $group.find(':checkbox');
 		var hasChecked = false;
 		var countChecked = 0;
@@ -2129,21 +2180,51 @@ function onlyNumberInput() {
 		// }
 	};
 
-	// MultiFilters.prototype.getTotalCheckedInputs = function ($group) {
-	// 	var $checkboxes = $group.find(':checkbox');
-	//
-	// 	var totalCheckedInput = 0;
-	//
-	// 	$.each($checkboxes, function () {
-	//
-	// 		if ($(this).prop('checked')) {
-	//
-	// 			totalCheckedInput++;
-	// 		}
-	// 	});
-	//
-	// 	return totalCheckedInput;
-	// };
+	MultiFilters.prototype.setLengthCheckedCheckboxes = function ($wrap) {
+		var self = this;
+		var $currentItem = $wrap.closest(self.$item);
+		var $currentHolder = $currentItem.find(self.$placeholder);
+		var $currentSelected = $currentItem.find(self.$selected);
+		var attributes = self.attributes;
+		var textPrefix = $currentSelected.data(attributes.prefix) || "";
+		var textPostfix = $currentSelected.data(attributes.postfix) || "";
+
+		var lengthChecked = self.getLengthCheckedCheckboxes($wrap);
+
+		$currentSelected.html(textPrefix + " " + lengthChecked + " " + textPostfix);
+
+		$currentHolder.toggle(!lengthChecked > 0);
+		$currentSelected.toggle(lengthChecked > 0);
+	};
+
+	MultiFilters.prototype.getLengthCheckedCheckboxes = function ($wrap) {
+		var $checkboxes = $wrap.find(':checkbox');
+
+		var totalCheckedInput = 0;
+
+		$.each($checkboxes, function () {
+
+			if ($(this).prop('checked')) {
+
+				totalCheckedInput++;
+			}
+		});
+
+		return totalCheckedInput;
+	};
+
+	MultiFilters.prototype.bindTagsEvents = function () {
+		var self = this;
+		var $container = self.$container;
+		var attributes = self.attributes;
+
+		$container.on('click', self.tagsItem, function (e) {
+			var $currentTag = $(this);
+			self.removeTag($currentTag.closest(self.$tagsContainer), $currentTag.data(attributes.group), $currentTag.data(attributes.name));
+
+			e.preventDefault();
+		});
+	};
 
 	MultiFilters.prototype.resetCheckboxesInGroup = function () {
 		var self = this;
@@ -2198,38 +2279,43 @@ function onlyNumberInput() {
 			var $currentItem = $currentHandler.closest($item);
 
 			if($currentItem.hasClass(dropIsOpenedClass)) {
-				removeClassCloseDrop();
+				closeVisibleDrop();
 				return;
 			}
 
-			removeClassCloseDrop();
-			self.addClassCustom($currentItem, dropIsOpenedClass);
+			closeVisibleDrop();
+			openCurrentDrop($currentItem);
 		});
 
 		$(document).on('click', function () {
-			removeClassCloseDrop();
+			closeVisibleDrop();
 		});
 
 		$(document).keyup(function(e) {
-			console.log(1);
+			// console.log('Is drop opened? - ', self.dropIsOpened);
 			if (self.dropIsOpened && e.keyCode === 27) {
-				console.log(2);
-				removeClassCloseDrop();
+				closeVisibleDrop();
+				console.log('Drop closed!');
 			}
 		});
 
 		$container.on('closeDrop', function () {
-			removeClassCloseDrop();
+			closeVisibleDrop();
 		});
 
 		$($drop).on('click', function (e) {
 			e.stopPropagation();
 		});
 
-		function removeClassCloseDrop() {
-			self.removeClassCustom($item, dropIsOpenedClass)
+		function openCurrentDrop($elements) {
+			self.addClassCustom($elements, dropIsOpenedClass);
+			self.dropIsOpened = true;
 		}
 
+		function closeVisibleDrop() {
+			self.removeClassCustom($item, dropIsOpenedClass);
+			self.dropIsOpened = false;
+		}
 	};
 
 	MultiFilters.prototype.addClassCustom = function (elements, modifiersClass) {
@@ -2238,8 +2324,6 @@ function onlyNumberInput() {
 		$.each(elements, function () {
 			$(this).addClass(modifiersClass);
 		});
-
-		self.dropIsOpened = true;
 	};
 
 	MultiFilters.prototype.removeClassCustom = function (elements, modifiersClass) {
@@ -2248,8 +2332,40 @@ function onlyNumberInput() {
 		$.each(elements, function () {
 			$(this).removeClass(modifiersClass);
 		});
+	};
 
-		self.dropIsOpened = false;
+	MultiFilters.prototype.addTag = function ($tagsContainer, attrGroup, attrName, tag) {
+		var self = this;
+		var attributes = self.attributes;
+
+		$(self.tagsItemTpl).clone()
+			.find(self.tagTextContainer)
+			.html(tag)
+			.end()
+			.attr('data-' + attributes.group, attrGroup)
+			.attr('data-' + attributes.name, attrName)
+			.appendTo($tagsContainer);
+	};
+
+	MultiFilters.prototype.removeTag = function ($tagsContainer, attrGroup, attrName) {
+		var self = this;
+		var attributes = self.attributes;
+
+		var dataGroup = "[data-" + attributes.group + "=" + attrGroup + "]";
+		var dataName = "[data-" + attributes.name + "=" + attrName + "]";
+		var filtersValue = dataGroup + dataName;
+		var $currentTag = $tagsContainer.find(self.tagsItem).filter(filtersValue);
+
+		// отключить соответствующий чекбокс
+		var b = $currentTag.closest(self.$container)
+			.find(self.$group).filter(dataGroup)
+			.find(dataName)
+			.find(self.$checkbox).filter(':checked')
+			.prop('checked', false)
+			.trigger('change');
+
+		// удалить тэг
+		$currentTag.remove();
 	};
 
 	window.MultiFilters = MultiFilters;
@@ -2268,14 +2384,27 @@ function multiFiltersInit() {
 			item: '.p-filters-item-js',
 			group: '.p-filters-group-js',
 			handler: '.p-filters-select-js',
+			placeholder: '.p-filters-placeholder-js',
+			selected: '.p-filters-selected-js',
 			drop: '.p-filters-drop-js',
 			checkbox: '.p-filters-drop-list input[type="checkbox"]',
+			labelText: '.p-filters-label-text-js',
 			btnReset: '.btn-reset-js',
 			btnResetAll: '.btn-clear-filters-js',
+			tagsContainer: '.p-filters-tags-js',
+			tagsItem: '.p-filters-tags-item-js',
+			tagTextContainer: '.p-filters-tag-text-js',
+			tagsItemTpl: '<div class="p-filters-tags__item p-filters-tags-item-js"><i>Удалить</i><span class="p-filters-tag-text-js"></span></div>',
 
 
 			dropOpenClass: 'p-filters-is-open',
-			filtersOnClass: 'p-filters-on'
+			filtersOnClass: 'p-filters-on',
+
+			dataGroup: 'filters-group',
+			dataTag: 'filter-tag',
+			dataName: 'filter-name',
+			dataPrefix: 'value-prefix',
+			dataPostfix: 'value-postfix'
 		})
 	}
 }

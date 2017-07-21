@@ -262,74 +262,56 @@ $p-filters-inside-space: 20px
 
 /* filters tags
 .p-filters-tags
-	+font(13px, 18px)
-	min-height: 18px
 	margin-bottom: $bottom-space
-	cursor: default
 
 	&:last-child
 		margin-bottom: 0
 
+.p-filters-tags__holder
+	cursor: default
+	min-height: 10px
+	margin-top: -10px
+
 .p-filters-tags__item
 	+display-inline-block-top
 	position: relative
-	margin-right: 6px
+	margin: 10px 10px 0 0
 	cursor: pointer
-	color: $link-color
+	color: $text-color
+	padding: 3px 10px 3px 25px
+	+font(13px, 18px)
+	background-color: $bg-color-light
 
-	.touchevents &
-		padding-left: 16px
+	//&::before
+		+pseudo()
+		+position(-3px)
+		+size(calc(100% + 13px), calc(100% + 6px))
+		background-color: $bg-color-light
+		z-index: -1
 
-	&::after
+	//&::after
 		+pseudo-inline-block(',')
+
+	& > span
+		+display-inline-block-top
+		+truncate(120px)
 
 	&:last-child::after
 		content: none
 
-	.no-touchevents & > i
-		overflow: hidden
-		position: absolute
-		left: -2px
-		right: -2px
-		bottom: 50%
-		margin-bottom: -1px
-		+font(0, 0)
-		+size(auto, 1px)
-		opacity: 0
-		visibility: hidden
-		transition-property: opacity, visibility, transform
-		transition-duration: $animation-speed
-
-		&::before
-			+pseudo()
-			left: 0
-			top: 0
-			width: 100%
-			border-top: 1px solid orangered
-			transition: inherit
-			transform: scale(0, 1)
-
-	.no-touchevents &:hover
-		& > i
-			opacity: 1
-			visibility: visible
-
-			&::before
-				transform: scale(1, 1)
-
-	.touchevents & > i
-		$this-icon-lines-width: 8px
+	& > i
+		$this-icon-lines-width: 12px
 		$this-icon-lines-height: 1px
 		$this-icon-lines-color: $text-color
 
 		position: absolute
-		left: 0
+		left: 4px
 		top: 50%
 		+size(#{round($this-icon-lines-width*1.5)})
 		margin-top: -#{round($this-icon-lines-width*1.5*0.5)}
 		border-radius: 2px
 		backface-visibility: hidden
-		background-color: $bg-color-light
+		background-color: transparent
 		+font(0, 0)
 
 		&::before, &::after
@@ -346,6 +328,13 @@ $p-filters-inside-space: 20px
 
 		&::after
 			transform: rotate(45deg)
+
+	.no-touchevents &:hover
+		background-color: $outline-color
+
+		& > i
+			opacity: 1
+			visibility: visible
 
 /* filters tags end
 

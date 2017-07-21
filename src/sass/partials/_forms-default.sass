@@ -222,7 +222,10 @@ input, textarea
 /*form placeholder end*/
 
 /*form checkbox and radiobutton*/
-input[type="checkbox"] + label, input[type="radio"] + label, .check-label, .radio-label
+input[type="checkbox"] ~ label,
+input[type="radio"] ~ label,
+.check-label,
+.radio-label
 	display: inline-block
 	vertical-align: top
 	color: #000
@@ -230,26 +233,23 @@ input[type="checkbox"] + label, input[type="radio"] + label, .check-label, .radi
 	cursor: pointer
 	position: relative
 
-input[type="checkbox"] + label::before, .check-label > span > i::before
-	content: ''
-	+size(18px)
-	position: absolute
-	left: 0
-	top: 50%
-	margin-top: -9px
-	border-radius: 0
-	border: 1px solid $checkbox-color
+input[type="checkbox"],
+input[type="radio"]
+	& ~ label > span,
+	& ~ span
+		display: inline-block
+		vertical-align: top
+		position: relative
+		padding: 2px 0 2px 34px
+		z-index: 2
 
-input[type="checkbox"] + label > span, input[type="radio"] + label > span, input[type="checkbox"] + span, input[type="radio"] + span
-	display: inline-block
-	vertical-align: top
-	position: relative
-	padding: 2px 0 2px 34px
-	z-index: 2
-
-input[type="checkbox"], input[type="radio"]
-	& + span > i
+	& ~ i
 		+font(0, 0)
+
+	& ~ i
+		position: absolute
+		left: 0
+		top: 50%
 
 //checkbox
 input[type="checkbox"]
@@ -258,7 +258,19 @@ input[type="checkbox"]
 	margin: 0
 	display: none
 
-	& + label::after, & + span > i::after
+	& ~ label::before,
+	& ~ i::before
+		content: ''
+		+size(18px)
+		position: absolute
+		left: 0
+		top: 50%
+		margin-top: -9px
+		border-radius: 0
+		border: 1px solid $checkbox-color
+
+	& ~ label::after,
+	& ~ i::after
 		content: ''
 		+size(16px)
 		position: absolute
@@ -270,7 +282,10 @@ input[type="checkbox"]
 		transition-property: opacity
 		transition-duration: $animation-speed
 
-	& + label > span::before, & + label > span::after, & + span::before, & + span::after
+	& ~ label > span::before,
+	& ~ label > span::after,
+	& ~ span::before,
+	& ~ span::after
 		content: ''
 		position: absolute
 		+size(0, 3px)
@@ -282,26 +297,30 @@ input[type="checkbox"]
 		transition-duration: $animation-speed
 		transition-timing-function: linear
 
-	& + label > span::before, & + span::before
+	& ~ label > span::before,
+	& ~ span::before
 		transform: rotate(45deg)
 		transform-origin: 0 7px
 		z-index: 1
 
-	& + label > span::after, & + span::after
+	& ~ label > span::after,
+	& ~ span::after
 		transform: rotate(-50deg)
 		transform-origin: 0 10px
 		left: 22px
 
 	// checkbox checked
 	&:checked
-		& + label > span::before, & + span::before
+		& ~ label > span::before,
+		& ~ span::before
 			width: 7px
 			margin: -4px 0 0 0
 			transition-property: width
 			transition-duration: 0.1s
 			backface-visibility: hidden
 
-		& + label > span::after, & + span::after
+		& ~ label > span::after,
+		& ~ span::after
 			width: 11px
 			margin: 0 0 0 -8px
 			transition-property: width
@@ -311,14 +330,19 @@ input[type="checkbox"]
 
 	// checkbox disabled
 	&:disabled
-		& + label, & + span
+		& ~ label,
+		& ~ span
 			color: #bdbdbd
 			cursor: default
 
-		& + label::before, & + span > i::before
+		& ~ label::before,
+		& ~ i::before
 			border-color: #d6d6d6
 
-		& + label > span::before, & + label > span::after, & + span::before, & + span::after
+		& ~ label > span::before,
+		& ~ label > span::after,
+		& ~ span::before,
+		& ~ span::after
 			background: #b9b9b9
 
 // radio
@@ -329,7 +353,8 @@ input[type="radio"]
 	padding: 0
 	display: none
 
-	& + label::before, & + span::before
+	& ~ label::before,
+	& ~ span::before
 		content: ''
 		+size(18px)
 		position: absolute
@@ -339,7 +364,8 @@ input[type="radio"]
 		border-radius: 50px
 		border: 1px solid $checkbox-color
 
-	& + label::after, & + span::after
+	& ~ label::after,
+	& ~ span::after
 		content: ''
 		+size(16px)
 		position: absolute
@@ -351,7 +377,8 @@ input[type="radio"]
 		transition-property: opacity
 		transition-duration: 0.2s
 
-	& + label > span::after, & + span > i::after
+	& ~ label > span::after,
+	& ~ i::after
 		content: ''
 		+size(10px)
 		position: absolute
@@ -367,47 +394,50 @@ input[type="radio"]
 		opacity: 0
 
 	// radio checked
-	&:checked + label > span::after, &:checked + span > i::after
+	&:checked ~ label > span::after,
+	&:checked ~ i::after
 		animation: bounce 0.3s
 		animation-iteration-count: 1
 		opacity: 1
 
-		@keyframes bounce
-			0%
-				transform: scale(0.8)
-				opacity: 0.4
+	@keyframes bounce
+		0%
+			transform: scale(0.8)
+			opacity: 0.4
 
-			50%
-				transform: scale(1.4)
-				opacity: 1
+		50%
+			transform: scale(1.4)
+			opacity: 1
 
-			100%
-				transform: scale(1)
-				opacity: 1
+		100%
+			transform: scale(1)
+			opacity: 1
 
-		@keyframes bounceout
-			0%
-				transform: scale(0)
-				opacity: 1
+	@keyframes bounceout
+		0%
+			transform: scale(0)
+			opacity: 1
 
-			50%
-				transform: scale(1.4)
-				opacity: 1
+		50%
+			transform: scale(1.4)
+			opacity: 1
 
-			100%
-				transform: scale(0)
-				opacity: 0.4
+		100%
+			transform: scale(0)
+			opacity: 0.4
 
 	// radio disabled
 	&:disabled
-		& + label, & + span
+		& ~ label,
+		& ~ span
 			color: #bdbdbd
 			cursor: default
 
-		& + label::before, & + span::before
-			border-color: #d6d6d6
+			&::before
+				border-color: #d6d6d6
 
-		& + label > span::after, & + span > i::after
+		& ~ label > span::after,
+		& ~ i::after
 			background: #b9b9b9
 
 /*form checkbox and radiobutton end*/

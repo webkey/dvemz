@@ -6,17 +6,33 @@
 					@@include('_tpl_products-filters--head.xhtml', {
 						"title": "Производитель",
 						"placeholder": "Выбрать производителя",
-						"value": "патроны, светильники, лампочки, горелки, лампы дневного света, светодиоды"
+						"value": "",
+						"valuePrefix": "Выбрано",
+						"valuePostfix": "фильтра"
 					})
 					<div class="p-filters-angle"><i>&nbsp;</i></div>
 				</div>
 				@@include('_tpl_products-filters--drop.xhtml', {
 					"group": "manufacturer",
-					"checkboxes": {
-						"ru": "Россия",
-						"ch": "Китай",
-						"fr": "Франция"
-					}
+					"checkboxesExpanded": {
+						"ru": {
+							"full": "Российская Федерация",
+							"short": "Россия"
+						},
+						"ch": {
+							"full": "Китайская Народная Республика",
+							"short": "КНР"
+						},
+						"en": {
+							"full": "Соединенное Королевство Великобритании и Северной Ирландии",
+							"short": "Великобритания"
+						},
+						"fr": {
+							"full": "Французская Республика",
+							"short": "Франция"
+						}
+					},
+					"checkboxes": ""
 				})
 			</div>
 		</div>
@@ -26,7 +42,9 @@
 					@@include('_tpl_products-filters--head.xhtml', {
 						"title": "Стоимость",
 						"placeholder": "Выбрать стоимость",
-						"value": "80 р. — 150 р."
+						"value": "",
+						"valuePrefix": "Выбрано",
+						"valuePostfix": "фильтра"
 					})
 					<div class="p-filters-angle"><i>&nbsp;</i></div>
 				</div>
@@ -50,7 +68,9 @@
 					@@include('_tpl_products-filters--head.xhtml', {
 						"title": "Цвет",
 						"placeholder": "Выбрать цвет",
-						"value": "красны, черный, белый, зеленый, синий, серый, желный"
+						"value": "",
+						"valuePrefix": "Выбрано",
+						"valuePostfix": "фильтра"
 					})
 					<div class="p-filters-angle"><i>&nbsp;</i></div>
 				</div>
@@ -63,6 +83,7 @@
 						"green": "Зеленый",
 						"blue": "Синий",
 						"gray": "Серый",
+						"alizarin": "Ализариновый красный с легким оттенком берюзы",
 						"yellow": "Желный"
 					}
 				})
@@ -74,7 +95,9 @@
 					@@include('_tpl_products-filters--head.xhtml', {
 						"title": "Тип",
 						"placeholder": "Выбрать тип",
-						"value": "патроны, светильники, лампочки, горелки, лампы дневного света, светодиоды"
+						"value": "",
+						"valuePrefix": "Выбрано",
+						"valuePostfix": "фильтра"
 					})
 					<div class="p-filters-angle"><i>&nbsp;</i></div>
 				</div>
@@ -88,6 +111,7 @@
 						"skinny": "Тощий",
 						"sad": "Печальный",
 						"cheerful": "Веселый",
+						"middle": "Среднестатистичеки нормальный",
 						"kind": "Добрый",
 						"evil": "Злой"
 					}
@@ -107,9 +131,8 @@
 		</div>
 	</div>
 	<div class="p-filters-tags">
-		<div class="p-filters-tags__item"><i>Удалить</i><span>Россия</span></div>
-		<div class="p-filters-tags__item"><i>Удалить</i><span>301 р. — 600 р.</span></div>
-		<div class="p-filters-tags__item"><i>Удалить</i><span>Белый</span></div>
-		<div class="p-filters-tags__item"><i>Удалить</i><span>Печальный</span></div>
+		<div class="p-filters-tags__holder p-filters-tags-js">
+			<!--filters tags-->
+		</div>
 	</div>
 </div>
