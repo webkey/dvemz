@@ -18,8 +18,11 @@ $footer-nav-horizontal-space: 40px
 		bottom: 0
 		left: $header-width
 		cursor: default
-		width: calc(100% - #{$header-width} - #{$sidebar-width})
+		width: calc(100% - #{$header-width} - #{$catalog-categories-width--full})
 		border-top: 1px solid $outline-color
+
+		+media('<desk-qhd')
+			width: calc(100% - #{$header-width} - #{$sidebar-width})
 
 		.ea-has-catalog-menu &
 			width: calc(100% - #{$header-width} - #{$catalog-menu-width} - #{$catalog-categories-width--full})
@@ -30,13 +33,13 @@ $footer-nav-horizontal-space: 40px
 			+media('<desk-lg')
 				width: calc(100% - #{$header-width} - #{$catalog-menu-width})
 
+		&, .ea-has-catalog-menu &
 			+media('<desk-md')
 				width: calc(100% - #{$header-width})
 
-		+media('<tab-lg')
-			&, .ea-has-catalog-menu &
-				left: 0
-				width: 100%
+			+media('<tab-lg')
+					left: 0
+					width: 100%
 
 //.footer__holder
 	overflow: hidden
@@ -51,10 +54,13 @@ $footer-nav-horizontal-space: 40px
 	background: $bg-color
 	color: black
 
-	+media('<desk-md')
+	+media('<desk-hd')
+		padding: round($text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg} round($text-layout-space-horizontal--lg*1.5 - $footer-nav-horizontal-space)
+
+	+media('<tab-lg')
 		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} round($text-layout-space-horizontal--md*1.5 - $footer-nav-horizontal-space)
 
-	+media('<mob-lg')
+	+media('<tab-sm')
 		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*1.5 - $footer-nav-horizontal-space)
 
 	a:not([href^="tel"])

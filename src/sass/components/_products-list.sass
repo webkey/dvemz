@@ -25,12 +25,11 @@
 
 .products__inner
 	display: block
-	height: 100%
 	+padding-vertical(13px)
 	text-decoration: none
 	color: inherit
 	+clear-spacing
-	transition-property: background
+	transition-property: background-color
 	transition-duration: $animation-speed
 
 	.no-touchevents &
@@ -271,6 +270,7 @@ $product-figure-right-space: 20px
 		display: flex
 		flex-direction: column
 		justify-content: space-between
+		height: 100%
 
 	.products__list, .products__item
 		&::before
@@ -331,6 +331,7 @@ $product-figure-right-space: 20px
 		display: flex
 		flex-direction: column
 		justify-content: space-between
+		height: 100%
 
 	.products__list, .products__item
 		&::before

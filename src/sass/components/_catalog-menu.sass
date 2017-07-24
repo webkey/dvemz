@@ -5,12 +5,12 @@
 /* CATALOG MENU
 /* catalog menu list
 .catalog-menu
-	overflow: hidden
+	//overflow: hidden
 	position: fixed
 	right: 0
 	top: 0
 	height: 100%
-	width: $catalog-menu-width + $catalog-categories-width--full
+	width: $sidebar-width
 	box-shadow: -5px 0 40px 5px transparent
 	z-index: 991
 	transition-property: box-shadow
@@ -18,11 +18,17 @@
 	transition-delay: 0.1s
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 
-	+media('<desk-qhd')
-		width: $catalog-menu-width + $catalog-categories-width--short
+	.ea-has-catalog-menu &
+		width: $catalog-menu-width + $catalog-categories-width--full
 
-	+media('<desk-lg')
-		width: $catalog-menu-width
+		+media('<desk-qhd', '>=desk-lg')
+			background-color: #333
+
+		+media('<desk-qhd')
+			width: $catalog-menu-width + $catalog-categories-width--short
+
+		+media('<desk-lg')
+			width: $catalog-menu-width
 
 	+media('>=desk-md')
 		visibility: inherit !important
@@ -30,6 +36,7 @@
 		transform: matrix(1, 0, 0, 1, 0, 0) !important
 
 	+media('<desk-md')
+		width: $catalog-menu-width
 		opacity: 0
 		visibility: hidden
 		z-index: 998
@@ -38,22 +45,37 @@
 			box-shadow: -5px 0 40px 5px rgba(0, 0, 0, 0.15)
 			transition-delay: 0s
 
-			+media('<tab-lg')
-				box-shadow: none
-
 	+media('<tab-lg')
 		width: 100%
 		min-width: 320px
+		box-shadow: none
+		//transform: none !important
 
 .catalog-menu-layout
+	display: none
 	overflow-x: hidden
 	overflow-y: auto
 	height: 100vh
 	background-color: $catalog-menu-bg-color
+	box-shadow: -20px 0 35px transparent
+	transition-property: box-shadow, transform
+	transition-duration: $animation-speed
+	transition-timing-function: linear
+
+	.ea-has-catalog-menu &
+		display: block
+
+	+media('<desk-qhd', '>=desk-lg')
+		.no-touchevents .ea-has-catalog-menu .catalog-menu:hover &
+			transform: translate(-#{$catalog-menu-width - $sidebar-width}, 0)
+			box-shadow: -20px 0 35px rgba(0, 0, 0, 0.2)
 
 	+media('<desk-lg')
 		width: calc(#{$catalog-menu-width} + 100px)
 		background-color: $base-color--ea
+
+	+media('<desk-md')
+		display: block
 
 	+media('<tab-lg')
 		width: auto
@@ -222,6 +244,7 @@
 		color: #ccc
 		text-transform: uppercase
 		background-color: #484848
+		min-height: #{$sidebar-width}
 		//+padding-vertical(10px)
 
 		span
@@ -232,6 +255,7 @@
 			+font-bold
 			color: black
 			text-transform: uppercase
+			min-height: 0
 			background-color: $base-color--ea
 			border-bottom: 1px solid $side-menu-bg-color-hover
 
@@ -437,20 +461,26 @@
 	background-color: $base-color--ea
 	box-shadow: -20px 0 35px transparent
 	transition-property: width, box-shadow
-	transition-duration: 0.3s
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+	transition-duration: $animation-speed
+	//transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+	transition-timing-function: linear
 	will-change: transform
 	z-index: 998
 
 	+media('<desk-qhd')
 		width: $catalog-categories-width--short
 
-		&:hover
+		.no-touchevents .catalog-menu:hover &
 			width: $catalog-categories-width--full
 			box-shadow: -20px 0 35px rgba(0, 0, 0, 0.2)
 
 	+media('<desk-lg')
-		display: none
+		.ea-has-catalog-menu &
+			display: none
+
+	+media('<desk-md')
+		&
+			display: none
 
 .catalog-categories__holder
 	position: relative
@@ -505,12 +535,13 @@
 	.no-touchevents &:hover
 		background-color: $side-menu-bg-color-hover
 
-	.no-touchevents &.active-tab
-		background-color: $catalog-menu-bg-color-s
-		color: white
-		fill: white
-		border-color: $catalog-menu-bg-color-s
-		z-index: 5
+	.no-touchevents &
+		&.active-tab, &.current
+			background-color: $catalog-menu-bg-color-s
+			color: white
+			fill: white
+			border-color: $catalog-menu-bg-color-s
+			z-index: 5
 
 .catalog-categories__figure
 	+display-inline-block-middle

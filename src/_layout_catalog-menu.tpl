@@ -3,7 +3,7 @@
 		<div class="catalog-categories__holder">
 			<div class="catalog-categories__row">
 				<div class="catalog-categories__item">
-					<a href="#catalog-menu-item-01" class="catalog-categories__cell js-tab-anchor active-tab">
+					<a href="@@if(context.notSubMenu) {automatic-catalog.html}@@if(!context.notSubMenu) {#catalog-menu-item-01}" class="catalog-categories__cell@@if(!context.notSubMenu) { js-tab-anchor active-tab}">
 						<div class="catalog-categories__figure">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 								<g>
@@ -15,7 +15,7 @@
 					</a>
 				</div>
 				<div class="catalog-categories__item">
-					<a href="#catalog-menu-item-02" class="catalog-categories__cell js-tab-anchor">
+					<a href="@@if(context.notSubMenu) {automatic-catalog.html}@@if(!context.notSubMenu) {#catalog-menu-item-02}" class="catalog-categories__cell@@if(!context.notSubMenu) { js-tab-anchor}">
 						<div class="catalog-categories__figure">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 								<g>
@@ -31,7 +31,7 @@
 					</a>
 				</div>
 				<div class="catalog-categories__item">
-					<a href="#catalog-menu-item-03" class="catalog-categories__cell js-tab-anchor">
+					<a href="@@if(context.notSubMenu) {automatic-catalog.html}@@if(!context.notSubMenu) {#catalog-menu-item-03}" class="catalog-categories__cell@@if(!context.notSubMenu) { js-tab-anchor}">
 						<div class="catalog-categories__figure">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 								<g>
@@ -43,7 +43,7 @@
 					</a>
 				</div>
 				<div class="catalog-categories__item">
-					<a href="#catalog-menu-item-04" class="catalog-categories__cell js-tab-anchor">
+					<a href="@@if(context.notSubMenu) {automatic-catalog.html}@@if(!context.notSubMenu) {#catalog-menu-item-04}" class="catalog-categories__cell@@if(!context.notSubMenu) { js-tab-anchor}">
 						<div class="catalog-categories__figure">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 								<g>
@@ -55,7 +55,7 @@
 					</a>
 				</div>
 				<div class="catalog-categories__item">
-					<a href="#catalog-menu-item-05" class="catalog-categories__cell js-tab-anchor">
+					<a href="@@if(context.notSubMenu) {automatic-catalog.html}@@if(!context.notSubMenu) {#catalog-menu-item-05}" class="catalog-categories__cell@@if(!context.notSubMenu) { js-tab-anchor}">
 						<div class="catalog-categories__figure">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 								<g>
@@ -67,7 +67,7 @@
 					</a>
 				</div>
 				<div class="catalog-categories__item">
-					<a href="#catalog-menu-item-06" class="catalog-categories__cell js-tab-anchor">
+					<a href="@@if(context.notSubMenu) {automatic-catalog.html}@@if(!context.notSubMenu) {#catalog-menu-item-06}" class="catalog-categories__cell@@if(!context.notSubMenu) { js-tab-anchor}">
 						<div class="catalog-categories__figure">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 								<path d="M6.1,14.7L0.2,25.1l5.9,10.3h11.8l5.9-10.3l-5.9-10.3H6.1z M17.1,34H6.9l-5.1-8.9l5.1-8.9h10.2l5.1,8.9L17.1,34z M12,19.7  c-2.9,0-5.3,2.4-5.3,5.3S9,30.4,12,30.4c2.9,0,5.3-2.4,5.3-5.3S14.9,19.7,12,19.7z M12,29C9.8,29,8,27.2,8,25.1s1.8-3.9,3.9-3.9  s3.9,1.8,3.9,3.9S14.2,29,12,29z M31.2,0.5h-1.4h-7.5v8.9h4.3v30.1h0.7H35h0.5V9.4h4.3V0.5H31.2z M26.6,8h-2.9V1.9h6.1V8H26.6z   M34.1,38.1H28v-1.4h6.1V38.1z M34.1,35.3H28V34h6.1V35.3z M34.1,32.6H28v-1.4h6.1V32.6z M34.1,29.8H28v-1.4h6.1V29.8z M34.1,27H28  v-1.4h6.1V27z M34.1,24.2H28v-1.4h6.1V24.2z M34.1,21.4H28v-12h1.8h1.4h2.9V21.4z M38.4,8h-2.9h-4.3V1.9h7.2V8z"></path>
@@ -77,7 +77,7 @@
 					</a>
 				</div>
 				<div class="catalog-categories__item">
-					<a href="#catalog-menu-item-07" class="catalog-categories__cell js-tab-anchor">
+					<a href="@@if(context.notSubMenu) {automatic-catalog.html}@@if(!context.notSubMenu) {#catalog-menu-item-07}" class="catalog-categories__cell@@if(!context.notSubMenu) { js-tab-anchor}">
 						<div class="catalog-categories__figure">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 								<g>
@@ -89,7 +89,7 @@
 					</a>
 				</div>
 				<div class="catalog-categories__item">
-					<a href="#catalog-menu-item-08" class="catalog-categories__cell js-tab-anchor">
+					<a href="@@if(context.notSubMenu) {automatic-catalog.html}@@if(!context.notSubMenu) {#catalog-menu-item-08}" class="catalog-categories__cell@@if(!context.notSubMenu) { js-tab-anchor}">
 						<div class="catalog-categories__figure">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 								<g>
@@ -101,7 +101,7 @@
 					</a>
 				</div>
 				<div class="catalog-categories__item">
-					<a href="#catalog-menu-item-09" class="catalog-categories__cell js-tab-anchor">
+					<a href="@@if(context.notSubMenu) {automatic-catalog.html}@@if(!context.notSubMenu) {#catalog-menu-item-09}" class="catalog-categories__cell@@if(!context.notSubMenu) { js-tab-anchor}">
 						<div class="catalog-categories__figure">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 								<g>

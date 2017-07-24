@@ -106,8 +106,8 @@ $news-list-inner-space--sm: 20px
 
 .news__figure
 	position: relative
-	margin: 0 0 26px
-	max-width: 260px
+	margin: 0 auto 26px
+	max-width: 320px
 	letter-spacing: normal
 
 	&:before
@@ -122,12 +122,9 @@ $news-list-inner-space--sm: 20px
 
 	img
 		display: block
-		position: absolute
 		max-height: 100%
 		max-width: 100%
-		top: 50%
-		left: 0
-		transform: translate(0, -50%)
+		+centering-transform-rel()
 
 .news__content
 	position: relative

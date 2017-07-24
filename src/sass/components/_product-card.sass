@@ -12,6 +12,9 @@
 		+font-alt-bold
 		+font(#{$font-size-h2}, #{$line-height-h2})
 
+		+media('<mob-lg')
+			+font(#{$font-size-h1--sm}, #{$line-height-h1--sm})
+
 		&:last-child
 			margin-bottom: 0
 
@@ -80,7 +83,8 @@
 			font-size: 20px
 
 .p-card__widget
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space--md
+	+font(#{$font-size--sm}, #{$line-height--sm})
 
 	.spinner, .p-card-price, .btn-outline
 		+display-inline-block-top

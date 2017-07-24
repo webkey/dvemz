@@ -1307,7 +1307,7 @@ function popupsInit(){
 			navContainer: siteMapPopupClass,
 			navMenu: '.nav__list',
 			btnMenu: '.btn-menu-js',
-			btnMenuClose: '.btn-menu-close-js',
+			btnMenuClose: '.btn-nav-close-js',
 			// staggerElement: '.nav__list > li',
 			overlayClass: 'popup-overlay--nav',
 			overlayAppendTo: 'body',

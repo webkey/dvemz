@@ -13,7 +13,10 @@ body
 	background: $bg-color url(../../img/empty.png) no-repeat fixed
 	// min-width: 1600px
 	min-width: 320px
-	//overflow-x: hidden
+	overflow-x: hidden
+
+	+media('<tab-sm')
+		+font($font-size--sm, $line-height--sm)
 
 h1, h2, h3, h4, h5, h6
 	padding: 0

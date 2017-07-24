@@ -66,6 +66,9 @@
 		background-color: $base-color
 		border-radius: 50%
 
+		.ea-site &
+			background-color: $base-color--ea
+
 // ховер
 .user-options__item
 
@@ -86,5 +89,8 @@
 
 	.no-touchevents &:hover path
 		fill: $base-color
+
+	.no-touchevents .ea-site &:hover path
+		fill: $base-color--ea
 
 /* user options end

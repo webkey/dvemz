@@ -17,8 +17,23 @@
 		width: calc(33.3% - 40px)
 		margin-left: 40px
 
-		&:nth-child(3n)
-			clear: right
+		&:nth-child(3n + 1)
+			clear: left
+
+		+media('<desk-hd')
+			width: calc(49.98%)
+
+			&:nth-child(3n + 1)
+				clear: none
+
+			&:nth-child(2n + 1)
+				clear: left
+
+		+media('<tab-sm')
+			width: calc(100%)
+
+			&:nth-child(2n + 1)
+				clear: none
 
 // особые стили для пунктов навигации ПЕРВОГО урованя
 .map-site__list > li

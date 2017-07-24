@@ -66,6 +66,10 @@
 		background-color: $base-color
 		border-color: $base-color
 
+	.no-touchevents .ea-site &:hover
+		background-color: $base-color--ea
+		border-color: $base-color--ea
+
 	//&:active
 		transform: translate(0, 2px) scale(0.95)
 
@@ -372,6 +376,17 @@ $btn-menu-lines-color: $text-color !default
 
 			&::before, &::after
 				background-color: $base-color
+
+	// hover for ea site
+	.no-touchevents .ea-site .menu-btn:hover &
+		&::before, &::after
+			background-color: $base-color--ea
+
+		& > i
+			background-color: $base-color--ea
+
+			&::before, &::after
+				background-color: $base-color--ea
 
 /* button menu end
 

@@ -165,7 +165,10 @@ $p-filters-inside-space: 20px
 			+size(18px)
 
 		path
-			fill: #{$base-color--ea}
+			fill: #{$base-color}
+
+			.ea-site &
+				fill: #{$base-color--ea}
 
 	& > span
 		+font(10px, 14px)
@@ -177,12 +180,13 @@ $p-filters-inside-space: 20px
 		background-color: #{$bg-color-light}
 
 	&:disabled
-		color: $text-color-light
-		border-color: $text-color-light
-		cursor: default
+		&, .ea-site &
+			color: $text-color-light
+			border-color: $text-color-light
+			cursor: default
 
-		path
-			fill: $text-color-light
+			path
+				fill: $text-color-light
 
 .p-filters-drop
 	position: absolute
@@ -277,10 +281,12 @@ $p-filters-inside-space: 20px
 	position: relative
 	margin: 10px 10px 0 0
 	cursor: pointer
-	color: $text-color
+	color: white
 	padding: 3px 10px 3px 25px
 	+font(13px, 18px)
-	background-color: $bg-color-light
+	background-color: #333
+	transition-property: background-color
+	transition-duration: $animation-speed
 
 	//&::before
 		+pseudo()
@@ -301,8 +307,8 @@ $p-filters-inside-space: 20px
 
 	& > i
 		$this-icon-lines-width: 12px
-		$this-icon-lines-height: 1px
-		$this-icon-lines-color: $text-color
+		$this-icon-lines-height: 2px
+		$this-icon-lines-color: white
 
 		position: absolute
 		left: 4px
@@ -330,11 +336,14 @@ $p-filters-inside-space: 20px
 			transform: rotate(45deg)
 
 	.no-touchevents &:hover
-		background-color: $outline-color
+		background-color: $base-color
 
 		& > i
 			opacity: 1
 			visibility: visible
+
+	.no-touchevents .ea-site &:hover
+		background-color: $base-color--ea
 
 /* filters tags end
 

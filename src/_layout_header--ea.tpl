@@ -41,6 +41,7 @@
 			<div class="nav-wrap__row">
 				<div class="nav-wrap__cell">
 					<header class="nav-title">
+						<a href="#" class="btn-popup-close btn-nav-close btn-nav-close-js"><i></i><span>Закрыть</span></a>
 						<a href="index.html" class="logo-nav">
 							<div class="logo-nav__img"><span>Электроавтоматика</span></div>
 							<span class="logo-nav__title">Интернет-магазин</span>

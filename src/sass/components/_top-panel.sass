@@ -5,9 +5,15 @@
 /*top panel
 .top-panel
 	position: relative
-	//margin: 0 $sidebar-width 0 $header-width
 	margin: 0 0 0 $header-width
+	width: calc(100% - #{$catalog-categories-width--full} - #{$header-width})
 	z-index: 40
+
+	+media('<desk-qhd')
+		width: calc(100% - #{$sidebar-width} - #{$header-width})
+
+	+media('<desk-md')
+		width: calc(100% - #{$header-width})
 
 	+media('<tab-lg')
 		padding-top: #{$top-panel-height--md}
@@ -16,7 +22,7 @@
 		position: fixed
 		left: $header-width
 		margin: 0
-		width: calc(100% - #{$sidebar-width} - #{$header-width})
+		width: calc(100% - #{$sidebar-width} - #{$header-width} - #{$catalog-categories-width--full})
 		//max-width: calc(#{$page-layout-width} - #{$sidebar-width} - #{$header-width})
 		background-color: transparent
 
@@ -56,7 +62,7 @@
 .top-panel-holder
 	position: relative
 	height: $top-panel-height
-	padding: 0 $page-layout-space-horizontal
+	padding: 0 #{$text-layout-space-horizontal}
 	background-color: #{$bg-color}
 	z-index: 5
 	+clear
@@ -64,7 +70,7 @@
 	.home-page &
 		background-color: transparent
 
-	+media('<desk-qhd')
+	+media('<desk-hd')
 		+padding-horizontal($text-layout-space-horizontal--lg)
 
 	+media('<tab-lg')

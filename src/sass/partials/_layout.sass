@@ -27,8 +27,11 @@
 	width: 100%
 
 .content
-	margin: 0 $sidebar-width 0 $header-width
+	margin: 0 #{$catalog-categories-width--full} 0 #{$header-width}
 	min-height: 50px
+
+	+media('<desk-qhd')
+		margin-right: #{$sidebar-width}
 
 	.home-page &
 		margin-right: $sidebar-width--lg
@@ -42,12 +45,13 @@
 		+media('<desk-lg')
 			margin-right: $catalog-menu-width
 
+	&, .ea-has-catalog-menu &
 		+media('<desk-md')
 			margin-right: 0
 
-	+media('<tab-lg')
-		&, .ea-has-catalog-menu &
-			margin-left: 0
+		+media('<tab-lg')
+			&, .ea-has-catalog-menu &
+				margin-left: 0
 
 //+media('<desk-lg')
 	margin-right: 0
@@ -139,7 +143,7 @@
 	+padding-horizontal($flood-layout-space-horizontal)
 	+push-auto
 
-	+media('<desk-qhd')
+	+media('<desk-hd')
 		+padding-horizontal($text-layout-space-horizontal--lg)
 
 	+media('<tab-lg')
@@ -153,7 +157,7 @@
 .layout-article
 	padding: round($text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal}
 
-	+media('<desk-qhd')
+	+media('<desk-hd')
 		padding: round($text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg}
 
 	+media('<tab-lg')
