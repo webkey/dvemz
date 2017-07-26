@@ -31,6 +31,6 @@
 			</div>
 			-->
 		</div>
-		<a href="#" class="btn-siblings"><i>&nbsp;</i><span>Электрощитовое <br> оборудование</span></a>
+		<a href="#" class="btn-siblings"><i>&nbsp;</i><span>Электро<br> автоматика</span></a>
 	</div>
 </aside>

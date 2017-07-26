@@ -1,0 +1,65 @@
+@@include('_layout_head.tpl', {
+	"title": "Список страниц",
+	"pageClass": "all-pages"
+})
+
+<div class="wrapper">
+	<!--HEADER-->
+	@@include('_layout_header.tpl', {
+		"mainNavItemActive": ""
+	})
+	<!--HEADER end-->
+
+	<!--TOP PANEL-->
+	@@include('_layout_top-panel.tpl')
+	<!--TOP PANEL end-->
+
+	<!--MAIN-->
+	<div class="main">
+		<div class="max-wrap layout">
+			<div class="main__holder">
+				<!--CONTENT-->
+				<div class="content-wrap">
+					<div class="content user-content">
+						<div class="sheet">
+							<div class="layout-article">
+								<h1 style="text-align: center;">Список html-страниц</h1>
+
+								<h2><span class="mark">ДВЭМЗ</span></h2>
+
+								<ul>
+									<li><a href="index.html" target="_blank"><span>Главная</span></a></li>
+								</ul>
+
+								<h2><span class="mark">Электроавтоматика</span></h2>
+
+								<ul>
+									<li><a href="automatic-catalog.html" target="_blank"><span>Каталог</span></a></li>
+									<li><a href="automatic-products.html" target="_blank"><span>Список продуктов</span></a></li>
+									<li><a href="automatic-card.html" target="_blank"><span>Карточка товара</span></a></li>
+									<li><a href="automatic-news.html" target="_blank"><span>Список новостей</span></a></li>
+									<li><a href="automatic-news-inner.html" target="_blank"><span>Новостная текстовая</span></a></li>
+								</ul>
+
+								<h2><span class="mark">Общие</span></h2>
+
+								<ul>
+									<li><a href="typography.html" target="_blank"><span>Типографика (пока общая)</span></a></li>
+									<li><a href="map-site.html" target="_blank"><span>Карта сайта (заглушка)</span></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--CONTENT end-->
+			</div>
+		</div>
+	</div>
+	<!--MAIN end-->
+
+	<!--SIDEBAR-->
+	@@include('_layout_side-menu.tpl')
+	<!--SIDEBAR-->
+</div>
+
+@@include('_layout_foot.tpl')

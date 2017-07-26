@@ -48,17 +48,18 @@
 			display: table-row
 
 .header__row--logo
-	//display: none // для выравнивания по вертикали для flex: box нужно 3 элемента
 	overflow: hidden
-	height: 0
+	height: 0 // для выравнивания по вертикали для flex: box нужно 3 элемента, по-этому не display: none
+
+	//.home-page &
+		height: 1%
 
 	+media('<desk-lg')
 		height: 1%
 
 .header__row--arrow
-	//display: none // для выравнивания по вертикали для flex: box нужно 3 элемента
 	overflow: hidden
-	height: 0
+	height: 0 // для выравнивания по вертикали для flex: box нужно 3 элемента, по-этому не display: none
 
 	.home-page &
 		height: 1%

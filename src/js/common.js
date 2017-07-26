@@ -1319,8 +1319,8 @@ function popupsInit(){
 			cssScrollBlocked: true,
 			openedClass: 'nav-popup-opened',
 			beforeOpenClass: 'nav-popup-before-open',
-			// ease: 'Power2.easeInOut'
-			ease: 'Power0.easeNone'
+			ease: 'Power2.easeInOut'
+			// ease: 'Power0.easeNone'
 		});
 	}
 
@@ -1350,9 +1350,9 @@ function popupsInit(){
 /*extra popup initial end*/
 
 /**
- * !event side menu
+ * !side menu event
  * */
-function eventSideMenu() {
+function sideMenuEvents() {
 	var $sideItem = $('.side-menu__hover');
 	var $sideItemTitle = $('.side-menu__title');
 
@@ -1381,7 +1381,41 @@ function eventSideMenu() {
 		})
 	}
 }
-/**event side menu end*/
+/**side menu events end*/
+
+/**
+ * !catalog menu events
+ */
+function catalogMenuEvents() {
+	var $menu = $('.menu-events-js');
+	var $submenu = $('.submenu-events-js');
+	var $categories = $('.catalog-categories-js');
+	var $categoriesLinks = $('.catalog-categories-link-js');
+	var submenuIsOpen = 'submenu-is-open';
+	var catalogIsOpen = 'categories-is-open';
+
+	$categories.on('mouseenter', function () {
+		$categories.addClass(catalogIsOpen);
+	}).on('mouseleave', function () {
+		if (!$menu.hasClass(submenuIsOpen)) {
+			$categories.removeClass(catalogIsOpen);
+		}
+	});
+
+	$categoriesLinks.on('click', function () {
+		if (!$menu.hasClass(submenuIsOpen)) {
+			$menu.addClass(submenuIsOpen);
+		}
+	});
+
+	$submenu.on('mouseleave', function (e) {
+		if (e.offsetX < 0) {
+			$categories.removeClass(catalogIsOpen);
+			$menu.removeClass(submenuIsOpen);
+		}
+	});
+}
+/* catalog menu events end */
 
 /**
  * !choicer
@@ -2477,7 +2511,7 @@ function fotoramaInit() {
  * !loadList
  * */
 function loadList(){
-	
+
 	var $container = $('.show-container-js');
 	var $list = $('.show-list-js');
 	var $btnShow = $('.btn-show-js');
@@ -2649,7 +2683,8 @@ $(document).ready(function () {
 	fullPageInitial();
 	mainMapInit();
 	popupsInit();
-	eventSideMenu();
+	sideMenuEvents();
+	catalogMenuEvents();
 	choicerInit();
 	simpleAccordInit();
 	multiAccordionInit();

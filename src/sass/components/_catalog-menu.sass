@@ -44,8 +44,8 @@
 	.ea-has-catalog-menu &
 		display: block
 
-	+media('<desk-qhd', '>=desk-lg')
-		.no-touchevents .ea-has-catalog-menu .catalog-menu:hover &
+	+media('>=desk-lg','<desk-qhd')
+		.ea-has-catalog-menu .submenu-is-open &
 			transform: translate(-#{$catalog-menu-width - $sidebar-width}, 0)
 			box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2)
 
@@ -442,10 +442,12 @@
 	z-index: 998
 
 	+media('<desk-qhd')
-		width: $catalog-categories-width--short
+		//width: $catalog-categories-width--short
+		transform: translate(#{$catalog-categories-width--full - $catalog-categories-width--short}, 0)
 
-		.no-touchevents .catalog-menu:hover &
-			width: $catalog-categories-width--full
+		&.categories-is-open
+			//width: $catalog-categories-width--full
+			transform: translate(0, 0)
 			box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2)
 
 	+media('<desk-lg')
