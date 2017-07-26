@@ -4,26 +4,8 @@
 
 /*top panel
 .top-panel
-	position: relative
-	margin: 0 0 0 $header-width
-	width: calc(100% - #{$catalog-categories-width--full} - #{$header-width})
-	z-index: 40
-
-	+media('<desk-qhd')
-		width: calc(100% - #{$sidebar-width} - #{$header-width})
-
-	+media('<desk-md')
-		width: calc(100% - #{$header-width})
-
-	+media('<tab-lg')
-		padding-top: #{$top-panel-height--md}
 
 	.top-panel--alt &
-		position: fixed
-		left: $header-width
-		margin: 0
-		width: calc(100% - #{$sidebar-width} - #{$header-width} - #{$catalog-categories-width--full})
-		//max-width: calc(#{$page-layout-width} - #{$sidebar-width} - #{$header-width})
 		background-color: transparent
 
 		&::before
@@ -36,55 +18,12 @@
 			pointer-events: none
 			+linear-gradient(to bottom, rgba(0,0,0,0.94) 0%,rgba(0,0,0,0.84) 14%,rgba(0,0,0,0.7) 28%,rgba(0,0,0,0.35) 59%,rgba(0,0,0,0.18) 75%,rgba(0,0,0,0.06) 89%,rgba(0,0,0,0) 100%)
 
-	.home-page &
-		width: calc(100% - #{$sidebar-width--lg} - #{$header-width})
-		//max-width: calc(#{$page-layout-width} - #{$sidebar-width--lg} - #{$header-width})
-
-	.ea-has-catalog-menu &
-		width: calc(100% - #{$catalog-menu-width} - #{$catalog-categories-width--full} - #{$header-width})
-		//max-width: calc(#{$page-layout-width} - #{$catalog-menu-width} - #{$catalog-categories-width--full} - #{$header-width})
-
-		+media('<desk-qhd')
-			width: calc(100% - #{$catalog-menu-width} - #{$catalog-categories-width--short} - #{$header-width})
-
-		+media('<desk-lg')
-			width: calc(100% - #{$catalog-menu-width} - #{$header-width})
-
-		+media('<desk-md')
-			width: calc(100% - #{$header-width})
-
-	// для всех страниц
-	&, .ea-has-catalog-menu &
-		+media('<tab-lg')
-			width: 100%
-			margin-left: 0
-
 .top-panel-holder
-	position: relative
-	height: $top-panel-height
-	padding: 0 #{$text-layout-space-horizontal}
 	background-color: #{$bg-color}
-	z-index: 5
 	+clear
 
 	.home-page &
 		background-color: transparent
-
-	+media('<desk-hd')
-		+padding-horizontal($text-layout-space-horizontal--lg)
-
-	+media('<tab-lg')
-		position: fixed
-		+position(0, 0)
-		height: $top-panel-height--md
-		width: 100%
-		min-width: 320px
-		+padding-horizontal(0)
-		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
-
-	+media('<tab-sm')
-
-
 
 .top-panel-contacts
 	+clear-spacing

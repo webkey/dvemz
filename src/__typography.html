@@ -1,6 +1,6 @@
 @@include('_layout_head.tpl', {
 	"title": "Типографика",
-	"pageClass": ""
+	"pageClass": "ea-site"
 })
 
 <div class="wrapper">
@@ -342,6 +342,18 @@
 										<input class="btn-default" type="reset" value="Type reset">
 									</div>
 								</div>
+								<!--style default button-->
+								<h4><span class="mark"></span><a href="#hashButtonsOutline" id="hashButtonsOutline" class="hashAnchor"><span class="mark">Кнопки с обводкой</span></a></h4>
+								<div class="layout-text">
+									<div style="padding: 0 0 20px;">
+										<a href="#" class="btn-outline">Link</a>
+									</div>
+									<div style="padding: 0 0 20px;">
+										<input class="btn-outline" type="submit" value="Type submit">
+										<input class="btn-outline" type="button" value="Type button">
+										<input class="btn-outline" type="reset" value="Type reset">
+									</div>
+								</div>
 								<h4><span class="mark"></span><a href="#hashButtonsAlt" id="hashButtonsAlt" class="hashAnchor"><span class="mark">Альтернативные кнопки</span></a></h4>
 								<div class="layout-text">
 									<div style="padding: 0 0 20px;">
@@ -474,12 +486,10 @@
 									@@include('_tpl_print.tpl')
 								</div>
 
+								<h3 style="margin-bottom: 0;"><a style="position: absolute; left: -9999px;" href="#hashArticleFooter" id="hashArticleFooter" class="hashAnchor"><span class="mark">Футер статьи</span></a></h3>
 								<div class="article-footer">
 									<div class="layout-text">
-										<div class="share-box">
-											<div class="share-box__label">Поделиться:</div>
-											@@include('_tpl_social.tpl')
-										</div>
+										@@include("_tpl_share.tpl")
 									</div>
 								</div>
 

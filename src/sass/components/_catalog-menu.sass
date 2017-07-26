@@ -3,32 +3,18 @@
 @import ../../libs/include-media/dist/include-media
 
 /* CATALOG MENU
-/* catalog menu list
 .catalog-menu
-	//overflow: hidden
-	position: fixed
-	right: 0
-	top: 0
-	height: 100%
-	width: $sidebar-width
+	// animation
 	box-shadow: -5px 0 40px 5px transparent
-	z-index: 991
 	transition-property: box-shadow
 	transition-duration: 0.3s
 	transition-delay: 0.1s
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 
 	.ea-has-catalog-menu &
-		width: $catalog-menu-width + $catalog-categories-width--full
 
 		+media('<desk-qhd', '>=desk-lg')
 			background-color: #333
-
-		+media('<desk-qhd')
-			width: $catalog-menu-width + $catalog-categories-width--short
-
-		+media('<desk-lg')
-			width: $catalog-menu-width
 
 	+media('>=desk-md')
 		visibility: inherit !important
@@ -36,31 +22,24 @@
 		transform: matrix(1, 0, 0, 1, 0, 0) !important
 
 	+media('<desk-md')
-		width: $catalog-menu-width
 		opacity: 0
 		visibility: hidden
-		z-index: 998
 
 		.catalog-menu-popup-before-open &
 			box-shadow: -5px 0 40px 5px rgba(0, 0, 0, 0.15)
 			transition-delay: 0s
 
 	+media('<tab-lg')
-		width: 100%
-		min-width: 320px
 		box-shadow: none
-		//transform: none !important
 
+/* catalog menu list
 .catalog-menu-layout
 	display: none
 	overflow-x: hidden
 	overflow-y: auto
 	height: 100vh
 	background-color: $catalog-menu-bg-color
-	box-shadow: -20px 0 35px transparent
-	transition-property: box-shadow, transform
-	transition-duration: $animation-speed
-	transition-timing-function: linear
+	box-shadow: -5px 0 15px transparent
 
 	.ea-has-catalog-menu &
 		display: block
@@ -68,7 +47,7 @@
 	+media('<desk-qhd', '>=desk-lg')
 		.no-touchevents .ea-has-catalog-menu .catalog-menu:hover &
 			transform: translate(-#{$catalog-menu-width - $sidebar-width}, 0)
-			box-shadow: -20px 0 35px rgba(0, 0, 0, 0.2)
+			box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2)
 
 	+media('<desk-lg')
 		width: calc(#{$catalog-menu-width} + 100px)
@@ -459,12 +438,7 @@
 	height: 100vh
 	width: $catalog-categories-width--full
 	background-color: $base-color--ea
-	box-shadow: -20px 0 35px transparent
-	transition-property: width, box-shadow
-	transition-duration: $animation-speed
-	//transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
-	transition-timing-function: linear
-	will-change: transform
+	box-shadow: -5px 0 15px transparent
 	z-index: 998
 
 	+media('<desk-qhd')
@@ -472,7 +446,7 @@
 
 		.no-touchevents .catalog-menu:hover &
 			width: $catalog-categories-width--full
-			box-shadow: -20px 0 35px rgba(0, 0, 0, 0.2)
+			box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2)
 
 	+media('<desk-lg')
 		.ea-has-catalog-menu &
@@ -584,6 +558,15 @@
 		max-height: calc(17px*3)
 
 /* catalog categories end
+
+/* catalog menu toggle animation
+.catalog-categories, .catalog-menu-layout
+	transition-property: box-shadow, transform, width
+	transition-duration: 0.3s
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+	will-change: transform
+
+/* catalog menu toggle animation end
 
 /* overlay catalog menu
 .popup-overlay--catalog-menu

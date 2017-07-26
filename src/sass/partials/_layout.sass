@@ -53,35 +53,164 @@
 			&, .ea-has-catalog-menu &
 				margin-left: 0
 
-//+media('<desk-lg')
-	margin-right: 0
+/* top panel (layout)
+.top-panel
+	position: relative
+	z-index: 40
+	margin: 0 0 0 $header-width
+	width: calc(100% - #{$catalog-categories-width--full} - #{$header-width})
 
-	//+media('<tab-lg')
-		margin-left: 0
+	+media('<desk-qhd')
+		width: calc(100% - #{$sidebar-width} - #{$header-width})
 
+	+media('<desk-md')
+		width: calc(100% - #{$header-width})
+
+	+media('<tab-lg')
+		padding-top: #{$top-panel-height--md}
+
+	// альтернативна верхняя панель (с полупрозрачным градиентным фоном)
+	.top-panel--alt &
+		position: fixed
+		left: $header-width
+		width: calc(100% - #{$sidebar-width} - #{$header-width} - #{$catalog-categories-width--full})
+		margin: 0
+
+	// верхняя панель на главной (двэмз)
+	.home-page &
+		width: calc(100% - #{$sidebar-width--lg} - #{$header-width})
+
+	// верхняя панель (автоматика) для каталожных страниц
+	.ea-has-catalog-menu &
+		width: calc(100% - #{$catalog-menu-width} - #{$catalog-categories-width--full} - #{$header-width})
+
+		+media('<desk-qhd')
+			width: calc(100% - #{$catalog-menu-width} - #{$catalog-categories-width--short} - #{$header-width})
+
+		+media('<desk-lg')
+			width: calc(100% - #{$catalog-menu-width} - #{$header-width})
+
+		+media('<desk-md')
+			width: calc(100% - #{$header-width})
+
+	// для всех страниц
+	&, .ea-has-catalog-menu &
+		+media('<tab-lg')
+			width: 100%
+			margin-left: 0
+
+.top-panel-holder
+	position: relative
+	z-index: 5
+	height: $top-panel-height
+	padding: 0 #{$text-layout-space-horizontal}
+
+	+media('<desk-hd')
+		+padding-horizontal($text-layout-space-horizontal--lg)
+
+	+media('<tab-lg')
+		position: fixed
+		+position(0, 0)
+		+padding-horizontal(0)
+		height: $top-panel-height--md
+		width: 100%
+		min-width: 320px
+		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
+
+/*top panel (layout) end
+
+/* header (layout)
 .header
+	overflow: hidden
 	position: fixed
 	+position(0, 0)
-	overflow: hidden
 	+size($header-width, 100%)
 	z-index: 1000
-
-	background-color: white
-	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1)
 
 	+media('<tab-lg')
 		display: none
 
+/* header (layout) end
+
+/* footer (layout)
 .footer
 	margin: 0 auto
 	position: relative
 	clear: both
 	z-index: 5
 
-	background-color: lightgreen
-
 	.home-page &
 		display: none
+
+	.footer__holder
+		left: $header-width
+		width: calc(100% - #{$header-width} - #{$catalog-categories-width--full})
+
+		+media('<desk-qhd')
+			width: calc(100% - #{$header-width} - #{$sidebar-width})
+
+		.ea-has-catalog-menu &
+			width: calc(100% - #{$header-width} - #{$catalog-menu-width} - #{$catalog-categories-width--full})
+
+			+media('<desk-qhd')
+				width: calc(100% - #{$header-width} - #{$catalog-menu-width} - #{$catalog-categories-width--short})
+
+			+media('<desk-lg')
+				width: calc(100% - #{$header-width} - #{$catalog-menu-width})
+
+		&, .ea-has-catalog-menu &
+			+media('<desk-md')
+				width: calc(100% - #{$header-width})
+
+			+media('<tab-lg')
+				left: 0
+				width: 100%
+
+/* footer (layout) end
+
+/* footer common (layout)
+.footer-common
+	padding: round($text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5 - $footer-nav-horizontal-space)
+
+	+media('<desk-hd')
+		padding: round($text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg} round($text-layout-space-horizontal--lg*1.5 - $footer-nav-horizontal-space)
+
+	+media('<tab-lg')
+		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} round($text-layout-space-horizontal--md*1.5 - $footer-nav-horizontal-space)
+
+	+media('<tab-sm')
+		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*1.5 - $footer-nav-horizontal-space)
+
+/* footer common (layout) end
+
+/* catalog menu (layout)
+.catalog-menu
+	//overflow: hidden
+	position: fixed
+	right: 0
+	top: 0
+	height: 100%
+	width: $sidebar-width
+	z-index: 991
+
+	.ea-has-catalog-menu &
+		width: $catalog-menu-width + $catalog-categories-width--full
+
+		+media('<desk-qhd')
+			width: $catalog-menu-width + $catalog-categories-width--short
+
+		+media('<desk-lg')
+			width: $catalog-menu-width
+
+	+media('<desk-md')
+		width: $catalog-menu-width
+		z-index: 998
+
+	+media('<tab-lg')
+		width: 100%
+		min-width: 320px
+
+/* catalog menu (layout) end
 
 .home-page .spacer
 	display: none
@@ -103,12 +232,15 @@
 .max-wrap-text
 	max-width: $text-layout-width
 
-// выравнивание текстовых элементов на внутренней странице
+// выравнивание текстовых элементов на внутренней (текстовой) странице
 // и их максимальная ширина
 .layout-text
 	max-width: $text-layout-width + $text-layout-space-horizontal*2
 	+padding-horizontal($text-layout-space-horizontal)
 	+push-auto
+
+	+media('<desk-hd')
+		+padding-horizontal($text-layout-space-horizontal--lg)
 
 	+media('<tab-lg')
 		+padding-horizontal($text-layout-space-horizontal--md)
@@ -116,7 +248,7 @@
 	+media('<tab-sm')
 		+padding-horizontal($text-layout-space-horizontal--sm)
 
-// выравнивание альтернативных элементов на внутренней странице
+// выравнивание альтернативных элементов на внутренней (текстовой) странице
 // и их максимальная ширина
 .max-wrap-flood
 	max-width: $flood-layout-width
@@ -125,6 +257,9 @@
 	max-width: $flood-layout-width + $text-layout-space-horizontal*2
 	+padding-horizontal($flood-layout-space-horizontal)
 	+push-auto
+
+	+media('<desk-hd')
+		+padding-horizontal($text-layout-space-horizontal--lg)
 
 	+media('<tab-lg')
 		+padding-horizontal($text-layout-space-horizontal--md)
@@ -190,6 +325,9 @@
 
 		+margin-horizontal(-#{$text-layout-space-horizontal})
 
+		+media('<desk-hd')
+			+margin-horizontal(-#{$text-layout-space-horizontal--lg})
+
 		+media('<tab-lg')
 			+margin-horizontal(-#{$text-layout-space-horizontal--md})
 
@@ -198,6 +336,20 @@
 
 		p, ul, ol, h1, h2, h3, h4, h5, h6, hr
 			max-width: none
+
+
+.user-form
+	padding: $text-layout-space-horizontal
+
+	+media('<desk-hd')
+		padding: $text-layout-space-horizontal--lg
+
+	+media('<tab-lg')
+		padding: $text-layout-space-horizontal--md
+
+	+media('<tab-sm')
+		padding: $text-layout-space-horizontal--sm
+		border-width: 1px 0
 
 /*LAYOUT end*/
 

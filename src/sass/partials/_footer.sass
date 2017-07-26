@@ -3,8 +3,6 @@
 @import ../../libs/include-media/dist/include-media
 
 /*FOOTER*/
-$footer-nav-horizontal-space: 40px
-
 .footer
 
 	.layout
@@ -16,30 +14,8 @@ $footer-nav-horizontal-space: 40px
 		top: auto
 		right: auto
 		bottom: 0
-		left: $header-width
 		cursor: default
-		width: calc(100% - #{$header-width} - #{$catalog-categories-width--full})
 		border-top: 1px solid $outline-color
-
-		+media('<desk-qhd')
-			width: calc(100% - #{$header-width} - #{$sidebar-width})
-
-		.ea-has-catalog-menu &
-			width: calc(100% - #{$header-width} - #{$catalog-menu-width} - #{$catalog-categories-width--full})
-
-			+media('<desk-qhd')
-				width: calc(100% - #{$header-width} - #{$catalog-menu-width} - #{$catalog-categories-width--short})
-
-			+media('<desk-lg')
-				width: calc(100% - #{$header-width} - #{$catalog-menu-width})
-
-		&, .ea-has-catalog-menu &
-			+media('<desk-md')
-				width: calc(100% - #{$header-width})
-
-			+media('<tab-lg')
-					left: 0
-					width: 100%
 
 //.footer__holder
 	overflow: hidden
@@ -50,18 +26,8 @@ $footer-nav-horizontal-space: 40px
 .footer-common
 	position: relative
 	overflow: hidden
-	padding: round($text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5 - $footer-nav-horizontal-space)
 	background: $bg-color
 	color: black
-
-	+media('<desk-hd')
-		padding: round($text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg} round($text-layout-space-horizontal--lg*1.5 - $footer-nav-horizontal-space)
-
-	+media('<tab-lg')
-		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} round($text-layout-space-horizontal--md*1.5 - $footer-nav-horizontal-space)
-
-	+media('<tab-sm')
-		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*1.5 - $footer-nav-horizontal-space)
 
 	a:not([href^="tel"])
 		+font(inherit, inherit)
