@@ -1,0 +1,128 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*search form
+.search-form, .search-form__field
+	position: relative
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+.search-extended-panel
+	padding-bottom: $bottom-space--md
+
+.search-extended-panel__holder
+	border: 1px solid $border-color
+	padding: $grid-inside-vertical-space $grid-inside-horizontal-space
+	background-color: $bg-color-light
+
+.search-form__field
+	overflow: hidden
+	position: relative
+	margin: 0 #{$page-layout-space-horizontal}
+
+	+media('<tab-lg')
+		margin: 0 #{$text-layout-space-horizontal--md}
+
+
+input.search-form__input
+	cursor: pointer
+
+	+search-form-placeholder($color: $text-color-light, $tsp: color, $tsd: $animation-speed)
+
+	&, &:hover, &:focus
+		display: block
+		position: relative
+		border: none
+		height: 64px
+		width: 100%
+		padding: 11px #{$search-form-popup-btn-width+10} 11px 0
+		margin: 0
+		+font-normal
+		+font(36px, 42px)
+		color: $text-color
+		border-radius: 0
+		background: none
+		box-shadow: none
+		border-bottom: 1px solid $border-color
+
+		.no-touchevents &:hover
+			border-bottom-color: $border-color
+
+		+media('<desk-lg')
+			font-size: 20px
+
+		+media('<mob-lg')
+			font-size: 18px
+			padding-right: $search-form-popup-btn-width--mob-lg
+
+	// если поле ввода В ФОКУСЕ, или ЗАПОЛНЕННО
+	.input--filled &, &:focus
+		cursor: text
+
+// кнопка поиска
+.search-form__btn
+	position: absolute
+	right: 0
+	top: 50%
+	margin-top: -20px
+	+size($search-form-popup-btn-width, $search-form-popup-btn-height)
+	font-family: $font-alt
+	+clear-spacing
+	text-align: center
+	color: white
+	fill: white
+	z-index: 5
+	background-color: $text-color-alt
+	transition-property: color
+	transition-duration: $animation-speed
+
+	+media('<mob-lg')
+		width: $search-form-popup-btn-height
+
+	&::before
+		+vertical-align()
+
+	input
+		display: block
+		+cover-abs()
+		padding: 0
+		z-index: 99
+		border: 0
+		opacity: 0
+
+	svg
+		+display-inline-block-top
+		position: relative
+		top: 50%
+		+size(16px)
+		margin-top: -8px
+		//margin-right: 10px
+		margin-right: 0
+
+		+media('<mob-lg')
+			margin-right: 0
+
+	path
+		fill: inherit
+		transition: fill $animation-speed
+
+	span
+		//+display-inline-block-middle
+		display: none
+		+font(16px, $search-form-popup-btn-height)
+		letter-spacing: normal
+		color: inherit
+		transition-property: color
+		transition-duration: $animation-speed
+		+antialiased
+
+		+media('<mob-lg')
+			+hide-text
+
+	.input--filled &
+		z-index: 999
+
+/*search form end

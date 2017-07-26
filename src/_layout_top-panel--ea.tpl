@@ -7,7 +7,7 @@
 			</a>
 			<img style="display: none;" src="img/logo.png" alt="Электроавтоматика">
 		</div>
-		<a href="#" class="menu-btn btn-menu-js" title="Открыть главное меню">
+		<a href="#" class="menu-btn btn-nav-js" title="Открыть главное меню">
 			<div class="menu-btn__inner">
 				<span>Меню</span>
 				<i>&nbsp;</i>

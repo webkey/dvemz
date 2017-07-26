@@ -1,4 +1,4 @@
-<aside class="top-panel">
+<aside class="top-panel@@if (context.alt) { top-panel--alt}">
 	<div class="top-panel-holder">
 		<div class="logo-alt">
 			<a href="index.html">

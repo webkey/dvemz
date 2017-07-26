@@ -626,6 +626,34 @@
 		width: auto
 
 // =============================================================================
+// Input placeholder
+// =============================================================================
+
+=search-form-placeholder($color: #ccc, $tsp: color, $tsd: 0.2s)
+	&::-webkit-input-placeholder
+		color: $color
+		transition: $tsp $tsd
+
+	&:-moz-placeholder
+		color: $color
+		transition: $tsp $tsd
+
+	&::-moz-placeholder
+		color: $color
+		transition: $tsp $tsd
+		opacity: 1
+
+	&:-ms-input-placeholder
+		color: $color
+		transition: $tsp $tsd
+		opacity: 1
+
+	&.placeholder
+		color: $color
+		transition: $tsp $tsd
+		opacity: 1
+
+// =============================================================================
 // Scroll lock
 // =============================================================================
 /// Примесь блокирования прокрутки страницы.

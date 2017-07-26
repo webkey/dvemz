@@ -70,7 +70,7 @@
 		padding-top: #{$top-panel-height--md}
 
 	// альтернативна верхняя панель (с полупрозрачным градиентным фоном)
-	.top-panel--alt &
+	&.top-panel--alt
 		position: fixed
 		left: $header-width
 		width: calc(100% - #{$sidebar-width} - #{$header-width} - #{$catalog-categories-width--full})
@@ -290,16 +290,26 @@
 // выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
 // и их максимальная ширина
 .layout-article
-	padding: round($text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal}
+	padding: round($text-layout-space-horizontal) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5)
 
 	+media('<desk-hd')
-		padding: round($text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg}
+		padding: round($text-layout-space-horizontal--lg) #{$text-layout-space-horizontal--lg} round($text-layout-space-horizontal--lg*1.5)
+
+	.ea-has-catalog-menu &
+		+media('<desk-md')
+			padding-top: round($text-layout-space-horizontal--lg)
 
 	+media('<tab-lg')
-		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md}
+		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} round($text-layout-space-horizontal--md*1.5)
+
+		.ea-has-catalog-menu &
+			padding-top: round($text-layout-space-horizontal--md)
 
 	+media('<tab-sm')
-		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm}
+		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*1.5)
+
+		.ea-has-catalog-menu &
+			padding-top: round($text-layout-space-horizontal--sm)
 
 	p, ul, ol, h2, h3, h4, h5, h6, hr, .layout-text
 		max-width: $text-layout-width

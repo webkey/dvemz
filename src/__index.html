@@ -1,6 +1,6 @@
 @@include('_layout_head.tpl', {
 	"title": "Главная",
-	"pageClass": "home-page top-panel--alt side-menu--alt"
+	"pageClass": "home-page side-menu--alt"
 })
 
 <div class="wrapper">
@@ -11,7 +11,9 @@
 	<!--HEADER end-->
 
 	<!--TOP PANEL-->
-	@@include('_layout_top-panel.tpl')
+	@@include("_layout_top-panel.tpl", {
+		"alt": "true"
+	})
 	<!--TOP PANEL end-->
 
 	<!--scroll nav-->

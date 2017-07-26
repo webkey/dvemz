@@ -145,12 +145,14 @@ html.css-scroll-fixed
 	.no-touchevents &:hover
 		background-color: darken($bg-color-light, 10%)
 
+	// главная ДВЭМЗ
 	.home-page &
 		color: white
-		background-color: #{$logo-bg-color}
+		background-color: $logo-bg-color
 
 	.no-touchevents .home-page &:hover
 		background-color: lighten($logo-bg-color, 10%)
+	// главная ДВЭМЗ end
 
 	+media('<tab-lg')
 		+display-inline-block-top
@@ -163,16 +165,19 @@ html.css-scroll-fixed
 	+display-inline-block-middle
 	+size(152px, auto)
 	background-image: url(../../img/logo.png)
-	background-size: contain
+	background-size: 100%
 	background-repeat: no-repeat
 	margin-bottom: 10px
 
 	&::before
 		+pseudo-block-relative()
-		+ratio(152, 42)
+		+ratio(152, 47)
 
 	& > span
 		+hide-text
+
+	.home-page &
+		background-position: 0 100%
 
 	.ea-site &
 		+size(178px, auto)

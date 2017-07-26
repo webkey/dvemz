@@ -976,7 +976,6 @@ function mainMapInit() {
 
 		// $buttonMenu.on('mousedown touchstart vmousedown', function (e) {
 		$buttonMenu.on('click', function (e) {
-			e.preventDefault();
 
 			if (self.navIsOpened) {
 				self.closeNav();
@@ -984,6 +983,7 @@ function mainMapInit() {
 				self.openNav();
 			}
 
+			e.preventDefault();
 			e.stopPropagation();
 		});
 	};
@@ -1299,14 +1299,40 @@ function mainMapInit() {
 function popupsInit(){
 
 	/*navigation*/
-	var siteMapPopupClass = '.nav-popup-js';
+	var navPopupClass = '.nav-popup-js';
 
-	if($(siteMapPopupClass).length){
+	if($(navPopupClass).length){
 
 		new ExtraPopup({
-			navContainer: siteMapPopupClass,
+			navContainer: navPopupClass,
 			navMenu: '.nav__list',
-			btnMenu: '.btn-menu-js',
+			btnMenu: '.btn-nav-js',
+			btnMenuClose: '.btn-nav-close-js',
+			// staggerElement: '.nav__list > li',
+			overlayClass: 'popup-overlay--nav',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			// mediaWidth: 1280,
+			animationSpeed: 200,
+			overlayAlpha: 0.35,
+			// alpha: 0,
+			cssScrollBlocked: true,
+			openedClass: 'nav-popup-opened',
+			beforeOpenClass: 'nav-popup-before-open',
+			ease: 'Power2.easeInOut'
+			// ease: 'Power0.easeNone'
+		});
+	}
+
+	/*search*/
+	var searchPopupClass = '.search-popup-js';
+
+	if($(searchPopupClass).length){
+
+		new ExtraPopup({
+			navContainer: searchPopupClass,
+			navMenu: '.nav__list',
+			btnMenu: '.btn-search-popup-js',
 			btnMenuClose: '.btn-nav-close-js',
 			// staggerElement: '.nav__list > li',
 			overlayClass: 'popup-overlay--nav',

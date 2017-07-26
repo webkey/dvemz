@@ -593,8 +593,10 @@
 	background-color: $base-color--ea
 
 	+media('<desk-md')
-		display: block
 		+margin-horizontal($text-layout-space-horizontal--lg)
+
+		.ea-has-catalog-menu &
+			display: block
 
 	+media('<tab-lg')
 		+margin-horizontal(0)
