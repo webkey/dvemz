@@ -2,7 +2,7 @@
 	<div class="text-layout">
 		<h2>Форма обратной связи</h2>
 		<p class="text__description">Задайте интересующий Вас вопрос и наш специалист свяжется с Вами в самое ближайшее время.</p>
-		<form action="#" method="get">
+		<form action="#" method="post">
 			<div class="form-row">
 				<div class="input-wrap light-form field-effects-js">
 					<div class="label-holder"><label for="cf-field-01">Имя <span class="form-mark">*</span></label></div>

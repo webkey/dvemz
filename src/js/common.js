@@ -105,7 +105,7 @@ function inputToggleFocusClass() {
 	var $fieldWrap = $('.field-effects-js');
 
 	if ($fieldWrap.length) {
-		var $inputsAll = $fieldWrap.find('input[type="email"], input[type="search"], :text, textarea, select');
+		var $inputsAll = $fieldWrap.find('input[type="password"], input[type="email"], input[type="search"], :text, textarea, select');
 		var _classFocus = 'input--focus';
 
 		$inputsAll.focus(function () {
@@ -130,7 +130,7 @@ function inputHasValueClass() {
 	var $fieldWrap = $('.field-effects-js');
 
 	if ($fieldWrap.length) {
-		var $inputsAll = $fieldWrap.find('input[type="email"], input[type="search"], :text, textarea, select');
+		var $inputsAll = $fieldWrap.find('input[type="password"], input[type="email"], input[type="search"], :text, textarea, select');
 		var classHasValue = 'input--has-value';
 
 		$.each($inputsAll, function () {
@@ -868,7 +868,8 @@ function mainMapInit() {
 		closeEsc: true, // close popup on click Esc,
 		activeClass: 'active',
 		openedClass: 'extra-popup-opened',
-		beforeOpenClass: 'extra-popup-before-open'
+		beforeOpenClass: 'extra-popup-before-open',
+		extraPopupBeforeOpen: null
 	};
 	
 	var ExtraPopup = function (settings) {
@@ -923,6 +924,7 @@ function mainMapInit() {
 		self.eventsBtnMenuClose();
 		self.clearStyles();
 		self.closeNavOnEsc();
+		self.closeNavMethod();
 	};
 
 	ExtraPopup.prototype.navIsOpened = false;
@@ -1032,6 +1034,17 @@ function mainMapInit() {
 		});
 	};
 
+	// close popup (method)
+	ExtraPopup.prototype.closeNavMethod = function () {
+		var self = this;
+
+		self.$navContainer.on('extraPopupClose', function () {
+			if (self.navIsOpened) {
+				self.closeNav();
+			}
+		})
+	};
+
 	// open nav
 	ExtraPopup.prototype.openNav = function() {
 		// console.log("openNav");
@@ -1049,6 +1062,9 @@ function mainMapInit() {
 		var classBeforeOpen = modifiers.beforeOpen;
 		var classAfterOpen = modifiers.opened;
 
+		$navContainer.trigger('extraPopupBeforeOpen');
+		// self.options.extraPopupBeforeOpen(self.$navContainer);
+
 		$html.addClass(classBeforeOpen);
 		$buttonMenu.addClass(modifiers.active);
 		$buttonClose.addClass(classBeforeOpen);
@@ -1061,9 +1077,6 @@ function mainMapInit() {
 			'-webkit-transition-duration': '0s',
 			'transition-duration': '0s'
 		});
-
-		$navContainer.trigger('extraPopupBeforeOpen');
-		$('.js-choice-wrap').trigger('closeDrop');
 
 		// animation of stagger
 		if($staggerElement) {
@@ -1300,14 +1313,15 @@ function popupsInit(){
 
 	/*navigation*/
 	var navPopupClass = '.nav-popup-js';
+	var $navPopup = $(navPopupClass);
 
-	if($(navPopupClass).length){
+	if($navPopup.length){
 
 		new ExtraPopup({
 			navContainer: navPopupClass,
 			navMenu: '.nav__list',
 			btnMenu: '.btn-nav-js',
-			btnMenuClose: '.btn-nav-close-js',
+			btnMenuClose: '.btn-shutter-close-js',
 			// staggerElement: '.nav__list > li',
 			overlayClass: 'popup-overlay--nav',
 			overlayAppendTo: 'body',
@@ -1317,8 +1331,8 @@ function popupsInit(){
 			overlayAlpha: 0.35,
 			// alpha: 0,
 			cssScrollBlocked: true,
-			openedClass: 'nav-popup-opened',
-			beforeOpenClass: 'nav-popup-before-open',
+			openedClass: 'shutter--opened',
+			beforeOpenClass: 'shutter--before-open',
 			ease: 'Power2.easeInOut'
 			// ease: 'Power0.easeNone'
 		});
@@ -1326,14 +1340,15 @@ function popupsInit(){
 
 	/*search*/
 	var searchPopupClass = '.search-popup-js';
+	var $searchPopup = $(searchPopupClass);
 
-	if($(searchPopupClass).length){
+	if($searchPopup.length){
 
 		new ExtraPopup({
 			navContainer: searchPopupClass,
-			navMenu: '.nav__list',
+			// navMenu: '.nav__list',
 			btnMenu: '.btn-search-popup-js',
-			btnMenuClose: '.btn-nav-close-js',
+			btnMenuClose: '.btn-shutter-close-js',
 			// staggerElement: '.nav__list > li',
 			overlayClass: 'popup-overlay--nav',
 			overlayAppendTo: 'body',
@@ -1343,17 +1358,45 @@ function popupsInit(){
 			overlayAlpha: 0.35,
 			// alpha: 0,
 			cssScrollBlocked: true,
-			openedClass: 'nav-popup-opened',
-			beforeOpenClass: 'nav-popup-before-open',
+			openedClass: 'shutter--opened',
+			beforeOpenClass: 'shutter--before-open',
 			ease: 'Power2.easeInOut'
 			// ease: 'Power0.easeNone'
 		});
 	}
 
-	/*navigation*/
-	var catalogMenuPopupClass = '.catalog-menu-popup-js';
+	/*login*/
+	var loginPopupClass = '.login-popup-js';
+	var $loginPopup = $(loginPopupClass);
 
-	if($(catalogMenuPopupClass).length){
+	if($loginPopup.length){
+
+		new ExtraPopup({
+			navContainer: loginPopupClass,
+			// navMenu: '.nav__list',
+			btnMenu: '.btn-login-popup-js',
+			btnMenuClose: '.btn-shutter-close-js',
+			// staggerElement: '.nav__list > li',
+			overlayClass: 'popup-overlay--nav',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			// mediaWidth: 1280,
+			animationSpeed: 200,
+			overlayAlpha: 0.35,
+			// alpha: 0,
+			cssScrollBlocked: true,
+			openedClass: 'shutter--opened',
+			beforeOpenClass: 'shutter--before-open',
+			ease: 'Power2.easeInOut'
+			// ease: 'Power0.easeNone'
+		});
+	}
+
+	/*catalog*/
+	var catalogMenuPopupClass = '.catalog-menu-popup-js';
+	var $catalogMenuPopup = $(catalogMenuPopupClass);
+
+	if($catalogMenuPopup.length){
 
 		new ExtraPopup({
 			navContainer: catalogMenuPopupClass,
@@ -1372,6 +1415,30 @@ function popupsInit(){
 			ease: 'Power2.easeInOut'
 		});
 	}
+
+	$searchPopup.on('extraPopupBeforeOpen', function () {
+		$navPopup.trigger('extraPopupClose');
+		$catalogMenuPopup.trigger('extraPopupClose');
+		$loginPopup.trigger('extraPopupClose');
+	});
+
+	$navPopup.on('extraPopupBeforeOpen', function () {
+		$searchPopup.trigger('extraPopupClose');
+		$catalogMenuPopup.trigger('extraPopupClose');
+		$loginPopup.trigger('extraPopupClose');
+	});
+
+	$catalogMenuPopup.on('extraPopupBeforeOpen', function () {
+		$navPopup.trigger('extraPopupClose');
+		$searchPopup.trigger('extraPopupClose');
+		$loginPopup.trigger('extraPopupClose');
+	});
+
+	$loginPopup.on('extraPopupBeforeOpen', function () {
+		$navPopup.trigger('extraPopupClose');
+		$searchPopup.trigger('extraPopupClose');
+		$catalogMenuPopup.trigger('extraPopupClose');
+	});
 }
 /*extra popup initial end*/
 
@@ -1767,20 +1834,21 @@ function tabSwitcher() {
 			$content = $('.js-tab-content'),
 			activeClass = 'active-tab',
 			collapseAllClass = 'collapsed-all-tab',
+			idPrefix = 'activeIs',
 			animationSpeed = 0.2,
 			animationHeightSpeed = 0.08;
 
 		$.each($tabWrapper, function () {
-			var $this = $(this),
-				$thisAnchor = $this.find($anchor),
-				$thisContainer = $this.find($container),
-				$thisContent = $this.find($content);
-			if ($this.find('.' + activeClass).length > 0) {
-				var initialTab = $this.find('.' + activeClass).attr('href').substring(1);
+			var $currentContainer = $(this),
+				$currentAnchor = $currentContainer.find($anchor),
+				$thisContainer = $currentContainer.find($container),
+				$currentContent = $currentContainer.find($content);
+			if ($currentContainer.find('.' + activeClass).length > 0) {
+				var initialTab = $currentContainer.find('.' + activeClass).attr('href').substring(1);
 			}
-			// var toQueue = $this.data('to-queue'); // transform tab for toQueue value layout width
+			// var toQueue = $currentContainer.data('to-queue'); // transform tab for toQueue value layout width
 			// var tabInitedFlag = false;
-			var valDataAutoHeight = $this.data('auto-height');
+			var valDataAutoHeight = $currentContainer.data('auto-height');
 			var thisAutoHeight = valDataAutoHeight !== false;
 			var activeTab = false;
 
@@ -1792,7 +1860,7 @@ function tabSwitcher() {
 					'overflow': 'hidden'
 				});
 
-				$thisContent.css({
+				$currentContent.css({
 					// 'display': 'none',
 					'position': 'absolute',
 					'left': 0,
@@ -1807,13 +1875,13 @@ function tabSwitcher() {
 			prepareTabsContent();
 
 			// toggle content
-			$thisAnchor.on('click', function (e) {
+			$currentAnchor.on('click', function (e) {
 				e.preventDefault();
 
 				var $self = $(this),
 					selfTab = $self.attr('href').substring(1);
 
-				if ($this.data('collapsed') === true && activeTab === selfTab) {
+				if ($currentContainer.data('collapsed') === true && activeTab === selfTab) {
 
 					toggleActiveClass();
 					toggleContent(false);
@@ -1830,7 +1898,7 @@ function tabSwitcher() {
 			});
 
 			// collapse current tab method
-			$thisAnchor.eq(0).on('tabSwitcherCollapse', function () {
+			$currentAnchor.eq(0).on('tabSwitcherCollapse', function () {
 				var $self = $(this);
 				var selfTab = $self.attr('href').substring(1);
 
@@ -1855,20 +1923,20 @@ function tabSwitcher() {
 
 				thisAutoHeight && $thisContainer.css('height', $thisContainer.outerHeight());
 
-				$thisContent.css({
+				$currentContent.css({
 					'position': 'absolute',
 					'left': 0,
 					'top': 0
 				});
 
-				TweenMax.to($thisContent, animationSpeed, {
+				TweenMax.to($currentContent, animationSpeed, {
 					autoAlpha: 0
 					// ,'z-index': -1
 				});
 
 				if (arguments[0] === false) return;
 
-				var $initialContent = $thisContent.filter('[id="' + initialTab + '"]');
+				var $initialContent = $currentContent.filter('[id="' + initialTab + '"]');
 
 				$initialContent.css('z-index', 2);
 
@@ -1880,7 +1948,7 @@ function tabSwitcher() {
 
 			// change container's height
 			function changeHeightContainer() {
-				var $initialContent = $thisContent.filter('[id="' + initialTab + '"]');
+				var $initialContent = $currentContent.filter('[id="' + initialTab + '"]');
 
 				if (arguments[0] === false) {
 					TweenMax.to($thisContainer, animationHeightSpeed, {
@@ -1915,16 +1983,20 @@ function tabSwitcher() {
 
 			// toggle class active
 			function toggleActiveClass() {
-				$thisAnchor.removeClass(activeClass);
-				$thisContent.removeClass(activeClass);
-				$this.removeClass(collapseAllClass);
+				$currentAnchor.removeClass(activeClass);
+				$currentContent.removeClass(activeClass);
+				$currentContainer.removeClass(collapseAllClass);
+				if (activeTab) {
+					$currentContainer.removeClass(idPrefix + '-' + activeTab);
+				}
 
 				if (initialTab !== activeTab) {
 
-					$thisAnchor.filter('[href="#' + initialTab + '"]').addClass(activeClass);
-					$thisContent.filter('[id="' + initialTab + '"]').addClass(activeClass);
-					if($this.data('collapsed') === true){
-						$this.addClass(collapseAllClass);
+					$currentAnchor.filter('[href="#' + initialTab + '"]').addClass(activeClass);
+					$currentContent.filter('[id="' + initialTab + '"]').addClass(activeClass);
+					$currentContainer.addClass(idPrefix + '-' + initialTab);
+					if($currentContainer.data('collapsed') === true){
+						$currentContainer.addClass(collapseAllClass);
 					}
 
 					activeTab = initialTab;
@@ -1941,7 +2013,7 @@ function tabSwitcher() {
 			// 	if (toQueue && window.innerWidth < toQueue){
 			// 		tabInitedFlag = false;
 			// 		$thisContainer.attr('style', "");
-			// 		$thisContent.attr('style', "");
+			// 		$currentContent.attr('style', "");
 			//
 			// 		return;
 			// 	}
@@ -2643,7 +2715,7 @@ function footerBottom() {
  * !form success for example
  * */
 function formSuccessExample() {
-	var $form = $('.user-form form, .callback-form form');
+	var $form = $('.user-form form, .callback-form form, .tabs-light__panel form');
 
 	if ( $form.length ) {
 

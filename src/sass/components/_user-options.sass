@@ -5,6 +5,9 @@
 /* user options
 .user-options
 
+	transition-property: background-color, opacity, visibility, fill, transform
+	transition-duration: $animation-speed
+
 	.top-panel &
 		display: none
 
@@ -20,8 +23,7 @@
 	overflow: hidden
 	color: $text-color
 	text-decoration: none
-	transition-property: background-color
-	transition-duration: $animation-speed
+	transition: inherit
 
 	.header &
 		display: block
@@ -41,8 +43,56 @@
 		+media('<tab-lg')
 			width: #{$top-panel-height--md}
 
+// крест для кнопок
+.user-options__inner
+	$user-options-cross-width: 28px !default
+	$user-options-cross-height: 2px !default
+	$user-options-cross-space: 5px !default
+	$user-options-cross-color: $text-color !default
+
+	=user-options-cross()
+		+size($user-options-cross-width, $user-options-cross-height)
+		background: $user-options-cross-color
+
+	+cover-abs()
+	transition: inherit
+
+	&::before, &::after
+		+pseudo()
+		+user-options-cross
+		left: 50%
+		top: 50%
+		+margin($top: -#{round($user-options-cross-height*0.5)}, $left: -#{round($user-options-cross-width*0.5)})
+		opacity: 0
+		transition: inherit
+
+	// active
+	a.active &
+		&::before
+			transform: rotate(45deg)
+			opacity: 1
+
+		&::after
+			transform: rotate(-45deg)
+			opacity: 1
+
+	// hover
+	.no-touchevents a:hover &
+		&::before, &::after
+			background-color: $base-color
+
+	// hover for ea site
+	.no-touchevents .ea-site a:hover &
+		&::before, &::after
+			background-color: $base-color--ea
+
 .user-option__icon
 	+centering-transform-abs()
+	letter-spacing: normal
+	opacity: 1
+	visibility: visible
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
 
 	& > span
 		+hide-text
@@ -68,6 +118,10 @@
 
 		.ea-site &
 			background-color: $base-color--ea
+
+	a.active &
+		opacity: 0
+		visibility: hidden
 
 // ховер
 .user-options__item

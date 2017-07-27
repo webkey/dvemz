@@ -113,24 +113,23 @@ textarea
 	$this-icon-size: 16px
 	$this-icon-lines-width: 12px
 	$this-icon-lines-height: 2px
-	$this-icon-lines-color: $base-color
 
 	position: absolute
 	left: 100%
 	top: round($form-input-height*0.5)
 	+font(0, 0)
 	+size($this-icon-size)
-	margin: -8px 0 0 #{round(($text-layout-space-horizontal - $this-icon-size)*0.5)}
+	margin: -8px 0 0 #{round(($text-layout-space-horizontal - $this-icon-size)*0.2)}
 	backface-visibility: hidden
 	z-index: -1
 	pointer-events: none
 	display: none
 
 	+media('<tab-lg')
-		margin-left: #{round(($text-layout-space-horizontal--md - $this-icon-size)*0.5)}
+		margin-left: #{round(($text-layout-space-horizontal--md - $this-icon-size)*0.2)}
 
 	+media('<tab-sm')
-		margin-left: #{round(($text-layout-space-horizontal--sm - $this-icon-size)*0.5)}
+		margin-left: #{round(($text-layout-space-horizontal--sm - $this-icon-size)*0.2)}
 
 	form .success ~ &
 		display: block
@@ -139,9 +138,12 @@ textarea
 		+pseudo()
 		bottom: 0
 		backface-visibility: hidden
-		background-color: $this-icon-lines-color
+		background-color: $base-color
 		transition-property: background-color
 		transition-duration: $animation-speed
+
+		.ea-site &
+			background-color: $base-color--ea
 
 	&::before
 		+size(round($this-icon-lines-width*0.75), $this-icon-lines-height)

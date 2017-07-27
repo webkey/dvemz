@@ -1,0 +1,52 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* tabs-light
+.tabs-light__nav
+	text-align: center
+	+clear-spacing
+	cursor: default
+	user-select: none
+	margin-bottom: 30px
+
+	.activeIs-tab-login-forget &
+		display: none
+
+.tabs-light__nav--alt
+	display: none
+
+	.activeIs-tab-login-forget &
+		display: block
+
+.tabs-light__tab
+	text-decoration: none
+	+font(14px, 20px)
+	letter-spacing: 0.05em
+	text-transform: uppercase
+	color: $text-color
+	margin: 0 10px 10px
+	transition-property: color
+	transition-duration: $animation-speed
+
+	span
+		transition-property: border-color
+		transition-duration: $animation-speed
+		border-bottom: 1px dotted tint($text-color, 60%)
+
+	.no-touchevents &:hover
+		span
+			border-bottom-color: transparent
+
+	&.active-tab
+		color: $base-color
+		cursor: default
+		+font-bold
+
+		span
+			border-bottom-color: transparent !important
+
+		.ea-site &
+			color: $base-color--ea
+
+/* tabs-light end

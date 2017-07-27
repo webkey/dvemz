@@ -6,7 +6,7 @@
 
 .light-form
 	&.input-wrap
-		margin-bottom: 50px
+		margin-bottom: 30px
 
 	input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
 		// position: relative // важно! поднять выше лейбла
@@ -63,14 +63,16 @@
 			right: 0
 			width: 0
 
+			.ea-site &
+				border-top-color: $base-color--ea
+
 		label
 			display: block
-			overflow: hidden
-			text-overflow: ellipsis
+			+truncate(100%)
 			transform-origin: 0 0
 
 		&:before, &:after, & label
-			transition-property: color, transform, width
+			transition-property: color, transform, width, font
 			transition-duration: 0.3s
 			transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 
@@ -82,7 +84,8 @@
 			color: $text-color-light
 
 			label
-				transform: translate(0, -18px) scale(0.78, 0.78)
+				+font-normal
+				transform: translate(0, -0.6em) scale(0.68)
 				cursor: default
 
 			&:before

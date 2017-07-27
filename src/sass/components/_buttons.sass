@@ -252,7 +252,7 @@
 			background: $bg-color-light
 
 	// на панели навигации
-	.nav-footer &
+	.shutter-footer &
 		display: none
 		margin-bottom: $bottom-space
 
@@ -295,10 +295,6 @@ $btn-menu-lines-color: $text-color !default
 	+size($btn-menu-lines-width, $btn-menu-lines-height)
 	background: $btn-menu-lines-color
 
-=btn-menu-transition()
-	transition-property: transform, box-shadow, background-color
-	transition-duration: $animation-speed
-
 .menu-btn
 	position: relative
 	text-decoration: none
@@ -314,6 +310,7 @@ $btn-menu-lines-color: $text-color !default
 		z-index: -1
 
 .menu-btn__inner
+
 	+cover-abs()
 	+clear-spacing
 	white-space: nowrap
@@ -322,20 +319,12 @@ $btn-menu-lines-color: $text-color !default
 		+hide-text
 		white-space: normal
 
-	&::before, &::after, & > i
-		+btn-menu-line-style
-		left: 50%
-		top: 50%
-		+margin($top: -#{round($btn-menu-lines-height*0.5)}, $left: -#{round($btn-menu-lines-width*0.5)})
-
-	&::before, &::after
-		+pseudo()
-		opacity: 0
-		transition-property: transform, opacity
-		transition-duration: $animation-speed
-
 	& > i
 		position: absolute
+		left: 50%
+		top: 50%
+		+btn-menu-line-style
+		+margin($top: -#{round($btn-menu-lines-height*0.5)}, $left: -#{round($btn-menu-lines-width*0.5)})
 		backface-visibility: hidden
 		transition-property: background-color
 		transition-duration: $animation-speed
@@ -356,31 +345,21 @@ $btn-menu-lines-color: $text-color !default
 		&::after
 			top: #{$btn-menu-lines-height + $btn-menu-lines-space}
 
-	// active
-	.menu-btn.active &
-		&::before
-			transform: rotate(45deg)
-			opacity: 1
-
-		&::after
-			transform: rotate(-45deg)
-			opacity: 1
+	a.active &
 
 		& > i
 			background-color: transparent !important
 
 			&::before
-				transform: translate(0, #{$btn-menu-lines-space+$btn-menu-lines-height})
+				transform: translate(0, #{$btn-menu-lines-height + $btn-menu-lines-space})
 				opacity: 0
 
 			&::after
-				transform: translate(0, -#{$btn-menu-lines-space+$btn-menu-lines-height})
+				transform: translate(0, -#{$btn-menu-lines-height + $btn-menu-lines-space})
 				opacity: 0
 
 	// hover
-	.no-touchevents .menu-btn:hover &
-		&::before, &::after
-			background-color: $base-color
+	.no-touchevents a:hover &
 
 		& > i
 			background-color: $base-color
@@ -389,9 +368,7 @@ $btn-menu-lines-color: $text-color !default
 				background-color: $base-color
 
 	// hover for ea site
-	.no-touchevents .ea-site .menu-btn:hover &
-		&::before, &::after
-			background-color: $base-color--ea
+	.no-touchevents .ea-site a:hover &
 
 		& > i
 			background-color: $base-color--ea
