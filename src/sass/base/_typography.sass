@@ -471,7 +471,8 @@ table
 			color: $text-color-alt
 			text-align: center
 
-			&::before, &::after
+			&::before,
+			&::after
 				content: none
 
 		cite
@@ -481,6 +482,10 @@ table
 			+font($font-size, $line-height)
 			color: $text-color-light
 			text-align: center
+
+		.ea-site &
+			q
+				color: $base-color--ea
 
 /*blockquote end*/
 

@@ -38,7 +38,7 @@
 			-->
 		</div>
 		@@include('_tpl_user-options.tpl')
-		<a href="#" class="btn-siblings"><i>&nbsp;</i><span>Электрощитовое <br> оборудование</span></a>
+		<a href="index.html" class="btn-siblings"><i>&nbsp;</i><span>Электрощитовое <br> оборудование</span></a>
 	</div>
-	<a href="#" class="btn-catalog btn-catalog-js"><span>Каталог</span></a>
+	<a href="automatic-catalog.html" class="btn-catalog btn-catalog-js"><span>Каталог</span></a>
 </aside>

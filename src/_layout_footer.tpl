@@ -41,7 +41,7 @@
 						</div>
 						<div class="footer-nav__col footer-add-info">
 							<div class="footer-nav__item">
-								<span class="copyright">&copy; 2017 ОАО ДВЭМЗ»</span>
+								<span class="copyright">&copy; 2017 ОАО ДВЭМЗ</span>
 							</div>
 							<div class="footer-nav__item">
 								<ul class="dl">

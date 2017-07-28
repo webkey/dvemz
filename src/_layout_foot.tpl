@@ -1,6 +1,11 @@
 <!-- >>> foot.tpl <<< -->
 <!--footer-->
-@@include('_layout_footer.tpl')
+@@if(context.site === "dvemz") {
+	@@include('_layout_footer.tpl')
+}
+@@if(context.site === "ea") {
+	@@include('_layout_footer--ea.tpl')
+}
 <!--footer end-->
 
 <!--Map-->

@@ -189,7 +189,9 @@
 			+padding-horizontal(30px)
 
 		+media('<tab-sm')
-			+padding-horizontal(10px)
+			+padding-horizontal(0)
+			min-width: 50px
+			text-align: center
 
 .logo-alt-title, .logo-alt-map
 	position: relative
@@ -230,6 +232,16 @@
 
 	&::before
 		+ratio(152, 47)
+
+	+media('<tab-lg')
+		width: 111px
+
+	+media('<tab-sm')
+		+size(26px, auto)
+		background-image: url(../../img/logo-short-alt.png)
+
+		&::before
+			+ratio(26, 22)
 
 	.ea-site &
 		+size(178px, auto)

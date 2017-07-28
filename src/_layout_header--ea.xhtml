@@ -1,4 +1,4 @@
-<!--header-->
+<!--header panel-->
 <header class="header">
 	<div class="header__align">
 		<div class="header__holder">
@@ -32,27 +32,23 @@
 		</div>
 	</div>
 </header>
-<!--header end-->
+<!--header panel end-->
 
-<!--NAVIGATION POPUP-->
+<!--navigation popup-->
 <aside class="shutter nav-popup-js">
 	<div class="shutter__align">
 		<div class="shutter__holder">
 			<div class="shutter__row">
 				<div class="shutter__cell">
-					<header class="shutter-header">
-						<a href="#" class="btn-popup-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
-						<a href="index.html" class="logo-nav">
-							<div class="logo-nav__img"><span>Электроавтоматика</span></div>
-							<span class="logo-nav__title">Интернет-магазин</span>
-						</a>
-					</header>
+					@@include('_tpl_shutter-header.tpl', {
+						"site": "ea"
+					})
 				</div>
 			</div>
 			<div class="shutter__row">
 				<div class="shutter__cell">
 					<nav class="nav">
-						@@include('_navigation-list.tpl', {
+						@@include('_navigation-list--ea.tpl', {
 							"mainNavItemActive": "@@mainNavItemActive",
 							"classKey": "nav"
 						})
@@ -61,31 +57,25 @@
 			</div>
 			<div class="shutter__row">
 				<div class="shutter__cell">
-					<footer class="shutter-footer">
-						<a href="#" class="btn-siblings"><i>&nbsp;</i><span>Электрощитовое <br> оборудование</span></a>
-						<div class="copyright">&copy; 2017 ОАО Электроавтоматика</div>
-						<div class="map-site"><a href="map-site.html" title="Перейти на карту сайта">Карта сайта</a></div>
-					</footer>
+					@@include('_tpl_shutter-footer.tpl', {
+						"site": "ea"
+					})
 				</div>
 			</div>
 		</div>
 	</div>
 </aside>
-<!--NAVIGATION POPUP end-->
+<!--navigation popup end-->
 
-<!--SEARCH POPUP-->
+<!--search popup-->
 <aside class="shutter shutter-wide search-popup-js">
 	<div class="shutter__align">
 		<div class="shutter__holder">
 			<div class="shutter__row">
 				<div class="shutter__cell">
-					<header class="shutter-header">
-						<a href="#" class="btn-popup-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
-						<a href="index.html" class="logo-nav">
-							<div class="logo-nav__img"><span>Электроавтоматика</span></div>
-							<span class="logo-nav__title">Интернет-магазин</span>
-						</a>
-					</header>
+					@@include('_tpl_shutter-header.tpl', {
+						"site": "ea"
+					})
 				</div>
 			</div>
 			<div class="shutter__row">
@@ -111,31 +101,25 @@
 			</div>
 			<div class="shutter__row">
 				<div class="shutter__cell">
-					<footer class="shutter-footer">
-						<a href="#" class="btn-siblings"><i>&nbsp;</i><span>Электрощитовое <br> оборудование</span></a>
-						<div class="copyright">&copy; 2017 ОАО Электроавтоматика</div>
-						<div class="map-site"><a href="map-site.html" title="Перейти на карту сайта">Карта сайта</a></div>
-					</footer>
+					@@include('_tpl_shutter-footer.tpl', {
+						"site": "ea"
+					})
 				</div>
 			</div>
 		</div>
 	</div>
 </aside>
-<!--SEARCH POPUP end-->
+<!--search popup end-->
 
-<!--LOGIN POPUP-->
+<!--login popup-->
 <aside class="shutter login-popup-js">
 	<div class="shutter__align">
 		<div class="shutter__holder">
 			<div class="shutter__row">
 				<div class="shutter__cell">
-					<header class="shutter-header">
-						<a href="#" class="btn-popup-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
-						<a href="index.html" class="logo-nav">
-							<div class="logo-nav__img"><span>Электроавтоматика</span></div>
-							<span class="logo-nav__title">Интернет-магазин</span>
-						</a>
-					</header>
+					@@include('_tpl_shutter-header.tpl', {
+						"site": "ea"
+					})
 				</div>
 			</div>
 			<div class="shutter__row">
@@ -258,14 +242,12 @@
 			</div>
 			<div class="shutter__row">
 				<div class="shutter__cell">
-					<footer class="shutter-footer">
-						<a href="#" class="btn-siblings"><i>&nbsp;</i><span>Электрощитовое <br> оборудование</span></a>
-						<div class="copyright">&copy; 2017 ОАО Электроавтоматика</div>
-						<div class="map-site"><a href="map-site.html" title="Перейти на карту сайта">Карта сайта</a></div>
-					</footer>
+					@@include('_tpl_shutter-footer.tpl', {
+						"site": "ea"
+					})
 				</div>
 			</div>
 		</div>
 	</div>
 </aside>
-<!--LOGIN POPUP end-->
+<!--login popup end-->

@@ -26,30 +26,45 @@
 	+font-alt-bold
 	+font(16px, 24px)
 	text-align: center
-	color: $btn-text-color
+	color: $text-color
 	padding: 12px 25px
 	border: 1px solid transparent
-	background: $btn-bg-color
+	background: $base-color
 	box-shadow: none
 	transition-property: background-color, color, border-color
 	transition-duration: $animation-speed
 	margin: 0
 
 	.no-touchevents &:hover
-		background-color: $btn-bg-hover-color
+		background-color: tint($base-color, 70%)
 
 	//&:active
 		transform: scale(0.95)
 
+	// ea
+	.ea-site &
+		background: $base-color--ea
+
+		.no-touchevents &:hover
+			background-color: tint($base-color--ea, 70%)
+
 //btn-default-alt
 .btn-default-alt
-	color: $btn-text-color
-	border: 1px solid $btn-text-color
-	background: none
+	color: $text-color
+	border: 1px solid $text-color
+	background-color: transparent
 
 	.no-touchevents &:hover
-		background: $btn-bg-color
-		border-color: $btn-bg-color
+		background: $base-color
+		border-color: $base-color
+
+	// ea
+	.ea-site &
+		background-color: transparent
+
+		.no-touchevents &:hover
+			background: $base-color--ea
+			border-color: $base-color--ea
 
 // btn-more
 .btn-main
@@ -97,7 +112,7 @@
 	text-align: center
 	text-decoration: none
 	white-space: nowrap
-	color: $btn-text-color
+	color: $text-color
 	border: 1px solid $base-color
 	background-color: transparent
 	transition-property: background-color, color, border-color
@@ -167,7 +182,7 @@
 	text-transform: uppercase
 	letter-spacing: 0.05em
 	white-space: nowrap
-	color: $btn-text-color
+	color: $text-color
 	padding: 11px 24px 9px
 	border: 3px solid $base-color
 	background-color: transparent

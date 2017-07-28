@@ -23,9 +23,16 @@
 	<meta property="og:description" content="Описание">
 	<meta property="og:site_name" content="Расширенное название">
 	<!--Favicon-->
+	@@if(context.ea) {
+	<link rel="shortcut icon" href="favicon--ea.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="favicon--ea.ico">
+	<link rel="apple-touch-icon" href="apple-touch-icon--ea.png">
+	}
+	@@if(!context.ea) {
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	}
 	<!--Style-->
 	<link rel="stylesheet" href="css/libs.min.css">
 	<link rel="stylesheet" href="css/main.css">

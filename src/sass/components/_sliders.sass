@@ -64,7 +64,7 @@
 
 // arrows outside
 .slick-arrow-outside, .slick-arrow-outside:hover, .slick-arrow-outside:focus
-	background-color: $btn-bg-color
+	background-color: $base-color
 
 // переопределяем стили для ховера и фокуса на стрелки слайдера
 .slick-arrow-outside
@@ -72,10 +72,10 @@
 	+size(30px)
 
 	.no-touchevents &:hover, .no-touchevents &:focus
-		background-color: $btn-bg-hover-color
+		background-color: tint($base-color, 70%)
 
 		&.slick-disabled
-			background-color: $btn-bg-color
+			background-color: $base-color
 
 	&::after
 		border-color: white

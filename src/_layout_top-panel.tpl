@@ -7,6 +7,12 @@
 			</a>
 			<img style="display: none;" src="img/logo.png" alt="ДВЭМЗ">
 		</div>
+		<a href="#" class="menu-btn btn-nav-js" title="Открыть главное меню">
+			<div class="menu-btn__inner">
+				<span>Меню</span>
+				<i>&nbsp;</i>
+			</div>
+		</a>
 		<div class="top-panel-contacts">
 			<div class="top-panel-contacts__item">
 				<!--contact phones-->
@@ -31,6 +37,7 @@
 			</div>
 			-->
 		</div>
-		<a href="#" class="btn-siblings"><i>&nbsp;</i><span>Электро<br> автоматика</span></a>
+		@@include('_tpl_user-options.tpl')
+		<a href="automatic-catalog.html" class="btn-siblings"><i>&nbsp;</i><span>Электро<br> автоматика</span></a>
 	</div>
 </aside>

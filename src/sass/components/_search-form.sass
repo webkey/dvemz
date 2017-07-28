@@ -43,11 +43,26 @@ input.search-form__input
 	+clear-spacing
 	text-align: center
 	z-index: 5
-	transition-property: color, fill
+	transition-property: color, fill, opacity
 	transition-duration: $animation-speed
 	// цвет текста и svg иконки
 	color: $text-color
 	fill: $text-color
+	pointer-events: none
+	opacity: 0.2
+
+	.input--has-value &
+		pointer-events: auto
+		opacity: 1
+
+	.no-touchevents &:hover
+		color: $base-color
+		fill: $base-color
+
+	// ea
+	.no-touchevents .ea-site &:hover
+		color: $base-color--ea
+		fill: $base-color--ea
 
 	input
 		+cover-abs()

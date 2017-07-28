@@ -1,18 +1,18 @@
 @@include('_layout_head.tpl', {
-	"title": "ДВЭМЗ - Типографика",
-	"pageClass": "",
-	"ea": ""
+	"title": "ЭA - Типографика",
+	"pageClass": "ea-site",
+	"ea": "true"
 })
 
 <div class="wrapper">
 	<!--HEADER-->
-	@@include('_layout_header.xhtml', {
+	@@include('_layout_header--ea.xhtml', {
 		"mainNavItemActive": "О компании"
 	})
 	<!--HEADER end-->
 
 	<!--TOP PANEL-->
-	@@include('_layout_top-panel.tpl')
+	@@include('_layout_top-panel--ea.tpl')
 	<!--TOP PANEL end-->
 
 	<!--MAIN-->
@@ -513,10 +513,13 @@
 	<!--MAIN end-->
 
 	<!--SIDEBAR-->
-	@@include('_layout_side-menu.tpl')
+	@@include('_layout_catalog-menu.tpl', {
+		"catalogMenuActiveItem": "",
+		"notSubMenu": "true"
+	})
 	<!--SIDEBAR-->
 </div>
 
 @@include('_layout_foot.tpl', {
-	"site": "dvemz"
+	"site": "ea"
 })
