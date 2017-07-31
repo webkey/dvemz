@@ -22,7 +22,7 @@
 	background-color: #{$bg-color}
 	+clear
 
-	.home-page &
+	.top-panel--alt &
 		background-color: transparent
 
 .top-panel-contacts
@@ -217,7 +217,7 @@
 	background-position: 0 0
 	background-repeat: no-repeat
 
-	.home-page &
+	.top-panel--alt &
 		background-position: 0 100%
 
 	&::before
@@ -239,6 +239,9 @@
 	+media('<tab-sm')
 		+size(26px, auto)
 		background-image: url(../../img/logo-short-alt.png)
+
+		.top-panel--alt &
+			background-image: url(../../img/logo-short.png)
 
 		&::before
 			+ratio(26, 22)

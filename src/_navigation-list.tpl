@@ -9,7 +9,7 @@
 
 	<!--@@classKey item start-->
 	<li class="@@if(mainNavItemActive === "Производство"){current}">
-		@@include('_navigation-LINK.tpl', { "itemText": "Производство", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK.tpl', { "itemText": "Производство", "itemLink": "catalog.html", "key": "@@classKey", "specialValue": "" })
 	</li>
 	<!--@@classKey item end-->
 

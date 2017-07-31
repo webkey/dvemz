@@ -20,16 +20,18 @@
 	+media('<tab-sm')
 		+padding-horizontal($text-layout-space-horizontal--sm)
 
-	.no-touchevents &:hover
-		background-color: darken($bg-color-light, 10%)
+	+media('>=desk-sm')
+		.no-touchevents &:hover
+			background-color: darken($bg-color-light, 10%)
 
 	// главная ДВЭМЗ
 	.home-page &
 		color: white
 		background-color: $logo-bg-color
 
-	.no-touchevents .home-page &:hover
-		background-color: lighten($logo-bg-color, 10%)
+	+media('>=desk-sm')
+		.no-touchevents .home-page &:hover
+			background-color: lighten($logo-bg-color, 10%)
 	// главная ДВЭМЗ end
 
 	+media('<tab-lg')

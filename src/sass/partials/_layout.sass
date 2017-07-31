@@ -45,12 +45,12 @@
 		+media('<desk-lg')
 			margin-right: $catalog-menu-width
 
-	&, .ea-has-catalog-menu &
+	&, .ea-has-catalog-menu &, .home-page &
 		+media('<desk-md')
 			margin-right: 0
 
 		+media('<tab-lg')
-			&, .ea-has-catalog-menu &
+			&, .ea-has-catalog-menu &, .home-page &
 				margin-left: 0
 
 /* top panel (layout)
@@ -72,13 +72,20 @@
 	// альтернативна верхняя панель (с полупрозрачным градиентным фоном)
 	&.top-panel--alt
 		position: fixed
-		left: $header-width
-		width: calc(100% - #{$sidebar-width} - #{$header-width} - #{$catalog-categories-width--full})
-		margin: 0
+		//left: $header-width
+		//width: calc(100% - #{$sidebar-width} - #{$header-width} - #{$catalog-categories-width--full})
+		//margin: 0
 
 	// верхняя панель на главной (двэмз)
 	.home-page &
 		width: calc(100% - #{$sidebar-width--lg} - #{$header-width})
+
+		+media('<desk-md')
+			width: calc(100% - #{$header-width})
+
+		+media('<desk-sm')
+			width: 100%
+			left: 0
 
 	// верхняя панель (автоматика) для каталожных страниц
 	.ea-has-catalog-menu &
@@ -116,6 +123,9 @@
 		width: 100%
 		min-width: 320px
 		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
+
+		.top-panel--alt &
+			box-shadow: none
 
 /*top panel (layout) end
 

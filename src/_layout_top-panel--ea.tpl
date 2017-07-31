@@ -1,7 +1,7 @@
 <aside class="top-panel">
 	<div class="top-panel-holder">
 		<div class="logo-alt">
-			<a href="index.html">
+			<a href="automatic-catalog.html">
 				<div class="logo-alt-title"><div class="logo-alt-title__fig"><span>Электроавтоматика</span></div></div>
 				<div class="logo-alt-map"><div class="logo-alt-map__fig"><span>Владивосток</span></div></div>
 			</a>

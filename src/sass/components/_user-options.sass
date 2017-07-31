@@ -123,6 +123,10 @@
 		opacity: 0
 		visibility: hidden
 
+	.top-panel--alt &
+		path
+			fill: white
+
 // ховер
 .user-options__item
 
@@ -137,6 +141,9 @@
 		transform: translate(100%, 0) skew(-30deg)
 		transition-property: transform
 		transition-duration: 0.3s
+
+		.top-panel &
+			content: none
 
 	&.active::before
 		transform: translate(0, 0) skew(-10deg)
