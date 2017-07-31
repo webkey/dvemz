@@ -193,6 +193,21 @@
 
 /* footer common (layout) end
 
+/* catalog section (layout)
+.c-section__align
+	padding: round($top-panel-height + $text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5)
+
+	+media('<desk-hd')
+		padding: round($top-panel-height + $text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg} round($text-layout-space-horizontal--lg*1.5)
+
+	+media('<tab-lg')
+		padding: round($top-panel-height + $text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} round($text-layout-space-horizontal--md*1.5)
+
+	+media('<tab-sm')
+		padding: round($top-panel-height + $text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*1.5)
+
+/* catalog section (layout) end
+
 /* catalog menu (layout)
 .catalog-menu
 	//overflow: hidden
