@@ -104,6 +104,7 @@ gulp.task('createCustomModernizr', function (done) { // Таск для форм
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск для мераж js библиотек
 	return gulp.src([
 		'src/libs/device.js/lib/device.min.js' // определение устройств
+		, 'src/libs/jquery-mousewheel/jquery.mousewheel.min.js' // mousewheel
 		, 'src/js/temp/filer.min.js' // инпут файл
 		, 'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
 		, 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
@@ -142,6 +143,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		// , 'src/libs/jquery-ui/ui/widgets/spinner.js' // спиннер
 		// jquery ui end
 		, 'src/libs/fotorama/fotorama.js'
+		, 'src/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js'
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))

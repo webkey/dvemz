@@ -1,6 +1,6 @@
 @@include('_layout_head.tpl', {
 	"title": "ДВЭМЗ - Каталог",
-	"pageClass": ""
+	"pageClass": "has-catalog-menu"
 })
 
 <div class="wrapper">
@@ -43,7 +43,7 @@
 									</div>
 								</div>
 							</section>
-							<section class="c-section js-tabs" data-collapsed="true">
+							<section class="c-section js-tabs" data-collapsed="true" id="catalog-1-1">
 								<div class="c-section__container">
 									<div class="c-section__bg" style="background-image: url('img/bg-catalog-02.jpg');"></div>
 									<div class="c-section__align">
@@ -121,7 +121,7 @@
 									</div>
 								</div>
 							</section>
-							<section class="c-section js-tabs" data-collapsed="true">
+							<section class="c-section js-tabs" data-collapsed="true" id="catalog-1-2">
 								<div class="c-section__container">
 									<div class="c-section__bg" style="background-image: url('img/bg-catalog-03.jpg');"></div>
 									<div class="c-section__align">
@@ -179,7 +179,7 @@
 									</div>
 								</div>
 							</section>
-							<section class="c-section">
+							<section class="c-section" id="catalog-1-3">
 								<div class="c-section__container">
 									<div class="c-section__bg" style="background-image: url('img/bg-catalog-04.jpg');"></div>
 									<div class="c-section__align">
@@ -193,7 +193,7 @@
 									</div>
 								</div>
 							</section>
-							<section class="c-section">
+							<section class="c-section" id="catalog-1-4">
 								<div class="c-section__container">
 									<div class="c-section__bg" style="background-image: url('img/bg-catalog-05.jpg');"></div>
 									<div class="c-section__align">
@@ -207,7 +207,7 @@
 									</div>
 								</div>
 							</section>
-							<section class="c-section">
+							<section class="c-section" id="catalog-1-5">
 								<div class="c-section__container">
 									<div class="c-section__bg" style="background-image: url('img/bg-catalog-06.jpg');"></div>
 									<div class="c-section__align">
@@ -221,7 +221,7 @@
 									</div>
 								</div>
 							</section>
-							<section class="c-section">
+							<section class="c-section" id="catalog-1-6">
 								<div class="c-section__container">
 									<div class="c-section__bg" style="background-image: url('img/bg-catalog-07.jpg');"></div>
 									<div class="c-section__align">
@@ -235,7 +235,7 @@
 									</div>
 								</div>
 							</section>
-							<section class="c-section js-tabs" data-collapsed="true">
+							<section class="c-section js-tabs" data-collapsed="true" id="catalog-1-7">
 								<div class="c-section__container">
 									<div class="c-section__bg" style="background-image: url('img/bg-catalog-03.jpg');"></div>
 									<div class="c-section__align">
@@ -303,7 +303,11 @@
 	<!--MAIN end-->
 
 	<!--SIDEBAR-->
-	@@include('_layout_side-menu.tpl')
+	@@include('_layout_side-menu.tpl', {
+		"largeView": "",
+		"activeItem": "Электрощитовое оборудование",
+		"hasDrop": "true"
+	})
 	<!--SIDEBAR-->
 </div>
 

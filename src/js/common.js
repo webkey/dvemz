@@ -445,6 +445,43 @@ function fullPageInitial() {
 /*full page scroll*/
 
 /**
+ * !scroll to section
+ * */
+function scrollToSection() {
+	// external js:
+	// 1) Page Scroll to id (lib.min.js);
+	var activeSectionClass = 'active-section';
+
+	$(window).on("load", function () {
+
+		// setTimeout(function () {
+		// 	/* Page Scroll to id fn call */
+		// 	$(".sidebar-menu-js a").mPageScroll2id({
+		// 		highlightClass: activeSectionClass,
+		// 		highlightSelector: '.sidebar-menu-js a',
+		// 		scrollSpeed: 500,
+		// 		offset: 80,
+		// 		forceSingleHighlight: true,
+		// 		keepHighlightUntilNext: true
+		// 		// highlightByNextTarget: true
+		// 	});
+		// }, 1000);
+
+		var $navItem = $('.side-menu-drop').find('a');
+		$navItem.mPageScroll2id({
+			highlightClass: "catalog-item-active",
+			highlightSelector: $navItem,
+			scrollSpeed: 600,
+			offset: 0,
+			forceSingleHighlight: true,
+			keepHighlightUntilNext: false
+			// highlightByNextTarget: true
+		});
+	});
+}
+/*scroll to section end*/
+
+/**
  * !equal height
  * */
 function equalHeightInit() {
@@ -2791,6 +2828,7 @@ $(document).ready(function () {
 	slidersInit();
 	equalHeightInit();
 	fullPageInitial();
+	scrollToSection();
 	mainMapInit();
 	popupsInit();
 	sideMenuEvents();

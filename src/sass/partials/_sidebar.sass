@@ -8,9 +8,19 @@
 	right: 0
 	top: 0
 	height: 100%
-	width: $sidebar-width
+	//width: $sidebar-width
+	width: $sidebar-drop-width
 	background-color: $base-color
-	z-index: 998
+	z-index: 991
+	user-select: none
+	transform: translate(#{$sidebar-drop-width - $sidebar-width}, 0)
+	transition-property: transform
+	transition-duration: $animation-speed
+	transition-delay: 0.2s
+
+	&:hover, &:focus
+		transform: translate(0, 0)
+		transition-delay: 0s
 
 	+media('<desk-md')
 		display: none
@@ -19,19 +29,31 @@
 		width: $sidebar-width--lg
 		overflow-x: hidden
 		overflow-y: auto
+		transform: none
+
+	.v-middle__row
+		&:first-child, &:last-child
+			height: 0
+			overflow: hidden
+
+			.v-middle__cell
+				+font(0, 0)
+
+.side-menu__align
+	width: #{$sidebar-drop-width + 100px}
 
 .side-menu__holder
 	position: relative
 	width: 100%
-	top: 50%
-	transform: translate(0, -50%)
+	//top: 50%
+	//transform: translate(0, -50%)
 
 	.side-menu--alt &
 		display: table
 		table-layout: fixed
 		min-height: 100vh
-		top: auto
-		transform: none
+		//top: auto
+		//transform: none
 
 .side-menu__row
 	display: block
@@ -39,59 +61,55 @@
 	border: solid $side-menu-bg-color-hover
 	border-width: 1px 0
 	position: relative
-
-	&::before
-		content: ""
-		display: block
-		padding-top: calc(100%)
-
-	//&:last-child
-		.side-menu__cell
-			background-color: white
-			border-top-color: transparent
+	width: $sidebar-drop-width
 
 	.side-menu--alt &
 		display: table-row
 		margin: 0
 		border: none
+		width: auto
 
 		&::before
 			content: none
-			//padding-top: calc(100% + 1px)
+
+	&.current
+		border-color: black
+		z-index: 5
 
 .side-menu__cell
-	position: absolute
-	+position(0, 100%)
+	display: block
+	//position: absolute
+	//+position(0, 100%)
 	+size(auto, 100%)
 	color: $text-color
 	+clear-spacing
-	white-space: nowrap
 	text-decoration: none
-	text-align: center
 	background-color: $base-color
-	transform: translate(-#{$sidebar-width}, 0)
-
-	.no-touchevents &:hover
-		transform: translate(-100%, 0)
-
-	.side-menu--alt &
-		display: table-cell
-		vertical-align: middle
-		position: relative
-		white-space: normal
-		+position(auto, auto)
-		+size(auto)
-		padding: 5% 13%
-		border: solid $side-menu-bg-color-hover
-		border-width: 1px 0 0
-		transform: none
-
-	.no-touchevents .side-menu--alt &:hover
-		transform: none
-
-.side-menu__hover
 	transition-property: background-color, transform
 	transition-duration: $animation-speed
+
+	.no-touchevents &:hover
+		background-color: $side-menu-bg-color-hover
+
+	.side-menu--alt &
+		&, .no-touchevents &
+			display: table-cell
+			vertical-align: middle
+			position: relative
+			white-space: normal
+			+position(auto, auto)
+			+size(auto)
+			text-align: center
+			padding: 5% 13%
+			border: solid $side-menu-bg-color-hover
+			border-width: 1px 0 0
+
+	.current &
+		&, .no-touchevents &
+			background-color: black
+			color: white
+
+.side-menu__hover // стиль ховеров для главной страницы
 
 	.no-touchevents .side-menu--alt &:hover
 		background-color: $side-menu-bg-color-hover
@@ -124,7 +142,8 @@
 	.side-menu--alt &
 		display: block
 		+push-auto
-		max-width: 120px
+		width: auto
+		max-width: 100px
 		margin-bottom: 20px
 
 	&::before
@@ -137,16 +156,19 @@
 		transition-property: opacity, transform
 		transition-duration: $animation-speed
 
-		&:first-child
+		// если в коде будет 2 svg, для главной и внутренних
+		//&:first-child
 			display: none
 
 		.side-menu--alt &
 			+size(100px)
 
-			&:first-child
+			// если в коде будет 2 svg, для главной и внутренних
+			//&:first-child
 				display: block
 
-			&:first-child + svg
+			// если в коде будет 2 svg, для главной и внутренних
+			//&:first-child + svg
 				display: none
 
 		.no-touchevents .side-menu--alt .side-menu__cell:hover &
@@ -155,6 +177,9 @@
 
 	path
 		fill: black
+
+		.current &
+			fill: white
 
 	//img
 		position: absolute
@@ -172,32 +197,195 @@
 .side-menu__title
 	+display-inline-block-middle
 	position: relative
-	max-height: 100%
-	padding-right: 20px
+	overflow: hidden
+	max-height: 57px
+	width: #{$sidebar-drop-width - $sidebar-width - 20}
+	margin: 10px 0
 	+font-bold
-	+font(1.6rem, 1.167)
+	+font(16px, 19px)
 	letter-spacing: normal
 	text-transform: uppercase
 	text-align: left
 	opacity: 0
+	transform: translate(20px, 0)
 	transition-property: color, transform, opacity
 	transition-duration: round-float($animation-speed*1.5, 1)
+	transition-delay: #{round-float($animation-speed*0.5, 1)}
 	z-index: 5
 
 	.side-menu--alt &
-		text-align: center
+		max-height: 100%
+		width: auto
 		display: block
-		opacity: 1
 		padding: 0
-
-	.no-touchevents .side-menu__cell:hover &
-		transition-delay: #{$animation-speed*0.5}
+		text-align: center
+		transform: none
 		opacity: 1
+
+	.no-touchevents .side-menu:hover &
+		opacity: 1
+		transform: translate(0, 0)
+
+	.no-touchevents .side-menu--alt:hover &
+		transition-delay: 0s
+		transform: none
 
 	.no-touchevents .side-menu--alt .side-menu__cell:hover &
-		transition-delay: 0s
 		color: white
 
+/* side menu drop
+.side-menu-drop
+	$item-height: 36px
+	$circle-size: 11px
+
+	display: none
+	position: relative
+	padding: 0 0 $item-height
+	background-color: black
+	color: white
+
+	.side-menu__row.current &
+		display: block
+
+	&::before, &::after
+		+pseudo()
+		left: #{round($sidebar-width*0.5)}
+		pointer-events: none
+
+	&::before
+		+triangle(bottom, white, 6px, 1.6)
+		bottom: #{$item-height - 6px}
+		margin-left: -6px
+
+	&::after
+		+triangle(bottom, black, 5px, 1.5)
+		bottom: #{$item-height - 5px}
+		margin-left: -5px
+
+	ul
+		position: relative
+		list-style: none
+		margin: 0
+		padding: 0 0 #{round($item-height*0.5)}
+		+font(14px, #{$item-height})
+		//counter-reset: item
+
+		&::before
+			+pseudo()
+			left: #{round($sidebar-width*0.5)}
+			top: 0
+			+size(0, 100%)
+			border-left: 1px solid #666
+			pointer-events: none
+
+	li
+		//counter-increment: item
+		position: relative
+		height: #{$item-height}
+		padding: 0
+
+		&::before, &::after
+			display: block
+			position: absolute
+			top: #{round($item-height*0.5)}
+			left: #{round($sidebar-width*0.5)}
+			pointer-events: none
+
+		&::before
+			content: ""
+			margin-left: -#{floor($circle-size*0.5)}
+			margin-top: -#{round($circle-size*0.5)}
+			+size($circle-size)
+			border-radius: round($circle-size*0.5)
+			border: 1px solid white
+			background-color: black
+			transition-property: border-color
+			transition-duration: $animation-speed
+
+		.no-touchevents &:hover
+			&::before
+				border-color: $base-color
+
+		&::after
+			content: attr(data-count)
+			margin: -8px 0 0 11px
+			+font(12px, 16px)
+			opacity: 1
+			visibility: visible
+			transform: translate(0, 0)
+			transition-property: opacity, visibility, transform
+			transition-duration: round-float($animation-speed*1.5, 1)
+			transition-delay: round-float($animation-speed*0.5, 1)
+
+			.side-menu:hover &
+				opacity: 0
+				visibility: hidden
+				transform: translate(10px, 0)
+
+	a
+		display: block
+		color: white
+		text-decoration: none
+		transition-property: color
+		transition-duration: $animation-speed
+		padding: 0 20px 0 #{$sidebar-width - 20px}
+
+		.no-touchevents &:hover
+			color: $base-color
+
+		$circle-active-size: $circle-size - 6
+
+		&::before, &::after
+			+pseudo()
+			top: #{round($item-height*0.5)}
+			left: #{round($sidebar-width*0.5)}
+			pointer-events: none
+			opacity: 0
+			visibility: hidden
+			transition-property: opacity, visibility, transform
+			transition-duration: $animation-speed
+
+		&::before
+			content: ""
+			margin-left: -#{floor($circle-active-size*0.5)}
+			margin-top: -#{round($circle-active-size*0.5)}
+			+size($circle-active-size)
+			border-radius: round($circle-active-size*0.5)
+			background-color: $base-color
+
+		&::after
+			background: url(../../img/depict-active.png) no-repeat
+			width: 20px
+			height: 14px
+			background-size: contain
+			margin: -8px 0 0 -22px
+			transform: translate(4px, 0)
+
+		&.catalog-item-active
+			&::before, &::after
+				transform: translate(0, 0)
+				opacity: 1
+				visibility: visible
+				transition-delay: 0.2s
+
+		& > span
+			display: block
+			+truncate(100%)
+			opacity: 0
+			visibility: hidden
+			transform: translate(20px, 0)
+			transition-property: opacity, visibility, transform
+			transition-duration: round-float($animation-speed*1.5, 1)
+			transition-delay: round-float($animation-speed*0.5, 1)
+
+			.side-menu:hover &
+				opacity: 1
+				visibility: visible
+				transform: translate(0, 0)
+
+/* side menu drop end
+
+/* download
 .download
 	text-align: left
 
@@ -253,4 +441,5 @@
 		color: $text-color-light
 		margin-top: 0.5em
 
+/* download end
 /*SIDE MENU end*/
