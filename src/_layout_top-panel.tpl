@@ -40,4 +40,5 @@
 		@@include('_tpl_user-options.tpl')
 		<a href="automatic-catalog.html" class="btn-siblings"><i>&nbsp;</i><span>Электро<br> автоматика</span></a>
 	</div>
+	<a href="catalog.html" class="btn-catalog btn-catalog-js"><span>Каталог</span></a>
 </aside>

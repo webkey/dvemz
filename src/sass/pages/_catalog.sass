@@ -229,6 +229,13 @@ $c-section-max-width-lg: 1320px !default
 		margin-bottom: 0
 
 .c-section-thumb
+	&, & a
+		min-height: 332px
+
+		+media('<desk-md')
+			min-height: 0
+
+.c-section-thumb
 	+display-inline-block-top
 	width: round-float(100%/4, 4)
 	+font($font-size, $line-height)
@@ -236,17 +243,25 @@ $c-section-max-width-lg: 1320px !default
 	color: white
 	fill: white
 	text-align: center
-	min-height: 332px
+
+	+media('<desk-md')
+		+font($font-size--sm, $line-height--sm)
+
+	+media('<tab-lg')
+		width: round-float(100%/2, 4)
+		margin-bottom: 40px
 
 	a
 		display: block
 		position: relative
-		height: 100%
 		padding: $grid-inside-horizontal-space
 		color: inherit
 		fill: inherit // для svg внутри
 		text-decoration: none
 		border: 2px dotted transparent
+
+		+media('<desk-md')
+			padding: 20px
 
 		& > span
 			border-bottom: 1px dashed white

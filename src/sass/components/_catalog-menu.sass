@@ -308,7 +308,7 @@
 			display: block !important
 
 // СТРЕЛКИ навигации
-.catalog-menu__angle
+.catalog-menu__angle, .side-menu-arr
 	position: absolute
 	right: 0
 	top: 0
@@ -363,6 +363,33 @@
 	.no-touchevents li > .catalog-menu__tab &:hover i
 		&::before, &::after
 			background-color: $base-color--ea
+
+// для мобильной навигации (двэмз)
+.side-menu-arr
+	background-color: $base-color
+	border-left-color: $side-menu-bg-color-hover
+
+	i
+		&::before, &::after
+			background-color: $text-color
+
+	+media('<tab-lg')
+		display: block
+
+// стили стрелок навигации для разных состояний (двэмз)
+.side-menu-arr
+
+	// активное (подменю открыто)
+	.side-menu__row.is-open > .side-menu__cell & i
+		//transform: rotate(0)
+
+		&::before, &::after
+			transform: rotate(0)
+
+	// ховер
+	//.no-touchevents .side-menu__cell &:hover i
+		&::before, &::after
+			background-color: $base-color
 
 // особые стили для пунктов ПОДМЕНЮ
 .catalog-menu__drop
@@ -578,51 +605,4 @@
 		display: block
 
 /* overlay catalog menu end
-
-/* button catalog menu toggle
-.btn-catalog
-	display: none // скрывать на больших экранах
-	padding: 13px #{$text-layout-space-horizontal--md}
-	+font-bold
-	+font(18px, 24px)
-	white-space: nowrap
-	text-decoration: none
-	color: black
-	text-transform: uppercase
-	text-align: center
-	background-color: $base-color--ea
-
-	+media('<desk-md')
-		+margin-horizontal($text-layout-space-horizontal--lg)
-
-		.ea-has-catalog-menu &
-			display: block
-
-	+media('<tab-lg')
-		+margin-horizontal(0)
-
-	.top-panel &
-		margin-top: $bottom-space
-
-		+media('<tab-lg')
-			margin-top: 0
-
-	&::before
-		+pseudo-inline-block-relative()
-		vertical-align: top
-		+size(16px, 16px)
-		margin: 3px 15px -3px 0
-		+font(0, 0)
-		background-image: linear-gradient(to right, transparent 0%, transparent 66.6%, #{$base-color--ea} 66.6%, #{$base-color--ea} 100%), linear-gradient(to bottom, black 0%, black 66.6%, #{$base-color--ea} 66.6%, #{$base-color--ea} 100%)
-		background-size: 6px 4px, 4px 6px
-
-	& > span
-		+display-inline-block-top
-		white-space: normal
-		text-align: left
-
-	//&:active
-		transform: translate(0, 2px)
-
-/* button catalog menu toggle
 /* CATALOG MENU end

@@ -7,7 +7,7 @@
 <ul class="@@classKey__list @@classKey-js js-tab-container">
 	<!--@@classKey item start-->
 	<li id="catalog-menu-item-01" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Кабельно-проводниковая продукция и кабеленесущие системы"){ current}">
-		@@include('_navigation-LINK--full.tpl', { "itemText": "Кабельно-проводниковая продукция и кабеленесущие системы", "itemLink": "typography.html", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK--full.tpl', { "itemText": "Кабельно-проводниковая продукция и кабеленесущие системы", "itemLink": "automatic-catalog.html", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
 	<li class="has-drop">@@include('_navigation-LINK--full.tpl', { "itemText": "Кабель и провод медный", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========3==========)", "START": "true", "key": "@@classKey"})
@@ -105,7 +105,7 @@
 
 	<!--@@classKey item start-->
 	<li id="catalog-menu-item-02" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Светотехнические изделия"){ current}">
-		@@include('_navigation-LINK--full.tpl', { "itemText": "Светотехнические изделия", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK--full.tpl', { "itemText": "Светотехнические изделия", "itemLink": "automatic-catalog.html", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
 
 	<li class="has-drop">@@include('_navigation-LINK--full.tpl', { "itemText": "Лампы", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
@@ -188,7 +188,7 @@
 
 	<!--@@classKey item start-->
 	<li id="catalog-menu-item-03" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Модульное, электрощитовое и коммутационное оборудование"){ current}">
-		@@include('_navigation-LINK--full.tpl', { "itemText": "Модульное, электрощитовое и коммутационное оборудование ", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK--full.tpl', { "itemText": "Модульное, электрощитовое и коммутационное оборудование ", "itemLink": "automatic-catalog.html", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
 	<li class="has-drop">@@include('_navigation-LINK--full.tpl', { "itemText": "Модульное оборудование", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========3==========)", "START": "true", "key": "@@classKey"})
@@ -322,7 +322,7 @@
 
 	<!--@@classKey item start-->
 	<li id="catalog-menu-item-04" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Оборудование защиты и автоматизации "){ current}">
-		@@include('_navigation-LINK--full.tpl', { "itemText": "Оборудование защиты и автоматизации ", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK--full.tpl', { "itemText": "Оборудование защиты и автоматизации ", "itemLink": "automatic-catalog.html", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
 	<li class="has-drop">@@include('_navigation-LINK--full.tpl', { "itemText": "Выключатели путевые, выключатели кнопочные", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========3==========)", "START": "true", "key": "@@classKey"})
@@ -358,7 +358,7 @@
 
 	<!--@@classKey item start-->
 	<li id="catalog-menu-item-05" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Высоковольтное оборудование"){ current}">
-		@@include('_navigation-LINK--full.tpl', { "itemText": "Высоковольтное оборудование", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK--full.tpl', { "itemText": "Высоковольтное оборудование", "itemLink": "automatic-catalog.html", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
 	<li class="has-drop">@@include('_navigation-LINK--full.tpl', { "itemText": "Выключатели, разъединители", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========3==========)", "START": "true", "key": "@@classKey"})
@@ -387,7 +387,7 @@
 
 	<!--@@classKey item start-->
 	<li id="catalog-menu-item-06" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Электромонтажные изделия и аксессуары"){ current}">
-		@@include('_navigation-LINK--full.tpl', { "itemText": "Электромонтажные изделия и аксессуары", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK--full.tpl', { "itemText": "Электромонтажные изделия и аксессуары", "itemLink": "automatic-catalog.html", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
 			<li class="has-drop">@@include('_navigation-LINK--full.tpl', { "itemText": "Коробки", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 				@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========3==========)", "START": "true", "key": "@@classKey"})
@@ -443,7 +443,7 @@
 
 	<!--@@classKey item start-->
 	<li id="catalog-menu-item-07" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Силовое оборудование и электроизмерительные приборы"){ current}">
-		@@include('_navigation-LINK--full.tpl', { "itemText": "Силовое оборудование и электроизмерительные приборы", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK--full.tpl', { "itemText": "Силовое оборудование и электроизмерительные приборы", "itemLink": "automatic-catalog.html", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
 			<li class="has-drop">@@include('_navigation-LINK--full.tpl', { "itemText": "Трансформаторы напряжения", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 				@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========3==========)", "START": "true", "key": "@@classKey"})
@@ -487,7 +487,7 @@
 
 	<!--@@classKey item start-->
 	<li id="catalog-menu-item-08" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Бытовые электроприборы, электроустановочные изделия и инструмент"){ current}">
-		@@include('_navigation-LINK--full.tpl', { "itemText": "Бытовые электроприборы, электроустановочные изделия и инструмент", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK--full.tpl', { "itemText": "Бытовые электроприборы, электроустановочные изделия и инструмент", "itemLink": "automatic-catalog.html", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
 			<li class="has-drop">@@include('_navigation-LINK--full.tpl', { "itemText": "Стабилизаторы напряжения и электрогенераторы, сварка", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 				@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========3==========)", "START": "true", "key": "@@classKey"})
@@ -550,7 +550,7 @@
 
 	<!--@@classKey item start-->
 	<li id="catalog-menu-item-09" class="has-drop js-tab-content@@if(catalogMenuActiveItem === "Инструмент"){ current}">
-		@@include('_navigation-LINK--full.tpl', { "itemText": "Инструмент", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
+		@@include('_navigation-LINK--full.tpl', { "itemText": "Инструмент", "itemLink": "automatic-catalog.html", "key": "@@classKey", "specialValue": "" })
 		@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========2==========)", "START": "true", "key": "@@classKey"})
 			<li class="has-drop">@@include('_navigation-LINK--full.tpl', { "itemText": "Буры по бетону, диски отрезные, сверла", "itemLink": "#", "key": "@@classKey", "specialValue": "" })
 				@@include('_navigation-DROP-WRAP.tpl', { "dropLevel": "(==========3==========)", "START": "true", "key": "@@classKey"})

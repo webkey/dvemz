@@ -27,47 +27,59 @@
 	width: 100%
 
 .content
-	margin: 0 #{$catalog-categories-width--full} 0 #{$header-width}
-	min-height: 50px
+	// контен (общие стили)
+	&
+		margin: 0 #{$sidebar-width} 0 #{$header-width}
+		min-height: 50px
+
+	// контент на главной (двэмз)
+	.home-page &
+		margin-right: #{$sidebar-width--lg}
+
+	// контент (автоматика)
+	.ea-site &
+		margin-right: #{$catalog-categories-width--full}
+
+	// контент (автоматика) для каталожных страниц
+	.ea-has-catalog-menu &
+		margin-right: #{$catalog-menu-width + $catalog-categories-width--full}
 
 	+media('<desk-qhd')
-		margin-right: #{$sidebar-width}
+		&, .ea-site &
+			margin-right: #{$sidebar-width}
 
-	.home-page &
-		margin-right: $sidebar-width--lg
+		// контент (автоматика) для каталожных страниц
+		.ea-has-catalog-menu &
+			margin-right: #{$catalog-menu-width + $catalog-categories-width--short}
 
-	.ea-has-catalog-menu &
-		margin-right: $catalog-menu-width + $catalog-categories-width--full
+	+media('<desk-lg')
+		// контент (автоматика) для каталожных страниц
+		.ea-has-catalog-menu &
+			margin-right: #{$catalog-menu-width}
 
-		+media('<desk-qhd')
-			margin-right: $catalog-menu-width + $catalog-categories-width--short
-
-		+media('<desk-lg')
-			margin-right: $catalog-menu-width
-
-	&, .ea-has-catalog-menu &, .home-page &
-		+media('<desk-md')
+	+media('<desk-md')
+		.ea-site &
 			margin-right: 0
 
-		+media('<tab-lg')
-			&, .ea-has-catalog-menu &, .home-page &
-				margin-left: 0
+	+media('<tab-lg')
+		&, .home-page &, .ea-site &
+			margin-right: 0
+			margin-left: 0
 
 /* top panel (layout)
 .top-panel
-	position: relative
-	z-index: 40
-	margin: 0 0 0 $header-width
-	width: calc(100% - #{$catalog-categories-width--full} - #{$header-width})
+	$base-width: 100% - #{$header-width}
+	
+	// верхняя панель (общие стили)
+	&
+		position: relative
+		z-index: 40
+		margin: 0 0 0 $header-width
+		width: calc(#{$base-width} - #{$sidebar-width})
 
-	+media('<desk-qhd')
-		width: calc(100% - #{$sidebar-width} - #{$header-width})
-
-	+media('<desk-md')
-		width: calc(100% - #{$header-width})
-
-	+media('<tab-lg')
-		padding-top: #{$top-panel-height--md}
+	// верхняя панель на главной (двэмз)
+	.home-page &
+		width: calc(#{$base-width} - #{$sidebar-width--lg})
 
 	// альтернативна верхняя панель (с полупрозрачным градиентным фоном)
 	&.top-panel--alt
@@ -76,35 +88,37 @@
 		//width: calc(100% - #{$sidebar-width} - #{$header-width} - #{$catalog-categories-width--full})
 		//margin: 0
 
-	// верхняя панель на главной (двэмз)
-	.home-page &
-		width: calc(100% - #{$sidebar-width--lg} - #{$header-width})
-
-		+media('<desk-md')
-			width: calc(100% - #{$header-width})
-
-		+media('<desk-sm')
-			width: 100%
-			left: 0
+	// верхняя панель (автоматика) для всех страниц
+	.ea-site &
+		width: calc(#{$base-width} - #{$catalog-categories-width--full})
 
 	// верхняя панель (автоматика) для каталожных страниц
 	.ea-has-catalog-menu &
-		width: calc(100% - #{$catalog-menu-width} - #{$catalog-categories-width--full} - #{$header-width})
+		width: calc(#{$base-width} - #{$catalog-menu-width} - #{$catalog-categories-width--full})
 
-		+media('<desk-qhd')
-			width: calc(100% - #{$catalog-menu-width} - #{$catalog-categories-width--short} - #{$header-width})
+	+media('<desk-qhd')
+		&, .ea-site &
+			width: calc(#{$base-width} - #{$sidebar-width})
 
-		+media('<desk-lg')
-			width: calc(100% - #{$catalog-menu-width} - #{$header-width})
+		// верхняя панель (автоматика) для каталожных страниц
+		.ea-has-catalog-menu &
+			width: calc(#{$base-width} - #{$catalog-menu-width} - #{$catalog-categories-width--short})
 
-		+media('<desk-md')
-			width: calc(100% - #{$header-width})
+	+media('<desk-lg')
+		// верхняя панель (автоматика) для каталожных страниц
+		.ea-has-catalog-menu &
+			width: calc(#{$base-width} - #{$catalog-menu-width})
 
-	// для всех страниц
-	&, .ea-has-catalog-menu &
-		+media('<tab-lg')
+	+media('<desk-md')
+		// верхняя панель (автоматика) для всех страниц
+		.ea-site &
+			width: calc(#{$base-width})
+
+	+media('<tab-lg')
+		&, .ea-site &
 			width: 100%
 			margin-left: 0
+			padding-top: #{$top-panel-height--md}
 
 .top-panel-holder
 	position: relative
@@ -135,7 +149,7 @@
 	position: fixed
 	+position(0, 0)
 	+size($header-width, 100%)
-	z-index: 1000
+	z-index: 1001
 
 	+media('<tab-lg')
 		display: none
@@ -153,26 +167,41 @@
 		display: none
 
 	.footer__holder
-		left: $header-width
-		width: calc(100% - #{$header-width} - #{$catalog-categories-width--full})
+		$base-width: 100% - #{$header-width}
+		
+		// футер (общие стили)
+		&
+			left: $header-width
+			width: calc(#{$base-width} - #{$sidebar-width})
+
+		// футер (автоматика) для всех страниц
+		.ea-site &
+			width: calc(#{$base-width} - #{$catalog-categories-width--full})
+
+		// футер (автоматика) для каталожных страниц
+		.ea-has-catalog-menu &
+			width: calc(#{$base-width} - #{$catalog-menu-width} - #{$catalog-categories-width--full})
 
 		+media('<desk-qhd')
-			width: calc(100% - #{$header-width} - #{$sidebar-width})
+			&, .ea-site &
+				width: calc(#{$base-width} - #{$sidebar-width})
 
-		.ea-has-catalog-menu &
-			width: calc(100% - #{$header-width} - #{$catalog-menu-width} - #{$catalog-categories-width--full})
+			// футер (автоматика) для каталожных страниц
+			.ea-has-catalog-menu &
+				width: calc(#{$base-width} - #{$catalog-menu-width} - #{$catalog-categories-width--short})
 
-			+media('<desk-qhd')
-				width: calc(100% - #{$header-width} - #{$catalog-menu-width} - #{$catalog-categories-width--short})
+		+media('<desk-lg')
+			// футер (автоматика) для каталожных страниц
+			.ea-has-catalog-menu &
+				width: calc(#{$base-width} - #{$catalog-menu-width})
 
-			+media('<desk-lg')
-				width: calc(100% - #{$header-width} - #{$catalog-menu-width})
+		+media('<desk-md')
+			// футер (автоматика) для всех страниц
+			.ea-site &
+				width: calc(#{$base-width})
 
-		&, .ea-has-catalog-menu &
-			+media('<desk-md')
-				width: calc(100% - #{$header-width})
-
-			+media('<tab-lg')
+		+media('<tab-lg')
+			&, .ea-site &
 				left: 0
 				width: 100%
 
@@ -227,13 +256,15 @@
 		+media('<desk-lg')
 			width: $catalog-menu-width
 
-	+media('<desk-md')
-		width: $catalog-menu-width
-		z-index: 998
+	&, .ea-has-catalog-menu &
 
-	+media('<tab-lg')
-		width: 100%
-		min-width: 320px
+		+media('<desk-md')
+			width: $catalog-menu-width
+			z-index: 998
+
+		+media('<tab-lg')
+			width: 100%
+			min-width: 320px
 
 /* catalog menu (layout) end
 
