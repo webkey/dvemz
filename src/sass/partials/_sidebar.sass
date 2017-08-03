@@ -297,8 +297,12 @@
 	background-color: black
 	color: white
 
-	.side-menu__row.current &
-		display: block
+	+media('>=tab-lg')
+		display: none !important
+
+	+media('>=tab-lg')
+		.side-menu__row.current &
+			display: block !important
 
 	&::before, &::after
 		+pseudo()

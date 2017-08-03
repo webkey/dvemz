@@ -21,12 +21,21 @@
 			.no-cssgradients &
 				background: url(../../img/gradient-top-panel.png) repeat-x
 
+	+media('<tab-lg')
+		&.top-panel--alt
+			&::before
+				content: none
+
 .top-panel-holder
 	background-color: #{$bg-color}
 	+clear
 
 	.top-panel--alt &
 		background-color: transparent
+
+	+media('<tab-lg')
+		.top-panel--alt &
+			background-color: white
 
 .top-panel-contacts
 	+clear-spacing
@@ -52,6 +61,10 @@
 	.top-panel--alt &
 		color: white
 		border-color: white
+
+		+media('<tab-lg')
+			color: black
+			border-color: black
 
 	a
 		text-decoration: none
@@ -114,6 +127,9 @@
 			left: -20px
 			right: -20px
 
+			.top-panel--alt &
+				background-color: $bg-color-light
+
 	&::after
 		+pseudo()
 		right: 0
@@ -127,6 +143,9 @@
 
 		.top-panel--alt &
 			border-color: white
+
+			+media('<tab-lg')
+				border-color: black
 
 		.choice-opened &
 			border-width: 1px 0 0 1px
@@ -154,6 +173,9 @@
 		left: -20px
 		width: calc(100% + 20px*2)
 		padding: 5px 20px #{$top-panel-space--md}
+
+		.top-panel--alt &
+			background-color: $bg-color-light
 
 	.choice-opened &
 		opacity: 1
@@ -239,11 +261,14 @@
 	+media('<tab-lg')
 		width: 111px
 
+		.top-panel--alt &
+			background-position: 0 0
+
 	+media('<tab-sm')
 		+size(26px, auto)
 		background-image: url(../../img/logo-short-alt.png)
 
-		.top-panel--alt &
+		//.top-panel--alt &
 			background-image: url(../../img/logo-short.png)
 
 		&::before

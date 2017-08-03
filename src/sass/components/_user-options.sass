@@ -67,7 +67,7 @@
 		transition: inherit
 
 	// active
-	a.active &
+	.header a.active &
 		&::before
 			transform: rotate(45deg)
 			opacity: 1
@@ -102,7 +102,7 @@
 		+size(24px)
 
 	path
-		fill: $text-color
+		fill: black
 		transition: fill $animation-speed
 
 	.basket-counter
@@ -119,13 +119,16 @@
 		.ea-site &
 			background-color: $base-color--ea
 
-	a.active &
+	.header a.active &
 		opacity: 0
 		visibility: hidden
 
 	.top-panel--alt &
 		path
 			fill: white
+
+			+media('<tab-lg')
+				fill: black
 
 // ховер
 .user-options__item

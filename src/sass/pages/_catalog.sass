@@ -20,10 +20,8 @@ $c-section-max-width-lg: 1320px !default
 	text-align: center
 	+clear-spacing
 
-	&::before
-		+pseudo-inline-block()
-		vertical-align: middle
-		min-height: 100vh
+	+media('<tab-lg')
+		min-height: 0
 
 	.c-section__bg
 		background: #333 no-repeat center
@@ -43,9 +41,14 @@ $c-section-max-width-lg: 1320px !default
 			
 			.no-cssgradients &
 				background: rgba(0, 0, 0, 0.5)
-
+				
+			+media('<tab-sm')
+				+linear-gradient(to top, rgba(16, 32, 48, 1) 0, rgba(16, 32, 48, 0.7) 25%, rgba(16, 32, 48, 0.5) 50%, rgba(16, 32, 48, 0.4) 100%)
+				
+				.no-cssgradients &
+					background-color: rgba(16, 32, 48, 0.5)
+					
 .c-section__align
-	+display-inline-block-middle
 	width: calc(100% - 4px)
 	+font($font-size, $line-height)
 	letter-spacing: normal
@@ -71,6 +74,13 @@ $c-section-max-width-lg: 1320px !default
 	margin-bottom: 1em
 	display: flex
 	justify-content: space-between
+
+	+media('<tab-lg')
+		+font($font-size-h1--md, $line-height-h1--md)
+		text-align: center
+
+	+media('<tab-sm')
+		+font($font-size-h1--sm, $line-height-h1--sm)
 
 	h1
 		margin: 0
@@ -104,12 +114,26 @@ $c-section-max-width-lg: 1320px !default
 	width: 100%
 	table-layout: fixed
 
+	+media('<desk-md')
+		+font($font-size-h1--md, $line-height-h1--md)
+
+	+media('<tab-lg')
+		display: block
+		margin-bottom: 3rem
+		text-align: center
+
+	+media('<tab-sm')
+		+font($font-size-h1--sm, $line-height-h1--sm)
+
 	& > *
 		//flex: 1 1 100px
 		display: table-cell
 		vertical-align: top
 
-	h2, h3
+		+media('<tab-lg')
+			display: block
+
+	h1, h2, h3
 		margin: 0
 		font-family: inherit
 		+font(inherit, inherit)
@@ -117,6 +141,9 @@ $c-section-max-width-lg: 1320px !default
 		color: inherit
 		border-color: inherit
 		//flex: 1 1 12rem
+
+		+media('<tab-lg')
+			margin-bottom: 3rem
 
 		a
 			text-decoration: none
@@ -136,23 +163,7 @@ $c-section-max-width-lg: 1320px !default
 		padding-top: 20px
 		padding-left: 20px
 
-	+media('<desk-md')
-		+font(36px, 52px)
-
-		.c-section-description
-			padding-top: 15px
-
-	+media('<tab-lg')
-		display: block
-		margin-bottom: 3rem
-
-		& > *
-			display: block
-
-		h2, h3
-			margin-bottom: 3rem
-
-		.c-section-description
+		+media('<tab-lg')
 			padding-top: 0
 			padding-left: 0
 
@@ -179,9 +190,15 @@ $c-section-max-width-lg: 1320px !default
 	&:last-child
 		margin-bottom: 0
 
+	+media('<tab-sm')
+		column-count: 1
+		column-gap: 0
+
 .c-section-item
 	$left-space: 50px
 
+	+display-inline-block-top
+	width: 100%
 	margin-bottom: 2.4rem
 	padding-left: $left-space
 	+clear-spacing
@@ -232,92 +249,155 @@ $c-section-max-width-lg: 1320px !default
 	&:last-child
 		margin-bottom: 0
 
-.c-section-thumb
-	&, & a
-		min-height: 332px
-
-		+media('<desk-md')
-			min-height: 0
+	+media('<tab-sm')
+		display: none
 
 .c-section-thumb
+	position: relative
 	+display-inline-block-top
 	width: round-float(100%/4, 4)
+	min-height: 332px
+	padding: $grid-inside-horizontal-space
 	+font($font-size, $line-height)
 	letter-spacing: normal
 	color: white
-	fill: white
+	fill: white // для svg внутри
 	text-align: center
+	text-decoration: none
+	border: 2px dotted transparent
+	transition-property: border-color
+	transition-duration: $animation-speed
 
 	+media('<desk-md')
 		+font($font-size--sm, $line-height--sm)
+		padding: 20px
+		min-height: 0
 
 	+media('<tab-lg')
 		width: round-float(100%/2, 4)
 		margin-bottom: 40px
 
-	a
+	+media('<tab-sm')
+		width: auto
+		min-height: 0
+		//color: $text-color
+		//fill: $text-color
+		text-align: left
+		background-color: #102030
+		padding-right: 55px
+		margin-bottom: 0
+		border: none
+
+		&::before
+			+pseudo()
+			left: 10px
+			top: 10px
+			+size(calc(100% - 10px*2))
+			border: 2px solid rgba(255, 255, 255, 0.5)
+			transition-property: border-color, border-style
+			transition-duration: $animation-speed
+
+	& > span
+		border-bottom: 1px dashed white
+		transition-property: border-color
+		transition-duration: $animation-speed
+
+		+media('<tab-sm')
+			+display-inline-block-middle
+			width: calc(100% - 40px - 15px - 5px)
+			border: none
+
+	svg
 		display: block
-		position: relative
-		padding: $grid-inside-horizontal-space
-		color: inherit
-		fill: inherit // для svg внутри
-		text-decoration: none
-		border: 2px dotted transparent
+		+push-auto
+		margin-bottom: 2rem
+		+size(100px)
 
-		+media('<desk-md')
-			padding: 20px
+		&:last-child
+			margin-bottom: 0
 
-		& > span
-			border-bottom: 1px dashed white
-			transition-property: border-color
-			transition-duration: $animation-speed
+		+media('<tab-sm')
+			+display-inline-block-middle
+			+size(40px)
+			margin: 0 15px 0 0
 
-		svg
-			display: block
-			+push-auto
-			margin-bottom: 2rem
-			+size(100px)
+	path
+		fill: inherit
 
-			&:last-child
-				margin-bottom: 0
+	.arr
+		position: absolute
+		left: 50%
+		top: 100%
+		+triangle(bottom, white, 9px, 1)
+		margin-top: 30px
+		opacity: 0
+		visibility: hidden
+		transform: translate(0, -40px) scale(0.8)
+		transition-property: opacity, visibility, transform
+		transition-duration: $animation-speed
+		transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
-		path
-			fill: inherit
-
-		.arr
-			position: absolute
+		&::before
+			+pseudo()
 			left: 50%
-			top: 100%
-			+triangle(bottom, white, 9px, 1)
-			margin-top: 30px
-			opacity: 0
-			visibility: hidden
-			transform: translate(0, -40px) scale(0.8)
-			transition-property: opacity, visibility, transform
-			transition-duration: $animation-speed
-			transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+			bottom: 100%
+			+size(1px, 62px)
+			background-color: white
+
+		+media('<tab-sm')
+			left: auto
+			right: 20px
+			top: 50%
+			+size(24px)
+			margin-top: -13px
+			border-radius: 50px
+			opacity: 1
+			visibility: visible
+			transform: translate(0, 0) scale(1)
+			border: 1px solid white
+
+			&::before, &::after
+				+pseudo()
+				bottom: 7px
+				left: auto
+				backface-visibility: hidden
+				+size(8px, 1px)
+				background-color: white
+				transition-property: background-color
+				transition-duration: $animation-speed
 
 			&::before
-				+pseudo()
+				right: 50%
+				transform-origin: right bottom
+				transform: rotate(45deg)
+
+			&::after
 				left: 50%
-				bottom: 100%
-				+size(1px, 62px)
-				background-color: white
+				transform-origin: left bottom
+				transform: rotate(-45deg)
 
-		.no-touchevents &:hover
-			span
-				border-bottom-color: transparent
+	.no-touchevents &:hover
+		span
+			border-bottom-color: transparent
 
-		&.active-tab
-			border-color: $base-color
+	&.active-tab
+		border-color: $base-color
 
-			& > span
-				border-bottom-color: transparent
+		+media('<tab-sm')
+			&::before
+				border-color: $base-color
+				border-style: dotted
 
-			.arr
-				opacity: 1
-				visibility: visible
-				transform: translate(0, 0) scale(1)
+		& > span
+			border-bottom-color: transparent
+
+		.arr
+			opacity: 1
+			visibility: visible
+			transform: translate(0, 0) scale(1)
+
+			+media('<tab-sm')
+				transform: rotate(0.5turn)
 
 /* catalog section thumbs end
 
@@ -340,9 +420,42 @@ $c-section-max-width-lg: 1320px !default
 		.collapsed-all-tab &
 			transform: translate(0, -#{$size*0.5})
 
+		+media('<tab-sm')
+			content: none
+
+	.c-section-thumb
+		display: none
+
+	+media('<tab-sm')
+		height: auto !important
+
+		.c-section-thumb
+			display: block
+
 .c-section-panel
 	padding: 100px 0
 	opacity: 0
 	visibility: hidden
+
+	+media('>=tab-sm')
+		& > div
+			display: block !important
+
+	+media('<mob-lg')
+		+padding-vertical(50px)
+
+	+media('<tab-sm')
+		position: relative !important
+		left: auto !important
+		top: auto !important
+		border: none
+		padding: 0
+		opacity: 1 !important
+		visibility: visible !important
+		z-index: auto !important
+
+		& > div
+			display: none
+			+padding-vertical(20px)
 
 /* catalog section panels end

@@ -120,6 +120,9 @@
 			margin-left: 0
 			padding-top: #{$top-panel-height--md}
 
+		&.top-panel--alt
+			position: relative
+
 .top-panel-holder
 	position: relative
 	z-index: 5
@@ -223,17 +226,33 @@
 /* footer common (layout) end
 
 /* catalog section (layout)
+.c-section__container
+
+	// для выравнивания по центру экрана (по высоте)
+	&::before
+		+pseudo-inline-block()
+		vertical-align: middle
+		min-height: 100vh
+
+		+media('<tab-lg')
+			content: none
+
 .c-section__align
+	// для выравнивания по центру экрана (по высоте)
+	+display-inline-block-middle
+
 	padding: round($top-panel-height + $text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5)
 
 	+media('<desk-hd')
 		padding: round($top-panel-height + $text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg} round($text-layout-space-horizontal--lg*1.5)
 
 	+media('<tab-lg')
-		padding: round($top-panel-height + $text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} round($text-layout-space-horizontal--md*1.5)
+		// здесь высоту .top-panel учитывать не нужно
+		padding: round($text-layout-space-horizontal--md*3) #{$text-layout-space-horizontal--md}
 
 	+media('<tab-sm')
-		padding: round($top-panel-height + $text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*1.5)
+		// здесь высоту .top-panel учитывать не нужно
+		padding: round($text-layout-space-horizontal--sm*3) #{$text-layout-space-horizontal--sm}
 
 /* catalog section (layout) end
 

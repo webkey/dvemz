@@ -47,7 +47,7 @@
 			</div>
 			<div class="v-middle__row">
 				<div class="v-middle__cell">
-					<div class="side-menu__row@@if(context.activeItem === 'Электрощитовое оборудование'){ current}">
+					<div class="side-menu__row@@if(context.activeItem === 'Электрощитовое оборудование'){ is-open current}">
 						<div class="side-menu__cell side-menu__hover">
 							<a href="catalog.html">
 								<div class="side-menu__figure">
@@ -71,7 +71,7 @@
 						</div>
 						}
 					</div>
-					<div class="side-menu__row@@if(context.activeItem === 'Трансформаторы ТМГ'){ current}">
+					<div class="side-menu__row@@if(context.activeItem === 'Трансформаторы ТМГ'){ is-open current}">
 						<div class="side-menu__cell side-menu__hover">
 							<a href="catalog.html">
 								<div class="side-menu__figure">
@@ -95,7 +95,7 @@
 						</div>
 						}
 					</div>
-					<div class="side-menu__row@@if(context.activeItem === 'Высоковольтное оборудование'){ current}">
+					<div class="side-menu__row@@if(context.activeItem === 'Высоковольтное оборудование'){ is-open current}">
 						<div class="side-menu__cell side-menu__hover">
 							<a href="catalog.html">
 								<div class="side-menu__figure">

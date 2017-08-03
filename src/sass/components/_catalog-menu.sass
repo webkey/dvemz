@@ -383,11 +383,12 @@
 .side-menu-arr
 
 	// активное (подменю открыто)
-	.side-menu__row.is-open > .side-menu__cell & i
-		//transform: rotate(0)
+	.side-menu__row.is-open > .side-menu__cell > &
+		i
+			//transform: rotate(0)
 
-		&::before, &::after
-			transform: rotate(0)
+			&::before, &::after
+				transform: rotate(0)
 
 	// ховер
 	.no-touchevents .side-menu__cell &:hover i

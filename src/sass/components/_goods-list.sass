@@ -12,6 +12,7 @@
 
 .goods__caption
 	$info-size: 90px
+	$info-size--sm: 60px
 
 	padding-right: #{$info-size + 20px}
 	margin-bottom: 5rem
@@ -20,11 +21,19 @@
 	&:last-child
 		margin-bottom: 0
 
+	+media('<mob-lg')
+		padding-right: 0
+
 	h3
-		+font(30px, 49px)
+		+font($font-size-h3, $line-height-h3)
 		margin-bottom: 0
 
+		+media('<mob-lg')
+			+font($font-size-h3--sm, $line-height-h3--sm)
+			margin-bottom: 3rem
+
 	.info
+		display: none
 		position: absolute
 		right: 0
 		top: 0
@@ -41,6 +50,16 @@
 		transition-property: background-color
 		transition-duration: $animation-speed
 
+		+media('<mob-lg')
+			position: relative
+			right: auto
+			top: auto
+			+size($info-size--sm)
+			+push-auto
+			+font(8px, 12px)
+			letter-spacing: normal
+			padding: 11px 4px 4px
+
 		.no-touchevents &:hover
 			background-color: $bg-color-light
 
@@ -52,7 +71,11 @@
 			background-repeat: no-repeat
 			background-position: center
 			background-size: contain
+			backface-visibility: hidden
 
+			+media('<mob-lg')
+				+size(9px, 19px)
+				margin-bottom: 8px
 .goods__list
 	+clear-spacing
 	padding-bottom: 1px
