@@ -510,12 +510,15 @@ $btn-menu-lines-color: $text-color !default
 			top: 0
 			transform: rotate(45deg)
 
-	.no-touchevents &:hover
-
-		& > i
+	.no-touchevents &:hover > i
 
 			&::before, &::after
-				background-color: #{$base-color--ea}
+				background-color: $base-color
+
+	.no-touchevents .ea-site &:hover > i
+
+			&::before, &::after
+				background-color: $base-color--ea
 
 //& > i::before, & > i::after
 	background-color: white

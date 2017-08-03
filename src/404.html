@@ -38,15 +38,6 @@
 
 <body>
 	<!--[if lt IE 9]> <div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div> <![endif]-->
-	<script>
-		// shame
-		// значение необходимо для получения ширины окна браузера без учета скролла
-		var windowWidth = Math.max(
-			document.body.scrollWidth, document.documentElement.scrollWidth,
-			document.body.offsetWidth, document.documentElement.offsetWidth,
-			document.body.clientWidth, document.documentElement.clientWidth
-		)
-	</script>
 	<!-- >>> head.tpl END <<< -->
 	<div class="wrapper">
 		<div class="wrapper">
@@ -398,7 +389,11 @@
 						<aside class="side-menu v-middle catalog-menu-popup-js">
 							<div class="side-menu__align v-middle__align">
 								<div class="side-menu__holder v-middle__holder">
-									<div class="v-middle__row">
+									<div class="catalog-menu-title">
+										<a href="#" class="btn-popup-close btn-catalog-menu-close btn-catalog-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
+										<span>Каталог</span>
+									</div>
+									<div class="v-middle__row --top">
 										<div class="v-middle__cell">&nbsp;</div>
 									</div>
 									<div class="v-middle__row">
@@ -438,7 +433,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="v-middle__row">
+									<div class="v-middle__row --bottom">
 										<div class="v-middle__cell">&nbsp;</div>
 									</div>
 								</div>

@@ -71,7 +71,10 @@
 	color: black
 	text-transform: uppercase
 	text-align: center
-	background-color: #{$base-color--ea}
+	background-color: $base-color
+
+	.ea-site &
+		background-color: $base-color--ea
 
 	+media('<tab-lg')
 		display: block
@@ -387,9 +390,9 @@
 			transform: rotate(0)
 
 	// ховер
-	//.no-touchevents .side-menu__cell &:hover i
+	.no-touchevents .side-menu__cell &:hover i
 		&::before, &::after
-			background-color: $base-color
+			background-color: white !important
 
 // особые стили для пунктов ПОДМЕНЮ
 .catalog-menu__drop

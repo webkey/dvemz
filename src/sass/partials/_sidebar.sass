@@ -8,8 +8,8 @@
 	right: 0
 	top: 0
 	height: 100%
-	//width: $sidebar-width
-	width: $sidebar-drop-width
+	width: $sidebar-width
+	//width: $sidebar-drop-width
 	background-color: $base-color
 	z-index: 999
 	user-select: none
@@ -17,15 +17,7 @@
 	+media('>=tab-lg')
 		visibility: inherit !important
 		opacity: 1 !important
-		transform: matrix(1, 0, 0, 1, 0, 0) translate(#{$sidebar-drop-width - $sidebar-width}, 0) !important
-		//transform: translate(#{$sidebar-drop-width - $sidebar-width}, 0) !important
-		transition-property: transform !important
-		transition-duration: $animation-speed !important
-		transition-delay: 0.2s !important
-
-		&:hover, &:focus
-			transform: translate(0, 0) !important
-			transition-delay: 0s !important
+		transform: matrix(1, 0, 0, 1, 0, 0) !important
 
 	+media('<tab-lg')
 		width: 100%
@@ -37,10 +29,9 @@
 		width: $sidebar-width--lg
 		overflow-x: hidden
 		overflow-y: auto
-		transform: none !important
 
 	.v-middle__row
-		&:first-child, &:last-child
+		&.--top, &.--bottom
 			height: 0
 			overflow: hidden
 
@@ -49,9 +40,22 @@
 
 .side-menu__align
 	width: #{$sidebar-drop-width + 100px}
+	//transform: translate(#{$sidebar-drop-width - $sidebar-width}, 0)
+	background-color: inherit
+	transition-property: transform
+	transition-duration: $animation-speed
+	transition-delay: 0.2s
+
+	.side-menu--alt &
+		transform: none
+
+	.side-menu:hover &, .side-menu:focus &
+		transform: translate(-#{$sidebar-drop-width - $sidebar-width}, 0)
+		transition-delay: 0s
 
 	+media('<tab-lg')
 		width: auto
+		transform: translate(0, 0) !important
 
 .side-menu__holder
 	position: relative
@@ -112,9 +116,18 @@
 		text-decoration: none
 		color: inherit
 		background-color: $base-color
+		transition-property: background-color, color
+		transition-duration: $animation-speed
 
 		.no-touchevents &:hover
 			background-color: $side-menu-bg-color-hover
+
+			+media('<tab-lg')
+				background-color: transparent
+				color: white !important
+
+				path
+					fill: white !important
 
 	.side-menu--alt &
 		&, .no-touchevents &
@@ -207,6 +220,8 @@
 
 	path
 		fill: black
+		transition-property: fill
+		transition-duration: $animation-speed
 
 		.current &
 			fill: white
@@ -241,7 +256,7 @@
 	text-align: left
 	opacity: 0
 	transform: translate(20px, 0)
-	transition-property: color, transform, opacity
+	transition-property: transform, opacity
 	transition-duration: round-float($animation-speed*1.5, 1)
 	transition-delay: #{round-float($animation-speed*0.5, 1)}
 	z-index: 5
@@ -455,6 +470,9 @@
 					+display-inline-block-middle
 					width: 0
 					height: 50px
+
+				&::after
+					content: none
 
 				& > span
 					+display-inline-block-middle

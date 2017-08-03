@@ -9,6 +9,10 @@ $c-section-max-width-lg: 1320px !default
 .c-section
 	position: relative
 
+	+media('<tab-lg')
+		&.c-section-main ~ &
+			display: none
+
 .c-section__container
 	overflow: hidden
 	position: relative

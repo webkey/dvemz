@@ -41,13 +41,4 @@
 </head>
 <body @@if (pageClass !== "") {class="@@pageClass"}>
 <!--[if lt IE 9]> <div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div> <![endif]-->
-<script>
-	// shame
-	// значение необходимо для получения ширины окна браузера без учета скролла
-	var windowWidth = Math.max(
-		document.body.scrollWidth, document.documentElement.scrollWidth,
-		document.body.offsetWidth, document.documentElement.offsetWidth,
-		document.body.clientWidth, document.documentElement.clientWidth
-	)
-</script>
 <!-- >>> head.tpl END <<< -->

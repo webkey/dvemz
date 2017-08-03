@@ -38,7 +38,11 @@
 <aside class="side-menu v-middle catalog-menu-popup-js">
 	<div class="side-menu__align v-middle__align">
 		<div class="side-menu__holder v-middle__holder">
-			<div class="v-middle__row">
+			<div class="catalog-menu-title">
+				<a href="#" class="btn-popup-close btn-catalog-menu-close btn-catalog-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
+				<span>Каталог</span>
+			</div>
+			<div class="v-middle__row --top">
 				<div class="v-middle__cell">&nbsp;</div>
 			</div>
 			<div class="v-middle__row">
@@ -56,13 +60,13 @@
 						@@if(context.hasDrop) {
 						<div class="side-menu-drop">
 							<ul>
-								<li data-count="01"><a href="#catalog-1-1" data-href="catalog-has-category.html"><span>Трансформаторные подстанции</span></a></li>
-								<li data-count="02"><a href="#catalog-1-2" data-href="catalog-has-category.html"><span>Камеры сборные односторонние КСО</span></a></li>
-								<li data-count="03"><a href="#catalog-1-3" data-href="catalog-has-category.html"><span>Ячейки ЩО-70</span></a></li>
-								<li data-count="04"><a href="#catalog-1-4" data-href="catalog-has-category.html"><span>Пункт коммерческого учета ПКУ-6 (10) КВ</span></a></li>
-								<li data-count="05"><a href="#catalog-1-5" data-href="catalog-has-category.html"><span>Вводно-распределительные устройства ВРУ</span></a></li>
-								<li data-count="06"><a href="#catalog-1-6" data-href="catalog-has-category.html"><span>Главные распределительные щиты ГРЩ</span></a></li>
-								<li data-count="07"><a href="#catalog-1-7" data-href="catalog-has-category.html"><span>Другие низковольтные комплектные устройства подстанции</span></a></li>
+								<li data-count="01"><a href="#catalog-1-1" data-anchor="#catalog-1-1" data-href="catalog-has-category.html"><span>Трансформаторные подстанции</span></a></li>
+								<li data-count="02"><a href="#catalog-1-2" data-anchor="#catalog-1-2" data-href="catalog-has-category.html"><span>Камеры сборные односторонние КСО</span></a></li>
+								<li data-count="03"><a href="#catalog-1-3" data-anchor="#catalog-1-3" data-href="automatic-products.html"><span>Ячейки ЩО-70</span></a></li>
+								<li data-count="04"><a href="#catalog-1-4" data-anchor="#catalog-1-4" data-href="automatic-products.html"><span>Пункт коммерческого учета ПКУ-6 (10) КВ</span></a></li>
+								<li data-count="05"><a href="#catalog-1-5" data-anchor="#catalog-1-5" data-href="automatic-products.html"><span>Вводно-распределительные устройства ВРУ</span></a></li>
+								<li data-count="06"><a href="#catalog-1-6" data-anchor="#catalog-1-6" data-href="automatic-products.html"><span>Главные распределительные щиты ГРЩ</span></a></li>
+								<li data-count="07"><a href="#catalog-1-7" data-anchor="#catalog-1-7" data-href="catalog-has-category.html"><span>Другие низковольтные комплектные устройства подстанции</span></a></li>
 							</ul>
 						</div>
 						}
@@ -80,13 +84,13 @@
 						@@if(context.hasDrop) {
 						<div class="side-menu-drop">
 							<ul>
-								<li data-count="01"><a href="#catalog-2-1" data-href="catalog-has-category.html"><span>Трансформаторные подстанции</span></a></li>
-								<li data-count="02"><a href="#catalog-2-2" data-href="catalog-has-category.html"><span>Камеры сборные односторонние КСО</span></a></li>
-								<li data-count="03"><a href="#catalog-2-3" data-href="catalog-has-category.html"><span>Ячейки ЩО-70</span></a></li>
-								<li data-count="04"><a href="#catalog-2-4" data-href="catalog-has-category.html"><span>Пункт коммерческого учета ПКУ-6 (10) КВ</span></a></li>
-								<li data-count="05"><a href="#catalog-2-5" data-href="catalog-has-category.html"><span>Вводно-распределительные устройства ВРУ</span></a></li>
-								<li data-count="06"><a href="#catalog-2-6" data-href="catalog-has-category.html"><span>Главные распределительные щиты ГРЩ</span></a></li>
-								<li data-count="07"><a href="#catalog-2-7" data-href="catalog-has-category.html"><span>Другие низковольтные комплектные устройства подстанции</span></a></li>
+								<li data-count="01"><a href="#catalog-2-1" data-anchor="#catalog-2-1" data-href="catalog-has-category.html"><span>Трансформаторные подстанции</span></a></li>
+								<li data-count="02"><a href="#catalog-2-2" data-anchor="#catalog-2-2" data-href="catalog-has-category.html"><span>Камеры сборные односторонние КСО</span></a></li>
+								<li data-count="03"><a href="#catalog-2-3" data-anchor="#catalog-2-3" data-href="catalog-has-category.html"><span>Ячейки ЩО-70</span></a></li>
+								<li data-count="04"><a href="#catalog-2-4" data-anchor="#catalog-2-4" data-href="catalog-has-category.html"><span>Пункт коммерческого учета ПКУ-6 (10) КВ</span></a></li>
+								<li data-count="05"><a href="#catalog-2-5" data-anchor="#catalog-2-5" data-href="catalog-has-category.html"><span>Вводно-распределительные устройства ВРУ</span></a></li>
+								<li data-count="06"><a href="#catalog-2-6" data-anchor="#catalog-2-6" data-href="catalog-has-category.html"><span>Главные распределительные щиты ГРЩ</span></a></li>
+								<li data-count="07"><a href="#catalog-2-7" data-anchor="#catalog-2-7" data-href="catalog-has-category.html"><span>Другие низковольтные комплектные устройства подстанции</span></a></li>
 							</ul>
 						</div>
 						}
@@ -104,20 +108,20 @@
 						@@if(context.hasDrop) {
 						<div class="side-menu-drop">
 							<ul>
-								<li data-count="01"><a href="#catalog-3-1" data-href="catalog-has-category.html"><span>Трансформаторные подстанции</span></a></li>
-								<li data-count="02"><a href="#catalog-3-2" data-href="catalog-has-category.html"><span>Камеры сборные односторонние КСО</span></a></li>
-								<li data-count="03"><a href="#catalog-3-3" data-href="catalog-has-category.html"><span>Ячейки ЩО-70</span></a></li>
-								<li data-count="04"><a href="#catalog-3-4" data-href="catalog-has-category.html"><span>Пункт коммерческого учета ПКУ-6 (10) КВ</span></a></li>
-								<li data-count="05"><a href="#catalog-3-5" data-href="catalog-has-category.html"><span>Вводно-распределительные устройства ВРУ</span></a></li>
-								<li data-count="06"><a href="#catalog-3-6" data-href="catalog-has-category.html"><span>Главные распределительные щиты ГРЩ</span></a></li>
-								<li data-count="07"><a href="#catalog-3-7" data-href="catalog-has-category.html"><span>Другие низковольтные комплектные устройства подстанции</span></a></li>
+								<li data-count="01"><a href="#catalog-3-1" data-anchor="#catalog-3-1" data-href="catalog-has-category.html"><span>Трансформаторные подстанции</span></a></li>
+								<li data-count="02"><a href="#catalog-3-2" data-anchor="#catalog-3-2" data-href="catalog-has-category.html"><span>Камеры сборные односторонние КСО</span></a></li>
+								<li data-count="03"><a href="#catalog-3-3" data-anchor="#catalog-3-3" data-href="catalog-has-category.html"><span>Ячейки ЩО-70</span></a></li>
+								<li data-count="04"><a href="#catalog-3-4" data-anchor="#catalog-3-4" data-href="catalog-has-category.html"><span>Пункт коммерческого учета ПКУ-6 (10) КВ</span></a></li>
+								<li data-count="05"><a href="#catalog-3-5" data-anchor="#catalog-3-5" data-href="catalog-has-category.html"><span>Вводно-распределительные устройства ВРУ</span></a></li>
+								<li data-count="06"><a href="#catalog-3-6" data-anchor="#catalog-3-6" data-href="catalog-has-category.html"><span>Главные распределительные щиты ГРЩ</span></a></li>
+								<li data-count="07"><a href="#catalog-3-7" data-anchor="#catalog-3-7" data-href="catalog-has-category.html"><span>Другие низковольтные комплектные устройства подстанции</span></a></li>
 							</ul>
 						</div>
 						}
 					</div>
 				</div>
 			</div>
-			<div class="v-middle__row">
+			<div class="v-middle__row --bottom">
 				<div class="v-middle__cell">&nbsp;</div>
 			</div>
 		</div>
