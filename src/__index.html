@@ -171,7 +171,7 @@
 											var mainMapPosition = {
 												'desktop': {
 													'lat': 43.1216,
-													'lng': 131.8827,
+													'lng': 131.8887,
 													'zoom': 15
 												}
 											};
@@ -199,16 +199,18 @@
 					</div>
 				</div>
 				<!--CONTENT end-->
-
-				<!--SIDEBAR-->
-				@@include('_layout_side-menu.tpl', {
-					"largeView": "true"
-				})
-				<!--SIDEBAR-->
 			</div>
 		</div>
 	</div>
 	<!--MAIN end-->
+
+	<!--SIDEBAR-->
+	@@include('_layout_side-menu.tpl', {
+		"largeView": "true",
+		"hasDrop": "true",
+		"activeItem": ""
+	})
+	<!--SIDEBAR-->
 </div>
 
 @@include('_layout_foot.tpl', {

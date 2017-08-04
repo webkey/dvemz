@@ -17,14 +17,19 @@
 	+grid-parent($grid-space)
 	+clear-spacing
 
+	+media('<desk-hd')
+		+grid-parent($grid-space--sm)
+
 .news-grid__item
 	position: relative
 	letter-spacing: normal
 
 	.news-grid &
 		+grid-item(3, $grid-space)
-		+font($news-grid-font-size, $news-grid-line-height)
 		letter-spacing: normal
+
+		+media('<desk-hd')
+			+grid-item(3, $grid-space--sm)
 
 		+media('<mob-lg')
 			+grid-item(1, $grid-space)
@@ -39,6 +44,9 @@
 
 .news-grid__content
 	padding: #{$grid-inside-vertical-space+8} $grid-inside-horizontal-space $grid-inside-vertical-space
+
+	+media('<desk-hd')
+		padding: 28px 20px 20px
 
 .news-grid__meta
 	margin-bottom: 0.8em
@@ -66,16 +74,24 @@
 .news-grid__text
 	margin-bottom: $bottom-space
 	overflow: hidden
-	max-height: calc(#{$news-grid-font-size * $news-grid-line-height} * 13)
+	+font(18px, 24px)
+	max-height: calc(24px * 13)
 
-	@media (max-height: 949px)
-		max-height: calc(#{$news-grid-font-size * $news-grid-line-height} * 8)
+	+media('<desk-hd')
+		+font(16px, 20px)
+		max-height: calc(20px * 13)
 
-	@media (max-height: 769px)
-		max-height: calc(#{$news-grid-font-size * $news-grid-line-height} * 6)
+	+media('<desk-sb')
+		max-height: calc(20px * 8)
 
-	@media (max-height: 637px)
-		max-height: calc(#{$news-grid-font-size * $news-grid-line-height} * 4)
+	//@media (max-height: 949px)
+		max-height: calc(#{$font-size * $line-height} * 8)
+
+	//@media (max-height: 769px)
+		max-height: calc(#{$font-size * $line-height} * 6)
+
+	//@media (max-height: 637px)
+		max-height: calc(#{$font-size * $line-height} * 4)
 
 	&:last-child
 		margin-bottom: 0

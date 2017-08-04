@@ -4,21 +4,37 @@
 
 /*scroll menu
 .scroll-nav
-	$scroll-nav-space: 40px
-
 	position: fixed
-	top: $scroll-nav-space + $top-panel-height
-	right: $sidebar-width + $scroll-nav-space
-	z-index: 50
-
-	+media('<tab-lg')
-		top: $scroll-nav-space + $top-panel-height--md
+	right: $sidebar-width + $text-layout-space-horizontal
+	top: $top-panel-height + $text-layout-space-horizontal
+	z-index: 5
 
 	.home-page &
-		right: $sidebar-width--lg + $scroll-nav-space
+		right: $sidebar-width-alt + $text-layout-space-horizontal
 
-		+media('<desk-md')
-			right: $scroll-nav-space
+	+media('<desk-hd')
+		right: $sidebar-width + $text-layout-space-horizontal--lg
+		top: $top-panel-height + $text-layout-space-horizontal--lg
+
+		.home-page &
+			right: $sidebar-width-alt + $text-layout-space-horizontal--lg
+
+	+media('<desk-lg')
+		display: none
+
+	+media('<tab-lg')
+		right: $sidebar-width + $text-layout-space-horizontal--md
+		top: $top-panel-height--md + $text-layout-space-horizontal--md
+
+		.home-page &
+			right: $sidebar-width-alt + $text-layout-space-horizontal--md
+
+	+media('<tab-sm')
+		right: $sidebar-width + $text-layout-space-horizontal--sm
+		top: $top-panel-height--md + $text-layout-space-horizontal--sm
+
+		.home-page &
+			right: $sidebar-width-alt + $text-layout-space-horizontal--sm
 
 	&, .#{$user-content} &
 		margin: 0

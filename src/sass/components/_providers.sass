@@ -8,6 +8,9 @@
 	text-align: center
 	margin-bottom: 30px
 
+	+media('<desk-hd')
+		margin-bottom: 20px
+
 	&:last-child
 		margin-bottom: 0
 
@@ -24,12 +27,24 @@
 	+font($font-size, $line-height)
 	letter-spacing: normal
 
+	+media('<desk-hd')
+		padding: 20px 50px
+
+	+media('<desk-sb')
+		padding: 5px 30px
+
 	&::before
 		+pseudo($content: counter(section))
 		+centering-transform()
 		+font-black
 		+font(224px, 1)
 		color: rgba(243, 243, 243, 0.35)
+
+		+media('<desk-hd')
+			+font(140px, 1)
+
+		+media('<desk-sb')
+			+font(80px, 1)
 
 	&::after
 		+pseudo()
@@ -47,10 +62,17 @@
 
 .agency__text
 	+font-bold
-	+font(1.8rem, round-float(22/18, 1))
+	+font(18px, round-float(22/18, 1))
 	color: white
 	text-transform: uppercase
 
+	+media('<desk-hd')
+		+font(15px, round-float(22/18, 1))
+		letter-spacing: 0.025em
+
+	+media('<desk-sb')
+		+font(13px, round-float(22/18, 1))
+		letter-spacing: 0.05em
 
 /*agency end
 
@@ -58,6 +80,9 @@
 .providers
 	margin-bottom: 30px
 	+clear
+
+	+media('<desk-hd')
+		margin-bottom: 20px
 
 	&:last-child
 		margin-bottom: 0
@@ -76,8 +101,15 @@
 .providers__text
 	background: black
 	padding: 27px 30px
-	+font(1.5rem, round-float(24/14, 1))
+	+font(15px, round-float(19/15, 1))
 	color: white
+
+	+media('<desk-hd')
+		padding: 20px 25px
+
+	+media('<desk-sb')
+		padding: 15px 20px
+		font-size: 14px
 
 	& > p, & > ul, & > ol
 		&:last-child
@@ -108,10 +140,16 @@
 				+size(30px, 3px)
 				background-color: $base-color
 
+			+media('<desk-sb')
+				+margin-vertical(0.5em)
+
 	&
-		+font(1.6rem, round-float(24/16, 1))
+		+font(16px, round-float(24/16, 1))
 		text-transform: uppercase
 		color: white
+
+		+media('<desk-sb')
+			font-size: 14px
 
 		a
 			color: $base-color
@@ -124,8 +162,11 @@
 	max-width: 100%
 	+push-auto
 	text-align: center
-	+font(2.4rem, round-float(36/24, 1))
+	+font(24px, round-float(36/24, 1))
 	color: white
+
+	+media('<desk-hd')
+		+font(18px, round-float(24/18, 1))
 
 	a
 		text-decoration: none

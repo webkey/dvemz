@@ -61,10 +61,6 @@ $main-section-max-width-lg: 960px !default
 	display: table-cell
 	vertical-align: middle
 	text-align: center
-	padding: #{$top-panel-height+$page-layout-space-horizontal} #{$page-layout-space-horizontal} #{$page-layout-space-horizontal}
-
-	+media('<tab-lg')
-		padding: #{$top-panel-height--md+$page-layout-space-horizontal} #{$page-layout-space-horizontal} #{$page-layout-space-horizontal}
 
 .main-section__layout
 	position: relative
@@ -81,11 +77,19 @@ $main-section-max-width-lg: 960px !default
 
 .main-section__title
 	+font-bold
-	+font(48px, 1.2)
+	+font(48px, round-float(58/48, 1))
 	color: white
-	margin-bottom: 1em
+	margin-bottom: 10px
 	display: flex
 	justify-content: space-between
+
+	+media('<desk-hd')
+		font-size: 42px
+		margin-bottom: 20px
+
+	+media('<desk-hd')
+		font-size: 38px
+		margin-bottom: 10px
 
 	h2, h3
 		margin: 0
@@ -97,9 +101,16 @@ $main-section-max-width-lg: 960px !default
 
 	.subtitle
 		+font-normal
-		+font(2.4rem, 1.2)
+		+font(24px, round-float(30/24, 1))
 		flex: 1 1 12em
 		padding: 0.5em
+
+		+media('<desk-hd')
+			font-size: 20px
+
+		+media('<desk-sb')
+			font-size: 16px
+			padding: 0
 
 .main-section__holder
 	+clear
@@ -120,12 +131,18 @@ $main-section-max-width-lg: 960px !default
 	.main-section__title
 		position: relative
 		padding-bottom: 0.8em
-		margin-bottom: 2em
+		margin-bottom: 100px
 		+font-bold
-		//+font(62px, 1.2)
 		+font(52px, 1.2)
 		text-transform: uppercase
 		color: white
+
+		+media('<desk-hd')
+			font-size: 48px
+
+		+media('<desk-sb')
+			font-size: 36px
+			margin-bottom: 80px
 
 		&::before
 			+pseudo()
@@ -137,6 +154,10 @@ $main-section-max-width-lg: 960px !default
 		h1, h2, h3
 			width: 800px
 			max-width: 100%
+
+			+media('<desk-sb')
+				width: auto
+				max-width: none
 
 	.main-section__footer
 		text-align: center
@@ -150,7 +171,6 @@ $main-section-max-width-lg: 960px !default
 	left: 0
 	bottom: 0
 	width: 100%
-	padding: 0 $page-layout-space-horizontal $page-layout-space-horizontal
 	z-index: 50
 
 	&:last-child
@@ -160,6 +180,9 @@ $main-section-max-width-lg: 960px !default
 	position: relative
 	+margin-horizontal(-20px)
 	+clear
+
+	+media('<desk-sm')
+		+margin-horizontal(-10px)
 
 	&::before
 		+pseudo()
@@ -171,29 +194,17 @@ $main-section-max-width-lg: 960px !default
 		background-size: cover
 		z-index: -1
 		transform: translate(-30px, -20px)
-		//opacity: 0
-		//visibility: hidden
-		//transition-property: transform, opacity, visibility
-		//transition-duration: $animation-speed-element
 
-		//.main-section.active &
-			opacity: 1
-			visibility: visible
-			transition-delay: ($animation-speed-element-delay*3)
+		+media('<desk-lg')
+			content: none
 
 .total-data__item
 	float: left
 	width: 33.3%
 	padding: 30px 20px 10px 20px
 
-	//.main-section.active &
-		opacity: 1
-		visibility: visible
-		transform: translate(0, 0)
-
-		@for $child from 0 through 4
-			&:nth-child(#{$child})
-				transition-delay: (#{$animation-speed-element-delay + $child*0.3})
+	+media('<desk-sm')
+		padding: 20px 10px 10px 10px
 
 .total-data__title
 	margin-bottom: 0.05em
@@ -202,24 +213,41 @@ $main-section-max-width-lg: 960px !default
 	color: $base-color
 	white-space: nowrap
 
+	+media('<desk-hd')
+		font-size: 78px
+
+	+media('<desk-sb')
+		font-size: 64px
+
+	+media('<desk-sm')
+		font-size: 42px
+		margin-bottom: 10px
+
 	.prefix, .unit
 		+font-normal
 
 	.prefix
 		position: relative
-		display: inline-block
-		vertical-align: top
+		+display-inline-block-top
 		+margin($top: 0.1em, $right: 1em)
-		+font(2.4rem, 1.3)
+		+font(24px, 1.3)
 		color: white
+
+		+media('<desk-sm')
+			font-size: 18px
+			margin-right: 0.5em
 
 	.unit
 		position: relative
 		display: inline-block
 		vertical-align: bottom
 		+margin($bottom: 0.1em, $left: 1em)
-		+font(3.4rem, 1.3)
+		+font(34px, 1.3)
 		color: white
+
+		+media('<desk-sm')
+			font-size: 22px
+			margin-left: 0.5em
 
 .total-data__text
 	+font(1.6rem, 1.2)
@@ -291,10 +319,17 @@ $main-section-max-width-lg: 960px !default
 		+antialiased
 
 	.phone
-		margin-bottom: 0.5em
+		margin-bottom: 36px
 		+font-bold
-		+font(72px, 1.194)
+		+font(72px, round-float(86/72, 1))
 		color: $text-color
+
+		+media('<desk-hd')
+			margin-bottom: 20px
+			font-size: 64px
+
+		+media('<desk-sm')
+			font-size: 48px
 
 		&:last-child
 			margin-bottom: 0

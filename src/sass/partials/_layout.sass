@@ -33,8 +33,8 @@
 		min-height: 50px
 
 	// контент на главной (двэмз)
-	.home-page &
-		margin-right: #{$sidebar-width--lg}
+	.side-menu--alt &
+		margin-right: #{$sidebar-width-alt}
 
 	// контент (автоматика)
 	.ea-site &
@@ -57,12 +57,15 @@
 		.ea-has-catalog-menu &
 			margin-right: #{$catalog-menu-width}
 
+		.side-menu--alt &
+			margin-right: #{$sidebar-width-alt--sm}
+
 	+media('<desk-md')
 		.ea-site &
 			margin-right: 0
 
 	+media('<tab-lg')
-		&, .home-page &, .ea-site &
+		&, .side-menu--alt &, .ea-site &
 			margin-right: 0
 			margin-left: 0
 
@@ -78,8 +81,8 @@
 		width: calc(#{$base-width} - #{$sidebar-width})
 
 	// верхняя панель на главной (двэмз)
-	.home-page &
-		width: calc(#{$base-width} - #{$sidebar-width--lg})
+	.side-menu--alt &
+		width: calc(#{$base-width} - #{$sidebar-width-alt})
 
 	// альтернативна верхняя панель (с полупрозрачным градиентным фоном)
 	&.top-panel--alt
@@ -108,6 +111,10 @@
 		// верхняя панель (автоматика) для каталожных страниц
 		.ea-has-catalog-menu &
 			width: calc(#{$base-width} - #{$catalog-menu-width})
+
+		// верхняя панель на главной (двэмз)
+		.side-menu--alt &
+			width: calc(#{$base-width} - #{$sidebar-width-alt--sm})
 
 	+media('<desk-md')
 		// верхняя панель (автоматика) для всех страниц
@@ -177,6 +184,10 @@
 			left: $header-width
 			width: calc(#{$base-width} - #{$sidebar-width})
 
+		// футер на главной (двэмз)
+		.side-menu--alt &
+			width: calc(#{$base-width} - #{$sidebar-width-alt})
+
 		// футер (автоматика) для всех страниц
 		.ea-site &
 			width: calc(#{$base-width} - #{$catalog-categories-width--full})
@@ -197,6 +208,10 @@
 			// футер (автоматика) для каталожных страниц
 			.ea-has-catalog-menu &
 				width: calc(#{$base-width} - #{$catalog-menu-width})
+
+			// футер на главной (двэмз)
+			.side-menu--alt &
+				width: calc(#{$base-width} - #{$sidebar-width-alt--sm})
 
 		+media('<desk-md')
 			// футер (автоматика) для всех страниц
@@ -241,10 +256,12 @@
 	// для выравнивания по центру экрана (по высоте)
 	+display-inline-block-middle
 
-	padding: round($top-panel-height + $text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5)
+.c-section__align, .main-section__align
+
+	padding: round($top-panel-height + $text-layout-space-horizontal) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5)
 
 	+media('<desk-hd')
-		padding: round($top-panel-height + $text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg} round($text-layout-space-horizontal--lg*1.5)
+		padding: round($top-panel-height + $text-layout-space-horizontal--lg) #{$text-layout-space-horizontal--lg} round($text-layout-space-horizontal--lg*1.5)
 
 	+media('<tab-lg')
 		// здесь высоту .top-panel учитывать не нужно
@@ -255,6 +272,25 @@
 		padding: round($text-layout-space-horizontal--sm*3) #{$text-layout-space-horizontal--sm}
 
 /* catalog section (layout) end
+
+/* total date (layout)
+.total-data
+	padding: $text-layout-space-horizontal
+	padding-top: 0
+
+	+media('<desk-hd')
+		padding: $text-layout-space-horizontal--lg
+		padding-top: 0
+
+	+media('<tab-lg')
+		padding: $text-layout-space-horizontal--md
+		padding-top: 0
+
+	+media('<tab-sm')
+		padding: $text-layout-space-horizontal--sm
+		padding-top: 0
+
+/* total date (layout) end
 
 /* catalog menu (layout)
 .catalog-menu
@@ -286,6 +322,9 @@
 			min-width: 320px
 
 /* catalog menu (layout) end
+
+/* side menu (layout)
+/* side menu (layout) end
 
 .home-page .spacer
 	display: none

@@ -26,14 +26,20 @@
 		transform: translate(0, 0)
 
 	.side-menu--alt &
-		width: $sidebar-width--lg
+		width: $sidebar-width-alt
 		overflow-x: hidden
 		overflow-y: auto
 
+		+media('<desk-lg')
+			width: $sidebar-width-alt--sm
+
 	.v-middle__row
-		&.--top, &.--bottom
+		&.top-position, &.bottom-position
 			height: 0
 			overflow: hidden
+
+			.no-flexbox &
+				display: none
 
 			.v-middle__cell
 				+font(0, 0)
@@ -48,10 +54,14 @@
 
 	.side-menu--alt &
 		transform: none
+		width: #{$sidebar-width-alt + 100px}
 
 	.side-menu:hover &, .side-menu:focus &
 		transform: translate(-#{$sidebar-drop-width - $sidebar-width}, 0)
 		transition-delay: 0s
+
+		.side-menu--alt &
+			transform: none
 
 	+media('<tab-lg')
 		width: auto
@@ -59,19 +69,34 @@
 
 .side-menu__holder
 	position: relative
-	width: 100%
-	//top: 50%
-	//transform: translate(0, -50%)
+	width: $sidebar-drop-width
 
 	.side-menu--alt &
-		display: table
-		table-layout: fixed
+		display: block
+		width: $sidebar-width-alt
 		min-height: 100vh
-		//top: auto
-		//transform: none
+
+		+media('<desk-lg')
+			width: $sidebar-width-alt--sm
 
 	+media('<tab-lg')
 		justify-content: flex-start
+		width: auto
+
+		.side-menu--alt &
+			width: auto
+
+.v-middle__row
+	&.center-position
+		.side-menu--alt &
+			display: block
+			min-height: 100vh
+
+.v-middle__cell
+	.side-menu--alt &
+		display: table
+		width: 100%
+		height: 100vh
 
 .side-menu__row
 	display: block
@@ -79,10 +104,6 @@
 	border: solid $side-menu-bg-color-hover
 	border-width: 1px 0
 	position: relative
-	width: $sidebar-drop-width
-
-	+media('<tab-lg')
-		width: auto
 
 	.side-menu--alt &
 		display: table-row
@@ -110,6 +131,10 @@
 	transition-property: background-color, transform
 	transition-duration: $animation-speed
 
+	.side-menu--alt &
+		display: table-cell
+		+size(auto)
+
 	a
 		display: block
 		height: 100%
@@ -129,18 +154,22 @@
 				path
 					fill: white !important
 
-	.side-menu--alt &
-		&, .no-touchevents &
-			display: table-cell
-			vertical-align: middle
-			position: relative
-			white-space: normal
-			+position(auto, auto)
-			+size(auto)
-			text-align: center
-			padding: 5% 13%
-			border: solid $side-menu-bg-color-hover
-			border-width: 1px 0 0
+		.side-menu--alt &
+			&, .no-touchevents &
+				display: table
+				width: 100%
+				padding: 5% 13%
+				min-height: 33.3vh // для 3 элементов
+				text-align: center
+				border: solid $side-menu-bg-color-hover
+				border-width: 1px 0 0
+
+				+media('<desk-lg')
+					padding: 5%
+
+				.contain-wrap
+					display: table-cell
+					vertical-align: middle
 
 	.current &
 		&, .no-touchevents &
@@ -183,14 +212,20 @@
 	z-index: 5
 
 	.side-menu--alt &
-		display: block
+		//display: block
 		+push-auto
-		width: auto
+		width: calc(100% - 6px)
 		max-width: 100px
 		margin-bottom: 20px
+		height: auto
+
+		+media('<desk-lg')
+			max-width: 80px
+			margin-bottom: 10px
 
 	&::before
-		+pseudo-inline-block-relative()
+		//+pseudo-inline-block-relative()
+		+pseudo-block-relative()
 		+ratio(1, 1)
 
 	svg
@@ -200,19 +235,19 @@
 		transition-duration: $animation-speed
 
 		// если в коде будет 2 svg, для главной и внутренних
-		//&:first-child
+		&.svg-alt
 			display: none
 
 		.side-menu--alt &
-			+size(100px)
+			+size(100%)
 
 			// если в коде будет 2 svg, для главной и внутренних
-			//&:first-child
-				display: block
-
-			// если в коде будет 2 svg, для главной и внутренних
-			//&:first-child + svg
+			&.svg-norm
 				display: none
+
+			// если в коде будет 2 svg, для главной и внутренних
+			&.svg-alt
+				display: block
 
 		.no-touchevents .side-menu--alt .side-menu__cell:hover &
 			//transform: translate(-50%, -70%) scale(0.95)
@@ -228,19 +263,6 @@
 
 			+media('<tab-lg')
 				fill: black
-
-	//img
-		position: absolute
-		left: 50%
-		top: 50%
-		transform: translate(-50%, -50%)
-		max-width: 120px
-		max-height: 120px
-		transition-property: opacity
-		transition-duration: $animation-speed
-
-		.no-touchevents .side-menu__cell:hover &
-			opacity: 0.3
 
 .side-menu__title
 	+display-inline-block-middle
@@ -269,6 +291,10 @@
 		text-align: center
 		transform: none
 		opacity: 1
+
+		+media('<desk-lg')
+			+font(14px, 18px)
+			letter-spacing: 0.025em
 
 	.no-touchevents .side-menu:hover &
 		opacity: 1

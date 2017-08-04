@@ -3,7 +3,7 @@
 
 // medium query
 //$breakpoints: ('mob-sm': 320px, 'mob-md': 480px, 'mob-lg': 640px, 'tab-sm': 768px, 'tab-lg': 992px, 'desk-sm': 1200px, 'desk-md': 1366px, 'desk-lg': 1600px, 'desk-hd': 1920px)
-$breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-md': 1280px, 'desk-sm': 1200px, 'tab-lg': 980px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
+$breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-sb': 1400px, 'desk-md': 1280px, 'desk-sm': 1200px, 'tab-lg': 980px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
 
 // base
 $font-size: 1.8rem !default
@@ -146,6 +146,7 @@ $table-bg-alt-color: #f3f3f3 !default
 
 // grids
 $grid-space: 40px !default // отступы между элементами сетки, например, новостей
+$grid-space--sm: 20px !default // отступы между элементами сетки, например, новостей
 $grid-inside-horizontal-space: round($grid-space*0.875) !default // горизонтальные отступы внутри элементов сетки
 $grid-inside-vertical-space: round($grid-inside-horizontal-space*0.875) !default // вертикальные отступы внутри элементов сетки
 
@@ -160,7 +161,8 @@ $nav-width: 380px !default
 
 // sidebar
 $sidebar-width: 80px !default
-$sidebar-width--lg: 320px !default
+$sidebar-width-alt: 320px !default
+$sidebar-width-alt--sm: 180px !default
 $sidebar-drop-width: 270px !default
 $side-menu-bg-color-hover: #999
 $side-menu-border-color: #999
@@ -195,10 +197,6 @@ $top-panel-height: 80px !default
 $top-panel-height--md: 50px !default
 $top-panel-space: 26px !default
 $top-panel-space--md: 13px !default
-
-// news grid
-$news-grid-font-size: $font-size
-$news-grid-line-height: $line-height
 
 // social color
 $facebook-color: #3a589e
