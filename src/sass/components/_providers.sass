@@ -18,6 +18,9 @@
 	+display-inline-block-top
 	+clear-spacing
 
+	+media('<tab-lg')
+		display: block
+
 .agency__item
 	position: relative
 	+display-inline-block-middle
@@ -33,6 +36,13 @@
 	+media('<desk-sb')
 		padding: 5px 30px
 
+	+media('<tab-lg')
+		display: block
+		width: auto
+		max-width: 320px
+		+push-auto
+		padding: 30px 0
+
 	&::before
 		+pseudo($content: counter(section))
 		+centering-transform()
@@ -41,10 +51,13 @@
 		color: rgba(243, 243, 243, 0.35)
 
 		+media('<desk-hd')
-			+font(140px, 1)
+			font-size: 140px
 
 		+media('<desk-sb')
-			+font(80px, 1)
+			font-size: 80px
+
+		+media('<tab-lg')
+			font-size: 120px
 
 	&::after
 		+pseudo()
@@ -57,8 +70,19 @@
 		+linear-gradient(to right, #999 0, #999 33%, transparent 33%, transparent 100%)
 		background-size: 6px 6px
 
+		+media('<tab-lg')
+			top: 0
+			left: 50%
+
 	&:first-child::after
 		content: none
+
+.agency__inner
+	+media('<tab-lg')
+		&::before
+			content: ""
+			+display-inline-block-middle
+			height: 60px
 
 .agency__text
 	+font-bold
@@ -67,12 +91,17 @@
 	text-transform: uppercase
 
 	+media('<desk-hd')
-		+font(15px, round-float(22/18, 1))
+		font-size: 15px
 		letter-spacing: 0.025em
 
 	+media('<desk-sb')
-		+font(13px, round-float(22/18, 1))
+		font-size: 13px
 		letter-spacing: 0.05em
+
+	+media('<tab-lg')
+		font-size: 18px
+		+display-inline-block-middle
+		width: calc(100% - 6px)
 
 /*agency end
 
@@ -92,8 +121,16 @@
 	width: 50%
 	padding: 0 3.7%
 
+	+media('<tab-sm')
+		float: none
+		width: auto
+		padding: 20px 0 0
+
 	&:first-child
 		padding-left: 0
+
+		+media('<tab-sm')
+			padding-top: 0
 
 	&:last-child
 		padding-right: 0
@@ -111,6 +148,9 @@
 		padding: 15px 20px
 		font-size: 14px
 
+	+media('<tab-sm')
+		font-size: 16px
+
 	& > p, & > ul, & > ol
 		&:last-child
 			margin-bottom: 0
@@ -120,6 +160,9 @@
 	+font(2.0rem, round-float(24/20, 1))
 	color: white
 	margin-bottom: 1em
+
+	+media('<tab-sm')
+		text-align: center
 
 	&:last-child
 		margin-bottom: 0

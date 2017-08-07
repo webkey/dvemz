@@ -15,23 +15,25 @@
 	user-select: none
 
 	+media('>=tab-lg')
+		.side-menu--alt &
+			width: $sidebar-width-alt
+			overflow-x: hidden
+			overflow-y: auto
+
+			+media('<desk-lg')
+				width: $sidebar-width-alt--sm
+
+	+media('>=tab-lg')
 		visibility: inherit !important
 		opacity: 1 !important
 		transform: matrix(1, 0, 0, 1, 0, 0) !important
 
-	+media('<tab-lg')
-		width: 100%
-		opacity: 0
-		visibility: hidden
-		transform: translate(0, 0)
-
-	.side-menu--alt &
-		width: $sidebar-width-alt
-		overflow-x: hidden
-		overflow-y: auto
-
-		+media('<desk-lg')
-			width: $sidebar-width-alt--sm
+	&
+		+media('<tab-lg')
+			width: 100%
+			opacity: 0
+			visibility: hidden
+			transform: translate(0, 0)
 
 	.v-middle__row
 		&.top-position, &.bottom-position
@@ -63,9 +65,10 @@
 		.side-menu--alt &
 			transform: none
 
-	+media('<tab-lg')
-		width: auto
-		transform: translate(0, 0) !important
+	&, .side-menu--alt &
+		+media('<tab-lg')
+			width: auto
+			transform: translate(0, 0) !important
 
 .side-menu__holder
 	position: relative
@@ -87,16 +90,18 @@
 			width: auto
 
 .v-middle__row
-	&.center-position
-		.side-menu--alt &
-			display: block
-			min-height: 100vh
+	+media('>=tab-lg')
+		&.center-position
+			.side-menu--alt &
+				display: block
+				min-height: 100vh
 
 .v-middle__cell
-	.side-menu--alt &
-		display: table
-		width: 100%
-		height: 100vh
+	+media('>=tab-lg')
+		.side-menu--alt &
+			display: table
+			width: 100%
+			height: 100vh
 
 .side-menu__row
 	display: block
@@ -105,14 +110,15 @@
 	border-width: 1px 0
 	position: relative
 
-	.side-menu--alt &
-		display: table-row
-		margin: 0
-		border: none
-		width: auto
+	+media('>=tab-lg')
+		.side-menu--alt &
+			display: table-row
+			margin: 0
+			border: none
+			width: auto
 
-		&::before
-			content: none
+			&::before
+				content: none
 
 	&.current
 		border-color: black
@@ -131,9 +137,10 @@
 	transition-property: background-color, transform
 	transition-duration: $animation-speed
 
-	.side-menu--alt &
-		display: table-cell
-		+size(auto)
+	+media('>=tab-lg')
+		.side-menu--alt &
+			display: table-cell
+			+size(auto)
 
 	a
 		display: block
@@ -154,22 +161,23 @@
 				path
 					fill: white !important
 
-		.side-menu--alt &
-			&, .no-touchevents &
-				display: table
-				width: 100%
-				padding: 5% 13%
-				min-height: 33.3vh // для 3 элементов
-				text-align: center
-				border: solid $side-menu-bg-color-hover
-				border-width: 1px 0 0
+		+media('>=tab-lg')
+			.side-menu--alt &
+				&, .no-touchevents &
+					display: table
+					width: 100%
+					padding: 5% 13%
+					min-height: 33.3vh // для 3 элементов
+					text-align: center
+					border: solid $side-menu-bg-color-hover
+					border-width: 1px 0 0
 
-				+media('<desk-lg')
-					padding: 5%
+					+media('<desk-lg')
+						padding: 5%
 
-				.contain-wrap
-					display: table-cell
-					vertical-align: middle
+					.contain-wrap
+						display: table-cell
+						vertical-align: middle
 
 	.current &
 		&, .no-touchevents &
@@ -183,27 +191,28 @@
 
 .side-menu__hover // стиль ховеров для главной страницы
 
-	.no-touchevents .side-menu--alt &:hover
-		background-color: $side-menu-bg-color-hover
+	+media('>=tab-lg')
+		.no-touchevents .side-menu--alt &:hover
+			background-color: $side-menu-bg-color-hover
 
-	.side-menu--alt &::before
-		+pseudo()
-		bottom: 30px
-		left: 50%
-		+size(42px, 10px)
-		background: url(../../img/arrow-right.svg) no-repeat center
-		background-size: cover
-		opacity: 0
-		visibility: hidden
-		transform: translate(-200%, 0)
-		transition-property: transform, opacity, visibility, height
-		transition-duration: $animation-speed
-		z-index: 5
+		.side-menu--alt &::before
+			+pseudo()
+			bottom: 30px
+			left: 50%
+			+size(42px, 10px)
+			background: url(../../img/arrow-right.svg) no-repeat center
+			background-size: cover
+			opacity: 0
+			visibility: hidden
+			transform: translate(-200%, 0)
+			transition-property: transform, opacity, visibility, height
+			transition-duration: $animation-speed
+			z-index: 5
 
-	.no-touchevents .side-menu--alt &:hover::before
-		opacity: 1
-		visibility: visible
-		transform: translate(-50%, 0)
+		.no-touchevents .side-menu--alt &:hover::before
+			opacity: 1
+			visibility: visible
+			transform: translate(-50%, 0)
 
 .side-menu__figure
 	+display-inline-block-middle
@@ -211,17 +220,18 @@
 	position: relative
 	z-index: 5
 
-	.side-menu--alt &
-		//display: block
-		+push-auto
-		width: calc(100% - 6px)
-		max-width: 100px
-		margin-bottom: 20px
-		height: auto
+	+media('>=tab-lg')
 
-		+media('<desk-lg')
-			max-width: 80px
-			margin-bottom: 10px
+		.side-menu--alt &
+			//display: block
+			margin: 0 auto 20px
+			width: calc(100% - 6px)
+			max-width: 100px
+			height: auto
+
+			+media('<desk-lg')
+				max-width: 80px
+				margin-bottom: 10px
 
 	&::before
 		//+pseudo-inline-block-relative()
@@ -238,20 +248,21 @@
 		&.svg-alt
 			display: none
 
-		.side-menu--alt &
-			+size(100%)
+		+media('>=tab-lg')
+			.side-menu--alt &
+				+size(100%)
 
-			// если в коде будет 2 svg, для главной и внутренних
-			&.svg-norm
-				display: none
+				// если в коде будет 2 svg, для главной и внутренних
+				&.svg-norm
+					display: none
 
-			// если в коде будет 2 svg, для главной и внутренних
-			&.svg-alt
-				display: block
+				// если в коде будет 2 svg, для главной и внутренних
+				&.svg-alt
+					display: block
 
-		.no-touchevents .side-menu--alt .side-menu__cell:hover &
-			//transform: translate(-50%, -70%) scale(0.95)
-			opacity: 0.3
+			.no-touchevents .side-menu--alt .side-menu__cell:hover &
+				//transform: translate(-50%, -70%) scale(0.95)
+				opacity: 0.3
 
 	path
 		fill: black
@@ -283,29 +294,30 @@
 	transition-delay: #{round-float($animation-speed*0.5, 1)}
 	z-index: 5
 
-	.side-menu--alt &
-		max-height: 100%
-		width: auto
-		display: block
-		padding: 0
-		text-align: center
-		transform: none
-		opacity: 1
-
-		+media('<desk-lg')
-			+font(14px, 18px)
-			letter-spacing: 0.025em
-
 	.no-touchevents .side-menu:hover &
 		opacity: 1
 		transform: translate(0, 0)
 
-	.no-touchevents .side-menu--alt:hover &
-		transition-delay: 0s
-		transform: none
+	+media('>=tab-lg')
+		.side-menu--alt &
+			max-height: 100%
+			width: auto
+			display: block
+			padding: 0
+			text-align: center
+			transform: none
+			opacity: 1
 
-	.no-touchevents .side-menu--alt .side-menu__cell:hover &
-		color: white
+			+media('<desk-lg')
+				+font(14px, 18px)
+				letter-spacing: 0.025em
+
+		.no-touchevents .side-menu--alt:hover &
+			transition-delay: 0s
+			transform: none
+
+		.no-touchevents .side-menu--alt .side-menu__cell:hover &
+			color: white
 
 	+media('<tab-lg')
 		opacity: 1

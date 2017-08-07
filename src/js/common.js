@@ -369,79 +369,107 @@ function fullPageInitial() {
 	var noAnimateClass = 'fp-no-animate';
 	var timeout;
 
-	$('.main-sections-js').fullpage({
-		verticalCentered: false,
-		// anchors: ['firstPage', 'secondPage', 'thirdPage'],
-		// navigation: true,
-		menu: '.scroll-nav-js',
-		sectionSelector: '.main-section',
-		scrollingSpeed: 1000,
-		onLeave: function (index, nextIndex, direction) {
-			var $this = $(this);
-			var $section = $this.parent().children();
-			// var lengthPages = $section.length;
+	var $mainSections = $('.main-sections-js');
+	if($mainSections.length) {
+		$mainSections.fullpage({
+			verticalCentered: false,
+			// anchors: ['firstPage', 'secondPage', 'thirdPage'],
+			// navigation: true,
+			menu: '.scroll-nav-js',
+			sectionSelector: '.main-section',
+			scrollingSpeed: 1000,
+			recordHistory: false,
+			onLeave: function (index, nextIndex, direction) {
+				var $this = $(this);
+				var $section = $this.parent().children();
+				// var lengthPages = $section.length;
 
-			$this.parent().removeClass('fp-down fp-up').addClass('fp-' + direction);
+				$this.parent().removeClass('fp-down fp-up').addClass('fp-' + direction);
 
-			$section.removeClass(prevBeforeSectionClass);
-			$section.eq($this.index()).addClass(prevBeforeSectionClass);
-			// console.log("currentIndex: ", index);
-			// console.log("beforeIndex: ", $this.index());
-			// console.log("thisIndex: ", $this.index());
-			// console.log("nextIndex: ", nextIndex);
+				$section.removeClass(prevBeforeSectionClass);
+				$section.eq($this.index()).addClass(prevBeforeSectionClass);
+				// console.log("currentIndex: ", index);
+				// console.log("beforeIndex: ", $this.index());
+				// console.log("thisIndex: ", $this.index());
+				// console.log("nextIndex: ", nextIndex);
 
-			// $section.addClass(prevBeforeSectionClass);
-			// for(var i = 0; i < lengthPages; i++) {
-			// 	if (i+1 >= nextIndex) {
-			// 		$section.eq(i).removeClass(prevBeforeSectionClass);
-			// 	}
-			// }
-		},
-		afterLoad: function (anchorLink, index) {
-			var $this = $(this);
-			var $section = $this.parent().children();
-			// console.log("this.parent(): ", lengthPages);
-			// console.log("this: ", this);
-			// console.log("anchorLink: ", anchorLink);
-			// console.log("index(afterLoad): ", index);
-			// console.log("$thisIndex(afterLoad): ", $this.index());
+				// $section.addClass(prevBeforeSectionClass);
+				// for(var i = 0; i < lengthPages; i++) {
+				// 	if (i+1 >= nextIndex) {
+				// 		$section.eq(i).removeClass(prevBeforeSectionClass);
+				// 	}
+				// }
+			},
+			afterLoad: function (anchorLink, index) {
+				var $this = $(this);
+				var $section = $this.parent().children();
+				// console.log("this.parent(): ", lengthPages);
+				// console.log("this: ", this);
+				// console.log("anchorLink: ", anchorLink);
+				// console.log("index(afterLoad): ", index);
+				// console.log("$thisIndex(afterLoad): ", $this.index());
 
-			$this.parent().addClass(noAnimateClass);
-			// console.log('addClass "no-animate"');
+				$this.parent().addClass(noAnimateClass);
+				// console.log('addClass "no-animate"');
 
-			clearTimeout(timeout);
+				clearTimeout(timeout);
 
-			timeout = setTimeout(function () {
-				$this.parent().removeClass(noAnimateClass);
-				// console.log('removeClass "no-animate"');
-			}, 50);
+				timeout = setTimeout(function () {
+					$this.parent().removeClass(noAnimateClass);
+					// console.log('removeClass "no-animate"');
+				}, 50);
 
-			$section.removeClass(prevBeforeSectionClass);
+				$section.removeClass(prevBeforeSectionClass);
 
-			$html.removeClass(topClass);
-			$html.removeClass(bottomClass);
+				$html.removeClass(topClass);
+				$html.removeClass(bottomClass);
 
-			if(index === 1) {
-				$html.addClass(topClass);
+				if(index === 1) {
+					$html.addClass(topClass);
+				}
+				if(index === $section.length) {
+					$html.addClass(bottomClass);
+				}
+
+				// $section.addClass(prevSectionClass);
+				// for(var i = 0; i < lengthPages; i++) {
+				// 	if (i+1 >= index) {
+				// 		$section.eq(i).removeClass(prevSectionClass);
+				// 	}
+				// }
+			},
+			afterRender: function(){
+				var pluginContainer = $(this);
+				console.log("pluginContainer: ", pluginContainer);
+				fullPageRespons();
 			}
-			if(index === $section.length) {
-				$html.addClass(bottomClass);
-			}
-
-			// $section.addClass(prevSectionClass);
-			// for(var i = 0; i < lengthPages; i++) {
-			// 	if (i+1 >= index) {
-			// 		$section.eq(i).removeClass(prevSectionClass);
-			// 	}
-			// }
-		}
-	});
+		});
+	}
 
 	$('.move-next-section-js').on('click', function (e) {
 		e.preventDefault();
 
 		$.fn.fullpage.moveSectionDown();
-	})
+	});
+
+	function fullPageRespons() {
+		if (window.innerWidth < mediaTablet) {
+			if ($mainSections) {
+				$.fn.fullpage.setResponsive(true);
+				// $.fn.fullpage.setRecordHistory(true);
+			}
+		} else {
+			if ($mainSections) {
+				$.fn.fullpage.setResponsive(false);
+				// $.fn.fullpage.setRecordHistory(false);
+			}
+		}
+	}
+
+	$(window).on('debouncedresize', function () {
+		clearInterval(fullPageRespTimeout);
+		fullPageRespons();
+	});
 }
 /*full page scroll*/
 
@@ -795,10 +823,17 @@ function mainMapInit() {
 	}
 
 	function mapCenter() {
-		return {
-			lat: mainMapPosition.desktop.lat,
-			lng: mainMapPosition.desktop.lng
-		};
+		if(window.innerWidth < mediaTablet) {
+			return {
+				lat: mainMapPosition.mobile.lat,
+				lng: mainMapPosition.mobile.lng
+			};
+		} else {
+			return {
+				lat: mainMapPosition.desktop.lat,
+				lng: mainMapPosition.desktop.lng
+			};
+		}
 	}
 
 	var mapOptions = {

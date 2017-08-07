@@ -176,6 +176,9 @@
 	.home-page &
 		display: none
 
+		+media('<tab-lg')
+			display: block
+
 	.footer__holder
 		$base-width: 100% - #{$header-width}
 		
@@ -219,7 +222,7 @@
 				width: calc(#{$base-width})
 
 		+media('<tab-lg')
-			&, .ea-site &
+			&, .ea-site &, .side-menu--alt &
 				left: 0
 				width: 100%
 
@@ -233,10 +236,10 @@
 		padding: round($text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg} round($text-layout-space-horizontal--lg*1.5 - $footer-nav-horizontal-space)
 
 	+media('<tab-lg')
-		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} round($text-layout-space-horizontal--md*1.5 - $footer-nav-horizontal-space)
+		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} 0
 
 	+media('<tab-sm')
-		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*1.5 - $footer-nav-horizontal-space)
+		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} 0
 
 /* footer common (layout) end
 
@@ -327,7 +330,8 @@
 /* side menu (layout) end
 
 .home-page .spacer
-	display: none
+	+media('>=tab-lg')
+		display: none
 
 .max-wrap
 	max-width: $page-layout-width

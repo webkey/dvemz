@@ -6,11 +6,21 @@
 $main-section-max-width: 960px !default
 $main-section-max-width-lg: 960px !default
 
+.main-sections
+	+media('<tab-lg')
+		height: auto !important
+		transform: none !important
+		transition-duration: 0s !important
+
 .main-section
 	position: relative
 	//background-color: #f3f3f3
 	min-height: 100vh
 	overflow: hidden
+
+	+media('<tab-lg')
+		height: auto !important
+		min-height: 0
 
 	.fp-bg
 		background: #f3f3f3 no-repeat center
@@ -24,6 +34,23 @@ $main-section-max-width-lg: 960px !default
 		transition-property: transform
 		//transform: translate(0, -33%)
 		transition-duration: $animation-speed-section
+		z-index: -1
+
+		+media('<tab-lg')
+			transform: none !important
+
+		&::before
+			+pseudo()
+			+position(0, 0)
+			+size(100%)
+			background-color: rgba(0, 0, 0, 0.3)
+			//+linear-gradient(to top, rgba(0, 0, 0, 0.81) 0, rgba(0, 0, 0, 0.7) 25%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.4) 100%)
+
+			//+media('<tab-sm')
+				+linear-gradient(to top, rgba(0, 0, 0, 0.81) 0, rgba(0, 0, 0, 0.7) 25%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.4) 100%)
+
+				.no-cssgradients &
+					background: rgba(0, 0, 0, 0.5)
 
 	.fp-no-animate &
 		.fp-bg
@@ -52,15 +79,18 @@ $main-section-max-width-lg: 960px !default
 
 .main-section__container
 	position: relative
-	display: table
-	width: 100%
-	height: 100%
-	min-height: 100vh
+
+	+media('>=tab-lg')
+		display: table
+		width: 100%
+		height: 100%
+		min-height: 100vh
 
 .main-section__align
-	display: table-cell
-	vertical-align: middle
-	text-align: center
+	+media('>=tab-lg')
+		display: table-cell
+		vertical-align: middle
+		text-align: center
 
 .main-section__layout
 	position: relative
@@ -76,12 +106,12 @@ $main-section-max-width-lg: 960px !default
 		max-width: $main-section-max-width-lg
 
 .main-section__title
-	+font-bold
-	+font(48px, round-float(58/48, 1))
-	color: white
-	margin-bottom: 10px
 	display: flex
 	justify-content: space-between
+	+font-bold
+	+font(48px, round-float(58/48, 1))
+	margin-bottom: 10px
+	color: white
 
 	+media('<desk-hd')
 		font-size: 42px
@@ -91,6 +121,14 @@ $main-section-max-width-lg: 960px !default
 		font-size: 38px
 		margin-bottom: 10px
 
+	+media('<tab-lg')
+		display: block
+		text-align: center
+		margin-bottom: 0.6em
+
+	+media('<tab-sm')
+		font-size: 30px
+
 	h2, h3
 		margin: 0
 		font-family: inherit
@@ -98,6 +136,12 @@ $main-section-max-width-lg: 960px !default
 		font-weight: inherit
 		color: inherit
 		flex: 1 1 12rem
+
+		+media('<tab-lg')
+			margin-bottom: 0.2em
+
+			&:last-child
+				margin-bottom: 0
 
 	.subtitle
 		+font-normal
@@ -111,6 +155,9 @@ $main-section-max-width-lg: 960px !default
 		+media('<desk-sb')
 			font-size: 16px
 			padding: 0
+
+		+media('<tab-lg')
+			font-size: 18px
 
 .main-section__holder
 	+clear
@@ -128,6 +175,24 @@ $main-section-max-width-lg: 960px !default
 	.fp-bg
 		background-image: url(../../img/bg-entry.jpg)
 
+		+media('<tab-lg')
+			display: none
+
+	.main-section__align
+		+padding-vertical(120px)
+
+	.main-section__container
+		+media('<tab-lg')
+			background: #f3f3f3 url(../../img/bg-entry.jpg) no-repeat center
+			background-size: cover
+
+			&::before
+				+pseudo()
+				+position(0, 0)
+				+size(100%)
+				//background-color: rgba(0, 0, 0, 0.4)
+				+linear-gradient(to top, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 0.6) 25%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%)
+
 	.main-section__title
 		position: relative
 		padding-bottom: 0.8em
@@ -144,12 +209,27 @@ $main-section-max-width-lg: 960px !default
 			font-size: 36px
 			margin-bottom: 80px
 
+		+media('<tab-lg')
+			margin-bottom: 20px
+			padding-bottom: 0
+			text-align: center
+
+			&:last-child
+				margin-bottom: 0
+
+		+media('<tab-sm')
+			+font(22px, round-float(30/22, 1))
+			letter-spacing: 0.05em
+
 		&::before
 			+pseudo()
 			left: 0
 			bottom: 0
 			+size(85px, 3px)
 			background-color: white
+
+			+media('<tab-lg')
+				content: none
 
 		h1, h2, h3
 			width: 800px
@@ -167,14 +247,21 @@ $main-section-max-width-lg: 960px !default
 
 /*total date
 .total-data
-	position: absolute
-	left: 0
-	bottom: 0
-	width: 100%
-	z-index: 50
+	+media('>=tab-lg')
+		position: absolute
+		left: 0
+		bottom: 0
+		width: 100%
+		z-index: 50
 
-	&:last-child
-		margin-bottom: 0
+		&:last-child
+			margin-bottom: 0
+
+	+media('<tab-lg')
+		background-color: black
+
+	+media('<tab-sm')
+		display: none
 
 .total-data__list
 	position: relative
@@ -205,6 +292,11 @@ $main-section-max-width-lg: 960px !default
 
 	+media('<desk-sm')
 		padding: 20px 10px 10px 10px
+
+	+media('<tab-sm')
+		float: none
+		width: auto
+		text-align: center
 
 .total-data__title
 	margin-bottom: 0.05em
@@ -280,6 +372,9 @@ $main-section-max-width-lg: 960px !default
 		background-color: #4f4d47
 		background-image: url('../../img/bg-providers.jpg')
 
+		&::before
+			background-color: rgba(0, 0, 0, 0.6)
+
 /*main section news end
 
 .fp-enabled
@@ -306,17 +401,30 @@ $main-section-max-width-lg: 960px !default
 			+size(64px, 3px)
 			background-color: $text-color
 
+			+media('<tab-lg')
+				left: 50%
+				margin-left: -(round(64px/2))
+
 	.main-section__layout
-		height: 0
+		+media('>=tab-lg')
+			height: 0
 
 	.main-section__pos
-		position: absolute
-		left: 0
-		top: 0
-		max-width: 100%
-		transform: translate(0, -50%)
-		z-index: 40
-		+antialiased
+		+media('>=tab-lg')
+			position: absolute
+			left: 0
+			top: 0
+			max-width: 100%
+			transform: translate(0, -50%)
+			z-index: 40
+			+antialiased
+
+		+media('<tab-lg')
+			background-color: white
+			padding-bottom: 70px
+
+		+media('<tab-sm')
+			padding-bottom: 40px
 
 	.phone
 		margin-bottom: 36px
@@ -331,6 +439,12 @@ $main-section-max-width-lg: 960px !default
 		+media('<desk-sm')
 			font-size: 48px
 
+		+media('<tab-lg')
+			text-align: center
+
+		+media('<tab-sm')
+			font-size: 28px
+
 		&:last-child
 			margin-bottom: 0
 
@@ -340,6 +454,9 @@ $main-section-max-width-lg: 960px !default
 		&:last-child
 			margin-bottom: 0
 
+		+media('<tab-lg')
+			text-align: center
+
 	.contacts
 		margin-bottom: 1.5em
 		max-width: 300px
@@ -347,6 +464,9 @@ $main-section-max-width-lg: 960px !default
 
 		&:last-child
 			margin-bottom: 0
+
+		+media('<tab-lg')
+			+push-auto
 
 		li
 			padding-left: 0
@@ -383,12 +503,63 @@ $main-section-max-width-lg: 960px !default
 /*main section map end
 
 /*main map
-.main-map
+.main-section .main-map
 	+cover-abs()
 	background-color: #d3d3d3
+	z-index: auto
+
+	+media('<tab-lg')
+		position: relative
+		left: auto
+		top: auto
+		width: 100%
+		height: 320px
 
 /*main map end
 
 .fp-enabled
 	.main-section--map
 		+animation-on-scroll(main-section__title phone info main-section__footer)
+
+.c-categories
+	display: none
+	background-color: $base-color
+
+	.ea-site &
+		background-color: $base-color--ea
+
+	+media('<tab-lg')
+		display: block
+
+.c-categories-item
+	$icon-size: 50px !default
+
+	display: block
+	padding: #{round($text-layout-space-horizontal--md*0.6)} #{$text-layout-space-horizontal--md}
+	text-decoration: none
+	color: $text-color
+	border: solid $side-menu-bg-color-hover
+	border-width: 1px 0 0
+
+	+media('<tab-sm')
+		padding: #{round($text-layout-space-horizontal--sm*0.6)} #{$text-layout-space-horizontal--sm}
+
+	&:first-child
+		border-top-width: 0
+
+	svg
+		+display-inline-block-middle
+		+size($icon-size)
+		margin-right: $text-layout-space-horizontal--md
+
+		+media('<tab-sm')
+			margin-right: $text-layout-space-horizontal--sm
+
+	.c-categories__title
+		+font-normal
+		+font(18px, round-float(21/18, 2))
+		text-transform: uppercase
+
+	svg + .c-categories__title
+		+display-inline-block-middle
+		width: calc(100% - #{$icon-size} - #{$text-layout-space-horizontal--md} - 6px)

@@ -31,8 +31,8 @@
 		+media('<desk-hd')
 			+grid-item(3, $grid-space--sm)
 
-		+media('<mob-lg')
-			+grid-item(1, $grid-space)
+		+media('<tab-sm')
+			+grid-item(1, $grid-space--sm)
 
 .news-grid__inner
 	display: block
@@ -83,6 +83,9 @@
 
 	+media('<desk-sb')
 		max-height: calc(20px * 8)
+
+	+media('<tab-lg')
+		max-height: calc(20px * 12)
 
 	//@media (max-height: 949px)
 		max-height: calc(#{$font-size * $line-height} * 8)
