@@ -440,7 +440,6 @@ function fullPageInitial() {
 			},
 			afterRender: function(){
 				var pluginContainer = $(this);
-				console.log("pluginContainer: ", pluginContainer);
 				fullPageRespons();
 			}
 		});
@@ -467,7 +466,6 @@ function fullPageInitial() {
 	}
 
 	$(window).on('debouncedresize', function () {
-		clearInterval(fullPageRespTimeout);
 		fullPageRespons();
 	});
 }
@@ -1587,6 +1585,31 @@ function popupsInit(){
 			cssScrollBlocked: true,
 			openedClass: 'catalog-menu-popup-opened',
 			beforeOpenClass: 'catalog-menu-popup-before-open',
+			ease: 'Power2.easeInOut'
+		});
+	}
+
+	/*text popup*/
+	var textPopupClass = '.text-popup-js';
+	var $textPopup = $(textPopupClass);
+
+	if(textPopupClass.length){
+
+		new ExtraPopup({
+			navContainer: textPopupClass,
+			// navMenu: '.nav__list',
+			btnMenu: '.text-popup-opener-js',
+			btnMenuClose: '.btn-text-popup-js',
+			overlayClass: 'popup-overlay--text-popup',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			animationSpeed: 300,
+			animationType: 'rtl',
+			overlayAlpha: 0.35,
+			overlayIndex: 1010,
+			cssScrollBlocked: true,
+			openedClass: 'text-popup-popup-opened',
+			beforeOpenClass: 'text-popup-popup-before-open',
 			ease: 'Power2.easeInOut'
 		});
 	}

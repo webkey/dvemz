@@ -86,10 +86,13 @@
 	margin-bottom: $bottom-space--md
 	+font(#{$font-size--sm}, #{$line-height--sm})
 
-	.spinner, .p-card-price, .btn-outline
+	& > *
 		+display-inline-block-top
 		margin-right: 20px
 		margin-bottom: $bottom-space--sm
+
+		&:last-child
+			margin-bottom: 0
 
 	.btn-outline
 		min-width: 190px
