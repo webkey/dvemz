@@ -1,13 +1,13 @@
 @@include('_layout_head.tpl', {
-	"title": "ЭA - Резьбовой крепежный элемент РКв-20 (внутренняя резьба) ТДМ",
-	"pageClass": "ea-site ea-has-catalog-menu",
+	"title": "ЭA - Корзина",
+	"pageClass": "ea-site",
 	"ea": "true"
 })
 
 <div class="wrapper">
 	<!--HEADER-->
 	@@include('_layout_header--ea.xhtml', {
-		"mainNavItemActive": "Сотрудничество"
+		"mainNavItemActive": ""
 	})
 	<!--HEADER end-->
 
@@ -26,13 +26,25 @@
 							<div class="layout-article">
 								<!--breadcrumbs-->
 								@@include('_breadcrumbs.tpl', {
-									"last": "Резьбовой крепежный элемент РКв-20 (внутренняя резьба) ТДМ"
+									"last": "Корзина"
 								})
 								<!--breadcrumbs end-->
-								<div class="layout-flood">
-									<!--product card-->
-									@@include('_tpl_product-card.xhtml')
-									<!--product card end-->
+								<div class="heading">
+									<h1>Корзина</h1>
+									<!--order steps-->
+									<div class="order-steps">
+										Lorem ipsum dolor sit amet.
+									</div>
+									<!--order steps end-->
+								</div>
+								<div class="layout-wide">
+									<!--products basket-->
+									<div class="products-basket">
+										<section class="products-basket__list">
+											@@loop("_tpl_basket-items.tpl", "includes-json/_tpl_basket-items.json")
+										</section>
+									</div>
+									<!--products basket end-->
 								</div>
 							</div>
 						</div>
@@ -46,15 +58,11 @@
 
 	<!--SIDEBAR-->
 	@@include('_layout_catalog-menu.tpl', {
-		"catalogMenuActiveItem": "Кабельно-проводниковая продукция и кабеленесущие системы"
+		"catalogMenuActiveItem": "",
+		"notSubMenu": "true"
 	})
 	<!--SIDEBAR-->
 </div>
-
-
-@@include('_tpl_text-popup.tpl', {
-	"site": "ea"
-})
 
 @@include('_layout_foot.tpl', {
 	"site": "ea"

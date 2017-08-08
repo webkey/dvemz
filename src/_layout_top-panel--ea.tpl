@@ -37,7 +37,9 @@
 			</div>
 			-->
 		</div>
-		@@include('_tpl_user-options.tpl')
+		@@include('_tpl_user-options.tpl', {
+			"site": "ea"
+		})
 		<a href="index.html" class="btn-siblings"><i>&nbsp;</i><span>Электрощитовое <br> оборудование</span></a>
 	</div>
 	<a href="automatic-catalog.html" class="btn-catalog btn-catalog-js"><span>Каталог</span></a>

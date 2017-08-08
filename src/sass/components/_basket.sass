@@ -1,0 +1,155 @@
+@import ../utils/_variables
+@import ../utils/_mixins
+@import ../../libs/include-media/dist/_include-media
+
+/* products basket
+.products-basket
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+.products-basket__list
+	+clear-spacing
+
+.products-basket__item
+	position: relative
+
+.products-basket__inner
+	+clear-spacing
+	background-color: #{$bg-color}
+	transition-property: background-color
+	transition-duration: $animation-speed
+
+	.no-touchevents &
+		&:hover, &:focus
+			background: $bg-color-light
+
+.products-basket__cell
+	+display-inline-block-middle
+	width: round(100%/5)
+	letter-spacing: normal
+	+padding-horizontal(round($product-basket-cell-space/2))
+	+font($font-size, $line-height)
+
+	&:first-child
+		padding-left: $product-basket-cell-space
+
+.products-basket__product
+	width: 40%
+
+.products-basket__figure
+	+display-inline-block-middle
+	position: relative
+	width: #{$product-basket-figure-width}
+	margin-right: #{$product-basket-figure-right-space}
+
+	&:before
+		+pseudo-block-relative()
+		+ratio(4, 3)
+
+.products-basket__img
+	+cover-abs()
+	font-size: $font-size
+	letter-spacing: normal
+	backface-visibility: hidden
+
+	img
+		display: block
+		max-height: 100%
+		max-width: 100%
+		+centering-transform-rel()
+
+.products-basket__title
+	+display-inline-block-middle
+	width: calc(100% - #{$product-basket-figure-width} - #{$product-basket-figure-right-space} - 6px)
+	transition-property: color
+	transition-duration: $animation-speed
+
+	a
+		text-decoration: none
+		color: inherit
+		transition: inherit
+		padding-top: 0.6em
+
+		.no-touchevents &:hover
+			color: $link-color
+
+.products-basket__price
+
+.products-basket__options
+	text-align: center
+
+	.btn-outline
+		display: block
+		+padding-horizontal(12px)
+
+		.in-cart &
+			display: none
+
+	.spinner
+		display: inline-block
+
+/* grid view
+// для маленьких мониторов
++media('<tab-lg')
+	.products-basket
+		padding-right: 1px
+
+	.products-basket__list
+		display: flex
+		flex: 0 1 auto
+		flex-flow: row wrap
+
+	.products-basket__item
+		+display-inline-block-top
+		padding-left: 1px
+		width: round-float(100%/2, 4)
+
+	.products-basket__inner
+		padding: 30px
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		height: 100%
+
+	.products-basket__list, .products-basket__item
+		&::before
+			display: block
+
+	.products-basket__item
+		&::after
+			display: block
+
+	.products-basket__cell
+		display: block
+		width: auto
+
+	.products-basket__figure
+		margin: 0 auto $bottom-space
+		width: 100%
+		max-width: 260px
+
+	.products-basket__title
+		margin-bottom: 0.5em
+		padding: 0
+
+		// только для маленьких мониторов
+		text-align: center
+
+	.products-basket__price
+		text-align: center
+		padding: 0
+		margin-bottom: 20px
+
+		.cur, .no, .old
+			display: block
+			+margin-horizontal(0.2em)
+			margin-bottom: 0
+
+.products-basket__item
+	+media('<mob-lg')
+		width: round-float(100%/1, 4)
+
+/* grid view end
+/* products basket end
