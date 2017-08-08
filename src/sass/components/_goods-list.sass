@@ -7,22 +7,26 @@
 	overflow: hidden
 	margin-bottom: $bottom-space--md
 
+	+media('<mob-lg')
+		margin-bottom: 2rem
+
 	&:last-child
 		margin-bottom: 0
 
 .goods__caption
-	$info-size: 90px
+	$info-size: 60px
 	$info-size--sm: 60px
 
 	padding-right: #{$info-size + 20px}
 	margin-bottom: 5rem
 	min-height: $info-size
 
-	&:last-child
-		margin-bottom: 0
-
 	+media('<mob-lg')
 		padding-right: 0
+		margin-bottom: 3rem
+
+	&:last-child
+		margin-bottom: 0
 
 	h3
 		+font($font-size-h3, $line-height-h3)
@@ -30,18 +34,18 @@
 
 		+media('<mob-lg')
 			+font($font-size-h3--sm, $line-height-h3--sm)
-			margin-bottom: 3rem
+			margin-bottom: 2rem
 
 	.info
-		display: none
+		display: block
 		position: absolute
 		right: 0
 		top: 0
 		+size($info-size)
-		padding: 18px 10px 10px
+		padding: 11px 4px 4px
 		border: 1px solid #{$text-color}
-		+font(9px, 13px)
-		letter-spacing: 0.025em
+		+font(8px, 12px)
+		letter-spacing: normal
 		text-transform: uppercase
 		text-decoration: none
 		color: $text-color
@@ -50,32 +54,25 @@
 		transition-property: background-color
 		transition-duration: $animation-speed
 
+		.no-touchevents &:hover
+			background-color: $bg-color-light
+
 		+media('<mob-lg')
 			position: relative
 			right: auto
 			top: auto
-			+size($info-size--sm)
 			+push-auto
-			+font(8px, 12px)
-			letter-spacing: normal
-			padding: 11px 4px 4px
-
-		.no-touchevents &:hover
-			background-color: $bg-color-light
 
 		&::before
 			+pseudo-block-relative()
-			margin: 0 auto 12px
-			+size(12px, 24px)
+			margin: 0 auto 8px
+			+size(9px, 19px)
 			background-image: url('../../img/depict-info.png')
 			background-repeat: no-repeat
 			background-position: center
 			background-size: contain
 			backface-visibility: hidden
 
-			+media('<mob-lg')
-				+size(9px, 19px)
-				margin-bottom: 8px
 .goods__list
 	+clear-spacing
 	padding-bottom: 1px
@@ -281,6 +278,9 @@ $product-figure-right-space: 20px
 		justify-content: space-between
 		height: 100%
 
+		+media('<mob-lg')
+			padding: 20px
+
 	.goods__list, .goods__item
 		&::before
 			display: block
@@ -301,7 +301,7 @@ $product-figure-right-space: 20px
 	.goods__figure
 		margin: 0 auto $bottom-space
 		width: 100%
-		max-width: 260px
+		max-width: 100px
 
 	.goods__title
 		margin-bottom: 0.5em

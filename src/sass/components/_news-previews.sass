@@ -1,0 +1,121 @@
+@import ../utils/_variables
+@import ../utils/_mixins
+@import ../../libs/include-media/dist/_include-media
+
+/* news-previews
+$news-previews-outer-space: 26px
+$news-previews-inner-space: 30px
+$news-previews-inner-space--sm: 20px
+
+.news-previews
+	overflow: hidden
+	margin-bottom: $bottom-space--md
+
+	&:last-child, .home-page &
+		margin-bottom: 0
+
+.news-previews__list
+	+clear-spacing
+	+margin-horizontal(-#{$news-previews-outer-space/2})
+
+.news-previews__item
+	position: relative
+	+display-inline-block-top
+	width: round-float(100%/3, 4)
+	padding: 0 #{round($news-previews-outer-space/2)} $news-previews-outer-space
+	+font(1.5rem, round-float(18px/15px, 2))
+	letter-spacing: normal
+
+	+media('<tab-sm')
+		width: round-float(100%/1, 4)
+
+.news-previews__inner
+	display: block
+	position: relative
+	height: 100%
+	padding: #{round($news-previews-inner-space)} #{$news-previews-inner-space} #{$news-previews-inner-space*2}
+	text-decoration: none
+	color: inherit
+	+clear-spacing
+	background-color: #{$bg-color}
+	transition-property: background
+	transition-duration: $animation-speed
+
+	+media('<desk-sb')
+		padding: #{round($news-previews-inner-space--sm)} #{$news-previews-inner-space--sm} #{$news-previews-inner-space--sm*3}
+
+	.no-touchevents &
+		&:hover
+			background: $bg-color-light
+
+.news-previews__figure
+	position: relative
+	margin: 0 auto 26px
+	max-width: 320px
+	letter-spacing: normal
+
+	&:before
+		+pseudo-block-relative()
+		+ratio(27, 15)
+
+.news-previews__img
+	+cover-abs()
+	font-size: $font-size
+	letter-spacing: normal
+	backface-visibility: hidden
+
+	img
+		display: block
+		max-height: 100%
+		max-width: 100%
+		+centering-transform-rel()
+
+.news-previews__content
+	position: relative
+
+.news-previews__title
+	overflow: hidden
+	margin-bottom: 16px
+	+font-alt-bold
+	+font(18px, 26px)
+	letter-spacing: normal
+	max-height: calc(26px * 3)
+
+.news-previews__text
+	position: relative
+	overflow: hidden
+	+font(16px, 26px)
+	letter-spacing: normal
+	max-height: calc(26px * 15)
+
+	+media('<desk-hd')
+		+font(14px, 20px)
+		max-height: calc(20px * 15)
+
+	+media('<desk-sb')
+		max-height: calc(20px * 7)
+
+	+media('<tab-lg')
+		max-height: none
+
+	& > *:last-child
+		margin-bottom: 0
+
+.news-previews__footer
+	position: absolute
+	bottom: 0
+	left: 0
+	width: 100%
+	padding: 0 #{$news-previews-inner-space} #{round($news-previews-inner-space*0.8)}
+
+	+media('<desk-sb')
+		padding: 0 #{$news-previews-inner-space--sm} #{round($news-previews-inner-space--sm*0.8)}
+
+.news-previews__date
+	display: block
+	+font-normal
+	+font(14px, 26px)
+	letter-spacing: normal
+	color: $text-color
+
+/* news-previews end

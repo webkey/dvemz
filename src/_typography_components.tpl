@@ -1,15 +1,15 @@
-@@if(context.heading) {
+@@if(context.component === "heading") {
 
 	<h1>
 		<span class="mark">h1</span>
 		Типографика в вебдизайне. Основные понятия и положения
 	</h1>
 
-}@@if(context.dateTime) {
+}@@if(context.component === "dateTime") {
 
 	<time class="datetime" datetime="2017-03-22T13:42">22 марта 2017, 13:42</time>
 
-}@@if(context.entryText) {
+}@@if(context.component === "entryText") {
 
 	<div class="entry-text">
 		<p>Типографика играет <i>ключевую роль</i> в веб-дизайне, по статистике
@@ -17,7 +17,7 @@
 		</p>
 	</div>
 
-}@@if(context.paragraphs) {
+}@@if(context.component === "paragraphs") {
 
 	<p>В этой статье будут рассмотрены <a href="#">основные аспекты современной веб-типографики</a>, которые помогут вам определиться при выборе <a href="#">шрифта</a> и способов оформления текста.</p>
 	<p>Высота <a href="#">строчных букв</a> без выносных элементов — это расстояние от базовой до верхней линии шрифта, иначе говоря — величина очка строчных. Выбирая шрифты, которые вы хотите использовать при оформлении совместно, нужно следить, чтобы высота их строчных букв была одинакова. Это поможет выдержать
@@ -25,7 +25,7 @@
 	<hr>
 	<p>То, как будет выглядеть шрифт, зависит от того, как он будет набран. Times New Roman может выглядеть по-настоящему здорово. И главное: пусть лучше текст будет скучным, чем уродливым или нечитабельным.</p>
 
-}@@if(context.h2h6) {
+}@@if(context.component === "h2h6") {
 
 	<h2>
 		<span class="mark">h2</span>
@@ -59,7 +59,7 @@
 	</h6>
 	<p>В процессе чтения глаза привыкают к основному шрифту и они утомляются, если заголовки, оглавление и второстепенный текст набраны шрифтами разной гарнитуры, не гармонирующими с основным шрифтом. Поэтому, при подборе шрифтов достаточно остановиться на одном–двух шрифтах, а акценты расставлять за счет размера, цвета, начертания и т.п.</p>
 
-}@@if(context.fontStyle) {
+}@@if(context.component === "fontStyle") {
 
 	<h3><a href="#hashTextStyle" id="hashTextStyle" class="hashAnchor"><span class="mark">Начертания шрифта</span></a></h3>
 	<!--italic-->
@@ -79,7 +79,7 @@
 	<p>While scrolling down the home page and work page of Andre do Amaral’s portfolio I was blown away by its minimalistic nature and boldness. The case studies are only made up of a big photo, a giant headline, and  a year. The juxtaposition between the client’s name and the year it was worked on is brilliant.</p>
 	<p>Not only are the two text different in size, font weight but also in font type; the year is serif while the name is sans serif. </p>
 
-}@@if(context.listUl) {
+}@@if(context.component === "listUl") {
 
 	<h3><a href="#hashUnorderedList" id="hashUnorderedList" class="hashAnchor"><span class="mark">Неупорядоченный список</span></a></h3>
 	<ul>
@@ -100,7 +100,7 @@
 		<li>Узкая колонка. Висячая пунктуация. Не злоупотребляйте пробелами</li>
 	</ul>
 
-}@@if(context.listOl) {
+}@@if(context.component === "listOl") {
 
 	<h3><a href="#hashOrderedList" id="hashOrderedList" class="hashAnchor"><span class="mark">Упорядоченный список</span></a></h3>
 	<ol>
@@ -112,7 +112,7 @@
 		<li>Длина строки</li>
 	</ol>
 
-}@@if(context.listMix) {
+}@@if(context.component === "listMix") {
 
 	<h3><a href="#hashComplexList" id="hashComplexList" class="hashAnchor"><span class="mark">Сложный список</span></a></h3>
 	<ol>
@@ -133,7 +133,7 @@
 		<li>Узкая колонка. Висячая пунктуация. Не злоупотребляйте пробелами</li>
 	</ol>
 
-}@@if(context.blockquote) {
+}@@if(context.component === "blockquote") {
 
 	<h3><a href="#hashQuote" id="hashQuote" class="hashAnchor"><span class="mark">Цитата</span></a></h3>
 	<p>Вообще, переносов в вебе по возможности следует избегать. Попробуйте перенести слово на новую строку или чуть-чуть измените межбуквенное расстояние. Если знаков переноса слишком много, поменяйте размер шрифта или величину пробелов. А при выключке влево вообще не используйте перенос слов.</p>
@@ -145,7 +145,7 @@
 	</div>
 	<p>Не отделяйте отступом первый абзац от заголовка. Если вы отбиваете абзацы пустой строкой, не используйте абзацные отступы. Это избыточно и безвкусно. С другой стороны, текст вообще без отступов и отбивок будет сложнее восприниматься. В общем, выберите один из способов: или красную строку, или отбивку — и используйте его на протяжении всего текста.</p>
 
-}@@if(context.tableStyling) {
+}@@if(context.component === "tableStyling") {
 
 	<h3><a href="#hashTableCustom" id="hashTableCustom" class="hashAnchor"><span class="mark">Таблица стилизованная</span></a></h3>
 	<div class="layout-text">
@@ -210,7 +210,7 @@
 		</div>
 	</div>
 
-}@@if(context.tableDefault) {
+}@@if(context.component === "tableDefault") {
 
 	<h3><a href="#hashTable" id="hashTable" class="hashAnchor"><span class="mark">Таблица без стилей</span></a></h3>
 	<div class="layout-text">
@@ -276,7 +276,7 @@
 		</div>
 	</div>
 
-}@@if(context.files) {
+}@@if(context.component === "files") {
 
 	<h3><a href="#hashFiles" id="hashFiles" class="hashAnchor"><span class="mark">Документы для скачивания</span></a></h3>
 	<p>Когда вы увеличиваете размер шрифта, расстояние между символами тоже увеличивается. Поэтому, если вы устанавливаете в тексте крупный заголовок, советуем пропорционально скорректировать расстояние между символами и словами</p>
@@ -285,7 +285,7 @@
 	</div>
 	<p>Выделить важную мысль или слово, на которое нужно обратить внимание, можно самыми разными способами. Не переусердствуйте с ними. Не стоит выделять целое предложение одними прописными — новичок не всегда может сделать это к месту. Просто используйте полужирное начертание шрифта.</p>
 
-}@@if(context.filesImportant) {
+}@@if(context.component === "filesImportant") {
 
 	<h3><a href="#hashFilesImportant" id="hashFilesImportant" class="hashAnchor"><span class="mark">Важные документы</span></a></h3>
 	<p>Когда вы увеличиваете размер шрифта, расстояние между символами тоже увеличивается. Поэтому, если вы устанавливаете в тексте крупный заголовок, советуем пропорционально скорректировать расстояние между символами и словами</p>
@@ -295,7 +295,7 @@
 	</div>
 	<p>Выделить важную мысль или слово, на которое нужно обратить внимание, можно самыми разными способами. Не переусердствуйте с ними. Не стоит выделять целое предложение одними прописными — новичок не всегда может сделать это к месту. Просто используйте полужирное начертание шрифта.</p>
 
-}@@if(context.buttons) {
+}@@if(context.component === "buttons") {
 
 	<h3><a href="#hashButtons" id="hashButtons" class="hashAnchor"><span class="mark">Кнопки</span></a></h3>
 	<p>Редко бывает так, что 65 символов выходят за пределы браузера на пк, но на большинстве мобильных девайсов 65 символов (если текст отображается в достаточно большом масштабе, чтобы быть разборчивым) выходят далеко за пределы браузера.</p>
@@ -336,61 +336,84 @@
 		</div>
 	</div>
 
-}@@if(context.formDefault) {
+	<h4><span class="mark"></span><a href="#hashButtonsAlt" id="hashButtonsAlt" class="hashAnchor"><span class="mark">Кнопки со стрелками</span></a></h4>
+	<div class="layout-text">
+		<div style="padding: 0 0 20px;">
+			<a href="#" class="btn-outline btn-with-arrow"><span>Смотреть все</span><i>&nbsp;</i></a>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<a href="#" class="btn-outline btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<a href="#" class="btn-outline btn-with-arrow"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium beatae consequatur cupiditate eos, ex harum hic molestias mollitia nam nihil officiis, praesentium quas, quidem quos ratione sint voluptatibus voluptatum! Nam.</span><i>&nbsp;</i></a>
+		</div>
+
+		<div style="padding: 0 0 20px;">
+			<a href="#" class="btn-outline-alt btn-with-arrow"><span>Смотреть все</span><i>&nbsp;</i></a>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<a href="#" class="btn-outline-alt btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<a href="#" class="btn-outline-alt btn-with-arrow"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium beatae consequatur cupiditate eos, ex harum hic molestias mollitia nam nihil officiis, praesentium quas, quidem quos ratione sint voluptatibus voluptatum! Nam.</span><i>&nbsp;</i></a>
+		</div>
+	</div>
+
+}@@if(context.component === "formDefault") {
 
 	<h3><a href="#hashFormElementExample"  id="hashFormElementExample" class="hashAnchor"><span class="mark">Поля форм</span></a></h3>
 	<div class="layout-text">
 		@@include('_forms_form-default.tpl')
 	</div>
 
-}@@if(context.select) {
+}@@if(context.component === "select") {
 
 	<h3><a href="#hashFormsSelect" id="hashFormsSelect" class="hashAnchor"><span class="mark">Селекты</span></a></h3>
 	<div class="layout-text">
 		@@include('_forms_form-selects.tpl')
 	</div>
 
-}@@if(context.formLight) {
+}@@if(context.component === "formLight") {
 
 	<h3><a href="#hashFormLight"  id="hashFormLight" class="hashAnchor"><span class="mark">Поля форм (альтернативный вид)</span></a></h3>
 	<div class="layout-text">
 		@@include('_forms_form-light.tpl')
 	</div>
 
-}@@if(context.checkboxRadio) {
+}@@if(context.component === "checkboxRadio") {
 
 	<h3><a href="#hashFormCheckboxExample" id="hashFormCheckboxExample" class="hashAnchor"><span class="mark">Чекбоксы и Радиобаттоны</span></a></h3>
 	<div class="layout-text">
 		@@include('_forms_checkbox-and-radio.tpl')
 	</div>
 
-}@@if(context.userForm) {
+}@@if(context.component === "userForm") {
 
 	<h3><a href="#hashUserFormExample" id="hashUserFormExample" class="hashAnchor"><span class="mark">Форма обратной связи</span></a></h3>
 	@@include('_forms_user-form.tpl', {
 		"title": "Задать вопрос"
 	})
 
-}@@if(context.columnize) {
+}@@if(context.component === "columnize") {
 
 	<div class="layout-flood">
 		<h3><a href="#hashColumnize" id="hashColumnize" class="hashAnchor"><span class="mark">Колонки (css3 columnize)</span></a></h3>
 	</div>
 	@@include('_typography_columnize.tpl')
 
-}@@if(context.accordion) {
+}@@if(context.component === "accordion") {
 
 	<h3><a href="#hashSimpleAccordion" id="hashSimpleAccordion" class="hashAnchor"><span class="mark">Аккордеон</span></a></h3>
 	<div class="layout-text">
 		@@include('_tpl-simple-accordion.tpl')
 	</div>
 
-}@@if(context.imagesAlign) {
+}@@if(context.component === "imagesAlign") {
 
 	<h3><a href="#hashImagesAlign" id="hashImagesAlign" class="hashAnchor"><span class="mark">Выравнивание картинок в контенте</span></a></h3>
 	@@include('_typography_images-align.tpl')
 
-}@@if(context.entryImage) {
+}@@if(context.component === "entryImage") {
 
 	<div class="layout-full-width">
 		<div class="entry-img">
@@ -399,26 +422,26 @@
 		</div>
 	</div>
 
-}@@if(context.imagesSlider) {
+}@@if(context.component === "imagesSlider") {
 
 	<h3><a href="#hashImagesCarousel" id="hashImagesCarousel" class="hashAnchor"><span class="mark">Карусель с подписями</span></a></h3>
 	@@include('_sliders_images-carousel.tpl')
 
-}@@if(context.searchPage) {
+}@@if(context.component === "searchPage") {
 
 	<h3><a href="#hashSearchPage" id="hashSearchPage" class="hashAnchor"><span class="mark">Пример страницы поиска</span></a></h3>
 	<div class="layout-text">
 		@@include('_tpl_search-page-bitrix.tpl')
 	</div>
 
-}@@if(context.featureList) {
+}@@if(context.component === "featureList") {
 
 	<h3><a href="#hashVisualList" id="hashVisualList" class="hashAnchor"><span class="mark">Изображения + описания к ним</span></a></h3>
 	<div class="layout-text">
 		@@include("_tpl_feature-list.tpl")
 	</div>
 
-}@@if(context.featureList) {
+}@@if(context.component === "featureList") {
 
 	<h3 style="margin-bottom: 0;"><a style="position: absolute; left: -9999px;" href="#hashArticleFooter" id="hashArticleFooter" class="hashAnchor"><span class="mark">Футер статьи</span></a></h3>
 	<div class="article-footer">

@@ -465,7 +465,6 @@
 		p, ul, ol, h1, h2, h3, h4, h5, h6, hr
 			max-width: none
 
-
 .user-form
 	padding: $text-layout-space-horizontal
 
@@ -478,6 +477,29 @@
 	+media('<tab-sm')
 		padding: $text-layout-space-horizontal--sm
 		border-width: 1px 0
+
+/* text popup (layout)
+.text-popup-layout
+	padding: 0 #{$text-layout-space-horizontal--lg} #{round($text-layout-space-horizontal--lg)}
+
+	+media('<tab-lg')
+		+padding-horizontal(#{$text-layout-space-horizontal--md})
+		padding-bottom: #{$text-layout-space-horizontal--md}
+
+	+media('<tab-sm')
+		+padding-horizontal(#{$text-layout-space-horizontal--sm})
+		padding-bottom: #{$text-layout-space-horizontal--sm}
+
+.text-popup-heading
+	+margin-horizontal(-#{$text-layout-space-horizontal--lg})
+
+	+media('<tab-lg')
+		+margin-horizontal(-#{$text-layout-space-horizontal--md})
+
+	+media('<tab-sm')
+		+margin-horizontal(-#{$text-layout-space-horizontal--sm})
+
+/* text popup (layout) end
 
 /*LAYOUT end*/
 

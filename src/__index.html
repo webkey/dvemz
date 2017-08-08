@@ -104,11 +104,19 @@
 										<div class="main-section__layout">
 											<div class="main-section__title"><h2>Новости</h2></div>
 											<div class="main-section__holder">
-												<div class="news-grid news-grid--home">
+												<!--<div class="news-grid news-grid&#45;&#45;home">
 													<div class="news-grid__list">
-														@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items.json')
+														'_news-grid-item.tpl'
+														'includes-json/news-grid-items.json'
 													</div>
+												</div>-->
+												<!--news-->
+												<div class="news-previews">
+													<section class="news-previews__list">
+														@@loop("_tpl_news-previews.xhtml", "includes-json/_tpl_news-previews-items.json")
+													</section>
 												</div>
+												<!--news end-->
 												<div class="main-section__footer">
 													<a href="#" class="btn-main--more"><span>Все новости</span></a>
 												</div>

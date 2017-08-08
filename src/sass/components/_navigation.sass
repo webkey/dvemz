@@ -25,13 +25,14 @@
 			background-color: darken($bg-color-light, 10%)
 
 	// главная ДВЭМЗ
-	.home-page &
+	//.home-page &
 		color: white
 		background-color: $logo-bg-color
 
-	+media('>=desk-sm')
+	//+media('>=desk-sm')
 		.no-touchevents .home-page &:hover
 			background-color: lighten($logo-bg-color, 10%)
+
 	// главная ДВЭМЗ end
 
 	+media('<tab-lg')
@@ -56,7 +57,7 @@
 	& > span
 		+hide-text
 
-	.home-page &
+	//.home-page &
 		background-position: 0 100%
 
 	.ea-site &

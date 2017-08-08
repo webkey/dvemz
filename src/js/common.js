@@ -452,19 +452,16 @@ function fullPageInitial() {
 	});
 
 	function fullPageRespons() {
-		if (window.innerWidth < mediaTablet) {
-			if ($mainSections) {
+		if ($mainSections.length) {
+			if (window.innerWidth < mediaTablet || !DESKTOP) {
 				$.fn.fullpage.setResponsive(true);
 				// $.fn.fullpage.setRecordHistory(true);
-			}
-		} else {
-			if ($mainSections) {
+			} else {
 				$.fn.fullpage.setResponsive(false);
 				// $.fn.fullpage.setRecordHistory(false);
 			}
 		}
 	}
-
 	$(window).on('debouncedresize', function () {
 		fullPageRespons();
 	});
@@ -614,6 +611,14 @@ function equalHeightInit() {
 
 	if ($newsList.length) {
 		$newsList.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+
+	var $newsPreviewsList = $('.news-previews__list');
+
+	if ($newsPreviewsList.length) {
+		$newsPreviewsList.children().matchHeight({
 			byRow: true, property: 'height', target: null, remove: false
 		});
 	}
@@ -1268,7 +1273,9 @@ function mainMapInit() {
 				$html.addClass(classAfterOpen);
 				$buttonClose.addClass(classAfterOpen);
 
-				noScroll();
+				if (DESKTOP) {
+					noScroll();
+				}
 			}
 		});
 
@@ -1332,7 +1339,9 @@ function mainMapInit() {
 						autoAlpha: alpha
 					});
 
-					canScroll();
+					if (DESKTOP) {
+						canScroll();
+					}
 
 					if(self.cssScrollBlocked){
 						self.cssScrollUnfixed();
@@ -1353,7 +1362,9 @@ function mainMapInit() {
 						autoAlpha: alpha
 					});
 
-					canScroll();
+					if (DESKTOP) {
+						canScroll();
+					}
 
 					if(self.cssScrollBlocked){
 						self.cssScrollUnfixed();
@@ -1371,7 +1382,9 @@ function mainMapInit() {
 						self.preparationAnimation();
 					}
 
-					canScroll();
+					if (DESKTOP) {
+						canScroll();
+					}
 
 					if(self.cssScrollBlocked){
 						self.cssScrollUnfixed();
@@ -1599,7 +1612,7 @@ function popupsInit(){
 			navContainer: textPopupClass,
 			// navMenu: '.nav__list',
 			btnMenu: '.text-popup-opener-js',
-			btnMenuClose: '.btn-text-popup-js',
+			btnMenuClose: '.btn-text-popup-close-js',
 			overlayClass: 'popup-overlay--text-popup',
 			overlayAppendTo: 'body',
 			closeOnResize: false,

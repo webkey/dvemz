@@ -1,0 +1,18 @@
+<article class="news-previews__item">
+	<a href="news-inner.html" class="news-previews__inner">
+		@@if (context.src) {
+		<div class="news-previews__figure">
+			<div class="news-previews__img">
+				<img src="img/@@src" alt="@@title" />
+			</div>
+		</div>
+		}
+		<div class="news-previews__content">
+			<div class="news-previews__title">@@title</div>
+			<div class="news-previews__text">@@text</div>
+		</div>
+		<div class="news-previews__footer">
+			<time datetime="@@datetime" class="news-previews__date">@@date</time>
+		</div>
+	</a>
+</article>

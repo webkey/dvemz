@@ -2,102 +2,81 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-/* CATALOG MENU
+/* TEXT POPUP
 .text-popup
-	//overflow: hidden
 	position: fixed
 	right: 0
 	top: 0
 	height: 100%
 	width: $text-popup-width
 	background-color: $text-popup-bg-color
+	opacity: 0
+	visibility: hidden
 	z-index: 1011
-	// animation
-	transition-property: box-shadow
-	transition-duration: 0.3s
-	transition-delay: 0.1s
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+	transition-property: width
+	transition-duration: $animation-speed
 
-	.ea-has-text-popup &
+	+media('<tab-lg')
+		width: 100%
 
-		+media('<desk-qhd', '>=desk-lg')
-			background-color: #333
-
-	+media('>=desk-md')
+	//+media('>=desk-md')
 		visibility: inherit !important
 		opacity: 1 !important
 		transform: matrix(1, 0, 0, 1, 0, 0) !important
 
-	+media('<desk-md')
-		opacity: 0
-		visibility: hidden
-
-		.text-popup-popup-before-open &
-			transition-delay: 0s
-
-	+media('<tab-lg')
-		box-shadow: none
-
-/* catalog menu list
 .text-popup-layout
-	display: none
 	overflow-x: hidden
 	overflow-y: auto
 	height: 100vh
-	background-color: $text-popup-bg-color
-	box-shadow: -5px 0 15px transparent
+	//padding: 63px #{$text-layout-space-horizontal--lg} #{round($text-layout-space-horizontal--lg*0.6)}
 
-	.ea-has-text-popup &
-		display: block
-
-	+media('>=desk-lg','<desk-qhd')
-		.ea-has-text-popup .submenu-is-open &
-			transform: translate(-#{$text-popup-width - $sidebar-width}, 0)
-			box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2)
-
-	+media('<desk-lg')
-		width: calc(#{$text-popup-width} + 100px)
-		background-color: $base-color--ea
-
-	+media('<desk-md')
-		display: block
-
-	+media('<tab-lg')
-		width: auto
-
-/* catalog menu title
-.text-popup-title
-	display: none // скрывать на больших экранах
+.text-popup-heading
 	position: relative
-	padding: 13px #{$text-layout-space-horizontal--md}
+	+clear
+
+	.btn-text-popup-close
+		float: right
+
+	& > *
+		overflow: hidden
+
+.text-popup-title
+	margin-bottom: $bottom-space
 	+font-bold
-	+font(18px, 24px)
-	white-space: nowrap
-	text-decoration: none
-	color: black
-	text-transform: uppercase
-	text-align: center
-	background-color: $base-color
+	color: $text-color
 
-	.ea-site &
-		background-color: $base-color--ea
+/* forms
+.text-popup
+	.form-row
+		+margin-horizontal(-20px)
 
-	+media('<tab-lg')
-		display: block
+		.input-wrap
+			+margin-horizontal(20px)
+			width: calc(100% * 0.5 - 40px)
 
-/* catalog menu title end
+			+media('<mob-lg')
+				display: block
+				width: auto
 
-/* button catalog menu close
-.btn-text-popup-close
-	position: absolute
-	right: 0
-	top: 0
+/* forms end
 
-/* button catalog menu close end
+/* check list
+.text-popup
+	.check-list
+		+clear-spacing
 
-/* overlay catalog menu
-.popup-overlay--text-popup
+		&, .#{$user-content} &
+			+grid-parent(20px)
 
+			li
+				+grid-item(3, 20px)
+				letter-spacing: normal
 
-/* overlay catalog menu end
-/* CATALOG MENU end
+				+media('<mob-lg')
+					+grid-item-responsive(2, 20px)
+
+				+media('<mob-md')
+					+grid-item-responsive(1, 20px)
+
+/* check list end
+/* TEXT POPUP end

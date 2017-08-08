@@ -14,4 +14,27 @@
 	background-position: center
 	background-size: contain
 
+.depict-plus
+	$this-icon-lines-width: 10px
+	$this-icon-lines-height: 2px
+	$this-icon-lines-color: $text-color
+
+	position: relative
+	+size($this-icon-lines-width)
+	backface-visibility: hidden
+
+	&::before, &::after
+		+pseudo()
+		left: 0
+		top: 50%
+		+size($this-icon-lines-width, $this-icon-lines-height)
+		margin-top: -#{round($this-icon-lines-height/2)}
+		backface-visibility: hidden
+		background-color: $this-icon-lines-color
+		transition-property: background-color
+		transition-duration: $animation-speed
+
+	&::after
+		transform: rotate(0.25turn)
+
 /* depicts end
