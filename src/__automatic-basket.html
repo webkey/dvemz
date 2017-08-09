@@ -32,17 +32,42 @@
 								<div class="heading">
 									<h1>Корзина</h1>
 									<!--order steps-->
-									<div class="order-steps">
-										Lorem ipsum dolor sit amet.
-									</div>
+									<ul class="order-steps">
+										<li class="active">
+											<span>Корзина</span>
+										</li>
+										<li>
+											<span>Оформление <br> заказа</span>
+										</li>
+										<li>
+											<span>Заказ <br> оформлен</span>
+										</li>
+									</ul>
 									<!--order steps end-->
 								</div>
 								<div class="layout-wide">
 									<!--products basket-->
 									<div class="products-basket">
 										<section class="products-basket__list">
+											<header class="products-basket__item products-basket__head">
+												<div class="products-basket__cell products-basket__product">Наименование</div>
+												<div class="products-basket__cell products-basket__price">Цена, руб</div>
+												<div class="products-basket__cell products-basket__amount">Количество, шт.</div>
+												<div class="products-basket__cell products-basket__sum">Сумма, руб</div>
+												<div class="products-basket__cell products-basket__remove">&nbsp;</div>
+											</header>
 											@@loop("_tpl_basket-items.tpl", "includes-json/_tpl_basket-items.json")
 										</section>
+									</div>
+									<div class="product-basket__total">
+										<div class="label">Итого:</div>
+										<div class="total-price">2 400 р. (без НДС)</div>
+									</div>
+									<div class="product-basket__footer">
+										<div class="arr-wrap">
+											<a href="automatic-catalog.html" class="btn-outline"><i>&nbsp;</i><span>оформить заказ</span></a>
+											<a href="automatic-catalog.html" class="btn-outline-alt btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+										</div>
 									</div>
 									<!--products basket end-->
 								</div>

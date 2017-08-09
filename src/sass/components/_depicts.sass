@@ -44,7 +44,7 @@
 
 	position: relative
 	+size(24px)
-	background-color: #666
+	background-color: transparent
 	backface-visibility: hidden
 	//transition-property: background-color
 	//transition-duration: $animation-speed
@@ -57,8 +57,6 @@
 		margin: -#{round($this-icon-lines-height/2)} 0 0 -#{round($this-icon-lines-width/2)}
 		backface-visibility: hidden
 		background-color: white
-		transition-property: background-color
-		transition-duration: $animation-speed
 
 	&::before
 		transform: rotate(45deg)

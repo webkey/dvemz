@@ -473,38 +473,59 @@
 									<div class="heading">
 										<h1>Корзина</h1>
 										<!--order steps-->
-										<div class="order-steps">
-											Lorem ipsum dolor sit amet.
-										</div>
+										<ul class="order-steps">
+											<li class="active">
+												<span>Корзина</span>
+											</li>
+											<li>
+												<span>Оформление <br> заказа</span>
+											</li>
+											<li>
+												<span>Заказ <br> оформлен</span>
+											</li>
+										</ul>
 										<!--order steps end-->
 									</div>
 									<div class="layout-wide">
 										<!--products basket-->
 										<div class="products-basket">
 											<section class="products-basket__list">
+												<header class="products-basket__item products-basket__head">
+													<div class="products-basket__cell products-basket__product">Наименование</div>
+													<div class="products-basket__cell products-basket__price">Цена, руб</div>
+													<div class="products-basket__cell products-basket__amount">Количество, шт.</div>
+													<div class="products-basket__cell products-basket__sum">Сумма, руб</div>
+													<div class="products-basket__cell products-basket__remove">&nbsp;</div>
+												</header>
 												<article class="products-basket__item">
-													<div class="products-basket__inner">
-														<div class="products-basket__cell products-basket__product">
-															<a href="automatic-card.html" class="products-basket__figure">
-																<div class="products-basket__img">
-																	<img src="img/img-products-01.jpg" alt="Номинальный ток на стороне ВН для присоединения линий" />
-																</div>
-															</a>
-															<div class="products-basket__title"><a href="automatic-card.html">Номинальный ток на стороне ВН для присоединения линий</a></div>
+													<div class="products-basket__cell products-basket__product">
+														<a href="automatic-card.html" class="products-basket__figure">
+															<div class="products-basket__img">
+																<img src="img/img-products-01.jpg" alt="Номинальный ток на стороне ВН для присоединения линий" />
+															</div>
+														</a>
+														<div class="products-basket__title"><a href="automatic-card.html">Номинальный ток на стороне ВН для присоединения линий</a></div>
+													</div>
+													<div class="products-basket__cell products-basket__price" data-label="Цена, руб">
+														<div class="products-basket__align">
+															<div class="cur">300</div>
 														</div>
-														<div class="products-basket__cell products-basket__amount">
+													</div>
+													<div class="products-basket__cell products-basket__amount" data-label="Количество, шт.">
+														<div class="products-basket__align">
 															<div class="spinner">
 																<input class="spinner-js" type="text" name="value" value="2" data-only-number>
 															</div>
 														</div>
-														<div class="products-basket__cell products-basket__price">
+													</div>
+													<div class="products-basket__cell products-basket__sum" data-label="Сумма, руб">
+														<div class="products-basket__align">
 															<div class="cur">300</div>
 														</div>
-														<div class="products-basket__cell products-basket__sum">
-															<div class="cur">300</div>
-														</div>
-														<div class="products-basket__cell products-basket__options">
-															<a href="#" class="btn-remove">
+													</div>
+													<div class="products-basket__cell products-basket__remove" data-label="&nbsp;">
+														<div class="products-basket__align">
+															<a href="#" class="btn-remove" title="Удалить">
 																<i class="depict-remove">&nbsp;</i>
 																<span>Удалить</span>
 															</a>
@@ -512,28 +533,69 @@
 													</div>
 												</article>
 												<article class="products-basket__item">
-													<div class="products-basket__inner">
-														<div class="products-basket__cell products-basket__product">
-															<a href="automatic-card.html" class="products-basket__figure">
-																<div class="products-basket__img">
-																	<img src="img/img-products-02.jpg" alt="Используемые аппараты: РВ; ВН; вакуумные выключатели VF, Evolis, Sion, BB/TEL и т.д.; рубильники РБ, РЕ, ВР и т.д.; выключатели ВА, Siemens, Schneider Electric, АВВ и другие" />
-																</div>
-															</a>
-															<div class="products-basket__title"><a href="automatic-card.html">Используемые аппараты: РВ; ВН; вакуумные выключатели VF, Evolis, Sion, BB/TEL и т.д.; рубильники РБ, РЕ, ВР и т.д.; выключатели ВА, Siemens, Schneider Electric, АВВ и другие</a></div>
+													<div class="products-basket__cell products-basket__product">
+														<a href="automatic-card.html" class="products-basket__figure">
+															<div class="products-basket__img">
+																<img src="img/img-products-02.jpg" alt="Используемые аппараты: РВ; ВН; вакуумные выключатели VF, Evolis, Sion, BB/TEL и т.д.; рубильники РБ, РЕ, ВР и т.д.; выключатели ВА, Siemens, Schneider Electric, АВВ и другие" />
+															</div>
+														</a>
+														<div class="products-basket__title"><a href="automatic-card.html">Используемые аппараты: РВ; ВН; вакуумные выключатели VF, Evolis, Sion, BB/TEL и т.д.; рубильники РБ, РЕ, ВР и т.д.; выключатели ВА, Siemens, Schneider Electric, АВВ и другие</a></div>
+													</div>
+													<div class="products-basket__cell products-basket__price" data-label="Цена, руб">
+														<div class="products-basket__align">
+															<div class="cur">1 300</div>
 														</div>
-														<div class="products-basket__cell products-basket__amount">
+													</div>
+													<div class="products-basket__cell products-basket__amount" data-label="Количество, шт.">
+														<div class="products-basket__align">
 															<div class="spinner">
 																<input class="spinner-js" type="text" name="value" value="1" data-only-number>
 															</div>
 														</div>
-														<div class="products-basket__cell products-basket__price">
+													</div>
+													<div class="products-basket__cell products-basket__sum" data-label="Сумма, руб">
+														<div class="products-basket__align">
 															<div class="cur">1 300</div>
 														</div>
-														<div class="products-basket__cell products-basket__sum">
-															<div class="cur">1 300</div>
+													</div>
+													<div class="products-basket__cell products-basket__remove" data-label="&nbsp;">
+														<div class="products-basket__align">
+															<a href="#" class="btn-remove" title="Удалить">
+																<i class="depict-remove">&nbsp;</i>
+																<span>Удалить</span>
+															</a>
 														</div>
-														<div class="products-basket__cell products-basket__options">
-															<a href="#" class="btn-remove">
+													</div>
+												</article>
+												<article class="products-basket__item">
+													<div class="products-basket__cell products-basket__product">
+														<a href="automatic-card.html" class="products-basket__figure">
+															<div class="products-basket__img">
+																<img src="img/__temp-img-content-carousel-01.jpg" alt="2Кабель силовой бронированный АВБбШв и ААБл" />
+															</div>
+														</a>
+														<div class="products-basket__title"><a href="automatic-card.html">2Кабель силовой бронированный АВБбШв и ААБл</a></div>
+													</div>
+													<div class="products-basket__cell products-basket__price" data-label="Цена, руб">
+														<div class="products-basket__align">
+															<div class="cur">56 738 300</div>
+														</div>
+													</div>
+													<div class="products-basket__cell products-basket__amount" data-label="Количество, шт.">
+														<div class="products-basket__align">
+															<div class="spinner">
+																<input class="spinner-js" type="text" name="value" value="8" data-only-number>
+															</div>
+														</div>
+													</div>
+													<div class="products-basket__cell products-basket__sum" data-label="Сумма, руб">
+														<div class="products-basket__align">
+															<div class="cur">56 738 300</div>
+														</div>
+													</div>
+													<div class="products-basket__cell products-basket__remove" data-label="&nbsp;">
+														<div class="products-basket__align">
+															<a href="#" class="btn-remove" title="Удалить">
 																<i class="depict-remove">&nbsp;</i>
 																<span>Удалить</span>
 															</a>
@@ -541,6 +603,16 @@
 													</div>
 												</article>
 											</section>
+										</div>
+										<div class="product-basket__total">
+											<div class="label">Итого:</div>
+											<div class="total-price">2 400 р. (без НДС)</div>
+										</div>
+										<div class="product-basket__footer">
+											<div class="arr-wrap">
+												<a href="automatic-catalog.html" class="btn-outline"><i>&nbsp;</i><span>оформить заказ</span></a>
+												<a href="automatic-catalog.html" class="btn-outline-alt btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+											</div>
 										</div>
 										<!--products basket end-->
 									</div>

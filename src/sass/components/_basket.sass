@@ -2,47 +2,222 @@
 @import ../utils/_mixins
 @import ../../libs/include-media/dist/_include-media
 
+/* order steps
+.order-steps
+	&, .#{$user-content} &
+		+display-inline-block-middle
+		counter-reset: step
+		margin: 0
+
+		li
+			position: relative
+			+display-inline-block-middle
+			counter-increment: step
+			margin: 0 0 0 85px
+			padding: 0
+			+clear-spacing
+			color: $text-color-light
+
+			+media('<tab-sm')
+				margin-left: 35px
+
+			&::before
+				position: relative
+				left: auto
+				top: auto
+				+display-inline-block-middle
+				margin-right: 20px
+				content: counter(step)
+				+size(50px)
+				border: 1px solid $outline-color
+				border-radius: 50%
+				background-color: transparent
+				+font(18px, 48px)
+				letter-spacing: normal
+				text-align: center
+				color: $text-color
+
+				+media('<tab-sm')
+					+size(24px)
+					+font(12px, 22px)
+					margin-right: 6px
+
+			&::after
+				+pseudo()
+				right: 100%
+				top: 50%
+				background: url(../../img/depict-arrow.png) no-repeat
+				background-size: contain
+				transform: translate(0, -50%)
+				+size(33px, 20px)
+				margin-right: 20px
+
+				+media('<tab-sm')
+					+size(10px, 10px)
+					background: none
+					border: solid $outline-color
+					border-width: 0 2px 2px 0
+					border-radius: 0
+					margin-right: 13px
+					transform: translate(0, -50%) rotate(-45deg)
+					//transform: rotate(45deg)
+
+			&:first-child
+				margin-left: 0
+
+				&::after
+					content: none
+
+			& > span
+				+display-inline-block-middle
+				letter-spacing: normal
+				+font(18px, 22px)
+
+				+media('<tab-sm')
+					+font(14px, 18px)
+
+		li.active
+			+font-bold
+			color: $text-color
+
+			&::before
+				background-color: $base-color
+				border-color: $base-color
+
+				.ea-site
+					background-color: $base-color--ea
+					border-color: $base-color--ea
+
+/* order steps end
+
 /* products basket
 .products-basket
-	margin-bottom: $bottom-space--md
+	margin-bottom: $bottom-space
+
+	+media('<tab-sm')
+		+margin-horizontal(-#{$text-layout-space-horizontal--sm})
 
 	&:last-child
 		margin-bottom: 0
 
 .products-basket__list
-	+clear-spacing
+	display: table
+	width: 100%
+	//+clear-spacing
+	border: solid $outline-color
+	border-width: 0 0 2px
+	margin-bottom: $bottom-space
+
+	+media('<tab-sm')
+		display: block
+		border-width: 2px 0
+
+	&:last-child
+		margin-bottom: 0
 
 .products-basket__item
+	display: table-row
 	position: relative
-
-.products-basket__inner
 	+clear-spacing
+	border: 0 solid $outline-color
 	background-color: #{$bg-color}
 	transition-property: background-color
 	transition-duration: $animation-speed
 
-	.no-touchevents &
-		&:hover, &:focus
-			background: $bg-color-light
+	+media('<tab-sm')
+		display: block
+
+		&:nth-child(odd)
+			background-color: $bg-color-light
+
+	+media('>=tab-sm')
+		.no-touchevents &
+			&:hover, &:focus
+				background: $bg-color-light
 
 .products-basket__cell
-	+display-inline-block-middle
-	width: round(100%/5)
+	//+display-inline-block-middle
+	//width: round(100%/5)
+	display: table-cell
 	letter-spacing: normal
+	vertical-align: middle
+	+padding-vertical(12px)
 	+padding-horizontal(round($product-basket-cell-space/2))
 	+font($font-size, $line-height)
+	border: solid $outline-color
+	border-width: 1px 0 0
 
-	&:first-child
-		padding-left: $product-basket-cell-space
+	+media('<tab-lg')
+		+font($font-size--sm, $line-height--sm)
+
+	+media('<tab-sm')
+		display: block
+		width: auto !important
+		max-width: none !important
+		//+font($font-size, $line-height)
+		padding: 5px $text-layout-space-horizontal--sm
+		border-width: 0
+
+		&:first-child
+			padding-top: 20px
+
+		&:last-child
+			padding-bottom: 20px
+
+.products-basket__cell[data-label]
+	+media('<tab-sm')
+		position: relative
+		display: flex
+		//justify-content: space-between
+		justify-content: flex-start
+		align-items: center
+
+		&::before
+			display: block
+			content: attr(data-label)
+			width: $product-basket-label-width
+			min-width: $product-basket-label-width
+			padding-right: 20px
+			+font-normal
+			//text-align: center
+			+font(12px, 16px)
+			letter-spacing: 0.025em
+			text-transform: uppercase
+
+			+media('<mob-md')
+				width: $product-basket-label-width--sm
+				min-width: $product-basket-label-width--sm
+
+.products-basket__head
+	+media('<tab-sm')
+		display: none
+
+	.products-basket__cell
+		+font-bold
+		background-color: $bg-color-light
+		border-width: 0 0 1px
 
 .products-basket__product
-	width: 40%
+	width: 49.8%
+	text-align: left
+
+	+media('<tab-sm')
+		+clear
 
 .products-basket__figure
 	+display-inline-block-middle
 	position: relative
 	width: #{$product-basket-figure-width}
-	margin-right: #{$product-basket-figure-right-space}
+	margin-right: #{$product-basket-figure-space}
+
+	+media('<tab-sm')
+		float: left
+		width: #{$product-basket-figure-width--sm}
+		margin-right: 0
+
+	+media('<mob-md')
+		float: none
+		margin-bottom: #{$product-basket-figure-space}
 
 	&:before
 		+pseudo-block-relative()
@@ -50,8 +225,6 @@
 
 .products-basket__img
 	+cover-abs()
-	font-size: $font-size
-	letter-spacing: normal
 	backface-visibility: hidden
 
 	img
@@ -62,9 +235,17 @@
 
 .products-basket__title
 	+display-inline-block-middle
-	width: calc(100% - #{$product-basket-figure-width} - #{$product-basket-figure-right-space} - 6px)
+	width: calc(100% - #{$product-basket-figure-width} - #{$product-basket-figure-space} - 6px)
 	transition-property: color
 	transition-duration: $animation-speed
+
+	+media('<tab-sm')
+		display: block
+		width: auto
+		margin-left: $product-basket-label-width
+
+	+media('<mob-md')
+		margin-left: 0
 
 	a
 		text-decoration: none
@@ -75,81 +256,99 @@
 		.no-touchevents &:hover
 			color: $link-color
 
-.products-basket__price
-
-.products-basket__options
-	text-align: center
-
-	.btn-outline
-		display: block
-		+padding-horizontal(12px)
-
-		.in-cart &
-			display: none
-
+.products-basket__amount
 	.spinner
 		display: inline-block
 
-/* grid view
-// для маленьких мониторов
-+media('<tab-lg')
-	.products-basket
-		padding-right: 1px
-
-	.products-basket__list
-		display: flex
-		flex: 0 1 auto
-		flex-flow: row wrap
-
-	.products-basket__item
-		+display-inline-block-top
-		padding-left: 1px
-		width: round-float(100%/2, 4)
-
-	.products-basket__inner
-		padding: 30px
-		display: flex
-		flex-direction: column
-		justify-content: space-between
-		height: 100%
-
-	.products-basket__list, .products-basket__item
-		&::before
-			display: block
-
-	.products-basket__item
-		&::after
-			display: block
-
-	.products-basket__cell
+.products-basket__price,
+.products-basket__sum
+	.cur
 		display: block
-		width: auto
+		white-space: nowrap
+		font-size: 16px
 
-	.products-basket__figure
-		margin: 0 auto $bottom-space
-		width: 100%
-		max-width: 260px
+		+media('<tab-sm')
+			white-space: normal
 
-	.products-basket__title
-		margin-bottom: 0.5em
-		padding: 0
+// .products-basket__price
 
-		// только для маленьких мониторов
-		text-align: center
+.products-basket__sum
+	.cur
+		+font-bold
+		font-size: 20px
 
-	.products-basket__price
-		text-align: center
-		padding: 0
-		margin-bottom: 20px
+.products-basket__remove
+	text-align: center
+	max-width: 70px
 
-		.cur, .no, .old
-			display: block
-			+margin-horizontal(0.2em)
-			margin-bottom: 0
+	+media('<tab-sm')
+		//justify-content: space-between
+		text-align: right
 
-.products-basket__item
+	.btn-remove
+		line-height: 1
+		vertical-align: middle
+
+		+media('<tab-sm')
+			padding-right: 10px
+
+			& > i
+				+size(32px)
+				vertical-align: middle
+
+			& > span
+				+display-inline-block-middle
+				clip: auto
+				height: auto
+				margin: 0
+				padding: auto
+				position: relative
+				width: auto
+
+.product-basket__total
+	text-align: right
+	margin-bottom: $bottom-space
+
 	+media('<mob-lg')
-		width: round-float(100%/1, 4)
+		text-align: center
 
-/* grid view end
+	&:last-child
+		margin-bottom: 0
+
+	& > div
+		+display-inline-block-middle
+
+	.label
+		margin-right: 20px
+
+	.total-price
+		+font-bold
+
+.product-basket__footer
+	text-align: right
+	margin-bottom: $bottom-space
+	direction: rtl
+
+	+media('<mob-lg')
+		text-align: center
+		direction: ltr
+
+	.arr-wrap
+		margin: 0 -#{round($bottom-space/2)} -#{$bottom-space}
+
+		+media('<mob-lg')
+			+margin-horizontal(0)
+
+	&:last-child
+		margin-bottom: 0
+
+	[class*="btn-"]
+		margin: 0 #{round($bottom-space/2)} #{$bottom-space}
+		min-width: 250px
+		direction: ltr
+
+		+media('<mob-lg')
+			display: block
+			+push-auto
+
 /* products basket end

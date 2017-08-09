@@ -7,11 +7,18 @@ $remove-from-cart-width: 40px
 	position: relative
 	+display-inline-block-top
 	text-align: left
-	border: 3px solid #{$outline-color}
 	background-color: transparent
 
 	&.has-remove
 		padding-right: #{$remove-from-cart-width}
+
+	input
+		margin-bottom: 0
+		border: none
+		box-shadow: none
+		width: 20px
+		height: 20px
+		padding: 0
 
 .remove-from-cart
 	position: absolute
@@ -66,6 +73,9 @@ $remove-from-cart-width: 40px
 
 .ui-spinner
 	padding-right: 28px
+
+	.spinner &
+		border: 3px solid #{$outline-color}
 
 .ui-spinner-input, .ui-spinner-input[type="text"]
 	width: 62px

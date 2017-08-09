@@ -197,10 +197,21 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	white-space: nowrap
 
 .heading
+	display: flex
+	justify-content: space-between
+	align-items: center
+	flex-wrap: wrap
+	margin-bottom: $bottom-space
+
+	+media('<mob-lg')
+		margin-bottom: 0
+
 	h1, h2, h3
 		+display-inline-block-middle
 		margin-right: 50px
 
+		~ *
+			margin-bottom: $bottom-space !important
 
 /*content img*/
 .imgc
@@ -295,8 +306,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
 		& > li
 			counter-increment: section
-			//height: 1%
-			//overflow: hidden
 
 			&::before
 				content: counter(section)
