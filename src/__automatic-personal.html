@@ -1,0 +1,195 @@
+@@include('_layout_head.tpl', {
+	"title": "ЭA - Личный кабинет",
+	"pageClass": "ea-site",
+	"ea": "true"
+})
+
+<div class="wrapper">
+	<!--HEADER-->
+	@@include('_layout_header--ea.xhtml', {
+		"mainNavItemActive": ""
+	})
+	<!--HEADER end-->
+
+	<!--TOP PANEL-->
+	@@include('_layout_top-panel--ea.tpl')
+	<!--TOP PANEL end-->
+
+	<!--MAIN-->
+	<div class="main">
+		<div class="max-wrap layout">
+			<div class="main__holder">
+				<!--CONTENT-->
+				<div class="content-wrap">
+					<div class="content user-content">
+						<div class="sheet">
+							<div class="layout-article">
+								<!--breadcrumbs-->
+								@@include('_breadcrumbs.tpl', {
+									"last": "Личный кабинет"
+								})
+								<!--breadcrumbs end-->
+								<div class="heading">
+									<h1>Личный кабинет</h1>
+								</div>
+								<div class="heading-user">
+									<div class="heading-user__caption">
+										<div class="heading-user__ava">
+											<img src="img/depict-camera.png" alt="user" />
+										</div>
+										<div class="heading-user__title">Добро пожаловать, <span class="heading-user__name">Adrey Sokolovski</span></div>
+									</div>
+									<div class="add-info">
+										<a href="#" class="btn-outline btn-with-arrow"><i>&nbsp;</i><span>Выход</span></a>
+									</div>
+								</div>
+								<div class="layout-wide">
+									<!--personal info-->
+									<div class="infobar personal-info js-tabs" data-collapsed="true">
+										<div class="infobar__nav">
+											<a href="#personal-info-01" class="infobar__tab js-tab-anchor active-tab">
+												<span>Мои заказы</span>
+											</a>
+											<a href="#personal-info-02" class="infobar__tab js-tab-anchor">
+												<span>Мои данные</span>
+											</a>
+											<a href="#personal-info-03" class="infobar__tab js-tab-anchor">
+												<span>Доставка</span>
+											</a>
+											<a href="#personal-info-04" class="infobar__tab js-tab-anchor">
+												<span>Подписки</span>
+											</a>
+											<a href="#personal-info-05" class="infobar__tab js-tab-anchor">
+												<span>Помощь</span>
+											</a>
+										</div>
+
+										<div class="infobar__panels js-tab-container">
+											<a href="#personal-info-01" class="infobar__tab js-tab-link">
+												<span>Мои заказы</span>
+												<i>&nbsp;</i>
+											</a>
+											<div class="infobar__panel js-tab-content" id="personal-info-01">
+												<div class="infobar__frame">
+													<div class="table-auto">
+														<table class="tbl tbl-flex">
+															<thead>
+																<tr>
+																	<th class="tbl-flex--hide">#</th>
+																	<th class="tbl-resp--title">Дата</th>
+																	<th>№ заказа</th>
+																	<th>Статус</th>
+																	<th>Оплачено, %</th>
+																	<th>Отгружено, %</th>
+																	<th>Сумма, руб.</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td class="tbl-flex--hide">1.</td>
+																	<td class="tbl-resp--title">12.08.2017</td>
+																	<td data-label="№ заказа">56756756</td>
+																	<td data-label="Статус">В ожидании</td>
+																	<td data-label="Оплачено, %">60</td>
+																	<td data-label="Отгружено, %">–</td>
+																	<td data-label="Сумма, руб.">300</td>
+																</tr>
+																<tr>
+																	<td class="tbl-flex--hide">2.</td>
+																	<td class="tbl-resp--title">27.07.2017</td>
+																	<td data-label="№ заказа">67566756</td>
+																	<td data-label="Статус">Отгрузка</td>
+																	<td data-label="Оплачено, %">100</td>
+																	<td data-label="Отгружено, %">200</td>
+																	<td data-label="Сумма, руб.">56 740 000</td>
+																</tr>
+																<tr>
+																	<td class="tbl-flex--hide">3.</td>
+																	<td class="tbl-resp--title">01.03.1963</td>
+																	<td data-label="№ заказа">56756756</td>
+																	<td data-label="Статус">В ожидании</td>
+																	<td data-label="Оплачено, %">60</td>
+																	<td data-label="Отгружено, %">–</td>
+																	<td data-label="Сумма, руб.">300</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+											<a href="#personal-info-02" class="infobar__tab js-tab-link">
+												<span>Мои данные</span>
+												<i>&nbsp;</i>
+											</a>
+											<div class="infobar__panel js-tab-content" id="personal-info-02">
+												<div class="infobar__frame">
+													<h3>Мои данные</h3>
+													<p>Резьбовой крепежный элемент РКн (наружная резьба) предназначен для соединения изолированного металлорукава с установочной коробкой и герметичного соединение изолированного отрезков металлорукава путем стыковки с ответным элементом РКв (внутренняя резьба).</p>
+													<p>Крепежный элемент РКнХ (наружная резьба и хомут) предназначен для соединение неизолированного металлорукава с установочной коробкой и соединение отрезков неизолированного и изолированного металлорукава путем стыковки с ответным элементом РКв</p>
+													<h3>Материалы:</h3>
+													<p>Цинковый сплав</p>
+													<h3>Преимущества:</h3>
+													<ul>
+														<li>Простота монтажа</li>
+														<li>Надежное соединение отрезков металлорукава</li>
+														<li>Дополнительное уплотнение ввода в распределительный щит или установочную коробку</li>
+														<li>Герметичное соединения при стыковке изолированного металлорукава с использованием муфт Ркв и РКн (Степень защиты IP 54)</li>
+														<li>Индивидуальная упаковка со штрих-кодом для удобства реализации через розничные сети</li>
+													</ul>
+												</div>
+											</div>
+											<a href="#personal-info-03" class="infobar__tab js-tab-link">
+												<span>Доставка</span>
+												<i>&nbsp;</i>
+											</a>
+											<div class="infobar__panel js-tab-content" id="personal-info-03">
+												<div class="infobar__frame">
+													<h3>Доставка</h3>
+													<p>Крепежный элемент РКнХ (наружная резьба и хомут) предназначен для соединение неизолированного металлорукава с установочной коробкой и соединение отрезков неизолированного и изолированного металлорукава путем стыковки с ответным элементом РКв</p>
+												</div>
+											</div>
+											<a href="#personal-info-04" class="infobar__tab js-tab-link">
+												<span>Подписки</span>
+												<i>&nbsp;</i>
+											</a>
+											<div class="infobar__panel js-tab-content" id="personal-info-04">
+												<div class="infobar__frame">
+													<h3>Подписки</h3>
+													<p>Резьбовой крепежный элемент РКн (наружная резьба) предназначен для соединения изолированного металлорукава с установочной коробкой и герметичного соединение изолированного отрезков металлорукава путем стыковки с ответным элементом РКв (внутренняя резьба).</p>
+												</div>
+											</div>
+											<a href="#personal-info-05" class="infobar__tab js-tab-link">
+												<span>Помощь</span>
+												<i>&nbsp;</i>
+											</a>
+											<div class="infobar__panel js-tab-content" id="personal-info-05">
+												<div class="infobar__frame">
+													<h3>Помощь</h3>
+													<p>Индивидуальная упаковка со штрих-кодом для удобства реализации через розничные сети</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--personal info end-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--CONTENT end-->
+			</div>
+		</div>
+	</div>
+	<!--MAIN end-->
+
+	<!--SIDEBAR-->
+	@@include('_layout_catalog-menu.tpl', {
+		"catalogMenuActiveItem": "",
+		"notSubMenu": "true"
+	})
+	<!--SIDEBAR-->
+</div>
+
+@@include('_layout_foot.tpl', {
+	"site": "ea"
+})

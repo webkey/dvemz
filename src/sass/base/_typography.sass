@@ -197,21 +197,87 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	white-space: nowrap
 
 .heading
+
+	h1, h2, h3
+		+display-inline-block-middle
+		margin-right: 20px
+		margin-bottom: $bottom-space
+
+		&:last-child
+			margin-right: 0
+			margin-bottom: 0
+
+		~ *
+			margin-bottom: $bottom-space !important
+
+.heading-user__caption
+	+display-inline-block-middle
+	+clear-spacing
+	margin-right: 20px
+	margin-bottom: $bottom-space
+
+	+media('<mob-lg')
+		display: block
+		margin-right: 0
+		text-align: center
+
+	&:last-child
+		margin-right: 0
+		margin-bottom: 0
+
+	~ *
+		margin-bottom: $bottom-space !important
+
+.heading-user__ava
+	+display-inline-block-middle
+	overflow: hidden
+	background-color: $bg-color-light
+	+size(70px)
+	+font($font-size, $line-height)
+	letter-spacing: normal
+	border-radius: 70px
+	margin-right: 20px
+
+	+media('<mob-lg')
+		display: block
+		+push-auto
+
+	img
+		+size(70px)
+		border-radius: 70px
+
+.heading-user__title
+	+display-inline-block-middle
+	+font-bold
+	+font($font-size-h3, $line-height-h3)
+	letter-spacing: normal
+
+	+media('<mob-lg')
+		display: block
+
+.heading-user__name
+	+font-normal
+	font-size: 1.8rem
+	white-space: nowrap
+
+.heading, .heading-user
 	display: flex
 	justify-content: space-between
 	align-items: center
 	flex-wrap: wrap
 	margin-bottom: $bottom-space
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
 		margin-bottom: 0
 
-	h1, h2, h3
+	.add-info
 		+display-inline-block-middle
-		margin-right: 50px
+		margin-bottom: $bottom-space
 
-		~ *
-			margin-bottom: $bottom-space !important
+.heading-user
+	+media('<mob-lg')
+		display: block
+		text-align: center
 
 /*content img*/
 .imgc
@@ -388,14 +454,14 @@ table
 	th, thead td
 		+font-bold
 		text-align: left
-		border-width: 1px 0
+		border-width: 0 0 2px
 
 	th, thead td, tfoot td
 		background: $table-bg-alt-color
 		color: $table-text-alt-color
 		//border-top-width: 0
 
-// адаптирующиеся таблицы
+// адаптирующиеся таблицы (вариант 1)
 
 .tbl-resp
 	$tbl-resp-border-color: #ddd
@@ -458,6 +524,68 @@ table
 
 		tr:last-child td:not(.tbl-resp--subtitle)
 			border-bottom: none
+
+// адаптирующиеся таблицы (вариант 1) end
+
+// адаптирующиеся таблицы (вариант 2)
+.tbl-flex
+	+media('<tab-sm')
+		&, thead, tbody, tfoot, tr, td, th
+			display: block
+
+		thead
+			display: none
+
+		.tbl-resp--title,
+		.no-touchevents & tr:hover .tbl-resp--title
+			+font-bold
+			+font(1.2rem, 1.6)
+			text-align: center
+			letter-spacing: 0.05em
+			text-transform: uppercase
+			background-color: #333 !important
+			color: white !important
+			border: none
+
+		.tbl-flex--hide
+			display: none
+
+		td, th
+			+font(16px, 18px)
+			border-width: 0 1px
+			text-align: right
+			min-width: 0
+			cursor: default
+			+clear
+
+			&:nth-child(even)
+				background-color: $table-bg-alt-color
+
+			&:first-child
+				border-left: none
+
+			&::before
+				content: attr(data-label)
+				float: left
+				vertical-align: middle
+				max-width: 50%
+				padding-right: 10px
+				font-size: 12px
+				text-transform: uppercase
+				text-align: left
+
+		.no-touchevents & tr:hover td
+			background-color: $table-bg-color
+
+		.no-touchevents & tr:hover td:hover
+			background-color: $table-bg-alt-color
+
+		tr:last-child td:last-child
+			border-bottom-width: 1px
+
+
+
+// адаптирующиеся таблицы (вариант 2) end
 
 /*table end*/
 
