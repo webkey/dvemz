@@ -5,7 +5,7 @@
 				<div class="logo-alt-title"><div class="logo-alt-title__fig"><span>Электроавтоматика</span></div></div>
 				<div class="logo-alt-map"><div class="logo-alt-map__fig"><span>Владивосток</span></div></div>
 			</a>
-			<img style="display: none;" src="img/logo.png" alt="Электроавтоматика">
+			<img style="display: none;" src="img/logo-print--ea.png" alt="Электроавтоматика">
 		</div>
 		<a href="#" class="menu-btn btn-nav-js" title="Открыть главное меню">
 			<div class="menu-btn__inner">

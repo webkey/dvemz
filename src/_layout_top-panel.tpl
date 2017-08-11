@@ -5,7 +5,7 @@
 				<div class="logo-alt-title"><div class="logo-alt-title__fig"><span>Дальневосточный электромонтажный завод</span></div></div>
 				<div class="logo-alt-map"><div class="logo-alt-map__fig"><span>Владивосток</span></div></div>
 			</a>
-			<img style="display: none;" src="img/logo.png" alt="ДВЭМЗ">
+			<img style="display: none;" src="img/logo-print.png" alt="ДВЭМЗ">
 		</div>
 		<a href="#" class="menu-btn btn-nav-js" title="Открыть главное меню">
 			<div class="menu-btn__inner">

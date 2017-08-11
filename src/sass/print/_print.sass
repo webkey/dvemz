@@ -49,32 +49,65 @@
 	hr
 		border-color: black
 
-	body
-		font-family: Arial, Helvetica, sans-serif
-		font-size: 10pt
+	b, strong, th, .products__price .cur
+		font-family: Arial, Helvetica, sans-serif !important
+		font-weight: bold !important
+		font-style: normal !important
+
+	i, em
+		font-family: Arial, Helvetica, sans-serif !important
+		font-weight: normal !important
+		font-style: italic !important
+
+	i b, i strong, em b, em strong, b i, b em, strong i, strong em
+		font-family: Arial, Helvetica, sans-serif !important
+		font-weight: bold !important
+		font-style: italic !important
+
+	body, .c-section-description, .products__price .cur, .products__price .old
+		font-family: Arial, Helvetica, sans-serif !important
+		font-weight: normal !important
+		font-style: normal !important
+		font-size: 10pt !important
 		line-height: 1.5 !important
 
-	h1
+	h1, .c-section-counter, .p-card__title h1, .p-card__title h2, .p-card__title h3
+		font-family: Arial, Helvetica, sans-serif !important
+		font-weight: bold !important
+		font-style: normal !important
 		font-size: 20pt !important
 		line-height: 1.3 !important
 
-	h2
+	h2, .phone
+		font-family: Arial, Helvetica, sans-serif !important
+		font-weight: bold !important
+		font-style: normal !important
 		font-size: 18pt !important
 		line-height: 1.4 !important
 
-	h3, .main-slider-title__item
+	h3, .main-slider-title__item, .providers__title, .c-section-title h1, .c-section-title h2, .c-section-title h3, .catalog__title, .p-card__subtitle, .infobar__panels .infobar__tab
+		font-family: Arial, Helvetica, sans-serif !important
+		font-weight: bold !important
+		font-style: normal !important
 		font-size: 16pt !important
 		line-height: 1.5 !important
 
-	h4, blockquote q
+	h4, blockquote q, .main-section__title .subtitle, .c-section-item, .c-section-item > i, .goods__title a, .entry-text, .products__title, .infobar__frame h3, .years a.active, .news__title
+		font-family: Arial, Helvetica, sans-serif !important
+		font-weight: bold !important
+		font-style: normal !important
 		font-size: 14pt !important
 		line-height: 1.5 !important
 
-	h5, blockquote cite
+	h5, blockquote cite, .news__date
+		font-family: Arial, Helvetica, sans-serif !important
+		font-weight: bold !important
+		font-style: normal !important
 		font-size: 12pt !important
 		line-height: 1.6 !important
 
 	h6
+		font-family: Arial, Helvetica, sans-serif !important
 		font-size: 8pt !important
 		line-height: 1.8 !important
 
@@ -87,19 +120,21 @@
 		& > *
 			padding: 0!important
 
-	.side-menu, .aside, .print-hidden, .view-print, .nav, .nav-list, .breadcrumbs, .breadcrumbs__list, form, .footer, .spacer, [class*="btn-"]
+	.navigationByTypographyElements, .side-menu, .header, .print-hidden, .view-print, .nav, .nav-list, .breadcrumbs, .breadcrumbs__list, form, .footer, .spacer, [class*="btn-"], .shutter, .top-panel-contacts, .pagination, .share-box, .images-slider, .menu-btn, .top-panel-contacts, .user-options, .btn-siblings, .fp-bg, .main-section__footer, .c-categories, .main-map > div, .agency__inner::before, .c-section__container::before, .c-section__bg, .c-section-thumbs, .c-section-thumb, .c-section-thumb svg, .c-section-panels::before, .goods::before, .goods__caption .info, .goods__list::before, .goods__item::before, .goods__inner::before, .goods__inner::after, .goods__item::after, .goods__list::after, .goods::after, .goods__figure, .article-footer, .catalog-menu, .catalog::before, .catalog::after, .catalog__list::before, .catalog__list::after, .catalog__item::before, .catalog__item::after, .catalog__inner::before, .catalog__inner::after, .catalog__figure, .p-filters, .p-options, .products::before, .products::after, .products__list::before, .products__list::after, .products__item::before, .products__item::after, .products__inner::before, .products__inner::after, .products__figure, .products__options, .fotorama__nav-wrap, .fotorama__fullscreen-icon, .fotorama__stage__frame:nth-child(n+2), .fotorama__arr, .fotorama__video-close, .p-card__widget .spinner, .infobar__nav, .infobar__tab i, .years a, .news::before, .news::after, .news__list::before, .news__list::after, .news__item::before, .news__item::after, .news__inner::before, .news__inner::after, .news__figure:before, .order-steps, .product-basket__footer
 		display: none !important
 
-	.main, .content, .layout, .layout-text, .layout-flood, .header, .header__holder, .blockquote, .blockquote *, blockquote, .imgl, .imgr, .imgc, .table-auto table
+	html, .main, .content, .layout, .layout-article, .layout-text, .layout-flood, .blockquote, .blockquote *, blockquote, q, cite, .imgl, .imgr, .imgc, table, .top-panel, .top-panel-holder, .feature-list__img, .feature-list__content, .main-sections, .main-section, .main-section__container, .main-section__align, .main-section__layout, .main-section__title, .total-data, .total-data__list, .total-data__item, .news-previews__list, .news-previews__item, .news-previews__inner, .news-previews__footer, .home-page, .agency__holder, .agency__item, .agency__text, .providers, .providers__item, .providers__text, .providers__list, .providers__list li, .plea, .main-section__pos, .main-section__holder, .phone, .main-map, .info, .contacts, .c-sections, .c-section, .c-section__container, .c-section__align, .c-section__layout, .c-section-heading, .c-section-heading h1, .c-section-items, .c-section-item, .c-section-item > i, .c-section-item a, .c-section-item > span, .c-section-counter, .c-section-title, .c-section-title h1, .c-section-title h2, .c-section-title h3, .c-section-title h1 a, .c-section-title h2 a, .c-section-title h3 a, .c-section-description, .c-section-panels, .c-section-panel, .layout-wide, .goods__caption, .goods__caption h3, .goods__list, .goods__item, .goods__inner, .goods__body, .goods__content, .goods__title, .goods__title a, .goods__text, .sheet, .entry-text, .catalog, .catalog__list, .catalog__item, .catalog__inner, .catalog__content, .catalog__title, .catalog__text, .catalog__text ul, .catalog__text li, .catalog__text a, .products, .products__list, .products__item, .products__inner, .products__body, .products__footer, .products__content, .products__title, .products__stock, .products__price, .products__price .cur, .products__price .old, .p-card, .p-card__title, .p-card__title h1, .p-card__title h2, .p-card__title h3, .p-card__visual, .p-card__content, .p-card__gallery, .fotorama__wrap, .fotorama__stage, .fotorama__stage__shaft, .fotorama__stage__frame, .fotorama__img, .p-card__widget, .p-card__subtitle, .p-card-price, .infobar__panels, .infobar__panels .infobar__tab, .infobar__panel, .infobar__tab span, .infobar__frame, .heading, .heading h1, .heading h2, .heading h3, .years, .years a.active, .news, .news__list, .news__item, .news__inner, .news__figure, .news__img, .news__figure img, .news__content, .news__title, .news__text, .news__footer
 		+print-reset
 
-	h1, h2, h3, h4, h5, h6, p, ul, ol, .table-auto, table, .imgl, .imgr, .imgc, .datetime
+	h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote, q, .table-auto, table, .imgl, .imgr, .imgc, .datetime, .feature-list__img, .news-previews__item, .agency__item, .main-section__title .subtitle, .providers__item, .providers__title, .providers__list li, .total-data__item, .phone, .info, .c-section-heading, .c-section-title, .c-section-title h1, .c-section-title h2, .c-section-title h3, .goods__item, .goods__caption, .goods__img img, .goods__title, .c-section-counter, .entry-text, .catalog__item, .catalog__title, .products__item, .p-card__title, .p-card__visual, .p-card__content, .p-card__widget, .p-card__subtitle, .infobar__panels .infobar__tab, .heading h1, .heading h2, .heading h3, .years, .heading h1 ~ *, .heading h2 ~ *, .heading h3 ~ *, .news__figure
 		+prints-space-bottom-sm
+		max-width: none !important
 
-	.header, .blockquote, hr, blockquote
+	.top-panel, .blockquote, hr, blockquote, .main-section, .c-section, .news, .news__item
 		+prints-space-bottom-md
+		max-width: none !important
 
-	.logo
+	.logo-alt
 		background: none !important
 
 		& > *
@@ -114,3 +149,27 @@
 		margin: 0 !important
 		font-size: 18pt !important
 		display: inline-block !important
+
+	table
+		width: 100% !important
+
+	.feature-list__img
+		width: 8cm !important
+
+	.agency__item::before
+		content: none !important
+
+	.main-map
+		background: url(../../img/map-print.jpg) no-repeat !important
+		background-size: contain !important
+		width: 13cm !important
+		height: 7cm !important
+
+	.c-section-item > i, .c-section-item a, .c-section-item > span
+		display: inline !important
+
+	.c-section-item > i
+		margin-right: 0.2cm !important
+
+	.goods__img img, .fotorama__img, .news__img img
+		width: 8cm !important

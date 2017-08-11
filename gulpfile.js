@@ -21,7 +21,8 @@ var gulp = require('gulp'), // Подключаем Gulp
 	fs = require('fs'), // For compiling modernizr.min.js
 	modernizr = require('modernizr'), // For compiling modernizr.min.js
 	config = require('./modernizr-config'), // Path to modernizr-config.json
-	replace = require('gulp-string-replace')
+	replace = require('gulp-string-replace'),
+	htmlmin = require('gulp-htmlmin')
 	;
 
 gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
@@ -216,17 +217,32 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 	gulp.src('src/css/*.css')
 		.pipe(gulp.dest('dist/css'));
 
-	gulp.src('src/fonts/**/*') // Переносим шрифты в продакшен
-		.pipe(gulp.dest('dist/fonts'));
+	// если необходимо сжать main.css
+	// gulp.src('src/css/main.css')
+	// 	.pipe(cssnano())
+	// 	.pipe(rename({suffix: '.min'}))
+	// 	.pipe(gulp.dest('dist/css'));
 
-	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', 'src/js/*.js']) // Переносим скрипты в продакшен
-		.pipe(gulp.dest('dist/js'));
+	gulp.src('src/fonts/**/*')
+		.pipe(gulp.dest('dist/fonts')); // Переносим шрифты в продакшен
 
-	gulp.src('src/files/**/*') // Переносим дополнительные файлы в продакшен
-		.pipe(gulp.dest('dist/files'));
+	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', 'src/js/*.js'])
+		.pipe(gulp.dest('dist/js')); // Переносим скрипты в продакшен
 
-	gulp.src(['!src/__*.html', 'src/*.html']) // Переносим HTML в продакшен
-		.pipe(gulp.dest('dist'));
+	// если необходимо сжать common.js
+	// gulp.src(['src/js/common.js'])
+	// 	.pipe(rename({suffix: '.min'}))
+	// 	.pipe(uglify()) // Сжимаем JS файл
+	// 	.pipe(gulp.dest('dist/js')); // Переносим скрипты в продакшен
+
+	gulp.src('src/files/**/*')
+		.pipe(gulp.dest('dist/files')); // Переносим дополнительные файлы в продакшен
+
+	gulp.src(['!src/__*.html', 'src/*.html'])
+		//.pipe(replace('css/main.css', 'css/main.min.css')) // меняем подключение main.css на main.min.css
+		//.pipe(replace('js/common.js', 'js/common.min.js')) // меняем подключение common.js на common.min.js
+		//.pipe(htmlmin({collapseWhitespace: true})) // если необходимо сжать html
+		.pipe(gulp.dest('dist')); // Переносим HTML в продакшен
 
 	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess']) // Переносим favicon и др. файлы в продакшин
 		.pipe(gulp.dest('dist'));
