@@ -18,8 +18,14 @@
 	form
 		display: block
 
-	.input-wrap
-		margin-bottom: 50px
+	.form-row, .input-wrap
+		margin-bottom: 40px
+
+		.input-wrap
+			margin-bottom: 0
+
+			+media('<mob-lg')
+				margin-bottom: 40px
 
 	textarea
 		height: 130px
