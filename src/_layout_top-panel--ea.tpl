@@ -1,7 +1,7 @@
-<aside class="top-panel">
+<aside class="top-panel@@if (context.alt) { top-panel--alt}">
 	<div class="top-panel-holder">
 		<div class="logo-alt">
-			<a href="automatic-catalog.html">
+			<a href="automatic-index.html">
 				<div class="logo-alt-title"><div class="logo-alt-title__fig"><span>Электроавтоматика</span></div></div>
 				<div class="logo-alt-map"><div class="logo-alt-map__fig"><span>Владивосток</span></div></div>
 			</a>

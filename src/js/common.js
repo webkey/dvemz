@@ -377,8 +377,12 @@ function fullPageInitial() {
 			// navigation: true,
 			menu: '.scroll-nav-js',
 			sectionSelector: '.main-section',
+			autoScrolling: false,
+			fitToSection: false,
+			css3: true,
 			scrollingSpeed: 1000,
 			recordHistory: false,
+			responsiveWidth: mediaTablet,
 			onLeave: function (index, nextIndex, direction) {
 				var $this = $(this);
 				var $section = $this.parent().children();
@@ -398,6 +402,9 @@ function fullPageInitial() {
 				// 	if (i+1 >= nextIndex) {
 				// 		$section.eq(i).removeClass(prevBeforeSectionClass);
 				// 	}
+				// }
+				// if(nextIndex !== 0){
+				// 	$.fn.fullpage.setAutoScrolling(false);
 				// }
 			},
 			afterLoad: function (anchorLink, index) {
@@ -437,11 +444,11 @@ function fullPageInitial() {
 				// 		$section.eq(i).removeClass(prevSectionClass);
 				// 	}
 				// }
-			},
-			afterRender: function(){
-				var pluginContainer = $(this);
-				fullPageRespons();
 			}
+			// , afterRender: function(){
+			// 	var pluginContainer = $(this);
+			// 	fullPageRespons();
+			// }
 		});
 	}
 
@@ -451,17 +458,17 @@ function fullPageInitial() {
 		$.fn.fullpage.moveSectionDown();
 	});
 
-	function fullPageRespons() {
-		if ($mainSections.length) {
-			if (window.innerWidth < mediaTablet || !DESKTOP) {
-				$.fn.fullpage.setResponsive(true);
-				// $.fn.fullpage.setRecordHistory(true);
-			} else {
-				$.fn.fullpage.setResponsive(false);
-				// $.fn.fullpage.setRecordHistory(false);
-			}
-		}
-	}
+	// function fullPageRespons() {
+	// 	if ($mainSections.length) {
+	// 		if (window.innerWidth < mediaTablet || !DESKTOP) {
+	// 			$.fn.fullpage.setResponsive(true);
+	// 			// $.fn.fullpage.setRecordHistory(true);
+	// 		} else {
+	// 			$.fn.fullpage.setResponsive(false);
+	// 			// $.fn.fullpage.setRecordHistory(false);
+	// 		}
+	// 	}
+	// }
 	$(window).on('debouncedresize', function () {
 		fullPageRespons();
 	});

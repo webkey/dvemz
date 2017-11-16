@@ -52,6 +52,10 @@
 		.ea-has-catalog-menu &
 			margin-right: #{$catalog-menu-width + $catalog-categories-width--short}
 
+		// контент (автоматика) для главной
+		.ea-site.home-page &
+			margin-right: #{$catalog-categories-width--full}
+
 	+media('<desk-lg')
 		// контент (автоматика) для каталожных страниц
 		.ea-has-catalog-menu &
@@ -61,11 +65,12 @@
 			margin-right: #{$sidebar-width-alt--sm}
 
 	+media('<desk-md')
-		.ea-site &
+		// контент (автоматика) внутренние и главная
+		.ea-site &, .ea-site.home-page &
 			margin-right: 0
 
 	+media('<tab-lg')
-		&, .side-menu--alt &, .ea-site &
+		&, .side-menu--alt &, .ea-site &, .ea-site.home-page &
 			margin-right: 0
 			margin-left: 0
 
@@ -107,6 +112,10 @@
 		.ea-has-catalog-menu &
 			width: calc(#{$base-width} - #{$catalog-menu-width} - #{$catalog-categories-width--short})
 
+		// верхняя панель (автоматика) для главной
+		.ea-site.home-page &
+			width: calc(#{$base-width} - #{$catalog-categories-width--full})
+
 	+media('<desk-lg')
 		// верхняя панель (автоматика) для каталожных страниц
 		.ea-has-catalog-menu &
@@ -117,12 +126,15 @@
 			width: calc(#{$base-width} - #{$sidebar-width-alt--sm})
 
 	+media('<desk-md')
-		// верхняя панель (автоматика) для всех страниц
-		.ea-site &
+		// верхняя панель (автоматика) для внутренних и главной
+		.ea-site &, .ea-site.home-page &
 			width: calc(#{$base-width})
 
+		.ea-site.home-page &.top-panel--alt
+			position: relative
+
 	+media('<tab-lg')
-		&, .ea-site &, .side-menu--alt &
+		&, .ea-site &, .side-menu--alt &, .ea-site.home-page &
 			width: 100%
 			margin-left: 0
 			padding-top: #{$top-panel-height--md}
@@ -207,6 +219,10 @@
 			.ea-has-catalog-menu &
 				width: calc(#{$base-width} - #{$catalog-menu-width} - #{$catalog-categories-width--short})
 
+			// футер (автоматика) для главной
+			.ea-site.home-page &
+				width: calc(#{$base-width} - #{$catalog-categories-width--full})
+
 		+media('<desk-lg')
 			// футер (автоматика) для каталожных страниц
 			.ea-has-catalog-menu &
@@ -217,12 +233,12 @@
 				width: calc(#{$base-width} - #{$sidebar-width-alt--sm})
 
 		+media('<desk-md')
-			// футер (автоматика) для всех страниц
-			.ea-site &
+			// футер (автоматика) для внутренних и главной
+			.ea-site &, .ea-site.home-page &
 				width: calc(#{$base-width})
 
 		+media('<tab-lg')
-			&, .ea-site &, .side-menu--alt &
+			&, .ea-site &, .side-menu--alt &, .ea-site.home-page &
 				left: 0
 				width: 100%
 

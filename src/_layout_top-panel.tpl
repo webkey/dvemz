@@ -40,7 +40,7 @@
 		@@include('_tpl_user-options.tpl', {
 			"site": "dvemz"
 		})
-		<a href="automatic-catalog.html" class="btn-siblings"><i>&nbsp;</i><span>Электро<br> автоматика</span></a>
+		<a href="automatic-index.html" class="btn-siblings"><i>&nbsp;</i><span>Электро<br> автоматика</span></a>
 	</div>
 	<a href="catalog.html" class="btn-catalog btn-catalog-js"><span>Каталог</span></a>
 </aside>
