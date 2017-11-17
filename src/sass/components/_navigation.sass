@@ -127,23 +127,26 @@
 		& > span
 			+display-inline-block-top
 			position: relative
-			overflow: hidden
+			//overflow: hidden
 
 			&::after
 				+pseudo()
 				left: 0
 				bottom: 0
 				+size(100%, 0)
+				//opacity: 0
 				border-top: 1px solid lighten($text-color, 60%)
-				transform: translate(-100%, 0)
-				transition-property: transform, filter
+				transform-origin: left top
+				transform: translate(10px, 0) scale(0, 1)
+				transition-property: transform, filter, opacity
 				transition-duration: $animation-speed
 
 	// hover
 	.no-touchevents & a:hover
 		& > span
 			&::after
-				transform: translate(0, 0)
+				opacity: 1
+				transform: translate(0, 0) scale(1, 1)
 
 	// current
 	li.current

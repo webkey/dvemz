@@ -2,10 +2,234 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-.ea-site.home-page
-	.main-section--news
+/*ea scroll sections
+$ea-main-section-max-width: 960px !default
+$ea-main-section-max-width-lg: 960px !default
+
+.ea-main-section
+	position: relative
+
+	&:not(.ea-main-section--entry)
+		height: auto !important
+
+	.touchevents &
+		height: auto !important
+		transform: none !important
+		transition-duration: 0s !important
+
+		+media('<tab-lg')
+			height: auto !important
+			transform: none !important
+			transition-duration: 0s !important
+
+	+media('<tab-lg')
 		height: auto !important
 		min-height: 0
 
-		.main-section__container
-			min-height: 0
+.ea-main-section__container
+	position: relative
+
+//.ea-main-section__align // see layout.sass
+
+.ea-main-section__layout
+	position: relative
+	+push-auto
+	text-align: left
+
+.ea-main-max-width
+	max-width: $ea-main-section-max-width
+
+	+media('<desk-lg')
+		max-width: $ea-main-section-max-width-lg
+
+.ea-main-section__title
+	display: flex
+	justify-content: space-between
+	+font-bold
+	+font(48px, round-float(58/48, 1))
+	margin-bottom: 10px
+	color: white
+
+	+media('<desk-hd')
+		font-size: 42px
+		margin-bottom: 20px
+
+	+media('<desk-hd')
+		font-size: 38px
+		margin-bottom: 10px
+
+	+media('<tab-lg')
+		display: block
+		text-align: center
+		margin-bottom: 0.6em
+
+	+media('<tab-sm')
+		font-size: 30px
+
+	h2, h3
+		margin: 0
+		font-family: inherit
+		+font(inherit, inherit)
+		font-weight: inherit
+		color: inherit
+		flex: 1 1 12rem
+
+		+media('<tab-lg')
+			margin-bottom: 0.2em
+
+			&:last-child
+				margin-bottom: 0
+
+	.subtitle
+		+font-normal
+		+font(24px, round-float(30/24, 1))
+		flex: 1 1 12em
+		padding: 0.5em
+
+		+media('<desk-hd')
+			font-size: 20px
+
+		+media('<desk-sb')
+			font-size: 16px
+			padding: 0
+
+		+media('<tab-lg')
+			font-size: 18px
+
+.ea-main-section__holder
+	+clear
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+/*scroll sections end
+
+/* section with background image
+.ea-main-section--entry, .ea-main-section--news
+	.ea-main-section__container
+		background: #f3f3f3 no-repeat center
+		background-size: cover
+
+		&::before
+			+pseudo()
+			+position(0, 0)
+			+size(100%)
+			background-color: rgba(0, 0, 0, 0.3)
+
+/* section with background image end
+
+/*main section entry
+.ea-main-section--entry
+	color: white
+	min-height: 100vh
+
+	.ea-main-section__container
+
+		+media('>=tab-lg')
+			display: table
+			width: 100%
+			height: 100%
+			min-height: 100vh
+
+	.ea-main-section__align
+		+media('>=tab-lg')
+			display: table-cell
+			vertical-align: middle
+			+padding-vertical(120px)
+			text-align: center
+
+	.ea-main-section__layout
+		.main-section__align &
+			display: inline-block
+			width: 100%
+
+	.ea-main-section__title
+		position: relative
+		padding-bottom: 0.8em
+		margin-bottom: 100px
+		+font-bold
+		+font(60px, round-float(72/60, 2))
+		color: white
+
+		&:last-child
+			margin-bottom: 0
+
+		&::before
+			+pseudo()
+			left: 0
+			bottom: 0
+			+size(85px, 3px)
+			background-color: white
+
+			+media('<tab-lg')
+				content: none
+
+		h1, h2, h3
+			width: 800px
+			max-width: 100%
+
+			+media('<desk-sb')
+				width: auto
+				max-width: none
+
+/*main section entry end
+
+/*total date
+$odds-space: 20px
+$odds-icon-size: 60px !default
+
+.odds
+	+media('>=tab-lg')
+		position: absolute
+		left: 0
+		bottom: 0
+		width: 100%
+		z-index: 50
+
+		&:last-child
+			margin-bottom: 0
+
+	+media('<tab-lg')
+		background-color: black
+
+	+media('<tab-sm')
+		display: none
+
+.odds__list
+	+grid-parent($odds-space)
+	+clear-spacing
+
+.odds__item
+	+grid-item(3, $odds-space)
+	letter-spacing: normal
+
+.odds__inner
+	padding: $odds-space
+	background-color: rgba(0, 0, 0, 0.50)
+	color: white
+	fill: $base-color--ea
+	height: 100%
+
+.odds__item
+
+	svg
+		+display-inline-block-middle
+		+size($odds-icon-size)
+		margin-right: $odds-space
+
+	path
+		fill: inherit
+
+.odds__title
+	+font-alt-bold
+	+font(14px, round-float(20/14, 2))
+	letter-spacing: 0.05em
+	text-transform: uppercase
+
+	svg + &
+		+display-inline-block-middle
+		width: calc(100% - #{$odds-icon-size} - #{$text-layout-space-horizontal--md} - 6px)
+
+/*total date end
+/*ea scroll sections end

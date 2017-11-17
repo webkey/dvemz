@@ -369,6 +369,7 @@ function fullPageInitial() {
 	var noAnimateClass = 'fp-no-animate';
 	var timeout;
 
+	/** main sections on home page */
 	var $mainSections = $('.main-sections-js');
 	if($mainSections.length) {
 		$mainSections.fullpage({
@@ -377,9 +378,6 @@ function fullPageInitial() {
 			// navigation: true,
 			menu: '.scroll-nav-js',
 			sectionSelector: '.main-section',
-			autoScrolling: false,
-			fitToSection: false,
-			css3: true,
 			scrollingSpeed: 1000,
 			recordHistory: false,
 			responsiveWidth: mediaTablet,
@@ -452,6 +450,35 @@ function fullPageInitial() {
 		});
 	}
 
+	/** main sections on home page of ea site */
+	// var $mainSectionsEA = $('.ea-main-sections-js');
+	// if($mainSectionsEA.length) {
+	// 	$mainSectionsEA.fullpage({
+	// 		verticalCentered: false,
+	// 		sectionSelector: '.ea-full-page-js',
+	// 		scrollBar: true,
+	// 		autoScrolling: false,
+	// 		fitToSection: false,
+	// 		css3: true,
+	// 		scrollingSpeed: 1000,
+	// 		recordHistory: false,
+	// 		responsiveWidth: mediaTablet
+	// 		, afterLoad: function (anchorLink, index) {
+	// 			var $section = $(this).parent().children();
+	//
+	// 			$html.removeClass(topClass);
+	// 			$html.removeClass(bottomClass);
+	//
+	// 			if(index === 1) {
+	// 				$html.addClass(topClass);
+	// 			}
+	// 			if(index === $section.length) {
+	// 				$html.addClass(bottomClass);
+	// 			}
+	// 		}
+	// 	});
+	// }
+
 	$('.move-next-section-js').on('click', function (e) {
 		e.preventDefault();
 
@@ -469,9 +496,9 @@ function fullPageInitial() {
 	// 		}
 	// 	}
 	// }
-	$(window).on('debouncedresize', function () {
-		fullPageRespons();
-	});
+	// $(window).on('debouncedresize', function () {
+	// 	fullPageRespons();
+	// });
 }
 /*full page scroll*/
 
@@ -634,6 +661,14 @@ function equalHeightInit() {
 
 	if ($thumbs.length) {
 		$thumbs.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+
+	var $oddsList = $('.odds__list');
+
+	if ($oddsList.length) {
+		$oddsList.children().matchHeight({
 			byRow: true, property: 'height', target: null, remove: false
 		});
 	}
