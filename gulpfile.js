@@ -118,33 +118,10 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
 		// jquery ui
 		, 'src/libs/jquery-ui/jquery-ui.min.js'
-		// , 'src/libs/jquery-ui/ui/widget.js'
-		// , 'src/libs/jquery-ui/ui/position.js'
-		// , 'src/libs/jquery-ui/ui/data.js'
-		// , 'src/libs/jquery-ui/ui/disable-selection.js'
-		// , 'src/libs/jquery-ui/ui/effect.js'
-		// , 'src/libs/jquery-ui/ui/focusable.js'
-		// , 'src/libs/jquery-ui/ui/form-reset-mixin.js'
-		// , 'src/libs/jquery-ui/ui/jquery-1-7.js'
-		// , 'src/libs/jquery-ui/ui/keycode.js'
-		// , 'src/libs/jquery-ui/ui/labels.js'
-		// , 'src/libs/jquery-ui/ui/scroll-parent.js'
-		// , 'src/libs/jquery-ui/ui/tabbable.js'
-		// , 'src/libs/jquery-ui/ui/unique-id.js'
-
-		// , 'src/libs/jquery-ui/ui/form.js'
-		// , 'src/libs/jquery-ui/ui/ie.js'
-		// , 'src/libs/jquery-ui/ui/plugin.js'
-		// , 'src/libs/jquery-ui/ui/safe-active-element.js'
-		// , 'src/libs/jquery-ui/ui/safe-blur.js'
-		// , 'src/libs/jquery-ui/ui/version.js'
-		// , 'src/libs/jquery-ui/ui/widgets/button.js'
-		// , 'src/libs/jquery-ui/ui/widgets/checkboxradio.js'
-		// , 'src/libs/jquery-ui/ui/widgets/controlgroup.js'
-		// , 'src/libs/jquery-ui/ui/widgets/spinner.js' // спиннер
 		// jquery ui end
 		, 'src/libs/fotorama/fotorama.js'
 		, 'src/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js'
+		, 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))

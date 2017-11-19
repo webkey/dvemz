@@ -1,0 +1,83 @@
+[
+	{
+		"src": "img-products-01.jpg",
+		"title": "Резьбовой крепежный элемент РКв-20 (внутренняя резьба) ТДМ",
+		"unit": "руб.",
+		"price": "300",
+		"old": "",
+		"sale": "",
+		"hit": ""
+	},
+	{
+		"src": "img-products-02.jpg",
+		"title": "Кабель внутренний SAS(SFF-8087)-4хSATA (угловой) 0,5 м( Mini-SASх4-4хSATA)",
+		"unit": "руб.",
+		"price": "1 150",
+		"old": "1 200",
+		"sale": "%",
+		"hit": "Хит"
+	},
+	{
+		"src": "img-products-03.jpg",
+		"title": "АВВГ 4Х50",
+		"unit": "руб.",
+		"price": "300",
+		"old": "450",
+		"sale": "",
+		"hit": ""
+	},
+	{
+		"src": "img-products-04.jpg",
+		"title": "АВВГ 2х10",
+		"unit": "руб.",
+		"price": "1 300",
+		"old": "1 370",
+		"sale": "%",
+		"hit": ""
+	},
+	{
+		"src": "img-products-05.jpg",
+		"title": "Резьбовой крепежный элемент РКв-20 (внутренняя резьба) ТДМ",
+		"unit": "руб.",
+		"price": "2 399",
+		"old": "3 000",
+		"sale": "",
+		"hit": ""
+	},
+	{
+		"src": "img-products-06.jpg",
+		"title": "АВВГ 2х10",
+		"unit": "руб.",
+		"price": "810",
+		"old": "",
+		"sale": "",
+		"hit": ""
+	},
+	{
+		"src": "img-products-07.jpg",
+		"title": "АВВГ 2х10",
+		"unit": "руб.",
+		"price": "1 015",
+		"old": "1 250",
+		"sale": "",
+		"hit": "Хит"
+	},
+	{
+		"src": "img-products-08.jpg",
+		"title": "АВВГ 2х10",
+		"unit": "руб.",
+		"price": "1 300",
+		"old": "1 450",
+		"sale": "",
+		"hit": ""
+	},
+	{
+		"src": "img-products-09.jpg",
+		"title": "АВВГ 2х10",
+		"unit": "руб.",
+		"price": "1 150",
+		"old": "1 200",
+		"sale": "",
+		"hit": ""
+	}
+]

@@ -48,7 +48,8 @@ $ea-main-section-max-width-lg: 960px !default
 	+font-bold
 	+font(48px, round-float(58/48, 1))
 	margin-bottom: 10px
-	color: white
+	color: $text-color
+	text-align: center
 
 	+media('<desk-hd')
 		font-size: 42px
@@ -105,6 +106,11 @@ $ea-main-section-max-width-lg: 960px !default
 
 /*scroll sections end
 
+/* section footer
+.ea-main-section__footer
+	text-align: center
+/* section footer end
+
 /* section with background image
 .ea-main-section--entry, .ea-main-section--news
 	.ea-main-section__container
@@ -116,6 +122,9 @@ $ea-main-section-max-width-lg: 960px !default
 			+position(0, 0)
 			+size(100%)
 			background-color: rgba(0, 0, 0, 0.3)
+
+	.ea-main-section__title
+		color: white
 
 /* section with background image end
 
@@ -150,6 +159,7 @@ $ea-main-section-max-width-lg: 960px !default
 		margin-bottom: 100px
 		+font-bold
 		+font(60px, round-float(72/60, 2))
+		text-align: left
 		color: white
 
 		&:last-child
@@ -174,6 +184,7 @@ $ea-main-section-max-width-lg: 960px !default
 				max-width: none
 
 /*main section entry end
+/*ea scroll sections end
 
 /*total date
 $odds-space: 20px
@@ -232,4 +243,346 @@ $odds-icon-size: 60px !default
 		width: calc(100% - #{$odds-icon-size} - #{$text-layout-space-horizontal--md} - 6px)
 
 /*total date end
-/*ea scroll sections end
+
+/* ea-promo
+/* ea-promo slider: banners
+.ea-promo-banners
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	opacity: 0
+	visibility: hidden
+	// before slide load end
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		opacity: 1
+		visibility: visible
+		// after slide load end
+
+.ea-promo-banners__item
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+
+	text-decoration: none
+	position: relative
+	border: 10px solid $base-color-alt--ea
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+	&::before
+		content: ""
+		display: block
+		position: relative
+		+ratio(1200, 438)
+
+	img
+		display: block
+		position: absolute
+		+position(0)
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(cover)
+
+/* ea-promo slider: banners end
+
+/* ea-promo slider: thumbs
+.ea-promo-thumbs
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	opacity: 0
+	visibility: hidden
+	+margin-horizontal(-5px)
+	// before slide load end
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		opacity: 1
+		visibility: visible
+		+margin-horizontal(0)
+		// after slide load end
+
+		.slick-list
+			+margin-horizontal(-5px)
+
+.ea-promo-thumbs__item
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+
+	position: relative
+	+font-light
+	+font(16px, 24px)
+	text-decoration: none
+	color: $text-color
+	cursor: pointer
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+	& > span
+		display: block
+		padding: 13px 12px
+		margin: 10px 5px 0
+		background-color: #ddd
+		+truncate(100%)
+
+		+media('<tab-sm')
+			letter-spacing: -4px
+			font-size: 0
+			line-height: 0
+
+		&::before
+			content: attr(data-index)
+			display: none
+			letter-spacing: normal
+			font-size: 16px
+			line-height: 24px
+
+			+media('<tab-sm')
+				display: inline
+
+	// current
+	&.slick-current
+		color: white
+
+		& > span
+			padding-top: 23px
+			margin-top: 0
+			background-color: $base-color-alt--ea
+
+/* ea-promo slider: thumbs end
+/* ea-promo end
+
+/* share
+.share
+	margin-bottom: $bottom-space--lg
+
+	&:last-child
+		margin-bottom: 0
+
+.share__thumbs
+	margin-bottom: 20px
+	+clear
+
+	&:last-child
+		margin-bottom: 0
+
+/* share end
+
+/* share nav
+.share-nav
+	float: left
+	padding-right: 0
+	+clear
+	+clear-spacing
+
+.share-nav__item
+	+display-inline-block-top
+	margin-right: -1px
+	+font-light
+	+font(13px, 18px)
+	letter-spacing: 0.05em
+	text-transform: uppercase
+
+	a
+		display: block
+		position: relative
+		color: inherit
+		white-space: nowrap
+		text-decoration: none
+		padding: 10px 30px
+		border: 1px solid $border-color
+		background-color: white
+
+		// hover
+		&:hover
+			background-color: $bg-color-light
+
+		// active
+		&.active-tab
+			color: white
+			background-color: $base-color--ea
+			border-color: $base-color--ea
+			z-index: 1
+			cursor: default
+
+/* share nav end
+
+/* share panels
+.share__panels
+	overflow: visible !important
+
+.share__panel
+	opacity: 0
+	position: absolute
+	+position(0)
+
+	&.active-tab
+		z-index: 5 !important
+
+/* share panels end
+
+/* share list
+.share-list
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	opacity: 0
+	visibility: hidden
+	// before slide load end
+	position: relative
+	border: solid $border-color
+	border-width: 1px 0
+
+	&::before, &::after
+		+pseudo()
+		top: 0
+		+size(0, 100%)
+		border-left: 1px solid $border-color
+		z-index: 5
+
+	&::before
+		left: 0
+
+	&::after
+		right: 0
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		opacity: 1
+		visibility: visible
+		// after slide load end
+
+	.slick-arrow
+		top: auto
+		bottom: 100%
+		transform: none
+		margin: 0 0 20px
+		+size(40px)
+		border: 1px solid $border-color
+
+	.slick-prev
+		left: auto
+		right: 39px
+
+.share-list__item
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+.share-list__inner
+	//display: block
+	position: relative
+	height: 100%
+	padding: 20px
+	text-decoration: none
+	color: inherit
+	text-align: center
+	border: solid $border-color
+	border-width: 0 1px 0 0
+
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	align-items: stretch
+
+	.share-list__item:first-child &
+		border-width: 0 1px
+
+.share-list__labels
+	position: absolute
+	+position(20px)
+	z-index: 5
+	+clear-spacing
+
+.share-list__label
+	+display-inline-block-top
+	+size(40px)
+	padding-left: 0.05em
+	+font-bold
+	+font(12px, 40px)
+	letter-spacing: 0.05em
+	text-align: center
+	background-color: $base-color--ea
+
+	&.label-sale
+		font-size: 30px
+
+	&.label-hit
+		background-color: $base-color-alt--ea
+		color: white
+		font-size: 12px
+		text-transform: uppercase
+
+.share-list__content
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.share-list__img
+	position: relative
+	width: 100%
+	+ratio(1, 1)
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+	img
+		display: block
+		position: absolute
+		+position(0)
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(contain)
+
+.share-list__title
+	+font(16px, round-float(19/16, 2))
+	text-align: left
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.share-list__price
+	.cur
+		+font-bold
+		+font(23px, round-float(28/23, 2))
+
+	.old
+		+font(15px, round-float(19/15, 2))
+		color: $text-color-light
+		text-decoration: line-through
+
+/* share list end

@@ -275,7 +275,7 @@
 	// для выравнивания по центру экрана (по высоте)
 	+display-inline-block-middle
 
-.c-section__align, .main-section__align, .ea-main-section__align
+.c-section__align, .main-section__align
 
 	padding: round($top-panel-height + $text-layout-space-horizontal) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5)
 
@@ -291,7 +291,18 @@
 		padding: round($text-layout-space-horizontal--sm*3) #{$text-layout-space-horizontal--sm}
 
 .ea-main-section__align
-	padding-top: round($text-layout-space-horizontal*1.5)
+	padding: round($text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal}
+
+	+media('<desk-hd')
+		padding: round($text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg}
+
+	+media('<tab-lg')
+		// здесь высоту .top-panel учитывать не нужно
+		padding: round($text-layout-space-horizontal--md*3) #{$text-layout-space-horizontal--md}
+
+	+media('<tab-sm')
+		// здесь высоту .top-panel учитывать не нужно
+		padding: round($text-layout-space-horizontal--sm*3) #{$text-layout-space-horizontal--sm}
 
 /* catalog section (layout) end
 

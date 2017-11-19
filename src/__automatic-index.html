@@ -74,8 +74,71 @@
 										<div class="ea-main-section__layout">
 											<!--<div class="ea-main-section__title"><h2>Акции</h2></div>-->
 											<div class="ea-main-section__holder">
-												<div class="promo">
-													<div class="promo-slider"></div>
+												<div class="ea-promo ea-promo-slider-js">
+													<div class="ea-promo-banners ea-promo-banners-js">
+														<a href="automatic-catalog.html" class="ea-promo-banners__item">
+															<img src="img/img-promo-ea-01.jpg" alt="image description" />
+														</a>
+														<a href="automatic-catalog.html" class="ea-promo-banners__item">
+															<img src="img/__temp-img-content-carousel-01.jpg" alt="image description" />
+														</a>
+														<a href="automatic-catalog.html" class="ea-promo-banners__item">
+															<img src="img/__temp-img-content-carousel-02.jpg" alt="image description" />
+														</a>
+														<a href="automatic-catalog.html" class="ea-promo-banners__item">
+															<img src="img/__temp-img-content-carousel-03.jpg" alt="image description" />
+														</a>
+														<a href="automatic-catalog.html" class="ea-promo-banners__item">
+															<img src="img/__temp-img-content-carousel-04.jpg" alt="image description" />
+														</a>
+														<a href="automatic-catalog.html" class="ea-promo-banners__item">
+															<img src="img/__temp-img-content-carousel-02.jpg" alt="image description" />
+														</a>
+													</div>
+													<div class="ea-promo-thumbs ea-promo-thumbs-js">
+														<div class="ea-promo-thumbs__item"><span>Кабель ВВГ H2LS</span></div>
+														<div class="ea-promo-thumbs__item"><span>Трансформаторы ТМГ</span></div>
+														<div class="ea-promo-thumbs__item"><span>Светодиодная пан</span></div>
+														<div class="ea-promo-thumbs__item"><span>Лампа светодиод</span></div>
+														<div class="ea-promo-thumbs__item"><span>Летняя распродажа</span></div>
+														<div class="ea-promo-thumbs__item"><span>Лампа светодиод</span></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section class="ea-main-section ea-full-page-js ea-main-section--share">
+								<div class="ea-main-section__container">
+									<div class="ea-main-section__align">
+										<div class="ea-main-section__layout">
+											<div class="ea-main-section__title"><h2>Акции и предложения</h2></div>
+											<div class="ea-main-section__holder">
+												<div class="share-container js-tabs" data-auto-height="true">
+													<div class="share__thumbs">
+														<div class="share-nav">
+															<div class="share-nav__item">
+																<a href="#share-leaders" class="js-tab-anchor active-tab">Лидеры продаж</a>
+															</div>
+															<div class="share-nav__item">
+																<a href="#share-novelties" class="js-tab-anchor">Новинки</a>
+															</div>
+														</div>
+													</div>
+
+													<div class="share__panels js-tab-container">
+														<div class="share__panel js-tab-content" id="share-leaders">
+															<div class="share-list share-slider-js">
+																@@loop("_tpl_share-items.tpl", "includes-json/share-items-share.json")
+															</div>
+														</div>
+														<div class="share__panel js-tab-content" id="share-novelties">
+															<div class="share-list share-slider-js">
+																@@loop("_tpl_share-items.tpl", "includes-json/share-items-news.json")
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -95,7 +158,10 @@
 												</div>
 												<!--news end-->
 												<div class="ea-main-section__footer">
-													<a href="#" class="btn-main--more"><span>Все новости</span></a>
+													<a href="#" class="btn-outline btn-with-icon">
+														<span>Все новости</span>
+														<i class="depict-cart">&nbsp;</i>
+													</a>
 												</div>
 											</div>
 										</div>
