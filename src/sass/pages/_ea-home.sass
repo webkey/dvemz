@@ -2,6 +2,16 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+/* ea footer on home page
+.ea-site.home-page
+	.spacer
+		display: block
+
+	.footer
+		display: block
+
+/* ea footer on home page end
+
 /*ea scroll sections
 $ea-main-section-max-width: 960px !default
 $ea-main-section-max-width-lg: 960px !default
@@ -47,7 +57,7 @@ $ea-main-section-max-width-lg: 960px !default
 	justify-content: space-between
 	+font-bold
 	+font(48px, round-float(58/48, 1))
-	margin-bottom: 10px
+	margin-bottom: $bottom-space
 	color: $text-color
 	text-align: center
 
@@ -104,14 +114,14 @@ $ea-main-section-max-width-lg: 960px !default
 	&:last-child
 		margin-bottom: 0
 
-/*scroll sections end
+/* ea scroll sections end
 
-/* section footer
+/* ea main section footer
 .ea-main-section__footer
 	text-align: center
-/* section footer end
+/* ea main section footer end
 
-/* section with background image
+/* ea main sections with background image
 .ea-main-section--entry, .ea-main-section--news
 	.ea-main-section__container
 		background: #f3f3f3 no-repeat center
@@ -126,9 +136,9 @@ $ea-main-section-max-width-lg: 960px !default
 	.ea-main-section__title
 		color: white
 
-/* section with background image end
+/*ea main sections with background image end
 
-/*main section entry
+/*ea main section entry
 .ea-main-section--entry
 	color: white
 	min-height: 100vh
@@ -183,8 +193,21 @@ $ea-main-section-max-width-lg: 960px !default
 				width: auto
 				max-width: none
 
-/*main section entry end
-/*ea scroll sections end
+/*ea main section entry end
+
+/*ea main section news
+.ea-main-section--news
+	.ea-main-section__footer
+		[class*="btn-"]
+			color: white
+			fill: white
+
+			& > i
+				&::before, &::after
+					background-color: white
+
+
+/*ea main section news end
 
 /*total date
 $odds-space: 20px
@@ -551,9 +574,15 @@ $odds-icon-size: 60px !default
 
 .share-list__img
 	position: relative
-	width: 100%
-	+ratio(1, 1)
-	margin-bottom: $bottom-space
+	max-width: 100%
+	width: 164px
+	margin: 0 auto $bottom-space
+
+	&::before
+		content: ""
+		display: block
+		width: 100%
+		+ratio(1, 1)
 
 	&:last-child
 		margin-bottom: 0
@@ -569,13 +598,17 @@ $odds-icon-size: 60px !default
 
 .share-list__title
 	+font(16px, round-float(19/16, 2))
+	overflow: hidden
 	text-align: left
-	margin-bottom: $bottom-space
+	margin: 0 auto $bottom-space
+	max-width: 170px
 
 	&:last-child
 		margin-bottom: 0
 
 .share-list__price
+	min-height: 47px // костыль
+
 	.cur
 		+font-bold
 		+font(23px, round-float(28/23, 2))
@@ -586,3 +619,123 @@ $odds-icon-size: 60px !default
 		text-decoration: line-through
 
 /* share list end
+
+/* ea main section news
+.ea-main-section--contacts
+	background-color: $bg-color-alt
+
+	.ea-main-section__align
+		padding: 0 !important
+
+	.ea-main-section__title
+		text-align: left
+
+.ea-contacts
+	position: relative
+
+.ea-contacts__thumbs
+	+size(100%, 0)
+	position: absolute
+	left: 50%
+	transform: translate(-50%, 0)
+	z-index: 10
+	margin-top: 12px
+	+clear
+
+.ea-contacts-nav
+	float: right
+	+clear-spacing
+
+.ea-contacts-nav__item
+	+display-inline-block-top
+	margin-right: -1px
+	+font-light
+	+font(13px, 18px)
+	letter-spacing: 0.05em
+	text-transform: uppercase
+
+	a
+		display: block
+		position: relative
+		color: inherit
+		fill: #999
+		white-space: nowrap
+		text-decoration: none
+		padding: 10px 50px 10px 30px
+		border: 1px solid $border-color
+		background-color: white
+
+		svg
+			position: absolute
+			+size(16px)
+			top: 50%
+			left: 100%
+			margin: -8px 0 0 -40px
+
+			path
+				fill: inherit
+
+
+		// hover
+		&:hover
+			background-color: $bg-color-light
+
+		// active
+		&.active-tab
+			color: white
+			fill: white
+			background-color: $base-color--ea
+			border-color: $base-color--ea
+			z-index: 1
+			cursor: default
+
+.ea-contacts__panel
+	position: relative
+
+	&.has-map
+		padding: 0
+
+.ea-main-section__pos
+	margin: 0 auto
+
+	.ea-main-section__title
+		padding-right: 300px // костыль
+
+.main-map
+	.ea-contacts__panel &
+		height: 710px
+
+.map-popup
+	color: $text-color
+
+	h4
+		+font-bold
+		+font(16px, 24px)
+		color: inherit
+		margin-bottom: 10px
+
+	.map-popup__list
+		+font(14px, 22px)
+		margin-bottom: 10px
+
+		&:last-child
+			margin-bottom: 0
+
+	.map-popup__row
+		margin-bottom: 10px
+		+clear
+
+		&:last-child
+			margin-bottom: 0
+
+		& > b
+			+font-normal
+
+		& > div
+			display: inline
+
+			& > div
+				display: inline
+
+
+/* ea main section news end

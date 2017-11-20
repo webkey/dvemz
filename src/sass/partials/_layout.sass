@@ -290,19 +290,60 @@
 		// здесь высоту .top-panel учитывать не нужно
 		padding: round($text-layout-space-horizontal--sm*3) #{$text-layout-space-horizontal--sm}
 
-.ea-main-section__align
-	padding: round($text-layout-space-horizontal*1.5) #{$text-layout-space-horizontal}
+.ea-main-section__align, .ea-contacts__panel
+	+padding-horizontal(#{$text-layout-space-horizontal})
+	padding-bottom: round($text-layout-space-horizontal*1.5)
 
 	+media('<desk-hd')
-		padding: round($text-layout-space-horizontal--lg*1.5) #{$text-layout-space-horizontal--lg}
+		+padding-horizontal(#{$text-layout-space-horizontal--lg})
+		padding-bottom: round($text-layout-space-horizontal--lg*1.5)
 
 	+media('<tab-lg')
-		// здесь высоту .top-panel учитывать не нужно
-		padding: round($text-layout-space-horizontal--md*3) #{$text-layout-space-horizontal--md}
+		+padding-horizontal(#{$text-layout-space-horizontal--md})
+		padding-bottom: round($text-layout-space-horizontal--md*1.5)
 
 	+media('<tab-sm')
-		// здесь высоту .top-panel учитывать не нужно
-		padding: round($text-layout-space-horizontal--sm*3) #{$text-layout-space-horizontal--sm}
+		+padding-horizontal(#{$text-layout-space-horizontal--sm})
+		padding-bottom: round($text-layout-space-horizontal--sm*1.5)
+
+// if has background image or map
+.ea-main-section--entry, .ea-main-section--news
+	&, & + .ea-main-section
+		.ea-main-section__align
+			padding-top: round($text-layout-space-horizontal*1.5)
+
+			+media('<desk-hd')
+				padding-top: round($text-layout-space-horizontal--lg*1.5)
+
+			+media('<tab-lg')
+				padding-top: round($text-layout-space-horizontal--md*1.5)
+
+			+media('<tab-sm')
+				padding-top: round($text-layout-space-horizontal--sm*1.5)
+
+.ea-contacts__panel
+	padding-top: round($text-layout-space-horizontal*1.5)
+
+	+media('<desk-hd')
+		padding-top: round($text-layout-space-horizontal--lg*1.5)
+
+	+media('<tab-lg')
+		padding-top: round($text-layout-space-horizontal--md*1.5)
+
+	+media('<tab-sm')
+		padding-top: round($text-layout-space-horizontal--sm*1.5)
+
+.ea-contacts__thumbs
+	top: round($text-layout-space-horizontal*1.5)
+
+	+media('<desk-hd')
+		top: round($text-layout-space-horizontal--lg*1.5)
+
+	+media('<tab-lg')
+		top: round($text-layout-space-horizontal--md*1.5)
+
+	+media('<tab-sm')
+		top: round($text-layout-space-horizontal--sm*1.5)
 
 /* catalog section (layout) end
 

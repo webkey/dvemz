@@ -29,7 +29,7 @@
 								<div class="ea-main-section__container" style="background-image: url(img/bg-entry-ea.jpg);">
 									<div class="ea-main-section__align">
 										<div class="ea-main-section__layout ea-main-max-width">
-											<div class="ea-main-section__title"><h2>Дальневосточный электромонтажный завод</h2></div>
+											<div class="ea-main-section__title"><h2>Интернет-магазин электротехники и электротоваров</h2></div>
 										</div>
 									</div>
 								</div>
@@ -153,14 +153,14 @@
 											<div class="ea-main-section__holder">
 												<div class="news-previews">
 													<section class="news-previews__list">
-														@@loop("_tpl_news-previews.xhtml", "includes-json/_tpl_news-previews-items.json")
+														@@loop("_tpl_news-previews.xhtml", "includes-json/_tpl_news-previews-items-ea.json")
 													</section>
 												</div>
 												<!--news end-->
 												<div class="ea-main-section__footer">
 													<a href="#" class="btn-outline btn-with-icon">
 														<span>Все новости</span>
-														<i class="depict-cart">&nbsp;</i>
+														<i class="depict-plus">&nbsp;</i>
 													</a>
 												</div>
 											</div>
@@ -168,61 +168,131 @@
 									</div>
 								</div>
 							</section>
-							<section class="ea-main-section ea-full-page-js ea-main-section--map">
+							<section class="ea-main-section ea-full-page-js ea-main-section--contacts">
 								<div class="ea-main-section__container">
 									<div class="ea-main-section__align">
 										<div class="ea-main-section__layout">
-											<div class="ea-main-section__pos">
-												<div class="ea-main-section__title"><h2>Контакты</h2></div>
-												<div class="ea-main-section__holder">
-													<div class="phone"><a href="tel:+7 (423) 230-21-37">+7 (423) 230-21-37</a></div>
-													<div class="info">
-														<ul class="contacts">
-															<li>г. Владивосток, ул. Всеволода Сибирцева, 15, оф. 311</li>
-															<!--<li>Факс: (423) 254 48 86</li>-->
-															<li>Эл. почта: <a href="mailto:info@dvemz.ru">info@dvemz.ru</a></li>
-														</ul>
+											<div class="ea-main-section__holder">
+												<div class="ea-contacts js-tabs" data-auto-height="true">
+
+													<div class="ea-contacts__thumbs ea-main-max-width">
+														<div class="ea-contacts-nav">
+															<div class="ea-contacts-nav__item">
+																<a href="#contacts-by-list" class="js-tab-anchor active-tab">Списком <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 109.5 83"><path d="M5.8 11.5h98c3.2 0 5.8-2.6 5.8-5.8 0-3.2-2.6-5.8-5.8-5.8H5.8C2.6 0 0 2.6 0 5.8 0 8.9 2.6 11.5 5.8 11.5zM103.7 71.5H5.8C2.6 71.5 0 74.1 0 77.2S2.6 83 5.8 83h98c3.2 0 5.8-2.6 5.8-5.8S106.9 71.5 103.7 71.5zM103.7 35.7H5.8C2.6 35.7 0 38.3 0 41.5c0 3.2 2.6 5.8 5.8 5.8h98c3.2 0 5.8-2.6 5.8-5.8S106.9 35.7 103.7 35.7z"></path></svg></a>
+															</div>
+															<div class="ea-contacts-nav__item">
+																<a href="#contacts-by-map" class="js-tab-anchor">На карте <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 0C153.8 0 70.6 83.2 70.6 185.4c0 126.9 165.9 313.2 173 321 6.6 7.4 18.2 7.4 24.8 0 7.1-7.9 173-194.1 173-321C441.4 83.2 358.2 0 256 0zM256 278.7c-51.4 0-93.3-41.9-93.3-93.3S204.6 92.1 256 92.1s93.3 41.9 93.3 93.3S307.4 278.7 256 278.7z"></path></svg></a>
+															</div>
+														</div>
 													</div>
+
+													<div class="ea-contacts__panels js-tab-container">
+														<div class="ea-contacts__panel js-tab-content" id="contacts-by-list">
+															<div class="ea-main-section__pos ea-main-max-width">
+																<div class="ea-main-section__title"><h2>Контакты</h2></div>
+																<div class="ea-main-section__holder">
+																	<div class="simple-accordion simple-accordion-js">
+																		<a href="#"><span>Склад-магазин на Чуркине (О. Кошевого)</span><i>&nbsp;</i></a>
+																		<div class="is-open">
+																			<h4>Оптово-розничная торговля</h4>
+																			<div class="cols">
+																				<div class="col">г. Владивосток, ул.Олега Кошевого, 8Б</div>
+																				<div class="col">
+																					<ul>
+																						<li><a href="tel: 423 290-72-58">(423) 290-72-58</a></li>
+																						<li><a href="tel: 2-911-924">2-911-924</a></li>
+																					</ul>
+																				</div>
+																				<div class="col">
+																					<ul>
+																						<li>Пн-Пт: 09:00–18:00</li>
+																						<li>Сб: 09:00–15:00</li>
+																						<li>Вс: выходной</li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																		<a href="#"><span>Центральный офис (Бородинская)</span><i>&nbsp;</i></a>
+																		<div>
+																			<h4>Оптово-розничная торговля</h4>
+																			<div class="cols">
+																				<div class="col">г.Владивосток, ул. Бородинская, 20, 2 этаж.</div>
+																				<div class="col">
+																					<ul>
+																						<li>
+																							<a href="tel:(423) 230-20-13">(423) 230-20-13</a></li>
+																						<li>
+																							<a href="tel:(423) 224-44-30">(423) 224-44-30</a></li>
+																						<li><a href="mailto:office@ema-dv.ru">office@ema-dv.ru</a></li>
+																					</ul>
+																				</div>
+																				<div class="col">
+																					<ul>
+																						<li>Пн-Пт: 09:00–18:00</li>
+																						<li>Сб: 09:00–15:00</li>
+																					</ul>
+																				</div>
+																			</div>
+																			<p>Приглашаем Вас посетить наш магазин-склад. Здесь есть все для комфортной покупки: удобный подъезд, грамотные консультанты и бесплатная парковка — если Вы наш Клиент, просто скажите об этом охраннику, и для Вас откроют шлагбаум и предоставят возможность удобно припарковаться.</p>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="ea-contacts__panel js-tab-content has-map" id="contacts-by-map">
+															<!--main map-->
+															<script>
+																var mainMapPosition = {
+																	'desktop': {
+																		'lat': 43.1959,
+																		'lng': 131.9189,
+																		'zoom': 11
+																	},
+																	'mobile': {
+																		'lat': 43.1959,
+																		'lng': 131.9189,
+																		'zoom': 11
+																	}
+																};
+																var mainMapObjects = [
+																	[
+																		{lat: 43.0920015, lng: 131.9106393}, //coordinates of marker
+																		'img/map-pin.png', //image pin
+																		{
+																			title: 'Склад-магазин на Чуркине (О. Кошевого)',
+																			address: '<b>Адрес:</b> <div>г. Владивосток, ул.Олега Кошевого, 8Б</div>',
+																			phone: '<b>Тел.:</b> <div><a href="tel: 423 290-72-58">(423) 290-72-58</a>, <a href="tel: 2-911-924">2-911-924</a></div>',
+																			fax: '',
+																			mail: '',
+																			work: '<b>Время работы:</b> <div> <div>Пн-Пт: 09:00–18:00</div> <div>Сб: 09:00–15:00</div> <div>Вс: выходной</div> </div>'
+																		}
+																	],
+																	[
+																		{lat: 43.165859, lng: 131.927146}, //coordinates of marker
+																		'img/map-pin.png', //image pin
+																		{
+																			title: 'Центральный офис (Бородинская)',
+																			address: '<b>Адрес:</b> <div>г.Владивосток, ул. Бородинская, 20, 2 этаж.</div>',
+																			phone: '<b>Тел.:</b> <div><a href="tel: 423 230-20-13">(423) 230-20-13</a></div>',
+																			fax: '<b>Факс:</b> <div>(423) 224-44-30</div>',
+																			mail: '<b>Эл. почта:</b> <div><a href="mailto:office@ema-dv.ru">office@ema-dv.ru</a></div>',
+																			work: '<b>Время работы:</b> <div> <div>Пн-Пт: 09:00–18:00</div> <div>Сб: 09:00–15:00</div> </div>'
+																		}
+																	]
+
+																];
+															</script>
+															<div class="main-map" id="main-map-ea">
+																<!--js append map-->
+															</div>
+															<!--main map end-->
+														</div>
+													</div>
+
 												</div>
-												<!--<div class="ea-main-section__footer">
-													<a href="#" class="btn-main">
-														<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="377.6 153.6 524.8 332.8" enable-background="new 377.6 153.6 524.8 332.8"> <path d="M377.6,153.6V179L640,368.2L902.4,179v-25.4H377.6z M377.6,210.6v275.8h524.8V210.6L640,399.8L377.6,210.6z"/> </svg>
-														<span>Обратная связь</span>
-													</a>
-												</div>-->
 											</div>
 										</div>
-										<!--main map-->
-										<script>
-											var mainMapPosition = {
-												'desktop': {
-													'lat': 43.1216,
-													'lng': 131.8887,
-													'zoom': 15
-												},
-												'mobile': {
-													'lat': 43.1166,
-													'lng': 131.8997,
-													'zoom': 15
-												}
-											};
-											var mainMapObjects = [
-												[
-	//												{lat: 43.1166704, lng: 131.8997327}, //coordinates of marker
-													{lat: 43.1166, lng: 131.8997}, //coordinates of marker
-													'img/map-pin.png', //image pin
-													{
-														title: 'ДВЭМЗ',
-														address: '<b>Адрес</b> <div>г. Владивосток, ул. Всеволода Сибирцева, 15</div>',
-														phone: '<b>Тел.</b> <div><a href="tel:+7 (423) 230-21-37">+7 (423) 230-21-37</a></div>',
-	//													fax: '<b>Факс</b> <div>(423) 254 48 86</div>',
-														mail: '<b>Эл. почта</b> <div><a href="mailto:info@dvemz.ru">info@dvemz.ru</a></div>'
-													}
-												]
-											];
-										</script>
-										<div class="main-map fp-bg" id="main-map"></div>
-										<!--main map end-->
+
 									</div>
 								</div>
 							</section>

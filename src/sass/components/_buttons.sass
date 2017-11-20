@@ -223,11 +223,17 @@
 		+display-inline-block-middle
 
 	& > i
-		margin-right: 10px
+		+margin-horizontal(10px)
 
-		svg
-			+display-inline-block-top
-			+size(24px)
+		&:first-child
+			margin-left: 0
+
+	& span + i
+		margin-right: 0
+
+	svg
+		+display-inline-block-top
+		+size(24px)
 
 	& > span
 		text-align: left
