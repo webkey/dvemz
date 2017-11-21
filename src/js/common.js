@@ -446,7 +446,51 @@ function slidersInit() {
 				// lazyLoad: 'ondemand',
 				infinite: false,
 				dots: false,
-				arrows: true
+				arrows: true,
+				responsive: [
+					{
+						breakpoint: 1600,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
+					},
+					{
+						breakpoint: 1440,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
+					},
+					{
+						breakpoint: 1280,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
+					},
+					{
+						breakpoint: 960,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
+					},
+					{
+						breakpoint: 660,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
 				// appendArrows: $arrowsContainer
 			});
 
@@ -1077,10 +1121,20 @@ function mainMapEAInit() {
 	}
 
 	function mapCenter() {
-		if(window.innerWidth < mediaTablet) {
+		if(window.innerWidth < 640) {
 			return {
-				lat: mainMapPosition.mobile.lat,
-				lng: mainMapPosition.mobile.lng
+				lat: mainMapPosition.sm.lat,
+				lng: mainMapPosition.sm.lng
+			};
+		} else if(window.innerWidth < 960) {
+			return {
+				lat: mainMapPosition.mob.lat,
+				lng: mainMapPosition.mob.lng
+			};
+		} else if(window.innerWidth < 1440) {
+			return {
+				lat: mainMapPosition.tablet.lat,
+				lng: mainMapPosition.tablet.lng
 			};
 		} else {
 			return {
@@ -1107,10 +1161,10 @@ function mainMapEAInit() {
 	if ($(elementById[0]).length) {
 		var map = new google.maps.Map(elementById[0], mapOptions);
 
-		addMarker(0, map);
-		addMarker(1, map);
+		// addMarker(0, map);
+		// addMarker(1, map);
 		for (var i = 0; i < mainMapObjects.length; i++) {
-			console.log("i: ", i);
+			addMarker(i, map);
 		}
 
 		/*aligned after resize*/
@@ -1170,8 +1224,6 @@ function mainMapEAInit() {
 		var object = mainMapObjects[index];
 
 		var position = {lat: object[0].lat, lng: object[0].lng};
-
-		console.log("position: ", position);
 
 		var image = {
 			url: object[1],
@@ -3289,8 +3341,6 @@ $(function () {
 	slidersInit();
 	equalHeightInit();
 	fullPageInitial();
-	mainMapInit();
-	mainMapEAInit();
 	popupsInit();
 	sideMenuEvents();
 	catalogMenuEvents();
@@ -3305,6 +3355,9 @@ $(function () {
 	sortingOrder();
 	fotoramaInit();
 	loadList();
+
+	mainMapInit();
+	mainMapEAInit();
 
 	footerBottom();
 	formSuccessExample();

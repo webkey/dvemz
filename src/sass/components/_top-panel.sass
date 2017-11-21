@@ -21,6 +21,11 @@
 			.no-cssgradients &
 				background: url(../../img/gradient-top-panel.png) repeat-x
 
+	+media('<desk-md','>=tab-lg')
+		.ea-site.home-page &.top-panel--alt
+			&::before
+				content: none
+
 	+media('<tab-lg')
 		&.top-panel--alt
 			&::before
@@ -32,6 +37,10 @@
 
 	.top-panel--alt &
 		background-color: transparent
+
+	+media('<desk-md','>=tab-lg')
+		.ea-site.home-page .top-panel--alt &
+			background-color: white
 
 	+media('<tab-lg')
 		.top-panel--alt &
@@ -61,6 +70,11 @@
 	.top-panel--alt &
 		color: white
 		border-color: white
+
+		+media('<desk-md','>=tab-lg')
+			.ea-site.home-page &
+				color: black
+				border-color: black
 
 		+media('<tab-lg')
 			color: black
@@ -122,6 +136,10 @@
 			opacity: 1
 			visibility: visible
 
+		+media('<desk-md','>=tab-lg')
+			.ea-site.home-page .top-panel--alt &
+				background-color: $bg-color-light
+
 		+media('<tab-lg')
 			height: calc(100% + #{$top-panel-space--md})
 			left: -20px
@@ -143,6 +161,10 @@
 
 		.top-panel--alt &
 			border-color: white
+
+			+media('<desk-md','>=tab-lg')
+				.ea-site.home-page &
+					border-color: black
 
 			+media('<tab-lg')
 				border-color: black
@@ -168,6 +190,10 @@
 
 	.top-panel--alt &
 		background-color: $logo-bg-color
+
+	+media('<desk-md','>=tab-lg')
+		.ea-site.home-page .top-panel--alt &
+			background-color: $bg-color-light
 
 	+media('<tab-lg')
 		left: -20px
@@ -244,6 +270,10 @@
 
 	.top-panel--alt &
 		background-position: 0 100%
+
+	+media('<desk-md','>=tab-lg')
+		.ea-site.home-page &
+			background-position: 0 0
 
 	&::before
 		+pseudo($pos: relative)

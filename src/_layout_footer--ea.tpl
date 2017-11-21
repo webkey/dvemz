@@ -24,9 +24,6 @@
 						</div>
 						<div class="footer-nav__col footer-add-info">
 							<div class="footer-nav__item">
-								<span class="copyright">&copy; 2017 ОАО ЭЛЕКТРОАВТОМАТИКА</span>
-							</div>
-							<div class="footer-nav__item">
 								<ul class="dl">
 									<li>
 										<div class="dt hide">Адрес:</div>
@@ -45,6 +42,9 @@
 										<div class="dd"><a href="mailto:info@dvemz.ru">info@ea.ru</a></div>
 									</li>
 								</ul>
+							</div>
+							<div class="footer-nav__item">
+								<span class="copyright">&copy; 2017 ОАО ЭЛЕКТРОАВТОМАТИКА</span>
 							</div>
 							<div class="footer-nav__item">
 								<strong class="dev">Дизайн сайта: <a href="http://astronim.by/">Astronim*Support</a></strong>

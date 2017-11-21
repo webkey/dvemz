@@ -130,8 +130,10 @@
 		.ea-site &, .ea-site.home-page &
 			width: calc(#{$base-width})
 
+	+media('<desk-md','>=tab-lg')
 		.ea-site.home-page &.top-panel--alt
 			position: relative
+			padding-top: #{$top-panel-height}
 
 	+media('<tab-lg')
 		&, .ea-site &, .side-menu--alt &, .ea-site.home-page &
@@ -150,6 +152,12 @@
 
 	+media('<desk-hd')
 		+padding-horizontal($text-layout-space-horizontal--lg)
+
+	+media('<desk-md','>=tab-lg')
+		.ea-site.home-page &
+			position: fixed
+			+position(0, $header-width)
+			width: calc(100% - #{$header-width})
 
 	+media('<tab-lg')
 		position: fixed
@@ -257,6 +265,9 @@
 	+media('<tab-sm')
 		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} 0
 
+	+media('<mob-lg')
+		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm}
+
 /* footer common (layout) end
 
 /* catalog section (layout)
@@ -334,15 +345,19 @@
 		padding-top: round($text-layout-space-horizontal--sm*1.5)
 
 .ea-contacts__thumbs
+	+padding-horizontal(#{$text-layout-space-horizontal})
 	top: round($text-layout-space-horizontal*1.5)
 
 	+media('<desk-hd')
+		+padding-horizontal(#{$text-layout-space-horizontal--lg})
 		top: round($text-layout-space-horizontal--lg*1.5)
 
 	+media('<tab-lg')
+		+padding-horizontal(#{$text-layout-space-horizontal--md})
 		top: round($text-layout-space-horizontal--md*1.5)
 
 	+media('<tab-sm')
+		+padding-horizontal(#{$text-layout-space-horizontal--sm})
 		top: round($text-layout-space-horizontal--sm*1.5)
 
 /* catalog section (layout) end

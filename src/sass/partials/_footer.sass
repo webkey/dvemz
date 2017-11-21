@@ -86,6 +86,7 @@
 
 	+media('<tab-lg')
 		width: round-float(100%/2, 2)
+		margin-bottom: 20px
 
 		&.footer-add-info
 			width: 100%
@@ -97,8 +98,14 @@
 		&.footer-add-info
 			display: block
 			text-align: center
+			margin-bottom: 0
 
 	& > *:last-child
+		margin-bottom: 0
+
+	.ea-site &.footer-add-info
+		display: block
+		width: auto
 		margin-bottom: 0
 
 .footer-nav__title
@@ -116,8 +123,9 @@
 		border-top: 2px solid black
 		width: 32px
 
-	+media('<mob-lg')
-		margin-bottom: $bottom-space--sm
+	+media('<tab-lg')
+		margin-bottom: 0.5em
+		padding-bottom: 0.5em
 
 	a
 		color: inherit
@@ -148,6 +156,9 @@
 		margin-bottom: 20px
 		overflow: hidden
 
+		+media('<tab-lg')
+			margin-bottom: 0.5em
+
 		&:last-child
 			margin-bottom: 0
 
@@ -162,10 +173,36 @@
 		.no-touchevents &:hover
 			color: $link-color
 
-.footer-nav__item
-	margin-bottom: 20px
-	overflow: hidden
+.footer-add-info
+	.ea-site &
+		+clear-spacing
+		margin: 0 -#{round($footer-nav-horizontal-space/2)}
 
+.footer-nav__item
+	.ea-site &
+		+display-inline-block-top
+		width: 50.0%
+		margin-bottom: 20px
+		overflow: hidden
+		padding: 0 #{round($footer-nav-horizontal-space/2)}
+		+font(16px, round-float(24/16, 2))
+		letter-spacing: normal
+
+		&:first-child
+			display: block
+			width: auto
+
+		&:last-child
+			text-align: right
+
+		+media('<mob-lg')
+			display: block
+			text-align: center
+			width: auto
+
+			&:last-child
+				text-align: center
+				margin-bottom: 0
 
 /*footer common end*/
 

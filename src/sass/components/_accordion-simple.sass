@@ -7,6 +7,9 @@
 	margin-bottom: $bottom-space--md
 	border-bottom: 2px solid $outline-color
 
+	&:last-child
+		margin-bottom: 0
+
 	& > a
 		display: block
 		position: relative
@@ -68,9 +71,9 @@
 
 		& > span
 			display: block
-			overflow: hidden
-			white-space: nowrap
-			text-overflow: ellipsis
+			//overflow: hidden
+			//white-space: nowrap
+			//text-overflow: ellipsis
 			position: relative
 			margin-right: 25px
 
@@ -105,6 +108,9 @@
 
 		+media('<desk-hd')
 			+grid-item-responsive(3, $grid-space--sm)
+
+		+media('<mob-lg')
+			+grid-item-responsive(1, $grid-space--sm)
 
 		ul
 			margin: 0 0 10px

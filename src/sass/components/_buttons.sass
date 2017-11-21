@@ -585,6 +585,12 @@ $btn-menu-lines-color: $text-color !default
 			+margin-horizontal($text-layout-space-horizontal--lg)
 			display: block
 
+	+media('<desk-md','>=tab-lg')
+		.ea-site.home-page &
+			display: block
+			+margin-horizontal(0)
+			margin-top: 0
+
 	+media('<tab-lg')
 		&, .ea-site &
 			display: block

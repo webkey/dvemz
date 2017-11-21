@@ -34,7 +34,7 @@ $ea-main-section-max-width-lg: 960px !default
 
 	+media('<tab-lg')
 		height: auto !important
-		min-height: 0
+		min-height: 0 !important
 
 .ea-main-section__container
 	position: relative
@@ -43,6 +43,7 @@ $ea-main-section-max-width-lg: 960px !default
 
 .ea-main-section__layout
 	position: relative
+	max-width: $flood-layout-width
 	+push-auto
 	text-align: left
 
@@ -57,17 +58,13 @@ $ea-main-section-max-width-lg: 960px !default
 	justify-content: space-between
 	+font-bold
 	+font(48px, round-float(58/48, 1))
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space--md
 	color: $text-color
 	text-align: center
 
-	+media('<desk-hd')
+	+media('<desk-lg')
 		font-size: 42px
-		margin-bottom: 20px
-
-	+media('<desk-hd')
-		font-size: 38px
-		margin-bottom: 10px
+		margin-bottom: $bottom-space
 
 	+media('<tab-lg')
 		display: block
@@ -151,11 +148,16 @@ $ea-main-section-max-width-lg: 960px !default
 			height: 100%
 			min-height: 100vh
 
+		+media('<tab-lg')
+			&::before
+				+linear-gradient(to top, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 0.6) 25%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%)
+
 	.ea-main-section__align
+		+padding-vertical(120px)
+
 		+media('>=tab-lg')
 			display: table-cell
 			vertical-align: middle
-			+padding-vertical(120px)
 			text-align: center
 
 	.ea-main-section__layout
@@ -171,6 +173,20 @@ $ea-main-section-max-width-lg: 960px !default
 		+font(60px, round-float(72/60, 2))
 		text-align: left
 		color: white
+
+		+media('<desk-lg')
+			font-size: 48px
+
+		+media('<tab-lg')
+			text-align: center
+			margin-bottom: 0
+			padding-bottom: 0
+
+		+media('<desk-sm')
+			font-size: 36px
+
+		+media('<mob-lg')
+			font-size: 28px
 
 		&:last-child
 			margin-bottom: 0
@@ -195,6 +211,15 @@ $ea-main-section-max-width-lg: 960px !default
 
 /*ea main section entry end
 
+/* ea-main-section--promo
+.ea-main-section--promo
+	.ea-main-section__align
+		+media('<mob-lg')
+			+padding-horizontal(0)
+			padding-top: 0 !important
+
+/* ea-main-section--promo end
+
 /*ea main section news
 .ea-main-section--news
 	.ea-main-section__footer
@@ -211,7 +236,9 @@ $ea-main-section-max-width-lg: 960px !default
 
 /*total date
 $odds-space: 20px
+$odds-space--md: 15px
 $odds-icon-size: 60px !default
+$odds-icon-size--md: 40px !default
 
 .odds
 	+media('>=tab-lg')
@@ -245,12 +272,24 @@ $odds-icon-size: 60px !default
 	fill: $base-color--ea
 	height: 100%
 
+	+media('<desk-sb')
+		padding: $odds-space--md
+
+	&::before
+		+pseudo-inline-block-relative()
+		vertical-align: middle
+		height: 100%
+
 .odds__item
 
 	svg
 		+display-inline-block-middle
 		+size($odds-icon-size)
 		margin-right: $odds-space
+
+		+media('<desk-sb')
+			+size($odds-icon-size--md)
+			margin-right: $odds-space--md
 
 	path
 		fill: inherit
@@ -261,9 +300,15 @@ $odds-icon-size: 60px !default
 	letter-spacing: 0.05em
 	text-transform: uppercase
 
+	+media('<desk-sb')
+		font-size: 13px
+
 	svg + &
 		+display-inline-block-middle
 		width: calc(100% - #{$odds-icon-size} - #{$text-layout-space-horizontal--md} - 6px)
+
+		+media('<desk-sb')
+			width: calc(100% - #{$odds-icon-size--md} - #{$text-layout-space-horizontal--md} - 6px)
 
 /*total date end
 
@@ -295,6 +340,9 @@ $odds-icon-size: 60px !default
 	text-decoration: none
 	position: relative
 	border: 10px solid $base-color-alt--ea
+
+	+media('<mob-lg')
+		border-width: 4px
 
 	.slick-initialized &
 		// after slide load
@@ -403,7 +451,7 @@ $odds-icon-size: 60px !default
 		margin-bottom: 0
 
 .share__thumbs
-	margin-bottom: 20px
+	margin-bottom: 23px
 	+clear
 
 	&:last-child
@@ -418,6 +466,11 @@ $odds-icon-size: 60px !default
 	+clear
 	+clear-spacing
 
+	+media('<mob-lg')
+		float: none
+		display: block
+		text-align: center
+
 .share-nav__item
 	+display-inline-block-top
 	margin-right: -1px
@@ -425,6 +478,7 @@ $odds-icon-size: 60px !default
 	+font(13px, 18px)
 	letter-spacing: 0.05em
 	text-transform: uppercase
+	text-align: center
 
 	a
 		display: block
@@ -432,9 +486,14 @@ $odds-icon-size: 60px !default
 		color: inherit
 		white-space: nowrap
 		text-decoration: none
-		padding: 10px 30px
+		padding: 10px 22px
+		min-width: 160px
 		border: 1px solid $border-color
 		background-color: white
+
+		+media('<mob-lg')
+			min-width: 0
+			+padding-horizontal(10px)
 
 		// hover
 		&:hover
@@ -501,13 +560,22 @@ $odds-icon-size: 60px !default
 		top: auto
 		bottom: 100%
 		transform: none
-		margin: 0 0 20px
+		margin: 0 0 23px
 		+size(40px)
 		border: 1px solid $border-color
+
+		+media('<mob-lg')
+			bottom: auto
+			top: 50%
+			margin: -20px 0 0
 
 	.slick-prev
 		left: auto
 		right: 39px
+
+		+media('<mob-lg')
+			right: auto
+			left: 0
 
 .share-list__item
 	// before slide load
@@ -567,7 +635,7 @@ $odds-icon-size: 60px !default
 		text-transform: uppercase
 
 .share-list__content
-	margin-bottom: $bottom-space
+	margin-bottom: 13px
 
 	&:last-child
 		margin-bottom: 0
@@ -576,7 +644,7 @@ $odds-icon-size: 60px !default
 	position: relative
 	max-width: 100%
 	width: 164px
-	margin: 0 auto $bottom-space
+	margin: 0 auto 40px
 
 	&::before
 		content: ""
@@ -607,11 +675,12 @@ $odds-icon-size: 60px !default
 		margin-bottom: 0
 
 .share-list__price
-	min-height: 47px // костыль
+	min-height: 52px // костыль
 
 	.cur
 		+font-bold
 		+font(23px, round-float(28/23, 2))
+		margin: 0 0 5px
 
 	.old
 		+font(15px, round-float(19/15, 2))
@@ -627,6 +696,9 @@ $odds-icon-size: 60px !default
 	.ea-main-section__align
 		padding: 0 !important
 
+	.ea-main-section__layout
+		max-width: none
+
 	.ea-main-section__title
 		text-align: left
 
@@ -639,7 +711,13 @@ $odds-icon-size: 60px !default
 	left: 50%
 	transform: translate(-50%, 0)
 	z-index: 10
-	margin-top: 12px
+	margin-top: 6px
+
+	+media('<tab-sm')
+		margin-top: 0
+
+.ea-contacts__thumbs-layout
+	+push-auto
 	+clear
 
 .ea-contacts-nav
@@ -653,6 +731,7 @@ $odds-icon-size: 60px !default
 	+font(13px, 18px)
 	letter-spacing: 0.05em
 	text-transform: uppercase
+	user-select: none
 
 	a
 		display: block
@@ -665,12 +744,22 @@ $odds-icon-size: 60px !default
 		border: 1px solid $border-color
 		background-color: white
 
+		+media('<mob-lg')
+			font-size: 0
+			line-height: 0
+			padding: 0
+			+size(40px)
+
 		svg
 			position: absolute
 			+size(16px)
 			top: 50%
 			left: 100%
 			margin: -8px 0 0 -40px
+
+			+media('<mob-lg')
+				left: 50%
+				margin: -8px 0 0 -8px
 
 			path
 				fill: inherit
@@ -700,10 +789,19 @@ $odds-icon-size: 60px !default
 
 	.ea-main-section__title
 		padding-right: 300px // костыль
-
+		margin-bottom: 30px
 .main-map
 	.ea-contacts__panel &
 		height: 710px
+
+		+media('<desk-lg')
+			height: 640px
+
+		+media('<desk-sb')
+			height: 480px
+
+		+media('<tab-lg')
+			height: 360px
 
 .map-popup
 	color: $text-color
