@@ -1,0 +1,164 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+.logo-nav
+	display: block
+	padding: 15px #{$text-layout-space-horizontal--lg}
+	text-decoration: none
+	color: $text-color
+	border-style: solid
+	border-color: inherit
+	border-width: 0 0 1px
+	background-color: $bg-color-light
+	transition-property: color, background-color
+	transition-duration: $animation-speed
+
+	+media('<tab-lg')
+		+padding-horizontal($text-layout-space-horizontal--md)
+
+	+media('<tab-sm')
+		+padding-horizontal($text-layout-space-horizontal--sm)
+
+	+media('>=desk-sm')
+		.no-touchevents &:hover
+			background-color: darken($bg-color-light, 10%)
+
+	// главная ДВЭМЗ
+	//.home-page &
+		color: white
+		background-color: $logo-bg-color
+
+	//+media('>=desk-sm')
+		.no-touchevents .home-page &:hover
+			background-color: lighten($logo-bg-color, 10%)
+
+	// главная ДВЭМЗ end
+
+	+media('<tab-lg')
+		+display-inline-block-top
+		padding: 0
+		border: none
+		//background-color: transparent
+		//border-color: #ccc
+
+.logo-nav__img
+	+display-inline-block-middle
+	+size(152px, auto)
+	background-image: url(../../img/logo.png)
+	background-size: 100%
+	background-repeat: no-repeat
+	margin-bottom: 10px
+
+	&::before
+		+pseudo-block-relative()
+		+ratio(152, 47)
+
+	& > span
+		+hide-text
+
+	//.home-page &
+		background-position: 0 100%
+
+	.ea-site &
+		+size(178px, auto)
+		background-image: url(../../img/logo--ea.png)
+
+		&::before
+			+ratio(178, 42)
+
+		+media('<tab-lg')
+			width: 144px
+
+.logo-nav__title
+	display: block
+	+font(10px, 14px)
+	letter-spacing: 0.05em
+	text-transform: uppercase
+
+.popup-overlay--nav
+	+media('<tab-lg')
+		top: #{$top-panel-height--md} !important
+
+.nav
+	position: relative
+	padding: 30px #{$text-layout-space-horizontal--lg}
+	//top: 50%
+	//transform: translate(0, -50%)
+	//+antialiased
+
+	+media('<tab-lg')
+		+padding-horizontal($text-layout-space-horizontal--md)
+
+	+media('<tab-sm')
+		+padding-horizontal($text-layout-space-horizontal--sm)
+
+.nav__list
+	+font-normal
+	+font(24px, 32px)
+	color: $text-color
+
+	+media('<tab-lg')
+		text-align: center
+
+	li
+		position: relative
+		margin: 1em 0 0
+
+		&:first-child
+			margin-top: 0
+
+	+media('height<600px')
+		+font(20px, 28px)
+
+		li
+			margin-top: 0.5em
+
+			&:first-child
+				margin-top: 0
+
+	a
+		display: inline-block
+		color: inherit
+		text-decoration: none
+		transition-property: color
+		transition-duration: $animation-speed
+
+		& > span
+			+display-inline-block-top
+			position: relative
+			//overflow: hidden
+
+			&::after
+				+pseudo()
+				left: 0
+				bottom: 0
+				+size(100%, 0)
+				//opacity: 0
+				border-top: 1px solid lighten($text-color, 60%)
+				transform-origin: left top
+				transform: translate(10px, 0) scale(0, 1)
+				transition-property: transform, filter, opacity
+				transition-duration: $animation-speed
+
+	// hover
+	.no-touchevents & a:hover
+		& > span
+			&::after
+				opacity: 1
+				transform: translate(0, 0) scale(1, 1)
+
+	// current
+	li.current
+		a
+			color: $base-color
+			//+font-bold
+
+			.ea-site &
+				color: $base-color--ea
+
+			& > span
+				&::after
+					content: none
+
+/*navigation end*/

@@ -2334,6 +2334,29 @@ function multiAccordionInit() {
 		// 	}, 50);
 		// })
 	}
+
+	var navMenu = '.nav-js';
+
+	if ($(navMenu).length) {
+		new MultiAccordion({
+			container: navMenu,
+			item: 'li',
+			handler: '.nav-handler-js',
+			handlerWrap: '.nav__tab-js',
+			panel: '.nav-drop-js',
+			openClass: 'is-open',
+			animateSpeed: 200,
+			collapsible: true
+		});
+
+		// $(catalogMenu).on('mAccordionAfterChange', function () {
+		// 	clearTimeout(catalogMenuChangeTimeout);
+		//
+		// 	catalogMenuChangeTimeout = setTimeout(function () {
+		// 		$(document.body).trigger("sticky_kit:recalc");
+		// 	}, 50);
+		// })
+	}
 }
 /*multi accordion initial end*/
 

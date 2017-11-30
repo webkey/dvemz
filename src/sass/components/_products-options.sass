@@ -97,20 +97,24 @@
 		margin: 0
 
 		li
-			padding: 2px 8px 2px 8px
 			margin: 4px 4px 4px 0
+			padding: 0
 
 			&::before
 				content: none
-
-			&.active
-				padding-right: 24px
 
 	li
 		+display-inline-block-top
 		white-space: nowrap
 		position: relative
 		cursor: pointer
+
+	a
+		position: relative
+		display: block
+		text-decoration: none
+		color: inherit
+		padding: 2px 8px 2px 8px
 
 		& > span
 			border-bottom: 1px solid #{$outline-color}
@@ -137,8 +141,10 @@
 			& > span
 				border-bottom-color: transparent
 
-		// активное соотояние
-		&.active
+	// активное соотояние
+	li.active
+		a
+			padding-right: 24px
 			background-color: #{$outline-color}
 
 			& > span
