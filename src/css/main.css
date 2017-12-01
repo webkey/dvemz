@@ -10891,6 +10891,14 @@ input.search-form__input, .light-form input.search-form__input {
 	padding-right: 60px;
 }
 
+.catalog-menu__list li.current > .catalog-menu__tab a, .catalog-menu__list li.current > .catalog-menu__tab a:hover, .no-touchevents .catalog-menu__list li.current > .catalog-menu__tab a, .no-touchevents .catalog-menu__list li.current > .catalog-menu__tab a:hover {
+	color: #fabb00;
+}
+
+.ea-site .catalog-menu__list li.current > .catalog-menu__tab a, .ea-site .catalog-menu__list li.current > .catalog-menu__tab a:hover, .no-touchevents .ea-site .catalog-menu__list li.current > .catalog-menu__tab a, .no-touchevents .ea-site .catalog-menu__list li.current > .catalog-menu__tab a:hover {
+	color: #f68b21;
+}
+
 .catalog-menu__list li.is-open > .catalog-menu__tab a::before {
 	opacity: 1;
 	-webkit-transform: translate(0, 0);

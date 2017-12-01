@@ -44,6 +44,48 @@ function scrollPage() {
 scrollFn();
 /*js scroll page lock end*/
 
+/**
+ * !cookie
+ * */
+function setCookie(name, value, options) {
+	// https://learn.javascript.ru/cookie
+	options = options || {};
+
+	var expires = options.expires;
+
+	if (typeof expires === "number" && expires) {
+		var d = new Date();
+		d.setTime(d.getTime() + expires * 1000);
+		expires = options.expires = d;
+	}
+	if (expires && expires.toUTCString) {
+		options.expires = expires.toUTCString();
+	}
+
+	value = encodeURIComponent(value);
+
+	var updatedCookie = name + "=" + value;
+
+	for (var propName in options) {
+		updatedCookie += "; " + propName;
+		var propValue = options[propName];
+		if (propValue !== true) {
+			updatedCookie += "=" + propValue;
+		}
+	}
+
+	document.cookie = updatedCookie;
+}
+
+function getCookie(name) {
+	// https://learn.javascript.ru/cookie
+	var matches = document.cookie.match(new RegExp(
+		"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+	));
+	return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+/*cookie end*/
+
 var thisIsHomePage = $('.home-page').length;
 var mediaTablet = 980;
 
@@ -2644,6 +2686,22 @@ function toggleView() {
 		var activeHand = 'active';
 		var activeContainer = 'grid-view-activated';
 
+		var cookie = 'gridView';
+		if($container.hasClass(activeContainer)){
+			setCookie(cookie, true, {
+				// path: "/"
+			});
+		}
+
+		// $switcherHand.removeClass(activeHand);
+		// if(getCookie(cookie) === 'true'){
+		// 	$switcherHand.eq(1).addClass(activeHand);
+		// 	$container.addClass(activeContainer);
+		// } else {
+		// 	$switcherHand.eq(0).addClass(activeHand);
+		// 	$container.removeClass(activeContainer);
+		// }
+
 		$switcherHand.on('click', function (e) {
 			e.preventDefault();
 
@@ -2653,16 +2711,18 @@ function toggleView() {
 
 			$switcherHand.removeClass(activeHand);
 			$container.removeClass(activeContainer);
+			setCookie('gridView', false, {
+				// path: "/"
+			});
 
 			$this.addClass(activeHand);
 
 			if ($this.index() === 1) {
 				$container.addClass(activeContainer);
+				setCookie('gridView', true, {
+					// path: "/"
+				});
 			}
-
-			// setTimeout(function () {
-			// 	$('.news__item').matchHeight._update();
-			// }, 10)
 		});
 	}
 }

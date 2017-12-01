@@ -171,15 +171,12 @@
 	&, .no-touchevents &
 
 		a, a:hover
+			color: $base-color
 
-			//+media('<desk-hd')
-			+media('<desk-md')
-				// для экранов меньше 1920
-				//color: $base-color--ea
-				//box-shadow: inset 5px 0 0 black
+	.ea-site &, .no-touchevents .ea-site  &
 
-		//& a span
-			border-color: $mark-color-alt
+		a, a:hover
+			color: $base-color--ea
 
 // стили для пункта навигации С ОТКРЫТЫМ ПОДМЕНЮ
 .catalog-menu__list li
