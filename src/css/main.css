@@ -11041,6 +11041,14 @@ input.search-form__input, .light-form input.search-form__input {
 	}
 }
 
+.catalog-menu__list > li.current > .catalog-menu__tab a, .catalog-menu__list > li.current > .catalog-menu__tab a:hover, .no-touchevents .catalog-menu__list > li.current > .catalog-menu__tab a, .no-touchevents .catalog-menu__list > li.current > .catalog-menu__tab a:hover {
+	color: white;
+}
+
+.ea-site .catalog-menu__list > li.current > .catalog-menu__tab a, .ea-site .catalog-menu__list > li.current > .catalog-menu__tab a:hover, .no-touchevents .ea-site .catalog-menu__list > li.current > .catalog-menu__tab a, .no-touchevents .ea-site .catalog-menu__list > li.current > .catalog-menu__tab a:hover {
+	color: white;
+}
+
 .catalog-menu__angle, .side-menu-arr {
 	position: absolute;
 	right: 0;
