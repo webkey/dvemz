@@ -4,7 +4,7 @@
 
 /*FORM STYLES DEFAULT
 /*form layout
-.form-row, .input-wrap
+.form-row, .input-wrap, .input-group
 	position: relative // Важно! Для позицирования отметки подтверждения полей формы
 	margin-bottom: $form-bottom-space
 	z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
@@ -28,14 +28,14 @@
 	margin-bottom: $bottom-space
 
 .form-row
-	+margin-horizontal(-#{round($form-gap*0.5)})
+	+margin-horizontal(-#{round($form-gap/2)})
 	font-size: 0
 	letter-spacing: -4px
 
 	.input-wrap
 		+display-inline-block-top
-		width: calc(100% * 0.5 - #{$form-gap})
-		+margin-horizontal(#{round($form-gap*0.5)})
+		width: calc(100%/2 - #{$form-gap})
+		+margin-horizontal(#{round($form-gap/2)})
 		margin-bottom: 0
 
 		font-size: $font-size
@@ -45,6 +45,13 @@
 			display: block
 			width: auto
 			margin-bottom: $form-bottom-space--sm
+
+	&.form-row--three-cols
+		+margin-horizontal(-#{round($form-gap-alt/2)})
+
+		.input-wrap
+			width: calc(100%/3 - #{$form-gap-alt})
+			+margin-horizontal(#{round($form-gap-alt/2)})
 
 label
 	+font($font-size, $line-height)
@@ -260,6 +267,11 @@ input, textarea
 /*form placeholder end*/
 
 /*form checkbox and radiobutton*/
+.radio-list, .checkbox-list
+	&, .#{$user-content} &
+		li
+			line-height: 1
+
 input[type="checkbox"] ~ label, input[type="radio"] ~ label, .check-label, .radio-label
 	+display-inline-block-top
 	+font(16px, 20px)
@@ -410,8 +422,6 @@ input[type="radio"]
 			margin-top: -8px
 			border-radius: 50px
 			background: none
-			transition-property: opacity
-			transition-duration: 0.2s
 
 	& ~ label > span,
 	& ~ i
@@ -425,9 +435,6 @@ input[type="radio"]
 			border-radius: 50%
 			overflow: hidden
 			background: $checkbox-color
-			animation: bounceout 0s
-			animation-iteration-count: 1
-			animation-fill-mode: forwards
 			opacity: 0
 
 	// radio checked
@@ -435,35 +442,7 @@ input[type="radio"]
 		& ~ label > span,
 		& ~ i
 			&::after
-				animation: bounce 0.3s
-				animation-iteration-count: 1
 				opacity: 1
-
-	@keyframes bounce
-		0%
-			transform: scale(0.8)
-			opacity: 0.4
-
-		50%
-			transform: scale(1.4)
-			opacity: 1
-
-		100%
-			transform: scale(1)
-			opacity: 1
-
-	@keyframes bounceout
-		0%
-			transform: scale(0)
-			opacity: 1
-
-		50%
-			transform: scale(1.4)
-			opacity: 1
-
-		100%
-			transform: scale(0)
-			opacity: 0.4
 
 	// radio disabled
 	&:disabled
@@ -837,4 +816,89 @@ input[type="radio"]
 
 /*select2 dropdown end*/
 /*select end*/
+
+/* add field
+.add-field
+	display: block
+	position: relative
+	padding-left: 38px
+	height: 24px
+	font-size: 14px
+	line-height: 24px
+	letter-spacing: normal
+	color: $text-color-light
+	cursor: pointer
+	margin: -8px 0 $form-bottom-space
+
+	i
+		display: block
+		position: absolute
+		top: 0
+		left: 0
+		width: 24px
+		height: 24px
+		border-radius: 24px
+		border: 1px solid $base-color
+
+		.ea-site &
+			border-color: $base-color--ea
+
+		&::before, &::after
+			+pseudo()
+			width: 10px
+			height: 2px
+			left: 50%
+			top: 50%
+			margin: -1px 0 0 -5px
+			background-color: $text-color
+
+		&::before
+			transform: rotate(-0.25turn)
+
+	// hover
+	&:hover
+		color: $link-color
+
+.remove-field
+	position: absolute
+	top: 12px
+	right: 0
+	width: 24px
+	height: 24px
+	text-indent: -9999px
+	overflow: hidden
+	z-index: 5
+	cursor: pointer
+
+	&::before, &::after
+		+pseudo()
+		width: 14px
+		height: 2px
+		left: 50%
+		top: 50%
+		margin: -1px 0 0 -7px
+		background-color: $text-color
+
+	&::before
+		transform: rotate(-45deg)
+
+	&::after
+		transform: rotate(45deg)
+
+	// hover
+	&:hover
+		&::before, &::after
+			background-color: $link-color
+
+// active
+.add-field-group-js
+	.input-wrap
+		&:last-child
+			.remove-field
+				display: none
+
+		& ~ .input-wrap .remove-field
+			display: block
+
+/* add field end
 /*FORM STYLE DEFAULT end*/

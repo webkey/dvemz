@@ -352,3 +352,161 @@
 			+push-auto
 
 /* products basket end
+
+/* ordering
+.ordering
+	+margin-horizontal(-$ordering-gap/2)
+	margin-bottom: $bottom-space
+	+clear
+
+	&:last-child
+		margin-bottom: 0
+
+.ordering__col
+	float: left
+	width: 50%
+	+padding-horizontal(round($ordering-gap/2))
+
+.ordering__box
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+.ordering__title
+	+font-bold
+	+font($font-size-h3, $line-height-h3)
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+	+media('<mob-lg')
+		+font($font-size-h3--sm, $line-height-h3--sm)
+
+/* ordering end
+
+/* payment-list
+.payment-list
+	&, .#{$user-content} &
+		margin: 0 -7px $bottom-space
+
+		&:last-child
+			margin-bottom: 0
+
+		li
+			padding: 0 7px 15px
+			margin: 0
+
+			&::before
+				content: none
+
+	li
+		float: left
+		width: 50%
+
+	input[type="radio"]
+		display: none
+		
+	label
+		display: block
+		height: 100%
+		border: 1px solid $border-color
+		padding: 12px 16px
+
+		& > strong
+			display: block
+			margin-bottom: 0.2em
+			+font-bold
+			+font(18px, 21px)
+
+			&:last-child
+				margin-bottom: 0
+
+		& > span
+			display: block
+			margin-bottom: 0.2em
+			+font(16px, 19px)
+
+			&:last-child
+				margin-bottom: 0
+
+		& > img
+			+display-inline-block-middle
+			margin: 0 10px 14px 0
+
+	input[type="radio"] ~ label
+		&::before, &::after
+			content: none
+
+		span
+			padding-left: 0
+
+			&::before, &::after
+				content: none
+
+	// checked
+	input[type="radio"]:checked ~ label
+		border-color: $base-color--ea
+		box-shadow: 0 0 0 1px $base-color--ea
+
+/* payment-list end
+
+/* radio-switcher
+.radio-switcher
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.radio-switcher__head
+	display: block
+	line-height: 1
+	padding: 0 0 $bottom-space
+
+	input[type="radio"] ~ label
+		&::before
+			border-color: $text-color-light
+
+		em
+			+font-normal
+			color: $text-color-light
+			border-bottom: 1px dashed $text-color-light
+
+	// hover
+	input[type="radio"] ~ label
+		&:hover
+			&::before
+				border-color: $link-color
+
+			em
+				color: $link-color
+				border-bottom-color: $link-color
+
+	// checked
+	input[type="radio"]:checked ~ label
+		cursor: default
+
+		&::before
+			border-color: $text-color
+
+		em
+			+font-bold
+			color: $text-color
+			border-bottom-color: transparent
+
+.radio-switcher__panel
+	padding: 0 0 $bottom-space
+	display: none
+
+	.is-open + &
+		display: block
+
+	ul
+		margin: 0 0 $bottom-space
+		padding-left: 20px
+
+		&:last-child
+			margin-bottom: 0
+
+/* radio-switcher end

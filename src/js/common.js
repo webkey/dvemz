@@ -167,14 +167,14 @@ function inputToggleFocusClass() {
 			var $thisField = $(this);
 
 			$thisField
-				.closest($fieldWrap)
+				.closest('.input-wrap')
 				.addClass(_classFocus);
 
 		}).blur(function () {
 			var $thisField = $(this);
 
 			$thisField
-				.closest($fieldWrap)
+				.closest('.input-wrap')
 				.removeClass(_classFocus);
 		});
 	}
@@ -202,7 +202,7 @@ function inputHasValueClass() {
 
 		function switchHasValue() {
 			var $currentField = $(this);
-			var $currentFieldWrap = $currentField.closest($fieldWrap);
+			var $currentFieldWrap = $currentField.closest('.input-wrap');
 
 			//first element of the select must have a value empty ("")
 			if ($currentField.val() === '') {
@@ -810,6 +810,14 @@ function equalHeightInit() {
 
 	if ($oddsList.length) {
 		$oddsList.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+
+	var $paymentList = $('.payment-list');
+
+	if ($paymentList.length) {
+		$paymentList.children().matchHeight({
 			byRow: true, property: 'height', target: null, remove: false
 		});
 	}
@@ -3309,6 +3317,70 @@ function loadList(){
 /* loadList */
 
 /**
+ * !radio switcher
+ * */
+function radioSwitcher() {
+
+	var $radioSwitcher = $('.radio-switcher-js');
+	var $radioSwitcherHand = $('.radio-switcher__head-js');
+	var activeClass = 'is-open';
+
+	if ($radioSwitcherHand.length) {
+		$radioSwitcher.each(function () {
+			var $thisContainer = $(this);
+			var $thisHand = $thisContainer.find($radioSwitcherHand);
+			var $thisToggler = $thisHand.find('input[type="radio"]');
+
+			$thisToggler.on('change', function (e) {
+				e.preventDefault();
+
+				var $currentToggler = $(this);
+
+				if ($currentToggler.prop('checked')) {
+					$thisHand.removeClass(activeClass);
+					$currentToggler.closest($thisHand).addClass(activeClass);
+				}
+			})
+		});
+
+		$radioSwitcherHand.find('input[type="radio"]').each(function () {
+			$(this).trigger('change');
+		})
+	}
+}
+/*radio switcher end*/
+
+/**
+ * !add new field
+ * */
+function addNewField() {
+	var $container = $('.add-field-group-js');
+	var $addFieldBtn = $('.add-field-js');
+
+	function addField($element) {
+		console.log("$element: ", $element);
+		$element.prev().append(
+			$('script[data-template="field-tpl"]').html()
+		);
+
+		$element.prev().find('.input-wrap').last().find('input').focus();
+	}
+
+	$addFieldBtn.on('click', function (event) {
+		event.preventDefault();
+		var $this = $(this);
+		addField($this);
+
+		// $(this).trigger('attendee:add');
+	});
+
+	$container.on('click', '.remove-field-js', function (event) {
+		event.preventDefault();
+		$(this).closest('.input-wrap').remove();
+	})
+}
+
+/**
  * !footer at bottom
  * */
 function footerBottom() {
@@ -3442,6 +3514,8 @@ $(function () {
 	sortingOrder();
 	fotoramaInit();
 	loadList();
+	radioSwitcher();
+	addNewField();
 
 	mainMapInit();
 	mainMapEAInit();

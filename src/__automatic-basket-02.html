@@ -46,132 +46,177 @@
 									<!--order steps end-->
 								</div>
 								<div class="layout-text">
-									<div class="ordering">
-										<div class="ordering__col">
-											<div class="ordering__box">
-												<div class="ordering__title">Персональная информация</div>
-												<div class="input-wrap light-form field-effects-js">
-													<div class="label-holder">
-														<label for="ordering-name-field">Имя <span class="form-mark">*</span></label>
+
+									<form action="#!">
+										<!--ordering-->
+										<div class="ordering">
+											<div class="ordering__col">
+												<div class="ordering__box">
+													<div class="ordering__title">Персональная информация</div>
+													<div class="input-wrap light-form field-effects-js">
+														<div class="label-holder">
+															<label for="ordering-name-field">Имя <span class="form-mark">*</span></label>
+														</div>
+														<input type="text" id="ordering-name-field"/>
+														<span class="error-note">Поле обязательное для заполнения</span>
+														<span class="confirm-note">&nbsp;</span>
 													</div>
-													<input type="text" id="ordering-name-field"/>
-													<span class="error-note">Поле обязательное для заполнения</span>
-													<span class="confirm-note">&nbsp;</span>
-												</div>
-												<div class="input-wrap light-form field-effects-js">
-													<div class="label-holder">
-														<label for="ordering-phone-field">Телефон <span class="form-mark">*</span></label>
+													<div class="input-group add-field-group-js field-effects-js">
+														<div class="input-wrap light-form">
+															<div class="remove-field remove-field-js">Удалить</div>
+															<div class="label-holder">
+																<label for="ordering-phone-field">Телефон</label>
+															</div>
+															<input type="text" id="ordering-phone-field"/>
+														</div>
 													</div>
-													<input type="text" id="ordering-phone-field"/>
-													<span class="error-note">Поле обязательное для заполнения</span>
-													<span class="confirm-note">&nbsp;</span>
-												</div>
-												<div class="input-wrap light-form field-effects-js">
-													<div class="label-holder">
-														<label for="ordering-email-field">Электронная почта <span class="form-mark">*</span></label>
+													<div class="add-field add-field-js">
+														<i>&nbsp;</i>
+														<span>Добавить телефон</span>
+														<script type="text/template" data-template="field-tpl">
+															<div class="input-wrap light-form">
+																<div class="remove-field remove-field-js">Удалить</div>
+																<div class="label-holder">
+																	<label>Телефон</label>
+																</div>
+																<input type="text" />
+															</div>
+														</script>
 													</div>
-													<input type="email" id="ordering-email-field"/>
-													<span class="error-note">Поле обязательное для заполнения</span>
-													<span class="confirm-note">&nbsp;</span>
+													<div class="input-wrap light-form field-effects-js">
+														<div class="label-holder">
+															<label for="ordering-email-field">Электронная почта <span class="form-mark">*</span></label>
+														</div>
+														<input type="email" id="ordering-email-field"/>
+														<span class="error-note">Поле обязательное для заполнения</span>
+														<span class="confirm-note">&nbsp;</span>
+													</div>
+													<div class="form-note">У вас уже есть учетная запись? <a href="#">Войти</a></div>
 												</div>
-												<div class="form-note">У вас уже есть учетная запись? <a href="#">Войти</a></div>
 											</div>
-										</div>
-										<div class="ordering__col">
-											<div class="ordering__box">
-												<div class="ordering__title">Способ доставки</div>
-												<div class="switcher">
-													<div class="switcher__head"><span class="switcher__head__text">Самовывоз</span></div>
-													<div class="switcher__panel">
-														<div>
-															<label class="radio-label">
-																<input type="radio" name="testRadioInside" checked="">
-																<i>&nbsp;</i>
-																<span>г. Москва, Проспект Дзержинского, 154,  офис 254</span>
+											<div class="ordering__col">
+												<div class="ordering__box">
+													<div class="ordering__title">Способ доставки</div>
+													<div class="radio-switcher radio-switcher-js">
+														<div class="radio-switcher__head radio-switcher__head-js">
+															<input type="radio" name="deliveryType" id="deliveryTypeHand" checked="">
+															<label for="deliveryTypeHand"><span><em>Самовывоз</em></span></label>
+														</div>
+														<div class="radio-switcher__panel">
+															<ul class="reset-list radio-list">
+																<li>
+																	<label class="radio-label">
+																		<input type="radio" name="officeAddress" checked="">
+																		<i>&nbsp;</i> <span>г. Москва, Проспект Дзержинского, 154,  офис 254</span>
+																	</label>
+																</li>
+																<li>
+																	<label class="radio-label">
+																		<input type="radio" name="officeAddress">
+																		<i>&nbsp;</i> <span>г. Москва, Бельского, 120</span>
+																	</label>
+																</li>
+															</ul>
+														</div>
+														<div class="radio-switcher__head radio-switcher__head-js">
+															<input type="radio" name="deliveryType" id="deliveryTypeCourier">
+															<label for="deliveryTypeCourier"><span><em>Доставка курьером</em></span></label>
+														</div>
+														<div class="radio-switcher__panel">
+															<div class="input-wrap light-form field-effects-js">
+																<div class="label-holder">
+																	<label for="ordering-city-field">Город <span class="form-mark">*</span></label>
+																</div>
+																<input type="email" id="ordering-city-field"/>
+																<span class="error-note">Поле обязательное для заполнения</span>
+																<span class="confirm-note">&nbsp;</span>
+															</div>
+															<div class="input-wrap light-form field-effects-js">
+																<div class="label-holder">
+																	<label for="ordering-street-field">Улица <span class="form-mark">*</span></label>
+																</div>
+																<input type="email" id="ordering-street-field"/>
+																<span class="error-note">Поле обязательное для заполнения</span>
+																<span class="confirm-note">&nbsp;</span>
+															</div>
+															<div class="form-row form-row--three-cols">
+																<div class="input-wrap light-form field-effects-js">
+																	<div class="label-holder">
+																		<label for="ordering-building-field">Дом <span class="form-mark">*</span></label>
+																	</div>
+																	<input type="text" id="ordering-building-field"/>
+																	<span class="error-note">Поле обязательное для заполнения</span>
+																	<span class="confirm-note">&nbsp;</span>
+																</div>
+																<div class="input-wrap light-form field-effects-js">
+																	<div class="label-holder">
+																		<label for="ordering-section-field">Корпус <span class="form-mark">*</span></label>
+																	</div>
+																	<input type="text" id="ordering-section-field"/>
+																	<span class="error-note">Поле обязательное для заполнения</span>
+																	<span class="confirm-note">&nbsp;</span>
+																</div>
+																<div class="input-wrap light-form field-effects-js">
+																	<div class="label-holder">
+																		<label for="ordering-flat-field">Квартира <span class="form-mark">*</span></label>
+																	</div>
+																	<input type="text" id="ordering-flat-field"/>
+																	<span class="error-note">Поле обязательное для заполнения</span>
+																	<span class="confirm-note">&nbsp;</span>
+																</div>
+															</div>
+															<div class="input-wrap light-form field-effects-js">
+																<div class="label-holder">
+																	<label for="ordering-comment-field">Ваш комментарий: <span class="form-mark">*</span></label>
+																</div>
+																<textarea id="ordering-comment-field"></textarea>
+																<span class="error-note">Поле обязательное для заполнения</span>
+																<span class="confirm-note">&nbsp;</span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="ordering__box">
+													<div class="ordering__title">Способ доставки</div>
+													<ul class="payment-list">
+														<li>
+															<input type="radio" name="paymentType" checked id="cashPayment">
+															<label for="cashPayment">
+																<strong>Наличными деньгами курьеру</strong>
+																<span>У вас уже есть учетная запись?</span>
 															</label>
-														</div>
-														<div>
-															<label class="radio-label">
-																<input type="radio" name="testRadioInside">
-																<i>&nbsp;</i>
-																<span>г. Москва, Бельского, 120</span>
+														</li>
+														<li>
+															<input type="radio" name="paymentType" id="cashlessPayment">
+															<label for="cashlessPayment">
+																<strong>Банковской картой</strong>
+																<img src="img/img-payment-01.png" alt="payment-01" />
+																<img src="img/img-payment-02.png" alt="payment-02" />
+																<img src="img/img-payment-03.png" alt="payment-03" />
+																<img src="img/img-payment-04.png" alt="payment-04" />
 															</label>
-														</div>
-													</div>
-													<div class="switcher__head"><span class="switcher__head__text">Доставка курьером</span></div>
-													<div class="switcher__panel">
-														<div class="input-wrap light-form field-effects-js">
-															<div class="label-holder">
-																<label for="ordering-city-field">Город <span class="form-mark">*</span></label>
-															</div>
-															<input type="email" id="ordering-city-field"/>
-															<span class="error-note">Поле обязательное для заполнения</span>
-															<span class="confirm-note">&nbsp;</span>
-														</div>
-														<div class="input-wrap light-form field-effects-js">
-															<div class="label-holder">
-																<label for="ordering-street-field">Улица <span class="form-mark">*</span></label>
-															</div>
-															<input type="email" id="ordering-street-field"/>
-															<span class="error-note">Поле обязательное для заполнения</span>
-															<span class="confirm-note">&nbsp;</span>
-														</div>
-														<div class="form-row">
-															<div class="input-wrap light-form field-effects-js">
-																<div class="label-holder">
-																	<label for="ordering-building-field">Дом <span class="form-mark">*</span></label>
-																</div>
-																<input type="text" id="ordering-building-field"/>
-																<span class="error-note">Поле обязательное для заполнения</span>
-																<span class="confirm-note">&nbsp;</span>
-															</div>
-															<div class="input-wrap light-form field-effects-js">
-																<div class="label-holder">
-																	<label for="ordering-section-field">Корпус <span class="form-mark">*</span></label>
-																</div>
-																<input type="text" id="ordering-section-field"/>
-																<span class="error-note">Поле обязательное для заполнения</span>
-																<span class="confirm-note">&nbsp;</span>
-															</div>
-															<div class="input-wrap light-form field-effects-js">
-																<div class="label-holder">
-																	<label for="ordering-flat-field">Квартира <span class="form-mark">*</span></label>
-																</div>
-																<input type="text" id="ordering-flat-field"/>
-																<span class="error-note">Поле обязательное для заполнения</span>
-																<span class="confirm-note">&nbsp;</span>
-															</div>
-														</div>
-														<div class="input-wrap light-form field-effects-js">
-															<div class="label-holder">
-																<label for="ordering-comment-field">Ваш комментарий: <span class="form-mark">*</span></label>
-															</div>
-															<textarea id="ordering-comment-field"></textarea>
-															<span class="error-note">Поле обязательное для заполнения</span>
-															<span class="confirm-note">&nbsp;</span>
-														</div>
-													</div>
+														</li>
+														<li>
+															<input type="radio" name="paymentType" id="handsPayment">
+															<label for="handsPayment">
+																<strong>Банковской картой при получении</strong>
+																<img src="img/img-payment-01.png" alt="payment-01" />
+																<img src="img/img-payment-02.png" alt="payment-02" />
+															</label>
+														</li>
+													</ul>
 												</div>
 											</div>
-											<div class="ordering__box">
-												<div class="ordering__title">Способ доставки</div>
-												<ul class="payment-list">
-													<li>
-														<a href="#">
-															Наличными деньгами курьеру
-															У вас уже есть учетная запись?
-														</a>
-													</li>
-												</ul>
+										</div>
+										<!--ordering end-->
+										<div class="product-basket__footer">
+											<div class="arr-wrap">
+												<a href="automatic-basket-03.html" class="btn-outline"><i>&nbsp;</i><span>Продолжить</span></a>
+												<!--<a href="automatic-catalog.html" class="btn-outline-alt btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>-->
 											</div>
 										</div>
-									</div>
-									<div class="product-basket__footer">
-										<div class="arr-wrap">
-											<a href="automatic-basket-03.html" class="btn-outline"><i>&nbsp;</i><span>Продолжить</span></a>
-											<!--<a href="automatic-catalog.html" class="btn-outline-alt btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>-->
-										</div>
-									</div>
+									</form>
+
 								</div>
 							</div>
 						</div>
