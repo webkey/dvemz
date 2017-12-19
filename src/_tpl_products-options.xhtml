@@ -1,9 +1,11 @@
 <div class="p-options">
 	<div class="p-options__list">
 		<div class="p-options__item">
+			@@if(context.result != "false"){
 			<div class="p-options__inner">
 				<span class="found-items-js">Найдено 3 товара</span>
 			</div>
+			}
 		</div>
 		<div class="p-options__item">
 			<div class="p-options__inner">
@@ -24,6 +26,7 @@
 			</div>
 		</div>
 		<div class="p-options__item view-switcher-wrap">
+			@@if(context.switcher != "false"){
 			<div class="p-options__inner">
 				<!--view switcher-->
 				<div class="view-switcher view-switcher-js">
@@ -32,6 +35,7 @@
 				</div>
 				<!--view switcher end-->
 			</div>
+			}
 		</div>
 	</div>
 </div>

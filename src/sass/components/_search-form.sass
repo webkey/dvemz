@@ -6,6 +6,12 @@
 .search-form
 	+padding-vertical(50px)
 
+	+media('<mob-lg')
+		+padding-vertical(30px)
+
+	.content &
+		+padding-vertical(0)
+
 .search-form, .search-form__field
 	position: relative
 	margin-bottom: $bottom-space--md
@@ -16,7 +22,10 @@
 .search-form .light-form
 	.label-holder
 		+font-bold
-		+font(48px, 52px)
+		+font(36px, 52px)
+
+		+media('<mob-lg')
+			font-size: 28px
 
 		&::before
 			border-top-width: 2px
@@ -25,12 +34,21 @@
 		height: 76px
 		+padding-vertical(12px)
 
+		+media('<mob-lg')
+			height: 68px
+			+padding-vertical(8px)
+
 input.search-form__input
 	&, .light-form &
 		padding: 12px #{$search-form-popup-btn-size+12} 12px 0
 		+font-bold
-		+font(48px, 52px)
+		+font(36px, 52px)
 		height: 76px
+
+		+media('<mob-lg')
+			font-size: 28px
+			padding: 8px #{$search-form-popup-btn-size--sm+8} 8px 0
+			height: 68px
 
 // кнопка поиска
 .search-form__btn
@@ -50,6 +68,10 @@ input.search-form__input
 	fill: $text-color
 	pointer-events: none
 	opacity: 0.2
+
+	+media('<mob-lg')
+		+size($search-form-popup-btn-size--sm)
+		margin-top: -#{round($search-form-popup-btn-size--sm*0.5)}
 
 	.input--has-value &
 		pointer-events: auto
@@ -78,11 +100,71 @@ input.search-form__input
 		+size($search-form-popup-btn-size)
 		margin: -#{round($search-form-popup-btn-size*0.5)} 0 0 -#{round($search-form-popup-btn-size*0.5)}
 
+		+media('<mob-lg')
+			+size($search-form-popup-btn-size--sm)
+			margin: -#{round($search-form-popup-btn-size--sm*0.5)} 0 0 -#{round($search-form-popup-btn-size--sm*0.5)}
+
 	path
 		fill: inherit
 		transition: inherit
 
 	span
 		+hide-text
+
+// product
+.search-form
+	.products__figure
+		width: #{$product-figure-width}
+		height: #{$product-figure-height}
+
+		+media('<tab-lg')
+			width: 218px
+			height: 164px
+
+		&:before
+			content: none
+
+	.products__img
+		position: relative
+		left: auto
+		top: auto
+		transform: none
+
+		img
+			display: block
+			max-height: none
+			max-width: none
+			width: 100%
+			height: 100%
+			+object-fit(contain)
+			position: relative
+			left: auto
+			top: auto
+			transform: none
+
+	.products__body
+		width: calc(100% - 200px)
+
+		+media('<tab-lg')
+			width: auto
+
+	.products__footer
+		width: 199px
+		text-align: right
+		padding-right: 16px
+
+		+media('<tab-lg')
+			width: auto
+			padding-right: 0
+			text-align: center
+
+	.products__price
+		width: auto
+		padding-right: 0
+
+		+media('<tab-lg')
+			margin-bottom: 0
+
+// product end
 
 /*search form end

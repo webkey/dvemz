@@ -193,6 +193,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .float-right
 	float: right
 
+.full-width
+	width: 100%
+
 .nobr
 	white-space: nowrap
 
@@ -267,9 +270,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	flex-wrap: wrap
 	margin-bottom: $bottom-space
 
-	//+media('<mob-lg')
-		margin-bottom: 0
-
 	.add-info
 		+display-inline-block-middle
 		margin-bottom: $bottom-space
@@ -278,6 +278,45 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+media('<mob-lg')
 		display: block
 		text-align: center
+
+.heading-list
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+/* targets-list
+.targets-list
+	&, .#{$user-content} &
+		padding-left: 0
+		margin: 0 0 $bottom-space
+
+		&:last-child
+			margin-bottom: 0
+
+		li
+			+display-inline-block-top
+			padding: 0
+			margin: 0 $grid-space round($grid-space/2) 0
+
+			&::before
+				content: none
+
+	a
+		text-decoration: none
+		color: #666
+
+		& > span
+			color: $link-color
+
+		// hover
+		&:hover
+			text-decoration: none
+
+			& > span
+				text-decoration: underline
+
+/* targets-list end
 
 /*content img*/
 .imgc
@@ -634,3 +673,59 @@ table
 	color: $text-color-light
 
 /*datetime end*/
+
+/*groups-list
+.groups-list
+	&, .#{$user-content} &
+		margin: 0 0 -1px
+		padding: 0
+
+		li
+			padding-left: 0
+			margin: -1px 0 0
+
+			&:first-child
+				margin-top: 0
+
+			&::before
+				content: none
+
+	&
+		color: #999
+		+font(14px, 20px)
+		text-transform: uppercase
+
+	a
+		display: block
+		position: relative
+		text-decoration: none
+		color: #999
+		padding: 14px
+		padding-left: 40px
+		border: 1px solid $border-color
+
+		& > span
+			+font-bold
+			letter-spacing: 0.05em
+			color: black
+
+		&::before, &::after
+			+pseudo()
+			width: 10px
+			height: 2px
+			background-color: $text-color
+			left: 16px
+
+		&::before
+			transform: rotate(45deg)
+			top: 20px
+
+		&::after
+			transform: rotate(-45deg)
+			top: 26px
+
+		&:hover
+			& > span
+				color: $link-color
+
+/*groups-list end

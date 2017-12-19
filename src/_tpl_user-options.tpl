@@ -21,7 +21,7 @@
 			</div>
 		</div>
 	</a>
-	<a href="@@if(context.site === "ea"){automatic-basket.html}@@if(context.site === "dvemz"){#}" class="user-options__item">
+	<a href="@@if(context.site === "ea"){automatic-basket-01.html}@@if(context.site === "dvemz"){#}" class="user-options__item">
 		<div class="user-options__inner">
 			<div class="user-option__icon">
 				<div class="basket-counter">1</div>

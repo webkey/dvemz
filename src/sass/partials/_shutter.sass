@@ -78,50 +78,57 @@ html.css-scroll-fixed
 		width: 100%
 
 .shutter__holder
-	//display: table
-	//min-height: 100vh // не работает в фф
-	display: flex
-	flex-direction: column
-	justify-content: space-between
-	min-height: 100vh // ie поддерживает min-height для table
+	//display: flex
+	//flex-direction: column
+	//justify-content: space-between
+	//min-height: 100vh // ie поддерживает min-height для table
+	display: table
+	table-layout: fixed
+	height: 100vh
 	width: #{$nav-width}
 
 	+media('<tab-lg')
 		width: 100%
 
 	// для браузеров не поддерживающих display: flex
-	.no-flexbox &
+	//.no-flexbox &
 		display: table
 		table-layout: fixed
 
 	// в ие 11 не поддерживается flex-direction: column вместе с min-height
 	// для этого браузера исспользуем хак
-	@media all and (-ms-high-contrast: none)
+	//@media all and (-ms-high-contrast: none)
 		&::-ms-backdrop, &
 			display: table
 			table-layout: fixed
 
 .shutter__row
+	display: table-row
+
+	&:first-child, &:last-child
+		height: 1%
 
 	// для браузеров не поддерживающих display: flex
-	.no-flexbox &
+	//.no-flexbox &
 		display: table-row
 
 	// в ие 11 не поддерживается flex-direction: column вместе с min-height
 	// для этого браузера исспользуем хак
-	@media all and (-ms-high-contrast: none)
+	//@media all and (-ms-high-contrast: none)
 		&::-ms-backdrop, &
 			display: table-row
 
 .shutter__cell
+	display: table-cell
+	vertical-align: top
 	// для браузеров не поддерживающих display: flex
-	.no-flexbox &
+	//.no-flexbox &
 		display: table-cell
 		vertical-align: middle
 
 	// в ие 11 не поддерживается flex-direction: column вместе с min-height
 	// для этого браузера исспользуем хак
-	@media all and (-ms-high-contrast: none)
+	//@media all and (-ms-high-contrast: none)
 		&::-ms-backdrop, &
 			display: table-cell
 			vertical-align: middle

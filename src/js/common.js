@@ -138,6 +138,10 @@ function objectFitInit() {
 	if($someImages.length) {
 		objectFitImages($someImages);
 	}
+	var $productsImages = $('.products__list img');
+	if($productsImages.length) {
+		objectFitImages($productsImages);
+	}
 }
 
 /**

@@ -1,0 +1,196 @@
+@@include('_layout_head.tpl', {
+	"title": "ЭA - Корзина",
+	"pageClass": "ea-site",
+	"ea": "true"
+})
+
+<div class="wrapper">
+	<!--HEADER-->
+	@@include('_layout_header--ea.xhtml', {
+		"mainNavItemActive": ""
+	})
+	<!--HEADER end-->
+
+	<!--TOP PANEL-->
+	@@include('_layout_top-panel--ea.tpl')
+	<!--TOP PANEL end-->
+
+	<!--MAIN-->
+	<div class="main">
+		<div class="max-wrap layout">
+			<div class="main__holder">
+				<!--CONTENT-->
+				<div class="content-wrap">
+					<div class="content user-content">
+						<div class="sheet">
+							<div class="layout-article">
+								<!--breadcrumbs-->
+								@@include('_breadcrumbs.tpl', {
+									"last": "Корзина"
+								})
+								<!--breadcrumbs end-->
+								<div class="heading">
+									<h1>Корзина</h1>
+									<!--order steps-->
+									<ul class="order-steps">
+										<li>
+											<span>Корзина</span>
+										</li>
+										<li class="active">
+											<span>Оформление <br> заказа</span>
+										</li>
+										<li>
+											<span>Заказ <br> оформлен</span>
+										</li>
+									</ul>
+									<!--order steps end-->
+								</div>
+								<div class="layout-text">
+									<div class="ordering">
+										<div class="ordering__col">
+											<div class="ordering__box">
+												<div class="ordering__title">Персональная информация</div>
+												<div class="input-wrap light-form field-effects-js">
+													<div class="label-holder">
+														<label for="ordering-name-field">Имя <span class="form-mark">*</span></label>
+													</div>
+													<input type="text" id="ordering-name-field"/>
+													<span class="error-note">Поле обязательное для заполнения</span>
+													<span class="confirm-note">&nbsp;</span>
+												</div>
+												<div class="input-wrap light-form field-effects-js">
+													<div class="label-holder">
+														<label for="ordering-phone-field">Телефон <span class="form-mark">*</span></label>
+													</div>
+													<input type="text" id="ordering-phone-field"/>
+													<span class="error-note">Поле обязательное для заполнения</span>
+													<span class="confirm-note">&nbsp;</span>
+												</div>
+												<div class="input-wrap light-form field-effects-js">
+													<div class="label-holder">
+														<label for="ordering-email-field">Электронная почта <span class="form-mark">*</span></label>
+													</div>
+													<input type="email" id="ordering-email-field"/>
+													<span class="error-note">Поле обязательное для заполнения</span>
+													<span class="confirm-note">&nbsp;</span>
+												</div>
+												<div class="form-note">У вас уже есть учетная запись? <a href="#">Войти</a></div>
+											</div>
+										</div>
+										<div class="ordering__col">
+											<div class="ordering__box">
+												<div class="ordering__title">Способ доставки</div>
+												<div class="switcher">
+													<div class="switcher__head"><span class="switcher__head__text">Самовывоз</span></div>
+													<div class="switcher__panel">
+														<div>
+															<label class="radio-label">
+																<input type="radio" name="testRadioInside" checked="">
+																<i>&nbsp;</i>
+																<span>г. Москва, Проспект Дзержинского, 154,  офис 254</span>
+															</label>
+														</div>
+														<div>
+															<label class="radio-label">
+																<input type="radio" name="testRadioInside">
+																<i>&nbsp;</i>
+																<span>г. Москва, Бельского, 120</span>
+															</label>
+														</div>
+													</div>
+													<div class="switcher__head"><span class="switcher__head__text">Доставка курьером</span></div>
+													<div class="switcher__panel">
+														<div class="input-wrap light-form field-effects-js">
+															<div class="label-holder">
+																<label for="ordering-city-field">Город <span class="form-mark">*</span></label>
+															</div>
+															<input type="email" id="ordering-city-field"/>
+															<span class="error-note">Поле обязательное для заполнения</span>
+															<span class="confirm-note">&nbsp;</span>
+														</div>
+														<div class="input-wrap light-form field-effects-js">
+															<div class="label-holder">
+																<label for="ordering-street-field">Улица <span class="form-mark">*</span></label>
+															</div>
+															<input type="email" id="ordering-street-field"/>
+															<span class="error-note">Поле обязательное для заполнения</span>
+															<span class="confirm-note">&nbsp;</span>
+														</div>
+														<div class="form-row">
+															<div class="input-wrap light-form field-effects-js">
+																<div class="label-holder">
+																	<label for="ordering-building-field">Дом <span class="form-mark">*</span></label>
+																</div>
+																<input type="text" id="ordering-building-field"/>
+																<span class="error-note">Поле обязательное для заполнения</span>
+																<span class="confirm-note">&nbsp;</span>
+															</div>
+															<div class="input-wrap light-form field-effects-js">
+																<div class="label-holder">
+																	<label for="ordering-section-field">Корпус <span class="form-mark">*</span></label>
+																</div>
+																<input type="text" id="ordering-section-field"/>
+																<span class="error-note">Поле обязательное для заполнения</span>
+																<span class="confirm-note">&nbsp;</span>
+															</div>
+															<div class="input-wrap light-form field-effects-js">
+																<div class="label-holder">
+																	<label for="ordering-flat-field">Квартира <span class="form-mark">*</span></label>
+																</div>
+																<input type="text" id="ordering-flat-field"/>
+																<span class="error-note">Поле обязательное для заполнения</span>
+																<span class="confirm-note">&nbsp;</span>
+															</div>
+														</div>
+														<div class="input-wrap light-form field-effects-js">
+															<div class="label-holder">
+																<label for="ordering-comment-field">Ваш комментарий: <span class="form-mark">*</span></label>
+															</div>
+															<textarea id="ordering-comment-field"></textarea>
+															<span class="error-note">Поле обязательное для заполнения</span>
+															<span class="confirm-note">&nbsp;</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="ordering__box">
+												<div class="ordering__title">Способ доставки</div>
+												<ul class="payment-list">
+													<li>
+														<a href="#">
+															Наличными деньгами курьеру
+															У вас уже есть учетная запись?
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="product-basket__footer">
+										<div class="arr-wrap">
+											<a href="automatic-basket-03.html" class="btn-outline"><i>&nbsp;</i><span>Продолжить</span></a>
+											<!--<a href="automatic-catalog.html" class="btn-outline-alt btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--CONTENT end-->
+			</div>
+		</div>
+	</div>
+	<!--MAIN end-->
+
+	<!--SIDEBAR-->
+	@@include('_layout_catalog-menu.tpl', {
+		"catalogMenuActiveItem": "",
+		"notSubMenu": "true"
+	})
+	<!--SIDEBAR-->
+</div>
+
+@@include('_layout_foot.tpl', {
+	"site": "ea"
+})

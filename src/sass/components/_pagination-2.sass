@@ -18,7 +18,10 @@ $pagination-font-size: 16px
 	fill: $text-color
 	text-align: center
 	cursor: default
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space--md
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space
 
 	&:last-child
 		margin-bottom: 0
