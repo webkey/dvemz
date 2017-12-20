@@ -96,6 +96,12 @@
 			&:after
 				width: 100%
 
+	// if has remove button
+	.remove-field
+		& ~ .label-holder, & ~ input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
+			padding-right: 30px
+
+	// error
 	&.error
 		.label-holder
 			&:before, &:after

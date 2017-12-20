@@ -8,6 +8,12 @@
 		+display-inline-block-middle
 		counter-reset: step
 		margin: 0
+		+clear
+
+		+media('<tab-sm')
+			display: block
+			width: 100%
+			padding: 0 0 1px 1px
 
 		li
 			position: relative
@@ -18,8 +24,21 @@
 			+clear-spacing
 			color: $text-color-light
 
-			+media('<tab-sm')
+			//+media('<tab-sm')
 				margin-left: 35px
+
+			+media('<tab-sm')
+				float: left
+				margin: 0 0 -1px -1px
+				border: 1px solid $border-color
+				width: 33.28%
+				padding: 8px 10px
+
+			+media('<mob-md')
+				display: block
+				float: none
+				width: auto
+				text-align: center
 
 			&::before
 				position: relative
@@ -37,10 +56,13 @@
 				text-align: center
 				color: $text-color
 
-				+media('<tab-sm')
+				//+media('<tab-sm')
 					+size(24px)
 					+font(12px, 22px)
 					margin-right: 6px
+
+				+media('<tab-sm')
+					content: none
 
 			&::after
 				+pseudo()
@@ -52,7 +74,7 @@
 				+size(33px, 20px)
 				margin-right: 20px
 
-				+media('<tab-sm')
+				//+media('<tab-sm')
 					+size(10px, 10px)
 					background: none
 					border: solid $outline-color
@@ -62,8 +84,14 @@
 					transform: translate(0, -50%) rotate(-45deg)
 					//transform: rotate(45deg)
 
+				+media('<tab-sm')
+					content: none
+
 			&:first-child
 				margin-left: 0
+
+				+media('<tab-sm')
+					margin-left: -1px
 
 				&::after
 					content: none
@@ -73,18 +101,28 @@
 				letter-spacing: normal
 				+font(18px, 22px)
 
-				+media('<tab-sm')
-					+font(14px, 18px)
+				+media('<mob-md')
+					+font(16px, 20px)
+					text-transform: uppercase
 
 		li.active
 			+font-bold
 			color: $text-color
 
+			+media('<tab-sm')
+				background-color: $base-color
+				border-color: $base-color
+				z-index: 2
+
+				.ea-site &
+					background-color: $base-color--ea
+					border-color: $base-color--ea
+
 			&::before
 				background-color: $base-color
 				border-color: $base-color
 
-				.ea-site
+				.ea-site &
 					background-color: $base-color--ea
 					border-color: $base-color--ea
 
@@ -326,7 +364,6 @@
 
 .product-basket__footer
 	text-align: right
-	margin-bottom: $bottom-space
 	direction: rtl
 
 	+media('<mob-lg')
@@ -334,22 +371,65 @@
 		direction: ltr
 
 	.arr-wrap
-		margin: 0 -#{round($bottom-space/2)} -#{$bottom-space}
+		margin: 0 -#{round-float($bottom-space/2, 1)}
+		+clear-spacing
 
 		+media('<mob-lg')
 			+margin-horizontal(0)
 
-	&:last-child
-		margin-bottom: 0
-
 	[class*="btn-"]
-		margin: 0 #{round($bottom-space/2)} #{$bottom-space}
+		margin: 0 #{round-float($bottom-space/2, 1)} #{$bottom-space}
 		min-width: 250px
 		direction: ltr
 
-		+media('<mob-lg')
-			display: block
-			+push-auto
+	// for ordering form
+	.ordering-form &
+		+margin-horizontal(-$ordering-gap/2)
+
+		+media('<tab-lg')
+			+margin-horizontal(0)
+
+		.arr-wrap
+			+margin-horizontal(0)
+			width: 50%
+			+padding-horizontal($ordering-gap/2)
+
+			+media('<tab-lg')
+				width: auto
+				+padding-horizontal(0)
+				+margin-horizontal(-#{round-float($bottom-space/2, 1)})
+
+			+media('<mob-lg')
+				+margin-horizontal(0)
+
+		[class*="btn-"]
+			min-width: 0
+			+margin-horizontal(7px)
+			width: calc(49.98% - 7px)
+
+			&:nth-child(even)
+				margin-left: 0
+
+			&:nth-child(odd)
+				margin-right: 0
+
+	// for completion form
+	.completion-form &
+		.arr-wrap
+			text-align: center
+
+	// for all
+	.ordering-form & [class*="btn-"], & [class*="btn-"]
+		&:nth-child(even), &:nth-child(odd)
+			+media('<tab-lg')
+				width: calc(49.98% - #{round-float($bottom-space/2, 1)*2})
+				+margin-horizontal(round-float($bottom-space/2, 1))
+				min-width: 0
+
+			+media('<mob-lg')
+				display: block
+				width: 100%
+				+push-auto
 
 /* products basket end
 
@@ -366,6 +446,14 @@
 	float: left
 	width: 50%
 	+padding-horizontal(round($ordering-gap/2))
+
+	+media('<tab-lg')
+		float: none
+		width: auto
+		margin-top: $bottom-space--md
+
+		&:first-child
+			margin-top: 0
 
 .ordering__box
 	margin-bottom: $bottom-space--md
@@ -404,15 +492,18 @@
 	li
 		float: left
 		width: 50%
+		min-height: 165px
+
+		+media('<mob-md')
+			float: none
+			display: block
+			width: auto
+			min-height: 100px
 
 	input[type="radio"]
 		display: none
 		
 	label
-		display: block
-		height: 100%
-		border: 1px solid $border-color
-		padding: 12px 16px
 
 		& > strong
 			display: block
@@ -436,6 +527,11 @@
 			margin: 0 10px 14px 0
 
 	input[type="radio"] ~ label
+		display: block
+		height: 100%
+		border: 1px solid $border-color
+		padding: 12px 16px
+
 		&::before, &::after
 			content: none
 
@@ -462,7 +558,10 @@
 .radio-switcher__head
 	display: block
 	line-height: 1
-	padding: 0 0 $bottom-space
+	padding: $bottom-space 0 0
+
+	&:first-child
+		padding-top: 0
 
 	input[type="radio"] ~ label
 		&::before
@@ -496,8 +595,11 @@
 			border-bottom-color: transparent
 
 .radio-switcher__panel
-	padding: 0 0 $bottom-space
+	padding: $bottom-space 0 0
 	display: none
+
+	&:first-child
+		padding-top: 0
 
 	.is-open + &
 		display: block
@@ -509,4 +611,163 @@
 		&:last-child
 			margin-bottom: 0
 
+		li
+			margin: 10px 0 0
+
+			&:first-child
+				margin-top: 0
+
 /* radio-switcher end
+
+/* output
+.output
+	background-color: $bg-color-alt
+
+.output__box
+	display: block
+	width: 440px
+	margin-left: auto
+
+	+media('<tab-sm')
+		width: auto
+		margin: 0
+
+.output__list
+	margin-bottom: 10px
+
+	&:last-child
+		margin-bottom: 0
+
+.output__list__item, .output__footer__item
+	border: solid $border-color
+	border-width: 0 0 1px
+	padding: 8px 20px
+
+	&:first-child
+		border-top-width: 1px
+
+	+clear
+
+.output__list__dt, .output__footer__dt
+	float: left
+	width: 50%
+	+font(16px, 24px)
+	+truncate(none)
+
+.output__list__dd, .output__footer__dd
+	float: right
+	text-align: right
+	width: 50%
+	+font(16px, 24px)
+
+.output__footer__item
+	border: none
+
+.output__footer__dt
+	+font-bold
+	+font(16px, 36px)
+	text-transform: uppercase
+
+.output__footer__dd
+	+font-bold
+	+font(36px, 36px)
+
+	+media('<mob-lg')
+		font-size: 24px
+
+/* output end
+
+/* completion
+.completion
+	margin-bottom: $bottom-space--md
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.completion__figure
+	display: block
+	position: relative
+	+size(100px)
+	border: 4px solid $base-color
+	border-radius: 50px
+	+push-auto
+	margin-bottom: $bottom-space--md
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space
+
+	+media('<tab-sm')
+		+size(60px)
+		border-width: 3px
+
+	.ea-site &
+		border-color: $base-color--ea
+
+	&::before, &::after
+		+pseudo()
+		height: 5px
+		background-color: $base-color
+
+		+media('<tab-sm')
+			height: 4px
+
+		.ea-site &
+			background-color: $base-color--ea
+
+	&::before
+		width: 24px
+		transform: rotate(45deg)
+		left: 23px
+		top: 50px
+
+		+media('<tab-sm')
+			width: 16px
+			left: 12px
+			top: 30px
+
+	&::after
+		width: 40px
+		transform: rotate(-45deg)
+		left: 35px
+		top: 44px
+
+		+media('<tab-sm')
+			width: 26px
+			left: 20px
+			top: 27px
+
+.completion__title
+	text-align: center
+	+font-bold
+	+font($font-size-h2, $line-height-h2)
+	margin-bottom: $bottom-space
+
+	+media('<tab-lg')
+		+font($font-size-h2--md, $line-height-h2--md)
+
+	+media('<mob-lg')
+		+font($font-size-h2--sm, $line-height-h2--sm)
+
+.completion__note
+	+font(18px, round-float(32/18, 2))
+	text-align: center
+	margin-bottom: $bottom-space
+
+	+media('<tab-sm')
+		font-size: 16px
+
+	&:last-child
+		margin-bottom: 0
+
+	a, a[href^="tel"]
+		color: $link-color
+		text-decoration: none !important
+
+		&:hover, .no-touchevents &:hover
+			color: $link-color
+			text-decoration: underline !important
+
+/* completion end

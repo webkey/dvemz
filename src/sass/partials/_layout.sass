@@ -436,6 +436,9 @@
 .max-wrap-text
 	max-width: $text-layout-width
 
+	+media('<desk-sb')
+		max-width: none
+
 // выравнивание текстовых элементов на внутренней (текстовой) странице
 // и их максимальная ширина
 .layout-text
@@ -445,6 +448,9 @@
 
 	+media('<desk-hd')
 		+padding-horizontal($text-layout-space-horizontal--lg)
+
+	+media('<desk-sb')
+		max-width: none
 
 	+media('<tab-lg')
 		+padding-horizontal($text-layout-space-horizontal--md)
@@ -457,6 +463,9 @@
 .max-wrap-flood
 	max-width: $flood-layout-width
 
+	+media('<desk-sb')
+		max-width: none
+
 .layout-flood
 	max-width: $flood-layout-width + $text-layout-space-horizontal*2
 	+padding-horizontal($flood-layout-space-horizontal)
@@ -464,6 +473,9 @@
 
 	+media('<desk-hd')
 		+padding-horizontal($text-layout-space-horizontal--lg)
+
+	+media('<desk-sb')
+		max-width: none
 
 	+media('<tab-lg')
 		+padding-horizontal($text-layout-space-horizontal--md)
@@ -476,6 +488,9 @@
 .max-wrap-wide
 	max-width: $wide-layout-width
 
+	+media('<desk-sb')
+		max-width: none
+
 .layout-wide
 	@if $wide-layout-width
 		max-width: $wide-layout-width + $text-layout-space-horizontal*2
@@ -484,6 +499,9 @@
 
 	+media('<desk-hd')
 		+padding-horizontal($text-layout-space-horizontal--lg)
+
+	+media('<desk-sb')
+		max-width: none
 
 	+media('<tab-lg')
 		+padding-horizontal($text-layout-space-horizontal--md)
@@ -494,26 +512,26 @@
 // выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
 // и их максимальная ширина
 .layout-article
-	padding: round($text-layout-space-horizontal) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5)
+	padding: $text-layout-space-horizontal #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5)
 
 	+media('<desk-hd')
-		padding: round($text-layout-space-horizontal--lg) #{$text-layout-space-horizontal--lg} round($text-layout-space-horizontal--lg*1.5)
+		padding: $text-layout-space-horizontal--lg #{$text-layout-space-horizontal--lg} round($text-layout-space-horizontal--lg*1.5)
 
 	.ea-has-catalog-menu &
 		+media('<desk-md')
-			padding-top: round($text-layout-space-horizontal--lg)
+			padding-top: $text-layout-space-horizontal--lg
 
 	+media('<tab-lg')
 		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} round($text-layout-space-horizontal--md*2)
 
 		.ea-has-catalog-menu &
-			padding-top: round($text-layout-space-horizontal--md)
+			padding-top: $text-layout-space-horizontal--md
 
 	+media('<tab-sm')
 		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*2)
 
 		.ea-has-catalog-menu &
-			padding-top: round($text-layout-space-horizontal--sm)
+			padding-top: $text-layout-space-horizontal--sm
 
 	p, ul, ol, h2, h3, h4, h5, h6, hr, .layout-text
 		max-width: $text-layout-width
@@ -550,6 +568,59 @@
 
 		p, ul, ol, h1, h2, h3, h4, h5, h6, hr
 			max-width: none
+
+	// убрать ограничение по ширине
+	p, ul, ol, h2, h3, h4, h5, h6, hr, .layout-text, .layout-flood, .layout-wide, .layout-full-width
+		+media('<desk-sb')
+			max-width: none
+
+.layout-space-hz
+	+padding-horizontal($text-layout-space-horizontal)
+
+	+media('<desk-hd')
+		+padding-horizontal($text-layout-space-horizontal--lg)
+
+	+media('<tab-lg')
+		+padding-horizontal($text-layout-space-horizontal--md)
+
+	+media('<tab-sm')
+		+padding-horizontal($text-layout-space-horizontal--sm)
+
+.layout-space-vr
+	+padding-vertical(round($text-layout-space-horizontal*1))
+
+	+media('<desk-hd')
+		+padding-vertical(round($text-layout-space-horizontal--lg*1))
+
+	+media('<tab-lg')
+		+padding-vertical(round($text-layout-space-horizontal--md*1))
+
+	+media('<tab-sm')
+		+padding-vertical(round($text-layout-space-horizontal--sm*1))
+
+.layout-top-fit
+	margin-top: -$text-layout-space-horizontal
+
+	+media('<desk-hd')
+		margin-top: -$text-layout-space-horizontal--lg
+
+	+media('<tab-lg')
+		margin-top: -#{round($text-layout-space-horizontal--md*1.5)}
+
+	+media('<tab-sm')
+		margin-top: -#{round($text-layout-space-horizontal--sm*1.5)}
+
+.layout-bottom-fit
+	margin-bottom: -#{round($text-layout-space-horizontal*1.5)}
+
+	+media('<desk-hd')
+		margin-bottom: -#{round($text-layout-space-horizontal--lg*1.5)}
+
+	+media('<tab-lg')
+		margin-bottom: -#{round($text-layout-space-horizontal--md*2)}
+
+	+media('<tab-sm')
+		margin-bottom: -#{round($text-layout-space-horizontal--sm*2)}
 
 .user-form
 	padding: $text-layout-space-horizontal

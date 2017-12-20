@@ -1,5 +1,5 @@
 @@include('_layout_head.tpl', {
-	"title": "ЭA - Корзина. Шаг 1",
+	"title": "ЭA - Корзина. Шаг 2",
 	"pageClass": "ea-site",
 	"ea": "true"
 })
@@ -33,46 +33,35 @@
 									<h1>Корзина</h1>
 									<!--order steps-->
 									<ul class="order-steps">
-										<li class="active">
+										<li>
 											<span>Корзина</span>
 										</li>
 										<li>
 											<span>Оформление <br> заказа</span>
 										</li>
-										<li>
+										<li class="active">
 											<span>Заказ <br> оформлен</span>
 										</li>
 									</ul>
 									<!--order steps end-->
 								</div>
-								<form action="automatic-basket-02.html" method="post">
-									<div class="layout-wide">
-										<!--products basket-->
-										<div class="products-basket">
-											<section class="products-basket__list">
-												<header class="products-basket__item products-basket__head">
-													<div class="products-basket__cell products-basket__product">Наименование</div>
-													<div class="products-basket__cell products-basket__price">Цена, руб.</div>
-													<div class="products-basket__cell products-basket__amount">Количество, шт.</div>
-													<div class="products-basket__cell products-basket__sum">Сумма, руб.</div>
-													<div class="products-basket__cell products-basket__remove">&nbsp;</div>
-												</header>
-												@@loop("_tpl_basket-items.tpl", "includes-json/_tpl_basket-items.json")
-											</section>
-										</div>
-										<div class="product-basket__total">
-											<div class="label">Итого:</div>
-											<div class="total-price">84 937 руб. (без НДС)</div>
-										</div>
-										<div class="product-basket__footer">
-											<div class="arr-wrap">
-												<a href="automatic-basket-02.html" class="btn-outline"><i>&nbsp;</i><span>Оформить заказ</span></a>
-												<a href="automatic-catalog.html" class="btn-outline-alt btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+								<div class="completion-form">
+									<div class="layout-text">
+										<!--completion-->
+										<div class="completion">
+											<div class="completion__figure">&nbsp;</div>
+											<div class="completion__title">Ваш заказ № 4568 принят!</div>
+											<div class="completion__note">Ожидайте звонка менеджера. Если звонок не поступил в течении часа, пожалуйста, перезвоните по телефону <b class="nobr"><a href="tel:+375 28 589-56-84">+375 28 589-56-84</a></b>. Заказ можно просмотреть в <a href="automatic-personal.html" class="nobr">личном кабинете</a>.
 											</div>
 										</div>
-										<!--products basket end-->
+										<!--completion end-->
+										<div class="product-basket__footer">
+											<div class="arr-wrap">
+												<a href="automatic-catalog.html" class="btn-outline-alt btn-with-arrow"><i>&nbsp;</i><span>вернуться к каталогу</span></a>
+											</div>
+										</div>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
