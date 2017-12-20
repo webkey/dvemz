@@ -3077,7 +3077,8 @@ input[type="radio"]:disabled ~ i::after {
 /*select end*/
 /* add field */
 .add-field {
-	display: block;
+	display: inline-block;
+	vertical-align: top;
 	position: relative;
 	padding-left: 38px;
 	height: 24px;

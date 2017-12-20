@@ -160,17 +160,19 @@ function inputToggleFocusClass() {
 	var $fieldWrap = $('.field-effects-js');
 
 	if ($fieldWrap.length) {
-		var $inputsAll = $fieldWrap.find('input[type="password"], input[type="email"], input[type="search"], :text, textarea, select');
+		var inputsAll = 'input[type="password"], input[type="email"], input[type="search"], :text, textarea, select';
 		var _classFocus = 'input--focus';
 
-		$inputsAll.focus(function () {
+		$fieldWrap.on('focus', inputsAll, function () {
 			var $thisField = $(this);
 
 			$thisField
 				.closest('.input-wrap')
 				.addClass(_classFocus);
 
-		}).blur(function () {
+		});
+
+		$fieldWrap.on('blur', inputsAll, function () {
 			var $thisField = $(this);
 
 			$thisField
@@ -185,7 +187,8 @@ function inputHasValueClass() {
 	var $fieldWrap = $('.field-effects-js');
 
 	if ($fieldWrap.length) {
-		var $inputsAll = $fieldWrap.find('input[type="password"], input[type="email"], input[type="search"], :text, textarea, select');
+		var inputsAll = 'input[type="password"], input[type="email"], input[type="search"], :text, textarea, select';
+		var $inputsAll = $fieldWrap.find(inputsAll);
 		var classHasValue = 'input--has-value';
 
 		$.each($inputsAll, function () {
@@ -196,7 +199,7 @@ function inputHasValueClass() {
 		// 	switchHasValue.call(this);
 		// });
 
-		$inputsAll.on('keyup change', function () {
+		$fieldWrap.on('keyup change', inputsAll, function () {
 			switchHasValue.call(this);
 		});
 
@@ -3358,7 +3361,6 @@ function addNewField() {
 	var $addFieldBtn = $('.add-field-js');
 
 	function addField($element) {
-		console.log("$element: ", $element);
 		$element.prev().append(
 			$('script[data-template="field-tpl"]').html()
 		);
@@ -3370,8 +3372,6 @@ function addNewField() {
 		event.preventDefault();
 		var $this = $(this);
 		addField($this);
-
-		// $(this).trigger('attendee:add');
 	});
 
 	$container.on('click', '.remove-field-js', function (event) {
