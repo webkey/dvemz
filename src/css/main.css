@@ -4061,7 +4061,7 @@ input[type="radio"]:disabled ~ i::after {
 
 @media (max-width: 767px) {
 	.layout-article {
-		padding: 30px 20px 40px;
+		padding: 30px 20px 60px;
 	}
 	.ea-has-catalog-menu .layout-article {
 		padding-top: 20px;
@@ -4207,23 +4207,27 @@ input[type="radio"]:disabled ~ i::after {
 
 .layout-bottom-fit {
 	margin-bottom: -90px;
+	margin-top: 90px;
 }
 
 @media (max-width: 1919px) {
 	.layout-bottom-fit {
 		margin-bottom: -60px;
+		margin-top: 60px;
 	}
 }
 
 @media (max-width: 979px) {
 	.layout-bottom-fit {
 		margin-bottom: -60px;
+		margin-top: 60px;
 	}
 }
 
 @media (max-width: 767px) {
 	.layout-bottom-fit {
 		margin-bottom: -40px;
+		margin-top: 60px;
 	}
 }
 
@@ -13990,6 +13994,47 @@ li.is-open > .catalog-menu__tab .catalog-menu__angle i::before, li.is-open > .ca
 
 .p-card__gallery.fotorama--fullscreen .fotorama__thumb-border {
 	border-radius: 0;
+}
+
+/* fotorama end */
+/* fotorama */
+#toast-container > .toast-info {
+	background: #f3f3f3 !important;
+	border: 1px solid #ccc;
+}
+
+#toast-container > div, #toast-container > div:hover {
+	padding: 17px 20px;
+	border-radius: 0;
+	box-shadow: none;
+	opacity: 1;
+	color: black;
+}
+
+.toast-bottom-left {
+	bottom: 40px;
+	left: 120px;
+}
+
+.toast-title {
+	font-family: "proximanova-bold", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 20px;
+	line-height: 24px;
+	margin-bottom: 5px;
+}
+
+.toast-title:last-child {
+	margin-bottom: 0;
+}
+
+.toast-message {
+	font-family: "proximanova-light", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 18px;
+	line-height: 24px;
 }
 
 /* fotorama end */

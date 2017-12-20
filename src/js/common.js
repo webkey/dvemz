@@ -3389,6 +3389,22 @@ function addNewField() {
 }
 
 /**
+ * init non-blocking notifications
+ */
+// (function () {
+// 	var addToCartMsg = {
+// 		'title': 'Корзина',
+// 		'text': 'Количество товара обновлено'
+// 	};
+// 	toastr.options = {
+// 		"closeButton": false,
+// 		"positionClass": "toast-bottom-left",
+// 		"timeOut": "2000"
+// 	};
+// 	toastr.info(addToCartMsg.text, addToCartMsg.title);
+// })()
+
+/**
  * !footer at bottom
  * */
 (function () {

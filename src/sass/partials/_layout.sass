@@ -528,7 +528,7 @@
 			padding-top: $text-layout-space-horizontal--md
 
 	+media('<tab-sm')
-		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*2)
+		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--md*2)
 
 		.ea-has-catalog-menu &
 			padding-top: $text-layout-space-horizontal--sm
@@ -612,15 +612,19 @@
 
 .layout-bottom-fit
 	margin-bottom: -#{round($text-layout-space-horizontal*1.5)}
+	margin-top: round($text-layout-space-horizontal*1.5)
 
 	+media('<desk-hd')
 		margin-bottom: -#{round($text-layout-space-horizontal--lg*1.5)}
+		margin-top: round($text-layout-space-horizontal--lg*1.5)
 
 	+media('<tab-lg')
 		margin-bottom: -#{round($text-layout-space-horizontal--md*2)}
+		margin-top: round($text-layout-space-horizontal--md*2)
 
 	+media('<tab-sm')
 		margin-bottom: -#{round($text-layout-space-horizontal--sm*2)}
+		margin-top: round($text-layout-space-horizontal--md*2)
 
 .user-form
 	padding: $text-layout-space-horizontal

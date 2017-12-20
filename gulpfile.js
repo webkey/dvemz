@@ -84,6 +84,7 @@ gulp.task('mergeCssLibs', ['addFotoramaCss'], function () { // Таск для �
 		// , 'src/libs/jquery-ui/themes/base/button.css'
 		// , 'src/libs/jquery-ui/themes/base/checkboxradio.css'
 		, 'src/libs/jquery-ui/themes/base/spinner.css'
+		, 'src/libs/toastr/toastr.min.css' // non-blocking notifications
 		// , 'src/libs/jquery-ui/themes/base/theme.css'
 		// , 'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
@@ -122,6 +123,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/fotorama/fotorama.js'
 		, 'src/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js'
 		, 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
+		, 'src/libs/toastr/toastr.min.js' // non-blocking notifications
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))
