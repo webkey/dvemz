@@ -85,6 +85,7 @@ gulp.task('mergeCssLibs', ['addFotoramaCss'], function () { // Таск для �
 		// , 'src/libs/jquery-ui/themes/base/checkboxradio.css'
 		, 'src/libs/jquery-ui/themes/base/spinner.css'
 		, 'src/libs/toastr/toastr.min.css' // non-blocking notifications
+		, 'src/libs/magnific-popup/dist/magnific-popup.css' // Magnific Popup - v1.1.0 - 2016-02-20 http://dimsemenov.com/plugins/magnific-popup/
 		// , 'src/libs/jquery-ui/themes/base/theme.css'
 		// , 'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
@@ -105,8 +106,11 @@ gulp.task('createCustomModernizr', function (done) { // Таск для форм
 
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск для мераж js библиотек
 	return gulp.src([
-		'src/libs/device.js/lib/device.min.js' // определение устройств
 		, 'src/libs/jquery-mousewheel/jquery.mousewheel.min.js' // mousewheel
+		// jquery ui
+		, 'src/libs/jquery-ui/jquery-ui.min.js'
+		// jquery ui end
+		, 'src/libs/device.js/lib/device.min.js' // определение устройств
 		, 'src/js/temp/filer.min.js' // инпут файл
 		, 'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
 		, 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
@@ -117,13 +121,11 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/fullpage.js/dist/jquery.fullpage.min.js' // скрипт для постраничной прокрутки
 		, 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
 		, 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
-		// jquery ui
-		, 'src/libs/jquery-ui/jquery-ui.min.js'
-		// jquery ui end
 		, 'src/libs/fotorama/fotorama.js'
 		, 'src/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js'
 		, 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
 		, 'src/libs/toastr/toastr.min.js' // non-blocking notifications
+		, 'src/libs/magnific-popup/dist/jquery.magnific-popup.min.js' // Magnific Popup - v1.1.0 - 2016-02-20 http://dimsemenov.com/plugins/magnific-popup/
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))

@@ -423,10 +423,19 @@
 	max-width: $page-layout-width
 
 .layout
-	+padding-horizontal($page-layout-space-horizontal)
+	+padding-horizontal($text-layout-space-horizontal)
 	+push-auto
 
-	.main &, .header &
+	+media('<desk-hd')
+		+padding-horizontal($text-layout-space-horizontal--lg)
+
+	+media('<tab-lg')
+		+padding-horizontal($text-layout-space-horizontal--md)
+
+	+media('<tab-sm')
+		+padding-horizontal($text-layout-space-horizontal--sm)
+
+	.main &, .header &, .footer &
 		padding: 0
 
 	+media('<tab-lg')

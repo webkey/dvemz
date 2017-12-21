@@ -8,7 +8,13 @@
 		background: $bg-color-alt !important
 		border: 1px solid $border-color
 
+	+media('<mob-md')
+		width: 100%
+
 	& > div
+		width: auto
+		max-width: 320px
+
 		&, &:hover
 			padding: 17px 20px
 			border-radius: 0
@@ -16,14 +22,35 @@
 			opacity: 1
 			color: $text-color
 
+			+media('<mob-md')
+				padding: 8px 15px
+
+		@media (max-width: 768px) and (min-width: 481px)
+			width: auto
+			max-width: 240px
+
+		+media('<mob-md')
+			width: 100%
+			max-width: none
+
 .toast-bottom-left
-	bottom: 40px
-	left: $sidebar-width + 40
+	bottom: 14px
+	left: $sidebar-width + 20
+
+	+media('<tab-lg')
+		left: 20px
+
+	+media('<mob-md')
+		left: 0
+		bottom: -6px
 
 .toast-title
 	+font-bold
 	+font(20px, 24px)
 	margin-bottom: 5px
+
+	+media('<mob-md')
+		+font(18px, 22px)
 
 	&:last-child
 		margin-bottom: 0
@@ -31,5 +58,8 @@
 .toast-message
 	+font-normal
 	+font(18px, 24px)
+
+	+media('<mob-md')
+		+font(16px, 20px)
 
 /* fotorama end

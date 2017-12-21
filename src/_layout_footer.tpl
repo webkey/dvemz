@@ -75,3 +75,5 @@
 		</div>
 	</div>
 </footer>
+
+@@include("_tpl_popups.tpl")

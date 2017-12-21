@@ -2023,6 +2023,19 @@ function popupsInit(){
 		$searchPopup.trigger('extraPopupClose');
 		$catalogMenuPopup.trigger('extraPopupClose');
 	});
+
+	var btnCloseTpl = '<button title="%title%" type="button" class="mfp-close"><svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 57.2 57.2"><path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path></svg></button>';
+
+	$('.btn-popup-js').magnificPopup({
+		type: 'inline',
+		midClick: true, // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.,
+		// closeOnContentClick: false,
+		mainClass: 'mfp-zoom-in',
+		removalDelay: 500,
+		fixedContentPos: 'auto',
+		overflowY: 'auto',
+		closeMarkup: btnCloseTpl,
+	});
 }
 /*extra popup initial end*/
 
@@ -3399,10 +3412,10 @@ function addNewField() {
 // 	toastr.options = {
 // 		"closeButton": false,
 // 		"positionClass": "toast-bottom-left",
-// 		"timeOut": "2000"
+// 		"timeOut": "222000"
 // 	};
 // 	toastr.info(addToCartMsg.text, addToCartMsg.title);
-// })()
+// })();
 
 /**
  * !footer at bottom

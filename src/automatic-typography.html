@@ -957,6 +957,12 @@
 										</p>
 									</div>
 									<!--entry-text end-->
+									<!--btn-popup-->
+									<div class="layout-text">
+										<a href="#msg-popup" class="btn-default btn-popup-js">Открыть попап "Написать нам"</a>
+									</div>
+									<!--btn-popup end-->
+									<div class="user-spacer">&nbsp;</div>
 									<!--paragraphs-->
 									<p>В этой статье будут рассмотрены <a href="#">основные аспекты современной веб-типографики</a>, которые помогут вам определиться при выборе <a href="#">шрифта</a> и способов оформления текста.</p>
 									<p>Высота <a href="#">строчных букв</a> без выносных элементов — это расстояние от базовой до верхней линии шрифта, иначе говоря — величина очка строчных. Выбирая шрифты, которые вы хотите использовать при оформлении совместно, нужно следить, чтобы
@@ -2274,7 +2280,7 @@
 											padding: 18px 0 0;
 											background-color: white;
 											box-shadow: 2px 2px 35px rgba(0, 0, 0, 0.2);
-											z-index: 99999;
+											z-index: 999;
 											font-size: 14px;
 											line-height: 1.4;
 											/*counter-reset: items;*/
@@ -5035,6 +5041,43 @@
 			</div>
 		</div>
 	</footer>
+	<!--message popup-->
+	<div id="msg-popup" class="default-popup mfp-with-anim mfp-hide">
+		<div class="default-popup__content">
+			<div class="default-popup__title">Написать нам</div>
+			<div class="msg-form">
+				<form action="#" method="post">
+					<div class="input-wrap light-form field-effects-js">
+						<div class="label-holder">
+							<label for="msg-form-email-field">Электронная почта</label>
+						</div>
+						<input type="email" id="msg-form-email-field" />
+					</div>
+					<div class="input-wrap light-form field-effects-js">
+						<div class="label-holder">
+							<label for="msg-form-name-field">Имя</label>
+						</div>
+						<input type="text" id="msg-form-name-field" />
+					</div>
+					<div class="input-wrap light-form field-effects-js">
+						<div class="label-holder">
+							<label for="msg-form-phone-field">Телефон</label>
+						</div>
+						<input type="text" id="msg-form-phone-field" />
+					</div>
+					<div class="input-wrap light-form field-effects-js">
+						<div class="label-holder">
+							<label for="msg-form-comment-field">Ваш комментарий</label>
+						</div>
+						<textarea id="msg-form-comment-field"></textarea>
+					</div>
+					<div class="form-buttons">
+						<button class="btn-default btn-submit">Отправить сообщение</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<!--footer end-->
 	<!--Map-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnFqiG7GVEuZZeE5XCILGj1Tqz1KOMye8&sensor=false&extension=.js&language=ru"></script>

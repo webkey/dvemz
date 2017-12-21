@@ -17,6 +17,12 @@
 		</p>
 	</div>
 
+}@@if(context.component === "popupOpen") {
+
+	<div class="layout-text">
+		<a href="#msg-popup" class="btn-default btn-popup-js">Открыть попап "Написать нам"</a>
+	</div>
+
 }@@if(context.component === "paragraphs") {
 
 	<p>В этой статье будут рассмотрены <a href="#">основные аспекты современной веб-типографики</a>, которые помогут вам определиться при выборе <a href="#">шрифта</a> и способов оформления текста.</p>
