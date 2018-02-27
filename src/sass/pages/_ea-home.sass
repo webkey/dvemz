@@ -19,23 +19,6 @@ $ea-main-section-max-width-lg: 960px !default
 .ea-main-section
 	position: relative
 
-	&:not(.ea-main-section--entry)
-		height: auto !important
-
-	.touchevents &
-		height: auto !important
-		transform: none !important
-		transition-duration: 0s !important
-
-		+media('<tab-lg')
-			height: auto !important
-			transform: none !important
-			transition-duration: 0s !important
-
-	+media('<tab-lg')
-		height: auto !important
-		min-height: 0 !important
-
 .ea-main-section__container
 	position: relative
 
@@ -116,10 +99,12 @@ $ea-main-section-max-width-lg: 960px !default
 /* ea main section footer
 .ea-main-section__footer
 	text-align: center
+
 /* ea main section footer end
 
 /* ea main sections with background image
-.ea-main-section--entry, .ea-main-section--news
+//.ea-main-section--entry, .ea-main-section--news
+.ea-main-section--news
 	.ea-main-section__container
 		background: #f3f3f3 no-repeat center
 		background-size: cover
@@ -136,7 +121,7 @@ $ea-main-section-max-width-lg: 960px !default
 /*ea main sections with background image end
 
 /*ea main section entry
-.ea-main-section--entry
+//.ea-main-section--entry
 	color: white
 	min-height: 100vh
 
@@ -211,14 +196,22 @@ $ea-main-section-max-width-lg: 960px !default
 
 /*ea main section entry end
 
-/* ea-main-section--promo
-.ea-main-section--promo
+/* ea-main-section--main-slider
+.ea-main-section--main-slider
+
 	.ea-main-section__align
+
 		+media('<mob-lg')
 			+padding-horizontal(0)
 			padding-top: 0 !important
 
-/* ea-main-section--promo end
+	&:first-child .ea-main-section__align
+		padding-top: 20px
+
+	.ea-main-section__layout
+		max-width: none
+
+/* ea-main-section--main-slider end
 
 /*ea main section news
 .ea-main-section--news
@@ -240,7 +233,7 @@ $odds-space--md: 15px
 $odds-icon-size: 60px !default
 $odds-icon-size--md: 40px !default
 
-.odds
+//.odds
 	+media('>=tab-lg')
 		position: absolute
 		left: 0
@@ -257,15 +250,15 @@ $odds-icon-size--md: 40px !default
 	+media('<tab-sm')
 		display: none
 
-.odds__list
+//.odds__list
 	+grid-parent($odds-space)
 	+clear-spacing
 
-.odds__item
+//.odds__item
 	+grid-item(3, $odds-space)
 	letter-spacing: normal
 
-.odds__inner
+//.odds__inner
 	padding: $odds-space
 	background-color: rgba(0, 0, 0, 0.50)
 	color: white
@@ -280,7 +273,7 @@ $odds-icon-size--md: 40px !default
 		vertical-align: middle
 		height: 100%
 
-.odds__item
+//.odds__item
 
 	svg
 		+display-inline-block-middle
@@ -294,7 +287,7 @@ $odds-icon-size--md: 40px !default
 	path
 		fill: inherit
 
-.odds__title
+//.odds__title
 	+font-alt-bold
 	+font(14px, round-float(20/14, 2))
 	letter-spacing: 0.05em
@@ -314,7 +307,7 @@ $odds-icon-size--md: 40px !default
 
 /* ea-promo
 /* ea-promo slider: banners
-.ea-promo-banners
+//.ea-promo-banners
 	// before slide load
 	white-space: nowrap
 	overflow: hidden
@@ -330,7 +323,7 @@ $odds-icon-size--md: 40px !default
 		visibility: visible
 		// after slide load end
 
-.ea-promo-banners__item
+//.ea-promo-banners__item
 	// before slide load
 	float: none
 	display: inline-block
@@ -368,7 +361,7 @@ $odds-icon-size--md: 40px !default
 /* ea-promo slider: banners end
 
 /* ea-promo slider: thumbs
-.ea-promo-thumbs
+//.ea-promo-thumbs
 	// before slide load
 	white-space: nowrap
 	overflow: hidden
@@ -389,7 +382,7 @@ $odds-icon-size--md: 40px !default
 		.slick-list
 			+margin-horizontal(-5px)
 
-.ea-promo-thumbs__item
+//.ea-promo-thumbs__item
 	// before slide load
 	float: none
 	display: inline-block
@@ -442,6 +435,97 @@ $odds-icon-size--md: 40px !default
 
 /* ea-promo slider: thumbs end
 /* ea-promo end
+
+/* ea-main-slider
+.ea-main-slider
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	opacity: 0
+	visibility: hidden
+	max-width: 1200px
+	// before slide load end
+
+	&, &.slick-dotted
+		margin: 0 auto
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		opacity: 1
+		visibility: visible
+		// after slide load end
+
+	.slick-list
+		overflow: visible
+
+	.slick-dots
+		bottom: 16px
+
+		li
+
+			&, .#{$user-content} &
+				padding: 4px 15px
+
+			button
+				width: 10px
+				height: 10px
+				border-radius: 0
+
+				&, .ea-site &
+					background-color: $base-color-alt--ea
+
+				&::before
+					left: 0
+					top: 0
+					height: 100%
+					width: 100%
+					border-radius: 0
+					box-shadow: none
+
+.ea-main-slider__item
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	opacity: 0.5
+	// before slide load end
+	transition:
+		property: opacity
+		duration: $animation-speed
+
+	text-decoration: none
+	position: relative
+
+	&.slick-current
+		opacity: 1
+
+	+media('<mob-lg')
+		border-width: 4px
+
+	.slick-initialized &, .no-js &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+	&::before
+		content: ""
+		display: block
+		position: relative
+		+ratio(1200, 472)
+
+	img
+		display: block
+		position: absolute
+		+position(0)
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(cover)
+
+/* ea-main-slider end
 
 /* share
 .share

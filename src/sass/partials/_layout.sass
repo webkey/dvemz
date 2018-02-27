@@ -18,6 +18,9 @@
 	clear: both
 	z-index: 4
 
+	.top-panel--fixed ~ &
+		padding-top: $top-panel-height
+
 .main__holder
 	width: 100%
 	+clear
@@ -90,11 +93,9 @@
 		width: calc(#{$base-width} - #{$sidebar-width-alt})
 
 	// альтернативна верхняя панель (с полупрозрачным градиентным фоном)
-	&.top-panel--alt
+	&.top-panel--alt,
+	&.top-panel--fixed
 		position: fixed
-		//left: $header-width
-		//width: calc(100% - #{$sidebar-width} - #{$header-width} - #{$catalog-categories-width--full})
-		//margin: 0
 
 	// верхняя панель (автоматика) для всех страниц
 	.ea-site &

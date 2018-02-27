@@ -1,4 +1,4 @@
-<aside class="top-panel@@if (context.alt) { top-panel--alt}">
+<aside class="top-panel@@if (context.alt) { top-panel--alt}@@if (context.fixed) { top-panel--fixed}">
 	<div class="top-panel-holder">
 		<div class="logo-alt">
 			<a href="automatic-index.html">
