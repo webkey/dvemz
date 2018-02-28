@@ -97,6 +97,9 @@
 	&.top-panel--fixed
 		position: fixed
 
+	&.top-panel--fixed
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15)
+
 	// верхняя панель (автоматика) для всех страниц
 	.ea-site &
 		width: calc(#{$base-width} - #{$catalog-categories-width--full})
@@ -304,7 +307,7 @@
 
 .ea-main-section__align, .ea-contacts__panel
 	+padding-horizontal(#{$text-layout-space-horizontal})
-	padding-bottom: round($text-layout-space-horizontal*1.5)
+	padding-bottom: round($text-layout-space-horizontal)
 
 	+media('<desk-hd')
 		+padding-horizontal(#{$text-layout-space-horizontal--lg})

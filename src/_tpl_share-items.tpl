@@ -7,6 +7,9 @@
 			@@if (context.hit) {
 			<div class="share-list__label label-hit">@@hit</div>
 			}
+			@@if (context.new) {
+			<div class="share-list__label label-new">@@new</div>
+			}
 		</div>
 		<div class="share-list__content">
 			<div class="share-list__img">

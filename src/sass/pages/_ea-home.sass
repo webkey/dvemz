@@ -26,7 +26,7 @@ $ea-main-section-max-width-lg: 960px !default
 
 .ea-main-section__layout
 	position: relative
-	max-width: $flood-layout-width
+	max-width: $flood-layout-width--ea
 	+push-auto
 	text-align: left
 
@@ -99,6 +99,13 @@ $ea-main-section-max-width-lg: 960px !default
 /* ea main section footer
 .ea-main-section__footer
 	text-align: center
+
+	.btn-outline
+		display: block
+		border: 1px solid $border-color
+
+		.no-touchevents &:hover
+			border-color: $base-color--ea
 
 /* ea main section footer end
 
@@ -198,6 +205,7 @@ $ea-main-section-max-width-lg: 960px !default
 
 /* ea-main-section--main-slider
 .ea-main-section--main-slider
+	overflow: hidden // обрезать боковые маски слайдера
 
 	.ea-main-section__align
 
@@ -209,7 +217,7 @@ $ea-main-section-max-width-lg: 960px !default
 		padding-top: 20px
 
 	.ea-main-section__layout
-		max-width: none
+		max-width: 1480px
 
 /* ea-main-section--main-slider end
 
@@ -457,6 +465,25 @@ $odds-icon-size--md: 40px !default
 		visibility: visible
 		// after slide load end
 
+	&::before,
+	&::after
+		content: ""
+		display: block
+		position: absolute
+		top: 0
+		height: 100%
+		width: 1000px
+		background-color: #fff
+		opacity: 0.5
+		z-index: 1
+		pointer-events: none
+
+	&::before
+		left: 100%
+
+	&::after
+		right: 100%
+
 	.slick-list
 		overflow: visible
 
@@ -472,37 +499,48 @@ $odds-icon-size--md: 40px !default
 				width: 10px
 				height: 10px
 				border-radius: 0
+				box-shadow: 0 0 3px rgba(255, 255, 255, 0.45)
 
 				&, .ea-site &
 					background-color: $base-color-alt--ea
 
 				&::before
-					left: 0
-					top: 0
-					height: 100%
-					width: 100%
+					$space: 1px
+					// =========
+					left: $space
+					top: $space
+					height: calc(100% - #{$space*2})
+					width: calc(100% - #{$space*2})
 					border-radius: 0
 					box-shadow: none
+					background-color: #fff
+
+				// hover
+				//.no-touchevents &:hover
+					$space: 2px
+					// ==========
+					&::before
+						left: $space
+						top: $space
+						height: calc(100% - #{$space*2})
+						width: calc(100% - #{$space*2})
+
+	.slick-arrow
+		+size(50px)
+		background-color: #fff
 
 .ea-main-slider__item
 	// before slide load
 	float: none
 	display: inline-block
 	vertical-align: top
-	opacity: 0.5
 	// before slide load end
+	color: white
+	text-decoration: none
+	position: relative
 	transition:
 		property: opacity
 		duration: $animation-speed
-
-	text-decoration: none
-	position: relative
-
-	&.slick-current
-		opacity: 1
-
-	+media('<mob-lg')
-		border-width: 4px
 
 	.slick-initialized &, .no-js &
 		// after slide load
@@ -516,16 +554,74 @@ $odds-icon-size--md: 40px !default
 		position: relative
 		+ratio(1200, 472)
 
+.ea-main-slider__inner
+	display: flex
+	position: absolute
+	left: 0
+	top: 0
+	+size(100%)
+
 	img
 		display: block
-		position: absolute
-		+position(0)
 		width: 100%
 		height: 100%
 		max-width: none
 		+object-fit(cover)
 
+.ea-main-slider__info,
+.ea-main-slider__img
+	height: 100%
+	flex: 1 1 50%
+
+.ea-main-slider__info
+	background-color: $base-color-alt--ea
+	padding: 3.5% 60px 6.5%
+
+	&.align-right
+		text-align: left
+		order: 1
+
+	.btn-default
+		text-transform: uppercase
+		min-width: 224px
+
+.ea-main-slider__info__layout
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	align-items: flex-start
+	margin: 0 auto
+	height: 100%
+	max-width: 430px
+
+.ea-main-slider__title
+	+font-black
+	+font(54px, 1)
+	text-transform: uppercase
+	margin-bottom: 0.3em
+
+	+media('<desk-hd')
+		font-size: 2.8vw
+
+	+media('<desk-md')
+		font-size: 3.5vw
+
+.ea-main-slider__text
+	+font(19px, round-float(27/19, 2))
+	text-transform: uppercase
+	margin-bottom: 0.5em
+
+	+media('<desk-hd')
+		font-size: 1vw
+
+	+media('<desk-md')
+		font-size: 1.5vw
+
 /* ea-main-slider end
+
+.ea-main-section--share
+	.ea-main-section__layout
+		max-width: 1480px
 
 /* share
 .share
@@ -558,10 +654,9 @@ $odds-icon-size--md: 40px !default
 .share-nav__item
 	+display-inline-block-top
 	margin-right: -1px
-	+font-light
-	+font(13px, 18px)
-	letter-spacing: 0.05em
-	text-transform: uppercase
+	+font-bold
+	+font(18px, 24px)
+	letter-spacing: normal
 	text-align: center
 
 	a
@@ -570,7 +665,7 @@ $odds-icon-size--md: 40px !default
 		color: inherit
 		white-space: nowrap
 		text-decoration: none
-		padding: 10px 22px
+		padding: 12px 22px
 		min-width: 160px
 		border: 1px solid $border-color
 		background-color: white
@@ -586,8 +681,8 @@ $odds-icon-size--md: 40px !default
 		// active
 		&.active-tab
 			color: white
-			background-color: $base-color--ea
-			border-color: $base-color--ea
+			background-color: #666
+			border-color: #666
 			z-index: 1
 			cursor: default
 
@@ -618,6 +713,10 @@ $odds-icon-size--md: 40px !default
 	position: relative
 	border: solid $border-color
 	border-width: 1px 0
+	margin-bottom: 20px
+
+	&:last-child
+		margin-bottom: 0
 
 	&::before, &::after
 		+pseudo()
@@ -645,7 +744,7 @@ $odds-icon-size--md: 40px !default
 		bottom: 100%
 		transform: none
 		margin: 0 0 23px
-		+size(40px)
+		+size(50px)
 		border: 1px solid $border-color
 
 		+media('<mob-lg')
@@ -655,7 +754,7 @@ $odds-icon-size--md: 40px !default
 
 	.slick-prev
 		left: auto
-		right: 39px
+		right: 49px
 
 		+media('<mob-lg')
 			right: auto
@@ -715,7 +814,11 @@ $odds-icon-size--md: 40px !default
 	&.label-hit
 		background-color: $base-color-alt--ea
 		color: white
-		font-size: 12px
+		text-transform: uppercase
+
+	&.label-new
+		background-color: #85b700
+		color: white
 		text-transform: uppercase
 
 .share-list__content
@@ -754,6 +857,12 @@ $odds-icon-size--md: 40px !default
 	text-align: left
 	margin: 0 auto $bottom-space
 	max-width: 170px
+	transition:
+		property: color
+		duration: $animation-speed
+
+	.no-touchevents a:hover &
+		color: $link-color
 
 	&:last-child
 		margin-bottom: 0
@@ -772,6 +881,210 @@ $odds-icon-size--md: 40px !default
 		text-decoration: line-through
 
 /* share list end
+
+/* ea main section stock
+/* ea-stock-slider
+.ea-stock-slider
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	opacity: 0
+	visibility: hidden
+	max-width: 1200px
+	// before slide load end
+
+	&, &.slick-dotted
+		margin: 0 auto
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		opacity: 1
+		visibility: visible
+		// after slide load end
+
+	&::before,
+	&::after
+		content: ""
+		display: block
+		position: absolute
+		top: 0
+		height: 100%
+		width: 1000px
+		background-color: #fff
+		opacity: 0.5
+		z-index: 1
+		pointer-events: none
+
+	&::before
+		left: 100%
+
+	&::after
+		right: 100%
+
+	.slick-list
+		overflow: visible
+
+	.slick-dots
+		bottom: 16px
+
+		li
+
+			&, .#{$user-content} &
+				padding: 4px 15px
+
+			button
+				width: 10px
+				height: 10px
+				border-radius: 0
+				box-shadow: 0 0 3px rgba(255, 255, 255, 0.45)
+
+				&, .ea-site &
+					background-color: $base-color-alt--ea
+
+				&::before
+					$space: 1px
+					// =========
+					left: $space
+					top: $space
+					height: calc(100% - #{$space*2})
+					width: calc(100% - #{$space*2})
+					border-radius: 0
+					box-shadow: none
+					background-color: #fff
+
+	// hover
+	//.no-touchevents &:hover
+		$space: 2px
+		// ==========
+		&::before
+			left: $space
+			top: $space
+			height: calc(100% - #{$space*2})
+			width: calc(100% - #{$space*2})
+
+	.slick-arrow
+		top: auto
+		bottom: 100%
+		transform: none
+		margin: 0 0 23px
+		+size(50px)
+		border: 1px solid $border-color
+
+		+media('<mob-lg')
+			bottom: auto
+			top: 50%
+			margin: -20px 0 0
+
+	.slick-prev
+		left: auto
+		right: 49px
+
+		+media('<mob-lg')
+			right: auto
+			left: 0
+
+.ea-stock-slider__item
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+	color: white
+	text-decoration: none
+	position: relative
+	padding: 0 10px
+	transition:
+		property: opacity
+		duration: $animation-speed
+
+	.slick-initialized &, .no-js &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+	&::before
+		content: ""
+		display: block
+		position: relative
+		+ratio(580, 334)
+
+.ea-stock-slider__inner
+	position: absolute
+	left: 10px
+	top: 0
+	+size(calc(100% - 20px), 100%)
+	text-decoration: none
+	color: white
+
+	img
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(cover)
+
+.ea-stock-slider__info,
+.ea-stock-slider__img
+	position: absolute
+	left: 0
+	top: 0
+	height: 100%
+	width: 100%
+
+.ea-stock-slider__info
+	background-color: rgba(0, 0, 0, 0.54)
+	padding: 40px
+	z-index: 1
+
+	&.align-right
+		text-align: left
+		order: 1
+
+	.btn-outline, .btn-default
+		text-transform: uppercase
+		min-width: 165px
+
+	.btn-outline
+		border-color: white
+		border-width: 2px
+		color: white
+
+.ea-stock-slider__info__layout
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	align-items: flex-start
+	margin: 0 auto
+	height: 100%
+
+.ea-stock-slider__title
+	+font-black
+	+font(24px, round-float(30/24, 2))
+	text-transform: uppercase
+	margin-bottom: 0.3em
+
+	//+media('<desk-hd')
+		font-size: 2.8vw
+
+	//+media('<desk-md')
+		font-size: 3.5vw
+
+.ea-stock-slider__text
+	+font(18px, round-float(22/18, 2))
+	text-transform: uppercase
+	margin-bottom: 0.4em
+
+	//+media('<desk-hd')
+		font-size: 1vw
+
+	//+media('<desk-md')
+		font-size: 1.5vw
+
+/* ea-stock-slider end
+/* ea main section stock end
 
 /* ea main section news
 .ea-main-section--contacts

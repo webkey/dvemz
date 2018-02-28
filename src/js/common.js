@@ -413,10 +413,10 @@ function slidersInit() {
 	}
 
 	//ea promo slider
-	// var $eaPromoSlider = $('.ea-promo-slider-js');
+	// var $eaStockSlider = $('.ea-promo-slider-js');
 	//
-	// if($eaPromoSlider.length){
-	// 	$eaPromoSlider.each(function () {
+	// if($eaStockSlider.length){
+	// 	$eaStockSlider.each(function () {
 	// 		var $currentSlider = $(this);
 	// 		var $banners = $currentSlider.find('.ea-promo-banners-js');
 	// 		var $thumbs = $currentSlider.find('.ea-promo-thumbs-js');
@@ -473,7 +473,7 @@ function slidersInit() {
 	// 	});
 	// }
 
-	//ea promo slider
+	//ea main slider
 	var $eaPromoSlider = $('.ea-main-slider-js');
 
 	if($eaPromoSlider.length){
@@ -486,6 +486,32 @@ function slidersInit() {
 				speed: dur,
 				slidesToShow: 1,
 				slidesToScroll: 1,
+				infinite: true,
+				dots: false,
+				arrows: true,
+
+				accessibility: true
+				// draggable: false,
+				// swipe: false,
+				// touchMove: false
+			});
+
+		});
+	}
+
+	//ea stock slider
+	var $eaStockSlider = $('.ea-stock-slider-js');
+
+	if($eaStockSlider.length){
+		$eaStockSlider.each(function () {
+			var $currentSlider = $(this);
+			var dur = 300;
+
+			$currentSlider.slick({
+				// fade: true,
+				speed: dur,
+				slidesToShow: 2,
+				slidesToScroll: 2,
 				infinite: true,
 				dots: true,
 				arrows: true,
