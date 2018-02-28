@@ -26,7 +26,7 @@
 				<div class="content-wrap">
 					<div class="content">
 						<div class="ea-main-sections ea-main-sections-js">
-							<section class="ea-main-section ea-full-page-js ea-main-section--main-slider">
+							<section class="ea-main-section ea-main-section--main-slider">
 								<div class="ea-main-section__container">
 									<div class="ea-main-section__align">
 										<div class="ea-main-section__layout">
@@ -99,7 +99,7 @@
 									</div>
 								</div>
 							</section>
-							<section class="ea-main-section ea-full-page-js ea-main-section--share">
+							<section class="ea-main-section ea-main-section--share">
 								<div class="ea-main-section__container">
 									<div class="ea-main-section__align">
 										<div class="ea-main-section__layout">
@@ -147,7 +147,7 @@
 									</div>
 								</div>
 							</section>
-							<section class="ea-main-section ea-full-page-js ea-main-section--stock">
+							<section class="ea-main-section ea-main-section--stock">
 								<div class="ea-main-section__container">
 									<div class="ea-main-section__align">
 										<div class="ea-main-section__layout">
@@ -189,7 +189,7 @@
 													<div class="ea-stock-slider__item">
 														<a href="automatic-catalog.html" class="ea-stock-slider__inner">
 															<div class="ea-stock-slider__img">
-																<img src="img/img-promo-ea-01.jpg" alt="image description" />
+																<img src="img/__temp-img-content-carousel-04.jpg" alt="image description" />
 															</div>
 														</a>
 													</div>
@@ -199,15 +199,54 @@
 									</div>
 								</div>
 							</section>
-							<section class="ea-main-section ea-full-page-js ea-main-section--news">
+							<section class="ea-main-section ea-main-section--benefits">
+								<div class="ea-main-section__container">
+									<div class="ea-main-section__align">
+										<div class="ea-main-section__layout">
+											<div class="ea-main-section__title"><h2>Преимущества</h2></div>
+											<div class="ea-main-section__holder">
+												<div class="ea-benefits">
+													<div class="ea-benefits__list">
+														<div class="ea-benefits__item">
+															@@include("includes-json/svg/icon-benefits-01.svg")
+															Высокая скорость при выполнении заказа
+														</div>
+														<div class="ea-benefits__item">
+															@@include("includes-json/svg/icon-benefits-02.svg")
+															Прямые поставки от производителя
+														</div>
+														<div class="ea-benefits__item">
+															@@include("includes-json/svg/icon-benefits-03.svg")
+															Выгодные цены и скидки
+														</div>
+														<div class="ea-benefits__item">
+															@@include("includes-json/svg/icon-benefits-01.svg")
+															Высокая скорость при выполнении заказа
+														</div>
+														<div class="ea-benefits__item">
+															@@include("includes-json/svg/icon-benefits-02.svg")
+															Прямые поставки от производителя
+														</div>
+														<div class="ea-benefits__item">
+															@@include("includes-json/svg/icon-benefits-03.svg")
+															Выгодные цены и скидки
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section class="ea-main-section ea-main-section--news">
 								<div class="ea-main-section__container" style="background-image: url(img/bg-news-ea.jpg);">
 									<div class="ea-main-section__align">
 										<div class="ea-main-section__layout">
 											<div class="ea-main-section__title"><h2>Новости</h2></div>
 											<div class="ea-main-section__holder">
-												<div class="news-previews">
-													<section class="news-previews__list">
-														@@loop("_tpl_news-previews.xhtml", "includes-json/_tpl_news-previews-items-ea.json")
+												<div class="ea-news-previews">
+													<section class="ea-news-previews__list">
+														@@loop("_tpl_news-previews--ea.xhtml", "includes-json/_tpl_news-previews-items-ea.json")
 													</section>
 												</div>
 												<!--news end-->
@@ -222,14 +261,15 @@
 									</div>
 								</div>
 							</section>
-							<section class="ea-main-section ea-full-page-js ea-main-section--contacts">
+							<section class="ea-main-section ea-main-section--contacts">
 								<div class="ea-main-section__container">
 									<div class="ea-main-section__align">
 										<div class="ea-main-section__layout">
+											<div class="ea-main-section__title"><h2>Контакты</h2></div>
 											<div class="ea-main-section__holder">
-												<div class="ea-contacts js-tabs" data-auto-height="true">
+												<div class="ea-contacts">
 
-													<div class="ea-contacts__thumbs">
+													<!--<div class="ea-contacts__thumbs">
 														<div class="ea-contacts__thumbs-layout ea-main-max-width">
 															<div class="ea-contacts-nav">
 																<div class="ea-contacts-nav__item">
@@ -240,14 +280,71 @@
 																</div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 
-													<div class="ea-contacts__panels js-tab-container">
-														<div class="ea-contacts__panel js-tab-content" id="contacts-by-list">
+													<div class="ea-contacts__panels">
+														<div class="ea-contacts__panel has-map">
+															<!--main map-->
+															<script>
+																var mainMapPosition = {
+																	'desktop': {
+																		'lat': 43.12893,
+																		'lng': 131.91889,
+																		'zoom': 10
+																	},
+																	'tablet': {
+																		'lat': 43.1959,
+																		'lng': 132.0000,
+																		'zoom': 10
+																	},
+																	'mob': {
+																		'lat': 43.1550,
+																		'lng': 132.0000,
+																		'zoom': 10
+																	},
+																	'sm': {
+																		'lat': 43.1550,
+																		'lng': 131.9189,
+																		'zoom': 10
+																	}
+																};
+																var mainMapObjects = [
+																	[
+																		{lat: 43.0920015, lng: 131.9106393}, //coordinates of marker
+																		'img/map-pin--ea.png', //image pin
+																		{
+																			title: 'Склад-магазин на Чуркине (О. Кошевого)',
+																			address: '<b>Адрес:</b> <div>г. Владивосток, ул.Олега Кошевого, 8Б</div>',
+																			phone: '<b>Тел.:</b> <div><a href="tel: 423 290-72-58">(423) 290-72-58</a>, <a href="tel: 2-911-924">2-911-924</a></div>',
+																			fax: '',
+																			mail: '',
+																			work: '<b>Время работы:</b> <div> <div>Пн-Пт: 09:00–18:00</div> <div>Сб: 09:00–15:00</div> <div>Вс: выходной</div> </div>'
+																		}
+																	],
+																	[
+																		{lat: 43.165859, lng: 131.927146}, //coordinates of marker
+																		'img/map-pin--ea.png', //image pin
+																		{
+																			title: 'Центральный офис (Бородинская)',
+																			address: '<b>Адрес:</b> <div>г.Владивосток, ул. Бородинская, 20, 2 этаж.</div>',
+																			phone: '<b>Тел.:</b> <div><a href="tel: 423 230-20-13">(423) 230-20-13</a></div>',
+																			fax: '<b>Факс:</b> <div>(423) 224-44-30</div>',
+																			mail: '<b>Эл. почта:</b> <div><a href="mailto:office@ema-dv.ru">office@ema-dv.ru</a></div>',
+																			work: '<b>Время работы:</b> <div> <div>Пн-Пт: 09:00–18:00</div> <div>Сб: 09:00–15:00</div> </div>'
+																		}
+																	]
+
+																];
+															</script>
+															<div class="main-map" id="main-map-ea">
+																<!--js append map-->
+															</div>
+															<!--main map end-->
+														</div>
+														<div class="ea-contacts__panel">
 															<div class="ea-main-section__pos ea-main-max-width">
-																<div class="ea-main-section__title"><h2>Контакты</h2></div>
 																<div class="ea-main-section__holder">
-																	<div class="simple-accordion simple-accordion-js">
+																	<div class="contacts-accordion simple-accordion-js">
 																		<a href="#"><span>Склад-магазин на Чуркине (О. Кошевого)</span><i>&nbsp;</i></a>
 																		<div class="is-open">
 																			<h4>Оптово-розничная торговля</h4>
@@ -294,64 +391,6 @@
 																	</div>
 																</div>
 															</div>
-														</div>
-														<div class="ea-contacts__panel js-tab-content has-map" id="contacts-by-map">
-															<!--main map-->
-															<script>
-																var mainMapPosition = {
-																	'desktop': {
-																		'lat': 43.1959,
-																		'lng': 131.9189,
-																		'zoom': 11
-																	},
-																	'tablet': {
-																		'lat': 43.1959,
-																		'lng': 132.0000,
-																		'zoom': 11
-																	},
-																	'mob': {
-																		'lat': 43.1550,
-																		'lng': 132.0000,
-																		'zoom': 11
-																	},
-																	'sm': {
-																		'lat': 43.1550,
-																		'lng': 131.9189,
-																		'zoom': 11
-																	}
-																};
-																var mainMapObjects = [
-																	[
-																		{lat: 43.0920015, lng: 131.9106393}, //coordinates of marker
-																		'img/map-pin.png', //image pin
-																		{
-																			title: 'Склад-магазин на Чуркине (О. Кошевого)',
-																			address: '<b>Адрес:</b> <div>г. Владивосток, ул.Олега Кошевого, 8Б</div>',
-																			phone: '<b>Тел.:</b> <div><a href="tel: 423 290-72-58">(423) 290-72-58</a>, <a href="tel: 2-911-924">2-911-924</a></div>',
-																			fax: '',
-																			mail: '',
-																			work: '<b>Время работы:</b> <div> <div>Пн-Пт: 09:00–18:00</div> <div>Сб: 09:00–15:00</div> <div>Вс: выходной</div> </div>'
-																		}
-																	],
-																	[
-																		{lat: 43.165859, lng: 131.927146}, //coordinates of marker
-																		'img/map-pin.png', //image pin
-																		{
-																			title: 'Центральный офис (Бородинская)',
-																			address: '<b>Адрес:</b> <div>г.Владивосток, ул. Бородинская, 20, 2 этаж.</div>',
-																			phone: '<b>Тел.:</b> <div><a href="tel: 423 230-20-13">(423) 230-20-13</a></div>',
-																			fax: '<b>Факс:</b> <div>(423) 224-44-30</div>',
-																			mail: '<b>Эл. почта:</b> <div><a href="mailto:office@ema-dv.ru">office@ema-dv.ru</a></div>',
-																			work: '<b>Время работы:</b> <div> <div>Пн-Пт: 09:00–18:00</div> <div>Сб: 09:00–15:00</div> </div>'
-																		}
-																	]
-
-																];
-															</script>
-															<div class="main-map" id="main-map-ea">
-																<!--js append map-->
-															</div>
-															<!--main map end-->
 														</div>
 													</div>
 

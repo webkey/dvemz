@@ -487,7 +487,7 @@ function slidersInit() {
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				infinite: true,
-				dots: false,
+				dots: true,
 				arrows: true,
 
 				accessibility: true
@@ -513,7 +513,7 @@ function slidersInit() {
 				slidesToShow: 2,
 				slidesToScroll: 2,
 				infinite: true,
-				dots: true,
+				dots: false,
 				arrows: true,
 
 				accessibility: true
@@ -853,6 +853,14 @@ function equalHeightInit() {
 		});
 	}
 
+	var $eaNewsPreviewsList = $('.ea-news-previews__list');
+
+	if ($eaNewsPreviewsList.length) {
+		$eaNewsPreviewsList.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+
 	var $thumbs = $('.c-section-thumbs');
 
 	if ($thumbs.length) {
@@ -900,7 +908,7 @@ var styleMap = [
 		"elementType": "geometry",
 		"stylers": [
 			{
-				"color": "#e9e9e9"
+				"color": "#cad3d5"
 			},
 			{
 				"lightness": 17
@@ -1015,7 +1023,7 @@ var styleMap = [
 				"saturation": 36
 			},
 			{
-				"color": "#333333"
+				"color": "#000000"
 			},
 			{
 				"lightness": 40
@@ -1344,9 +1352,9 @@ function mainMapEAInit() {
 
 		var image = {
 			url: object[1],
-			size: new google.maps.Size(108, 116),
+			size: new google.maps.Size(59, 59),
 			origin: new google.maps.Point(0, 0),
-			anchor: new google.maps.Point(100, 110)
+			anchor: new google.maps.Point(49, 51)
 			// scaledSize: new google.maps.Size(25, 25)
 		};
 
