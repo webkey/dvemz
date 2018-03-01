@@ -17938,7 +17938,6 @@ button.mfp-close path {
 /* contacts-accordion */
 .contacts-accordion {
 	margin-bottom: 4.8rem;
-	border-bottom: 2px solid #ccc;
 }
 
 .contacts-accordion:last-child {
@@ -18030,11 +18029,9 @@ button.mfp-close path {
 .contacts-accordion > a > span {
 	display: block;
 	position: relative;
-	margin-right: 25px;
 }
 
 .contacts-accordion > a + div {
-	padding: 18px 0;
 	display: none;
 	font-size: 16px;
 	line-height: 1.5;
@@ -18045,13 +18042,11 @@ button.mfp-close path {
 }
 
 .contacts-accordion h4 {
-	font-family: "proximanova-bold", sans-serif;
+	font-family: "proximanova-light", sans-serif;
 	font-weight: normal;
 	font-style: normal;
 	font-size: 14px;
 	line-height: 1.71;
-	letter-spacing: 0.05em;
-	text-transform: uppercase;
 	color: inherit;
 	margin-bottom: 2.4rem;
 }
@@ -18118,25 +18113,62 @@ button.mfp-close path {
 	}
 }
 
-.contacts-accordion .col ul {
-	margin: 0 0 10px;
-	padding: 0;
+.contacts-accordion .col__title {
+	font-size: 14px;
+	line-height: 1.29;
+	margin-bottom: 2rem;
 }
 
-.contacts-accordion .col ul:last-child {
+.contacts-accordion svg {
+	display: block;
+	width: 60px;
+	height: 60px;
+	margin-bottom: 2rem;
+}
+
+.contacts-accordion path {
+	fill: currentColor;
+}
+
+.contacts-accordion .col__content {
+	font-family: "proximanova-light", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1.33;
+	margin-bottom: 2rem;
+}
+
+.contacts-accordion .col__content:last-child {
 	margin-bottom: 0;
 }
 
-.contacts-accordion .col ul li {
+.contacts-accordion .col__content small {
+	display: block;
+	font-size: 14px;
+	line-height: 1.29;
+	margin-bottom: 2rem;
+}
+
+.contacts-accordion .col__content ul {
+	margin: 0 0 2rem;
+	padding: 0;
+}
+
+.contacts-accordion .col__content ul:last-child {
+	margin-bottom: 0;
+}
+
+.contacts-accordion .col__content ul li {
 	padding: 0;
 	margin: 0;
 }
 
-.contacts-accordion .col ul li:last-child {
+.contacts-accordion .col__content ul li:last-child {
 	margin-bottom: 0;
 }
 
-.contacts-accordion .col ul li::before {
+.contacts-accordion .col__content ul li::before {
 	content: none;
 }
 

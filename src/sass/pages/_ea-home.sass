@@ -1387,7 +1387,6 @@ $odds-icon-size--md: 40px !default
 /* contacts-accordion
 .contacts-accordion
 	margin-bottom: $bottom-space--md
-	border-bottom: 2px solid $outline-color
 
 	&:last-child
 		margin-bottom: 0
@@ -1454,10 +1453,8 @@ $odds-icon-size--md: 40px !default
 		& > span
 			display: block
 			position: relative
-			margin-right: 25px
 
 		& + div
-			padding: 18px 0
 			display: none
 			+font(16px, round-float(24/16, 2))
 
@@ -1465,10 +1462,8 @@ $odds-icon-size--md: 40px !default
 				margin-bottom: 0
 
 	h4
-		+font-bold
+		+font-light
 		+font(14px, round-float(24/14, 2))
-		letter-spacing: 0.05em
-		text-transform: uppercase
 		color: inherit
 		margin-bottom: $bottom-space
 
@@ -1491,8 +1486,33 @@ $odds-icon-size--md: 40px !default
 		+media('<mob-lg')
 			+grid-item-responsive(1, $grid-space--sm)
 
+	.col__title
+		+font(14px, round-float(18/14, 2))
+		margin-bottom: 2rem
+
+	svg
+		display: block
+		+size(60px)
+		margin-bottom: 2rem
+
+	path
+		fill: currentColor
+
+	.col__content
+		+font-normal
+		+font(24px, round-float(32/24, 2))
+		margin-bottom: 2rem
+
+		&:last-child
+			margin-bottom: 0
+
+		small
+			display: block
+			+font(14px, round-float(18/14, 2))
+			margin-bottom: 2rem
+
 		ul
-			margin: 0 0 10px
+			margin: 0 0 2rem
 			padding: 0
 
 			&:last-child

@@ -908,7 +908,7 @@ var styleMap = [
 		"elementType": "geometry",
 		"stylers": [
 			{
-				"color": "#cad3d5"
+				"color": "#e9e9e9"
 			},
 			{
 				"lightness": 17
