@@ -30,11 +30,14 @@ $ea-main-section-max-width-lg: 960px !default
 	+push-auto
 	text-align: left
 
-.ea-main-max-width
-	max-width: $ea-main-section-max-width
+	+media('<desk-hd')
+		max-width: none
 
-	+media('<desk-lg')
-		max-width: $ea-main-section-max-width-lg
+.ea-main-max-width
+	max-width: $flood-layout-width--ea
+
+	+media('<desk-hd')
+		max-width: none
 
 .ea-main-section__title
 	display: flex
@@ -214,7 +217,7 @@ $ea-main-section-max-width-lg: 960px !default
 			+padding-horizontal(0)
 			padding-top: 0 !important
 
-	&:first-child .ea-main-section__align
+	//&:first-child .ea-main-section__align
 		padding-top: 20px
 
 	.ea-main-section__layout
@@ -455,6 +458,9 @@ $odds-icon-size--md: 40px !default
 	max-width: 1200px
 	// before slide load end
 
+	+media('<desk-hd')
+		max-width: none
+
 	&, &.slick-dotted
 		margin: 0 auto
 
@@ -500,10 +506,9 @@ $odds-icon-size--md: 40px !default
 				width: 10px
 				height: 10px
 				border-radius: 0
-				box-shadow: 0 0 3px rgba(255, 255, 255, 0.45)
 
 				&, .ea-site &
-					background-color: $base-color-alt--ea
+					background-color: #666
 
 				&::before
 					$space: 1px
@@ -899,6 +904,9 @@ $odds-icon-size--md: 40px !default
 	max-width: 1200px
 	// before slide load end
 
+	+media('<desk-hd')
+		max-width: none
+
 	&, &.slick-dotted
 		margin: 0 auto
 
@@ -1053,10 +1061,12 @@ $odds-icon-size--md: 40px !default
 	margin: 0 auto
 	height: 100%
 
+.ea-stock-slider__caption
+	max-width: 320px
+
 .ea-stock-slider__title
-	+font-black
-	+font(24px, round-float(30/24, 2))
-	text-transform: uppercase
+	+font-bold
+	+font(24px, round-float(28/24, 2))
 	margin-bottom: 0.3em
 
 	//+media('<desk-hd')
@@ -1067,7 +1077,6 @@ $odds-icon-size--md: 40px !default
 
 .ea-stock-slider__text
 	+font(18px, round-float(22/18, 2))
-	text-transform: uppercase
 	margin-bottom: 0.4em
 
 	//+media('<desk-hd')
@@ -1080,6 +1089,10 @@ $odds-icon-size--md: 40px !default
 /* ea main section stock end
 
 /* ea main benefits
+.ea-main-section--benefits
+	.ea-main-section__title
+		margin-bottom: 4rem
+
 .ea-benefits
 	margin-bottom: 2rem
 
@@ -1221,7 +1234,6 @@ $odds-icon-size--md: 40px !default
 
 /* ea main section contacts
 .ea-main-section--contacts
-	background-color: $bg-color-alt
 
 	.ea-main-section__align
 		padding: 0 !important
@@ -1232,11 +1244,21 @@ $odds-icon-size--md: 40px !default
 	.ea-main-section__title
 		text-align: left
 		position: relative
-		max-width: $flood-layout-width--ea
 		margin: 0 auto
 		overflow: visible
 		height: 0
 		z-index: 5
+
+		+padding-horizontal(#{$text-layout-space-horizontal})
+
+		+media('<desk-hd')
+			+padding-horizontal(#{$text-layout-space-horizontal--lg})
+
+		+media('<tab-lg')
+			+padding-horizontal(#{$text-layout-space-horizontal--md})
+
+		+media('<tab-sm')
+			+padding-horizontal(#{$text-layout-space-horizontal--sm})
 
 		h2
 			position: relative
@@ -1251,80 +1273,14 @@ $odds-icon-size--md: 40px !default
 			+media('<tab-sm')
 				top: $text-layout-space-horizontal--sm
 
+	.ea-main-section__title__layout
+		max-width: $flood-layout-width--ea
+
+		+media('<desk-hd')
+			max-width: none
+
 .ea-contacts
 	position: relative
-
-.ea-contacts__thumbs
-	+size(100%, 0)
-	position: absolute
-	left: 50%
-	transform: translate(-50%, 0)
-	z-index: 10
-	margin-top: 6px
-
-	+media('<tab-sm')
-		margin-top: 0
-
-.ea-contacts__thumbs-layout
-	+push-auto
-	+clear
-
-.ea-contacts-nav
-	float: right
-	+clear-spacing
-
-.ea-contacts-nav__item
-	+display-inline-block-top
-	margin-right: -1px
-	+font-light
-	+font(13px, 18px)
-	letter-spacing: 0.05em
-	text-transform: uppercase
-	user-select: none
-
-	a
-		display: block
-		position: relative
-		color: inherit
-		fill: #999
-		white-space: nowrap
-		text-decoration: none
-		padding: 10px 50px 10px 30px
-		border: 1px solid $border-color
-		background-color: white
-
-		+media('<mob-lg')
-			font-size: 0
-			line-height: 0
-			padding: 0
-			+size(40px)
-
-		svg
-			position: absolute
-			+size(16px)
-			top: 50%
-			left: 100%
-			margin: -8px 0 0 -40px
-
-			+media('<mob-lg')
-				left: 50%
-				margin: -8px 0 0 -8px
-
-			path
-				fill: currentColor
-
-		// hover
-		&:hover
-			background-color: $bg-color-light
-
-		// active
-		&.active-tab
-			color: white
-			fill: white
-			background-color: $base-color--ea
-			border-color: $base-color--ea
-			z-index: 1
-			cursor: default
 
 .ea-contacts__panel
 	position: relative
@@ -1387,12 +1343,15 @@ $odds-icon-size--md: 40px !default
 /* contacts-accordion
 .contacts-accordion
 	margin-bottom: $bottom-space--md
+	+font-regular
 
 	&:last-child
 		margin-bottom: 0
 
 	& > a
 		display: block
+		display: flex
+		align-items: center
 		position: relative
 		padding: 18px 0
 		+font-bold
@@ -1409,25 +1368,27 @@ $odds-icon-size--md: 40px !default
 				color: $base-color--ea
 
 		& > i
+			$this-icon-size: 16px, 10px
 			$this-icon-lines-width: 12px
 			$this-icon-lines-height: 2px
 			$this-icon-lines-color: $text-color
 
-			position: absolute
-			right: 0
-			top: 50%
-			+size(16px, 10px)
-			margin-top: -5px
-			backface-visibility: hidden
+			display: inline-block
+			vertical-align: middle
+			position: relative
+			+size(nth($this-icon-size, 1), nth($this-icon-size, 2))
+			min-width: nth($this-icon-size, 1)
+			margin: 0 0 0 -#{nth($this-icon-size, 1)}
+			top: 2px
 
 			&::before, &::after
 				+pseudo()
 				bottom: 0
-				backface-visibility: hidden
 				+size($this-icon-lines-width, $this-icon-lines-height)
 				background-color: $this-icon-lines-color
-				transition-property: background-color
-				transition-duration: $animation-speed
+				transition:
+					property: background-color
+					duration: $animation-speed
 
 			&::before
 				right: 50%
@@ -1451,21 +1412,21 @@ $odds-icon-size--md: 40px !default
 			transform: rotate(0.5turn)
 
 		& > span
-			display: block
-			position: relative
+			margin-right: 40px
 
 		& + div
 			display: none
+			padding: 1rem 0 3rem
 			+font(16px, round-float(24/16, 2))
 
 			& > *:last-child
 				margin-bottom: 0
 
 	h4
-		+font-light
+		+font-regular
 		+font(14px, round-float(24/14, 2))
 		color: inherit
-		margin-bottom: $bottom-space
+		margin-bottom: 4rem
 
 	.cols
 		+clear-spacing
@@ -1499,7 +1460,6 @@ $odds-icon-size--md: 40px !default
 		fill: currentColor
 
 	.col__content
-		+font-normal
 		+font(24px, round-float(32/24, 2))
 		margin-bottom: 2rem
 
@@ -1530,3 +1490,99 @@ $odds-icon-size--md: 40px !default
 
 /* contacts-accordion end
 /* ea main section contacts end
+
+/* ea-footer-nav
+.ea-footer-nav
+	+font-regular
+	margin: 0 round(-$ea-footer-nav-horizontal-space*0.5)
+	+clear-spacing
+
+.ea-footer-nav__col
+	position: relative
+	+display-inline-block-top
+	width: round-float(100%/4, 2)
+	padding: 0 $ea-footer-nav-horizontal-space*0.5
+	margin-bottom: 2rem
+	+font(18px, round-float(32/18, 2))
+	letter-spacing: normal
+
+	+media('<desk-sm')
+		width: round-float(100%/4, 2)
+
+	+media('<tab-lg')
+		width: round-float(100%/2, 2)
+
+	+media('<mob-lg')
+		display: none
+		width: 100%
+
+	&.col-2
+		width: round-float(100%/2, 2)
+
+	& > *:last-child
+		margin-bottom: 0
+
+	&.footer-add-info
+		width: 100%
+		margin-bottom: 0
+		padding: 0
+
+.ea-footer-nav__title
+	position: relative
+	display: block
+	+font-alt-bold
+	color: black
+
+	a
+		color: inherit
+		text-decoration: none
+		padding-top: 0.5em
+
+.ea-footer-nav__list
+	list-style: none
+	column-count: 2
+	column-gap: 20px
+
+	& > li
+		display: inline-block
+		vertical-align: top
+		width: 100%
+		margin-bottom: 0.5em
+
+		&:last-child
+			margin-bottom: 0
+
+	a
+		padding-top: 0.3em
+		color: inherit
+		+font(inherit, inherit)
+		text-decoration: none
+		transition-property: color
+		transition-duration: $animation-speed
+
+		.no-touchevents &:hover
+			color: $link-color
+
+.ea-footer-nav__item
+	float: left
+	width: 50.0%
+	padding: 0 #{round($ea-footer-nav-horizontal-space/2)}
+	+font(16px, round-float(24/16, 2))
+	letter-spacing: normal
+
+	&:last-child
+		text-align: right
+
+	+media('<mob-lg')
+		display: block
+		text-align: center
+		width: auto
+
+		&:last-child
+			text-align: center
+			margin-bottom: 0
+
+	.copyright
+		font-size: 14px
+				
+/* ea-footer-nav

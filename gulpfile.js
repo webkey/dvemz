@@ -171,7 +171,7 @@ gulp.task('copyFotoramaImg', function () {
 // ============= ТОЛЬКО ДЛЯ ТЕКУЩЕГО ПРОЕКТА (КОНЕЦ) ===========//
 
 gulp.task('watch', ['createCustomModernizr', 'browserSync', 'htmlCompilation', 'sassCompilation', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
-	gulp.watch(['src/*.tpl', 'src/*.xhtml', 'src/__*.html', 'src/includes-json/**/*.json'], ['htmlCompilation']); // Наблюдение за темплейтами и файлами в папке include-json
+	gulp.watch(['src/*.tpl', 'src/*.xhtml', 'src/_tpl_*.html', 'src/__*.html', 'src/includes-json/**/*.json'], ['htmlCompilation']); // Наблюдение за темплейтами и файлами в папке include-json
 	gulp.watch('src/sass/**/*.+(scss|sass)', ['sassCompilation']); // Наблюдение за sass файлами в папке sass
 });
 
@@ -219,13 +219,13 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 	gulp.src('src/files/**/*')
 		.pipe(gulp.dest('dist/files')); // Переносим дополнительные файлы в продакшен
 
-	gulp.src(['!src/__*.html', 'src/*.html'])
+	gulp.src(['!src/__*.html', '!src/_tpl_*.html', 'src/*.html'])
 		//.pipe(replace('css/main.css', 'css/main.min.css')) // меняем подключение main.css на main.min.css
 		//.pipe(replace('js/common.js', 'js/common.min.js')) // меняем подключение common.js на common.min.js
 		//.pipe(htmlmin({collapseWhitespace: true})) // если необходимо сжать html
 		.pipe(gulp.dest('dist')); // Переносим HTML в продакшен
 
-	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess']) // Переносим favicon и др. файлы в продакшин
+	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess', 'src/manifest.json']) // Переносим favicon и др. файлы в продакшин
 		.pipe(gulp.dest('dist'));
 
 });

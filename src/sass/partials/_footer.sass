@@ -106,11 +106,6 @@
 	& > *:last-child
 		margin-bottom: 0
 
-	.ea-site &.footer-add-info
-		display: block
-		width: auto
-		margin-bottom: 0
-
 .footer-nav__title
 	position: relative
 	display: block
@@ -175,37 +170,6 @@
 
 		.no-touchevents &:hover
 			color: $link-color
-
-.footer-add-info
-	.ea-site &
-		+clear-spacing
-		margin: 0 -#{round($footer-nav-horizontal-space/2)}
-
-.footer-nav__item
-	.ea-site &
-		+display-inline-block-top
-		width: 50.0%
-		margin-bottom: 20px
-		overflow: hidden
-		padding: 0 #{round($footer-nav-horizontal-space/2)}
-		+font(16px, round-float(24/16, 2))
-		letter-spacing: normal
-
-		&:first-child
-			display: block
-			width: auto
-
-		&:last-child
-			text-align: right
-
-		+media('<mob-lg')
-			display: block
-			text-align: center
-			width: auto
-
-			&:last-child
-				text-align: center
-				margin-bottom: 0
 
 /*footer common end*/
 

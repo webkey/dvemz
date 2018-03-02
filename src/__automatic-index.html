@@ -158,7 +158,7 @@
 														<a href="automatic-catalog.html" class="ea-stock-slider__inner">
 															<div class="ea-stock-slider__info">
 																<div class="ea-stock-slider__info__layout">
-																	<div>
+																	<div class="ea-stock-slider__caption">
 																		<div class="ea-stock-slider__title">Высокая скорость при выполнении заказа</div>
 																		<div class="ea-stock-slider__text">Высокая скорость при выполнении заказа</div>
 																	</div>
@@ -174,7 +174,7 @@
 														<a href="automatic-catalog.html" class="ea-stock-slider__inner">
 															<div class="ea-stock-slider__info">
 																<div class="ea-stock-slider__info__layout">
-																	<div>
+																	<div class="ea-stock-slider__caption">
 																		<div class="ea-stock-slider__title">Высокая скорость при выполнении заказа</div>
 																		<div class="ea-stock-slider__text">Высокая скорость при выполнении заказа</div>
 																	</div>
@@ -265,7 +265,11 @@
 								<div class="ea-main-section__container">
 									<div class="ea-main-section__align">
 										<div class="ea-main-section__layout">
-											<div class="ea-main-section__title"><h2>Контакты</h2></div>
+											<div class="ea-main-section__title">
+												<div class="ea-main-section__title__layout">
+													<h2>Контакты</h2>
+												</div>
+											</div>
 											<div class="ea-main-section__holder">
 												<div class="ea-contacts">
 
@@ -288,23 +292,23 @@
 															<script>
 																var mainMapPosition = {
 																	'desktop': {
-																		'lat': 43.12893,
+																		'lat': 43.170,
 																		'lng': 131.91889,
 																		'zoom': 10
 																	},
 																	'tablet': {
-																		'lat': 43.1959,
-																		'lng': 132.0000,
+																		'lat': 43.170,
+																		'lng': 131.91889,
 																		'zoom': 10
 																	},
 																	'mob': {
-																		'lat': 43.1550,
-																		'lng': 132.0000,
+																		'lat': 43.170,
+																		'lng': 131.91889,
 																		'zoom': 10
 																	},
 																	'sm': {
-																		'lat': 43.1550,
-																		'lng': 131.9189,
+																		'lat': 43.170,
+																		'lng': 131.91889,
 																		'zoom': 10
 																	}
 																};
@@ -350,14 +354,14 @@
 																			<h4>Оптово-розничная торговля</h4>
 																			<div class="cols">
 																				<div class="col">
-																					@@include("includes-json/svg/icon-benefits-01.svg")
+																					@@include("includes-json/svg/icon-contacts-local.svg")
 																					<div class="col__title">Адрес</div>
 																					<div class="col__content">
 																						г. Владивосток, ул.Олега Кошевого, 8Б
 																					</div>
 																				</div>
 																				<div class="col">
-																					@@include("includes-json/svg/icon-benefits-02.svg")
+																					@@include("includes-json/svg/icon-contacts-work.svg")
 																					<div class="col__title">Режим работы, Телефоны</div>
 																					<div class="col__content">
 																						<small>Пн-Пт: 09:00–18:00, Сб: 09:00–15:00, Вс: выходной</small>
@@ -367,7 +371,7 @@
 																					</div>
 																				</div>
 																				<div class="col">
-																					@@include("includes-json/svg/icon-benefits-03.svg")
+																					@@include("includes-json/svg/icon-contacts-post.svg")
 																					<div class="col__title">Электронная почта</div>
 																					<div class="col__content">
 																						<ul>
@@ -379,17 +383,16 @@
 																		</div>
 																		<a href="#"><span>Центральный офис (Бородинская)</span><i>&nbsp;</i></a>
 																		<div>
-																			<h4>Оптово-розничная торговля</h4>
 																			<div class="cols">
 																				<div class="col">
-																					@@include("includes-json/svg/icon-benefits-01.svg")
+																					@@include("includes-json/svg/icon-contacts-local.svg")
 																					<div class="col__title">Адрес</div>
 																					<div class="col__content">
 																						г.Владивосток, ул. Бородинская, 20, 2 этаж.
 																					</div>
 																				</div>
 																				<div class="col">
-																					@@include("includes-json/svg/icon-benefits-02.svg")
+																					@@include("includes-json/svg/icon-contacts-work.svg")
 																					<div class="col__title">Режим работы, Телефоны</div>
 																					<div class="col__content">
 																						<small>Пн-Пт: 09:00–18:00, Сб: 09:00–15:00, Вс: выходной</small>
@@ -400,7 +403,7 @@
 																					</div>
 																				</div>
 																				<div class="col">
-																					@@include("includes-json/svg/icon-benefits-03.svg")
+																					@@include("includes-json/svg/icon-contacts-post.svg")
 																					<div class="col__title">Электронная почта</div>
 																					<div class="col__content">
 																						<ul>
@@ -409,7 +412,6 @@
 																					</div>
 																				</div>
 																			</div>
-																			<p>Приглашаем Вас посетить наш магазин-склад. Здесь есть все для комфортной покупки: удобный подъезд, грамотные консультанты и бесплатная парковка — если Вы наш Клиент, просто скажите об этом охраннику, и для Вас откроют шлагбаум и предоставят возможность удобно припарковаться.</p>
 																		</div>
 																	</div>
 																</div>
@@ -441,6 +443,6 @@
 	<!--SIDEBAR-->
 </div>
 
-@@include('_layout_foot.tpl', {
+@@include('_tpl_layout_foot.html', {
 	"site": "ea"
 })
