@@ -507,7 +507,11 @@ function slidersInit() {
 			var $currentSlider = $(this);
 			var dur = 300;
 
-			$currentSlider.slick({
+			$currentSlider.on('init', function (event, slick) {
+				$(slick.$slides).matchHeight({
+					byRow: true, property: 'height', target: null, remove: false
+				});
+			}).slick({
 				// fade: true,
 				speed: dur,
 				slidesToShow: 2,
