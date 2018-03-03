@@ -520,10 +520,20 @@ function slidersInit() {
 				dots: false,
 				arrows: true,
 
-				accessibility: true
+				accessibility: true,
 				// draggable: false,
 				// swipe: false,
 				// touchMove: false
+				responsive: [
+					{
+						breakpoint: 640,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
+
 			});
 
 		});
@@ -575,7 +585,7 @@ function slidersInit() {
 						}
 					},
 					{
-						breakpoint: 960,
+						breakpoint: 992,
 						settings: {
 							slidesToShow: 3,
 							slidesToScroll: 3

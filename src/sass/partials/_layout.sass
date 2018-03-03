@@ -21,6 +21,9 @@
 	.top-panel--fixed ~ &
 		padding-top: $top-panel-height
 
+		+media('<tab-lg')
+			padding-top: $top-panel-height--md + 50
+
 .main__holder
 	width: 100%
 	+clear
@@ -265,6 +268,9 @@
 
 	+media('<tab-lg')
 		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} 0
+
+		.ea-site &
+			+padding-vertical($text-layout-space-horizontal--md)
 
 	+media('<tab-sm')
 		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} 0

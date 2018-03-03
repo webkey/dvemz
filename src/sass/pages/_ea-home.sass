@@ -461,8 +461,14 @@ $odds-icon-size--md: 40px !default
 	+media('<desk-hd')
 		max-width: none
 
+	+media('<tab-sm')
+		margin-bottom: 30px
+
 	&, &.slick-dotted
 		margin: 0 auto
+
+		+media('<tab-sm')
+			margin-bottom: 30px
 
 	&.slick-initialized, .no-js &
 		// after slide load
@@ -496,6 +502,9 @@ $odds-icon-size--md: 40px !default
 
 	.slick-dots
 		bottom: 16px
+
+		+media('<tab-sm')
+			bottom: -30px
 
 		li
 
@@ -584,7 +593,13 @@ $odds-icon-size--md: 40px !default
 
 .ea-main-slider__info
 	background-color: $base-color-alt--ea
-	padding: 3.5% 60px 6.5%
+	padding: 3.5% 40px 6.5% 60px
+
+	+media('<mob-lg')
+		padding: 3.5% 20px 3.5% 50px
+
+	+media('<mob-md')
+		padding-right: 10px
 
 	&.align-right
 		text-align: left
@@ -593,6 +608,18 @@ $odds-icon-size--md: 40px !default
 	.btn-default
 		text-transform: uppercase
 		min-width: 224px
+
+		+media('<tab-sm')
+			min-width: 0
+			padding: 8px 12px
+			font-size: 14px
+
+		+media('<mob-lg')
+			font-size: 12px
+
+		+media('<mob-md')
+			font-size: 9px
+			padding: 2px 4px
 
 .ea-main-slider__info__layout
 	display: flex
@@ -615,6 +642,9 @@ $odds-icon-size--md: 40px !default
 	+media('<desk-md')
 		font-size: 3.5vw
 
+	+media('<mob-lg')
+		font-size: 4vw
+
 .ea-main-slider__text
 	+font(19px, round-float(27/19, 2))
 	text-transform: uppercase
@@ -625,6 +655,9 @@ $odds-icon-size--md: 40px !default
 
 	+media('<desk-md')
 		font-size: 1.5vw
+
+	+media('<mob-lg')
+		font-size: 2vw
 
 /* ea-main-slider end
 
@@ -655,7 +688,7 @@ $odds-icon-size--md: 40px !default
 	+clear
 	+clear-spacing
 
-	+media('<mob-lg')
+	+media('<mob-md')
 		float: none
 		display: block
 		text-align: center
@@ -680,6 +713,9 @@ $odds-icon-size--md: 40px !default
 		background-color: white
 
 		+media('<mob-lg')
+			min-width: 100px
+
+		+media('<mob-md')
 			min-width: 0
 			+padding-horizontal(10px)
 
@@ -756,7 +792,7 @@ $odds-icon-size--md: 40px !default
 		+size(50px)
 		border: 1px solid $border-color
 
-		+media('<mob-lg')
+		+media('<mob-md')
 			bottom: auto
 			top: 50%
 			margin: -20px 0 0
@@ -765,7 +801,7 @@ $odds-icon-size--md: 40px !default
 		left: auto
 		right: 49px
 
-		+media('<mob-lg')
+		+media('<mob-md')
 			right: auto
 			left: 0
 
@@ -976,16 +1012,17 @@ $odds-icon-size--md: 40px !default
 		+size(50px)
 		border: 1px solid $border-color
 
-		+media('<mob-lg')
+		//+media('<mob-lg')
 			bottom: auto
 			top: 50%
 			margin: -20px 0 0
+
 
 	.slick-prev
 		left: auto
 		right: 49px
 
-		+media('<mob-lg')
+		//+media('<mob-lg')
 			right: auto
 			left: 0
 
@@ -1047,6 +1084,9 @@ $odds-icon-size--md: 40px !default
 	+media('<desk-sb')
 		padding: 30px
 
+	+media('<tab-sm')
+		padding: 20px
+
 	&.align-right
 		text-align: left
 		order: 1
@@ -1079,21 +1119,21 @@ $odds-icon-size--md: 40px !default
 	+font(24px, round-float(28/24, 2))
 	margin-bottom: 0.3em
 
-	//+media('<desk-hd')
-		font-size: 2.8vw
+	+media('<tab-sm')
+		font-size: 20px
 
-	//+media('<desk-md')
-		font-size: 3.5vw
+	+media('<mob-lg')
+		font-size: 24px
 
 .ea-stock-slider__text
 	+font(18px, round-float(22/18, 2))
 	margin-bottom: 0.4em
 
-	//+media('<desk-hd')
-		font-size: 1vw
+	+media('<tab-sm')
+		font-size: 16px
 
-	//+media('<desk-md')
-		font-size: 1.5vw
+	+media('<mob-lg')
+		font-size: 18px
 
 /* ea-stock-slider end
 /* ea main section stock end
@@ -1127,16 +1167,18 @@ $odds-icon-size--md: 40px !default
 	+media('<desk-sb')
 		+grid-item-responsive(3, 30px)
 
-	+media('<tab-lg')
-		+grid-item-responsive(2, 30px)
-
 	+media('<mob-lg')
 		+grid-item-responsive(2, 20px)
+		font-size: 16px
 
 	svg
 		display: block
 		margin-bottom: 25px
 		+size(60px)
+
+		+media('<mob-lg')
+			+size(40px)
+			margin-bottom: 15px
 
 /* ea main benefits end
 
@@ -1163,7 +1205,7 @@ $odds-icon-size--md: 40px !default
 	+font(1.8rem, round-float(24/18, 2))
 	letter-spacing: normal
 
-	+media('<tab-lg')
+	+media('<tab-sm')
 		width: round-float(100%/1, 4)
 
 .ea-news-previews__inner
@@ -1369,6 +1411,10 @@ $odds-icon-size--md: 40px !default
 		transition-property: color
 		transition-duration: $animation-speed
 
+		+media('<mob-lg')
+			padding-top: 0
+			font-size: 20px
+
 		&:hover
 			color: $base-color
 
@@ -1457,17 +1503,28 @@ $odds-icon-size--md: 40px !default
 		+media('<mob-lg')
 			+grid-item-responsive(1, 20px)
 
-	.col__title
-		+font(14px, round-float(18/14, 2))
-		margin-bottom: 2rem
-
 	svg
 		display: block
 		+size(60px)
 		margin-bottom: 2rem
 
+		+media('<mob-lg')
+			+size(40px)
+			float: left
+			margin-bottom: 0
+			margin-right: 1.5rem
+
 	path
 		fill: currentColor
+
+	.col__title
+		+font(14px, round-float(18/14, 2))
+		margin-bottom: 2rem
+
+		+media('<mob-lg')
+			margin-left: 55px
+			margin-top: 1.2rem
+			margin-bottom: 1.5rem
 
 	.col__content
 		+font(24px, round-float(32/24, 2))
@@ -1475,6 +1532,12 @@ $odds-icon-size--md: 40px !default
 
 		+media('<desk-sb')
 			font-size: 20px
+
+		+media('<tab-sm')
+			font-size: 18px
+
+		+media('<mob-lg')
+			margin-left: 55px
 
 		&:last-child
 			margin-bottom: 0
@@ -1526,21 +1589,22 @@ $odds-icon-size--md: 40px !default
 		width: round-float(100%/3, 2)
 		padding: 0 $ea-footer-nav-horizontal-space--lg/2
 
-	+media('<desk-sm')
-		width: round-float(100%/4, 2)
-
-	+media('<tab-lg')
-		width: round-float(100%/2, 2)
+	+media('<tab-sm')
+		//width: round-float(100%/2, 2)
+		font-size: 16px
 
 	+media('<mob-lg')
-		display: none
 		width: 100%
+		text-align: center
 
 	&.col-2
 		width: round-float(100%/2, 2)
 
 		+media('<desk-sb')
 			width: round-float(100%/3, 2)
+
+		+media('<mob-lg')
+			width: 100%
 
 	& > *:last-child
 		margin-bottom: 0
@@ -1609,6 +1673,7 @@ $odds-icon-size--md: 40px !default
 
 	+media('<mob-lg')
 		display: block
+		float: none
 		text-align: center
 		width: auto
 
