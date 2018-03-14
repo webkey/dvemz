@@ -19116,6 +19116,9 @@ button.mfp-close path {
 		box-shadow: none !important;
 		text-shadow: none !important;
 	}
+	body {
+		min-width: 1024px;
+	}
 	a, a:visited {
 		text-decoration: underline;
 	}

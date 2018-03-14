@@ -2957,7 +2957,7 @@ function onlyNumberInput() {
 
 		$checkbox.on('change', function () {
 			var $currentCheckbox = $(this);
-			console.info('Checkbox is change...');
+			// console.log('is checked...');
 			var $currentContainer = $currentCheckbox.closest($container);
 			var $currentItem = $currentCheckbox.closest($item);
 			var $currentGroup = $currentCheckbox.closest($group);
@@ -3018,6 +3018,13 @@ function onlyNumberInput() {
 
 			self.setLengthCheckedCheckboxes($currentGroup);
 		});
+
+		$.each($checkbox, function () {
+			$(this).is(':checked') && $(this).trigger('change');
+		});
+
+		// var $checked = $group.find('input:checked');
+		// $checked.trigger('change');
 	};
 
 	MultiFilters.prototype.checkProp = function ($group, cond) {
@@ -3275,7 +3282,7 @@ function multiFiltersInit() {
 			dataName: 'filter-name',
 			dataPrefix: 'value-prefix',
 			dataPostfix: 'value-postfix'
-		})
+		});
 	}
 }
 /*multi filters initial end*/
