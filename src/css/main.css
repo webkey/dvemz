@@ -6950,6 +6950,39 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 	margin-bottom: 0;
 }
 
+.search-form__field::before, .search-form__field::after {
+	content: "";
+	display: none;
+	position: absolute;
+	z-index: 99;
+}
+
+.search-form__field::before {
+	left: -10px;
+	top: -10px;
+	width: calc(100% + 20px);
+	height: calc(100% + 20px);
+	background-color: #fff;
+	opacity: 0.8;
+}
+
+.search-form__field::after {
+	width: 62px;
+	height: 62px;
+	left: 50%;
+	top: 50%;
+	margin: -31px 0 0 -31px;
+	background-image: url(../img/preloader.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	z-index: 100;
+}
+
+.js-loading .search-form__field::before, .js-loading .search-form__field::after {
+	display: block;
+}
+
 .search-form .light-form .label-holder {
 	font-family: "proximanova-bold", sans-serif;
 	font-weight: normal;

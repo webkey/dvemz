@@ -19,6 +19,39 @@
 	&:last-child
 		margin-bottom: 0
 
+.search-form__field
+	&::before, &::after
+		content: ""
+		display: none
+		position: absolute
+		z-index: 99
+
+	&::before
+		left: -10px
+		top: -10px
+		width: calc(100% + 20px)
+		height: calc(100% + 20px)
+		background-color: #fff
+		opacity: 0.8
+
+	&::after
+		$size: 62px
+		// =======
+		width: $size
+		height: $size
+		left: 50%
+		top: 50%
+		margin: -#{round($size/2)} 0 0 -#{round($size/2)}
+		background-image: url(../../img/preloader.svg)
+		background-size: contain
+		background-repeat: no-repeat
+		background-position: center
+		z-index: 100
+
+	.js-loading &
+		&::before, &::after
+			display: block
+
 .search-form .light-form
 	.label-holder
 		+font-bold
