@@ -484,6 +484,8 @@ function slidersInit() {
 			$currentSlider.slick({
 				// fade: true,
 				speed: dur,
+				autoplay: true,
+				autoplaySpeed: 3000,
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				infinite: true,
@@ -1487,6 +1489,7 @@ function mainMapEAInit() {
 		closeOnResize: true,
 		cssScrollBlocked: false, // add class to body for blocked scroll
 		closeEsc: true, // close popup on click Esc,
+		closeOutside: true, // close popup on click outside
 		activeClass: 'active',
 		openedClass: 'extra-popup-opened',
 		beforeOpenClass: 'extra-popup-before-open',
@@ -1528,6 +1531,7 @@ function mainMapEAInit() {
 		self.closeOnResize = options.closeOnResize;
 		self.cssScrollBlocked = options.cssScrollBlocked;
 		self.closeEsc = options.closeEsc;
+		self.closeOutside = options.closeOutside;
 
 		self.desktop = device.desktop();
 
@@ -1630,6 +1634,10 @@ function mainMapEAInit() {
 	// click outside menu
 	ExtraPopup.prototype.outsideClick = function () {
 		var self = this;
+
+		if(!self.closeOutside){
+			return;
+		}
 
 		$(document).on('click', function () {
 			if ( self.navIsOpened ) {
@@ -1988,6 +1996,8 @@ function popupsInit(){
 			overlayAlpha: 0.35,
 			overlayIndex: 999,
 			// alpha: 0,
+			closeEsc: false,
+			closeOutside: false,
 			cssScrollBlocked: true,
 			openedClass: 'shutter--opened',
 			beforeOpenClass: 'shutter--before-open',
@@ -2098,17 +2108,16 @@ function popupsInit(){
 		$catalogMenuPopup.trigger('extraPopupClose');
 	});
 
+	activatePopup();
+}
+
+function activatePopup() {
 	var btnCloseTpl = '<button title="%title%" type="button" class="mfp-close"><svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 57.2 57.2"><path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path></svg></button>';
 
 	$('.btn-popup-js').magnificPopup({
-		type: 'inline',
-		midClick: true, // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.,
+		type: 'inline', midClick: true, // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.,
 		// closeOnContentClick: false,
-		mainClass: 'mfp-zoom-in',
-		removalDelay: 500,
-		fixedContentPos: 'auto',
-		overflowY: 'auto',
-		closeMarkup: btnCloseTpl,
+		mainClass: 'mfp-zoom-in', removalDelay: 500, fixedContentPos: 'auto', overflowY: 'auto', closeMarkup: btnCloseTpl,
 	});
 }
 /*extra popup initial end*/
@@ -3640,4 +3649,18 @@ $(function () {
 	mainMapEAInit();
 
 	formSuccessExample();
+
+	// !!! не переносить в релиз !!!
+	// тестирование
+	setTimeout(function () {
+		// $('#temp_add_btn_01').html('<a href="#product-request" class="btn-outline btn-with-icon btn-popup-js product-request-js" data-value="[106185] Генератор бензиновый Ergomax GA1200">Оставить заявку</a>');
+		$('#temp_add_btn_02').html('<a href="#product-request" class="btn-outline btn-with-icon btn-popup-js product-request-js" data-value="[97058] Генератор бензиновый Ergomax GA1200">Оставить заявку</a>');
+		$('#temp_add_btn_03').prepend($('<a href="#" class="btn-outline btn-with-icon cart_button js-product__add" data-cart="?action=ADD2BASKET&amp;id=107361"> <i class="depict-cart">&nbsp;</i><span>В корзину</span></a>'));
+
+		activatePopup();
+	}, 3000);
+
+	$('.shutter').on('click', '.js-product__add', function () {
+		console.log('click!!!');
+	})
 });

@@ -2552,6 +2552,25 @@ form .success ~ .confirm-note {
 	        transform: rotate(-55deg);
 }
 
+.confirm-note.show-text {
+	left: auto;
+	top: auto;
+	width: 100%;
+	height: 22px;
+	font-size: 12px;
+	line-height: 22px;
+	letter-spacing: normal;
+	max-width: none;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	color: green;
+	margin: 0;
+}
+
+.confirm-note.show-text::before, .confirm-note.show-text::after {
+	content: none;
+}
+
 /*form common end*/
 /*form placeholder*/
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
@@ -9066,7 +9085,7 @@ input.search-form__input, .light-form input.search-form__input {
 .p-filters-tags__item > span {
 	display: inline-block;
 	vertical-align: top;
-	max-width: 120px;
+	max-width: 360px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;

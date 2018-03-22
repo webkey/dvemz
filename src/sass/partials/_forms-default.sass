@@ -200,6 +200,24 @@ textarea
 		transform-origin: bottom left
 		transform: rotate(-55deg)
 
+	// show text
+	&.show-text
+		left: auto
+		top: auto
+		width: 100%
+		height: 22px
+		font-size: 12px
+		line-height: 22px
+		letter-spacing: normal
+		max-width: none
+		white-space: nowrap
+		text-overflow: ellipsis
+		color: green
+		margin: 0
+
+		&::before, &::after
+			content: none
+
 /*form common end*/
 
 /*form placeholder*/
