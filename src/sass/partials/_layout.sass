@@ -21,6 +21,9 @@
 	.top-panel--fixed ~ &
 		padding-top: $top-panel-height
 
+		+media('<desk-md')
+			padding-top: $top-panel-height + 50
+
 		+media('<tab-lg')
 			padding-top: $top-panel-height--md + 50
 
@@ -148,6 +151,9 @@
 			margin-left: 0
 			padding-top: #{$top-panel-height--md}
 
+		.ea-site.home-page &
+			padding-top: 0
+
 		&.top-panel--alt
 			position: relative
 
@@ -160,7 +166,7 @@
 	+media('<desk-hd')
 		+padding-horizontal($text-layout-space-horizontal--lg)
 
-	+media('<desk-md','>=tab-lg')
+	//+media('<desk-md','>=tab-lg')
 		.ea-site.home-page &
 			position: fixed
 			+position(0, $header-width)
@@ -177,6 +183,10 @@
 
 		.top-panel--alt &
 			box-shadow: none
+
+		.ea-site.home-page &
+			position: relative
+			+position(auto)
 
 /*top panel (layout) end
 

@@ -3387,6 +3387,12 @@ input[type="radio"]:disabled ~ i::after {
 	padding-top: 80px;
 }
 
+@media (max-width: 1279px) {
+	.top-panel--fixed ~ .main {
+		padding-top: 130px;
+	}
+}
+
 @media (max-width: 979px) {
 	.top-panel--fixed ~ .main {
 		padding-top: 100px;
@@ -3527,6 +3533,9 @@ input[type="radio"]:disabled ~ i::after {
 		margin-left: 0;
 		padding-top: 50px;
 	}
+	.ea-site.home-page .top-panel {
+		padding-top: 0;
+	}
 	.top-panel.top-panel--alt {
 		position: relative;
 	}
@@ -3546,15 +3555,6 @@ input[type="radio"]:disabled ~ i::after {
 	}
 }
 
-@media (max-width: 1279px) and (min-width: 980px) {
-	.ea-site.home-page .top-panel-holder {
-		position: fixed;
-		top: 0;
-		left: 80px;
-		width: calc(100% - 80px);
-	}
-}
-
 @media (max-width: 979px) {
 	.top-panel-holder {
 		position: fixed;
@@ -3569,6 +3569,11 @@ input[type="radio"]:disabled ~ i::after {
 	}
 	.top-panel--alt .top-panel-holder {
 		box-shadow: none;
+	}
+	.ea-site.home-page .top-panel-holder {
+		position: relative;
+		top: auto;
+		left: auto;
 	}
 }
 
@@ -7109,7 +7114,7 @@ input.search-form__input, .light-form input.search-form__input {
 }
 
 .search-form__btn path {
-	fill: inherit;
+	fill: currentColor;
 	transition: inherit;
 }
 
@@ -7420,11 +7425,11 @@ input.search-form__input, .light-form input.search-form__input {
 	vertical-align: middle;
 	width: 10px;
 	height: 10px;
-	fill: inherit;
+	fill: currentColor;
 }
 
 .pagination .prev path, .pagination .next path {
-	fill: inherit;
+	fill: currentColor;
 	transition: inherit;
 }
 
@@ -12486,7 +12491,7 @@ li.is-open > .catalog-menu__tab .catalog-menu__angle i::before, li.is-open > .ca
 }
 
 .catalog-categories__figure path {
-	fill: inherit;
+	fill: currentColor;
 	transition-property: inherit;
 	transition-duration: inherit;
 }
@@ -13781,7 +13786,7 @@ button.mfp-close svg {
 }
 
 button.mfp-close path {
-	fill: inherit;
+	fill: currentColor;
 }
 
 /* popups end */
@@ -18945,7 +18950,7 @@ button.mfp-close path {
 }
 
 .c-section-thumb path {
-	fill: inherit;
+	fill: currentColor;
 }
 
 .c-section-thumb .arr {
