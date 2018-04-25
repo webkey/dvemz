@@ -99,7 +99,7 @@
 					</a>
 				</div>
 				<div class="catalog-categories__item">
-					<a href="@@if(context.notSubMenu) {automatic-catalog.html}@@if(!context.notSubMenu) {#catalog-menu-item-09}" class="catalog-categories__cell@@if(!context.notSubMenu) { js-tab-anchor catalog-categories-link-js}">
+					<a href="@@if(!context.notSubMenu) {automatic-catalog.html}@@if(context.notSubMenu) {#catalog-menu-item-09}" class="catalog-categories__cell@@if(!context.notSubMenu) { js-tab-anchor catalog-categories-link-js}">
 						<div class="catalog-categories__figure">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40">
 								<g>

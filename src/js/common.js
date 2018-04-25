@@ -2176,6 +2176,13 @@ function catalogMenuEvents() {
 	});
 
 	$categoriesLinks.on('click', function () {
+		var $self = $(this),
+			href = $self.attr('href');
+
+		if(href.length && href.charAt(0) !== "#"){
+			return false;
+		}
+
 		if (!$menu.hasClass(submenuIsOpen)) {
 			$menu.addClass(submenuIsOpen);
 		}
@@ -2389,8 +2396,7 @@ function simpleAccordInit() {
 
 		$container.on('click', self.options.handler, function (e) {
 			var $currentHandler = self.options.handlerWrap ? $(this).closest(self.options.handlerWrap) : $(this);
-			// console.log("!!self.options.handlerWrap: ", self.options.handlerWrap);
-			// console.log("$currentHandler: ", $currentHandler);
+
 			var $currentItem = $currentHandler.closest($item);
 
 			if ($currentItem.has($(panel)).length) {
@@ -2605,10 +2611,16 @@ function tabSwitcher() {
 
 			// toggle content
 			$currentAnchor.on('click', function (e) {
-				e.preventDefault();
-
 				var $self = $(this),
-					selfTab = $self.attr('href').substring(1);
+					href = $self.attr('href'),
+					selfTab = href.substring(1);
+
+				if(href.charAt(0) !== "#"){
+					location.href = href;
+					return false;
+				}
+
+				// e.preventDefault();
 
 				if ($currentContainer.data('collapsed') === true && activeTab === selfTab) {
 
