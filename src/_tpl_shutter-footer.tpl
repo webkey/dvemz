@@ -7,6 +7,10 @@
 }
 @@if(context.site === "ea"){
 	<footer class="shutter-footer">
+		<a href="files/pdf-test.pdf" class="price-down">
+			@@include("./includes-json/svg/icon-download.svg")
+			Скачать прайс
+		</a>
 		<a href="index.html" class="btn-siblings"><i>&nbsp;</i><span>Электрощитовое <br> оборудование</span></a>
 		<div class="copyright">&copy; 2017 ОАО Электроавтоматика</div>
 		<div class="map-site"><a href="map-site.html" title="Перейти на карту сайта">Карта сайта</a></div>

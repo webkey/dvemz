@@ -4708,6 +4708,62 @@ input[type="radio"]:disabled ~ i::after {
 }
 
 /*HEADER end*/
+/* price-down */
+.price-down {
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 20px;
+	width: 80px;
+	height: 80px;
+	padding-top: 45px;
+	font-family: "proximanova-bold", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 10px;
+	line-height: 12px;
+	letter-spacing: 0.05em;
+	text-align: center;
+	color: #676767;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+.price-down svg {
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 13px;
+	margin-left: -12px;
+	width: 24px;
+	height: 24px;
+}
+
+.price-down path, .price-down polygon {
+	fill: #fabb00;
+}
+
+.ea-site .price-down path, .ea-site .price-down polygon {
+	fill: #f68b21;
+}
+
+.price-down:hover {
+	color: #fabb00;
+}
+
+.ea-site .price-down:hover {
+	color: #f68b21;
+}
+
+.shutter-footer .price-down {
+	position: relative;
+	left: auto;
+	bottom: auto;
+	margin: 0 auto;
+}
+
+/* price-down end */
 /* shutter */
 html.css-scroll-fixed.touchevents {
 	width: 100% !important;
@@ -7933,7 +7989,7 @@ input.search-form__input, .light-form input.search-form__input {
 	left: -26px;
 	top: 100%;
 	width: calc(100% + 52px);
-	padding: 5px 26px 26px;
+	padding: 5px 26px 18px;
 	overflow-x: hidden;
 	overflow-y: auto;
 	background-color: #f3f3f3;
@@ -8205,6 +8261,64 @@ input.search-form__input, .light-form input.search-form__input {
 
 /* logo alt end */
 /* top panel end */
+/* search button */
+.btn-search {
+	position: relative;
+	overflow: hidden;
+	float: left;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	height: 80px;
+	padding-right: 25px;
+	padding-left: 25px;
+	color: black;
+	text-decoration: none;
+	transition: inherit;
+	will-change: background-color, color;
+	transition-property: background-color, color;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+}
+
+@media (max-width: 1199px) {
+	.btn-search {
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+}
+
+@media (max-width: 979px) {
+	.btn-search {
+		display: none;
+	}
+}
+
+.btn-search svg {
+	display: block;
+	width: 24px;
+	height: 24px;
+	margin-right: 10px;
+}
+
+.btn-search path {
+	fill: currentColor;
+}
+
+.no-touchevents .btn-search:hover {
+	background-color: #f3f3f3;
+}
+
+/* search button end */
 /*news grid */
 .news-grid {
 	margin-bottom: 2.4rem;
@@ -16808,6 +16922,13 @@ button.mfp-close path {
 	padding: 4px 15px;
 }
 
+@media (max-width: 979px) {
+	.ea-main-slider .slick-dots li, .user-content .ea-main-slider .slick-dots li {
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+}
+
 .ea-main-slider .slick-dots li button {
 	width: 10px;
 	height: 10px;
@@ -16861,7 +16982,7 @@ button.mfp-close path {
 	content: "";
 	display: block;
 	position: relative;
-	padding-top: 39.33%;
+	padding-top: 30%;
 }
 
 .ea-main-slider__inner {
@@ -16897,12 +17018,12 @@ button.mfp-close path {
 
 .ea-main-slider__info {
 	background-color: #006ab6;
-	padding: 3.5% 40px 6.5% 60px;
+	padding: 3% 30px 3% 60px;
 }
 
 @media (max-width: 639px) {
 	.ea-main-slider__info {
-		padding: 3.5% 20px 3.5% 50px;
+		padding: 3% 20px 3% 50px;
 	}
 }
 

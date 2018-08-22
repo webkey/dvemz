@@ -25,6 +25,10 @@ var gulp = require('gulp'), // Подключаем Gulp
 	htmlmin = require('gulp-htmlmin')
 	;
 
+var path = {
+	'dist': '4'
+};
+
 gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
 	return gulp.src(['src/__*.html'])
 		.pipe(fileinclude({
@@ -106,7 +110,7 @@ gulp.task('createCustomModernizr', function (done) { // Таск для форм
 
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск для мераж js библиотек
 	return gulp.src([
-		, 'src/libs/jquery-mousewheel/jquery.mousewheel.min.js' // mousewheel
+		'src/libs/jquery-mousewheel/jquery.mousewheel.min.js' // mousewheel
 		// jquery ui
 		, 'src/libs/jquery-ui/jquery-ui.min.js'
 		// jquery ui end
@@ -190,48 +194,48 @@ gulp.task('copyImgToDist', function () {
 			optimizationLevel: 7, //степень сжатия от 0 до 7
 			use: [pngquant()]
 		})))
-		.pipe(gulp.dest('dist/img')); // Выгружаем на продакшен
+		.pipe(gulp.dest(path.dist + '/img')); // Выгружаем на продакшен
 });
 
 gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
 
 	gulp.src('src/css/*.css')
-		.pipe(gulp.dest('dist/css'));
+		.pipe(gulp.dest(path.dist + '/css'));
 
 	// если необходимо сжать main.css
 	// gulp.src('src/css/main.css')
 	// 	.pipe(cssnano())
 	// 	.pipe(rename({suffix: '.min'}))
-	// 	.pipe(gulp.dest('dist/css'));
+	// 	.pipe(gulp.dest(path.dist + '/css'));
 
 	gulp.src('src/fonts/**/*')
-		.pipe(gulp.dest('dist/fonts')); // Переносим шрифты в продакшен
+		.pipe(gulp.dest(path.dist + '/fonts')); // Переносим шрифты в продакшен
 
 	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', 'src/js/*.js'])
-		.pipe(gulp.dest('dist/js')); // Переносим скрипты в продакшен
+		.pipe(gulp.dest(path.dist + '/js')); // Переносим скрипты в продакшен
 
 	// если необходимо сжать common.js
 	// gulp.src(['src/js/common.js'])
 	// 	.pipe(rename({suffix: '.min'}))
 	// 	.pipe(uglify()) // Сжимаем JS файл
-	// 	.pipe(gulp.dest('dist/js')); // Переносим скрипты в продакшен
+	// 	.pipe(gulp.dest(path.dist + '/js')); // Переносим скрипты в продакшен
 
 	gulp.src('src/files/**/*')
-		.pipe(gulp.dest('dist/files')); // Переносим дополнительные файлы в продакшен
+		.pipe(gulp.dest(path.dist + '/files')); // Переносим дополнительные файлы в продакшен
 
 	gulp.src(['!src/__*.html', '!src/_tpl_*.html', 'src/*.html'])
 		//.pipe(replace('css/main.css', 'css/main.min.css')) // меняем подключение main.css на main.min.css
 		//.pipe(replace('js/common.js', 'js/common.min.js')) // меняем подключение common.js на common.min.js
 		//.pipe(htmlmin({collapseWhitespace: true})) // если необходимо сжать html
-		.pipe(gulp.dest('dist')); // Переносим HTML в продакшен
+		.pipe(gulp.dest(path.dist)); // Переносим HTML в продакшен
 
 	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess', 'src/manifest.json']) // Переносим favicon и др. файлы в продакшин
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest(path.dist));
 
 });
 
 gulp.task('cleanDistFolder', function () {
-	return del.sync(['dist/']); // Удаляем папку dist
+	return del.sync([path.dist + '/']); // Удаляем папку dist
 });
 
 gulp.task('clearCache', function () { // Создаем такс для очистки кэша

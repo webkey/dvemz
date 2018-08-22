@@ -511,6 +511,9 @@ $odds-icon-size--md: 40px !default
 			&, .#{$user-content} &
 				padding: 4px 15px
 
+				+media('<tab-lg')
+					+padding-horizontal(10px)
+
 			button
 				width: 10px
 				height: 10px
@@ -570,7 +573,7 @@ $odds-icon-size--md: 40px !default
 		content: ""
 		display: block
 		position: relative
-		+ratio(1200, 472)
+		+ratio(1200, 360)
 
 .ea-main-slider__inner
 	display: flex
@@ -593,10 +596,11 @@ $odds-icon-size--md: 40px !default
 
 .ea-main-slider__info
 	background-color: $base-color-alt--ea
-	padding: 3.5% 40px 6.5% 60px
+	padding: 3% 30px 3% 60px
+
 
 	+media('<mob-lg')
-		padding: 3.5% 20px 3.5% 50px
+		padding: 3% 20px 3% 50px
 
 	+media('<mob-md')
 		padding-right: 10px

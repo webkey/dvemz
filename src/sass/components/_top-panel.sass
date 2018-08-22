@@ -178,7 +178,7 @@
 	left: -#{$top-panel-space}
 	top: 100%
 	width: calc(100% + #{$top-panel-space*2})
-	padding: 5px #{$top-panel-space} #{$top-panel-space}
+	padding: 5px #{$top-panel-space} 18px
 	overflow-x: hidden
 	overflow-y: auto
 	background-color: $bg-color-light
@@ -356,3 +356,44 @@
 
 /* logo alt end
 /* top panel end
+
+/* search button
+.btn-search
+	position: relative
+	overflow: hidden
+	float: left
+	display: flex
+	justify-content: center
+	align-items: center
+	height: $top-panel-height
+	+padding-horizontal(25px)
+	color: $text-color
+	text-decoration: none
+	transition: inherit
+	// transition
+	$prop: background-color, color
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+		timing-function: ease-in-out
+
+	+media('<desk-sm')
+		+padding-horizontal(5px)
+
+	+media('<tab-lg')
+		display: none
+
+	svg
+		display: block
+		+size(24px)
+		margin-right: 10px
+
+	path
+		fill: currentColor
+
+	// hover
+	.no-touchevents &:hover
+		background-color: $bg-color-light
+
+/* search button end
